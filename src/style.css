@@ -1,0 +1,24 @@
+/* * {
+  border: 1px solid red;
+} */
+
+html {
+    box-sizing: border-box;
+}
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    color: #5a5a56;
+    background-color: #f5eadb;
+    height: 100vh;
+    /* display: grid;
+    grid-template-rows: auto 1fr auto;
+    grid-template-areas:
+        "header"
+        "main"
+        "footer";
+    margin: 0; */
+}
