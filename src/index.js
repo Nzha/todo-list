@@ -1,15 +1,17 @@
 import './style.css';
 
-function menuDisplay() {
+function sidebarDisplay() {
     const hideMenuBtn = document.querySelector('#hide-menu-btn');
     const sideBarDiv = document.querySelector('.sidebar');
+    const content = document.querySelector('.content');
 
-    hideMenuBtn.addEventListener('click', hideMenu);
+    hideMenuBtn.addEventListener('click', toggleSidebar);
 
-    function hideMenu() {
+    function toggleSidebar() {
         sideBarDiv.classList.toggle('hidden');
+        content.classList.toggle('full-width');
     }
 
 }
 
-menuDisplay();
+sidebarDisplay();
