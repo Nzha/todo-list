@@ -54,13 +54,18 @@ header {
     grid-area: sidebar;
     background-color: #fafafa;
     width: 300px;
-    padding: 2rem;
     overflow-x: hidden;
     transition: width 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
 }
 
 .sidebar.hidden {
     width: 0;
+}
+
+/* Must create an inner container in sidebar otherwise
+the padding is still displayed when sidebar is hidden */
+.sidebar-inner-container {
+    padding: 2rem;
 }
 
 .content {
