@@ -74,13 +74,15 @@ the padding is still displayed when sidebar is hidden */
     padding: 2rem 1rem;
 }
 
-.sidebar-tasks-item {
+.sidebar-tasks-item,
+.sidebar-projects-item {
     display: flex;
     gap: 0.5rem;
     padding: 0.5rem 1rem;
 }
 
-.sidebar-tasks-item:hover {
+.sidebar-tasks-item:hover,
+.sidebar-projects-item:hover {
     background-color: #eeeeee;
 }
 
@@ -94,6 +96,15 @@ the padding is still displayed when sidebar is hidden */
 
 .fa-calendar-week {
     color: #8d62d0;
+}
+
+.sidebar-projects {
+    margin-top: 2rem;
+    padding: 0 1rem;
+}
+
+.projects-title {
+    font-size: 1.15rem;
 }
 
 .content {
