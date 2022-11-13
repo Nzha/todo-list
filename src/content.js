@@ -1,4 +1,4 @@
-import loadNewTaskFom from './addTask';
+import loadNewTaskForm from './addTask';
 
 function loadContent(title) {
     const contentDiv = document.querySelector('.content');
@@ -26,11 +26,6 @@ function loadContent(title) {
     taskList.classList.add('task-list');
     taskContainer.appendChild(taskList);
 
-    const taskListItem = document.createElement('li');
-    taskListItem.classList.add('task-list-item');
-    taskListItem.textContent = 'Test';
-    taskList.appendChild(taskListItem);
-
     // Tasks - Add task
     const addTaskContainer = document.createElement('li');
     addTaskContainer.classList.add('add-task-container');
@@ -41,7 +36,7 @@ function loadContent(title) {
     addTaskBtn.textContent = 'Add task';
     addTaskContainer.appendChild(addTaskBtn);
 
-    addTaskBtn.addEventListener('click', loadNewTaskFom);
+    addTaskBtn.addEventListener('click', loadNewTaskForm);
 }
 
 export default loadContent;

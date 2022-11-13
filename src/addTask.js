@@ -1,4 +1,4 @@
-function loadNewTaskFom() {
+function loadNewTaskForm() {
     // Remove 'Add task' button    
     const addTaskContainer = document.querySelector('.add-task-container');
     addTaskContainer.parentNode.removeChild(addTaskContainer);
@@ -53,19 +53,38 @@ function loadNewTaskFom() {
 function addTask(e) {
     e.preventDefault();
     
-    const taskList = document.querySelector('.task-list');
     const newTaskForm = document.querySelector('.new-task-form');
+    const taskNameInput = document.querySelector('#taskName');
+    const taskDescriptionInput = document.querySelector('#taskDescription');
 
-    const newTaskContainer = document.querySelector('.new-task-container');
+    let taskName = taskNameInput.value;
+    let taskDescription = taskDescriptionInput.value;
 
-    let taskName = document.querySelector('#taskName').value;
     if (!taskName) return;
 
-    const li = document.createElement('li');
-    li.textContent = taskName;
-    taskList.insertBefore(li, newTaskContainer);
+    createTaskEl(taskName, taskDescription)
 
     newTaskForm.reset();
 }
 
-export default loadNewTaskFom;
+function createTaskEl(taskName, taskDescription) {
+    const taskList = document.querySelector('.task-list');
+    const newTaskContainer = document.querySelector('.new-task-container');
+
+    const li = document.createElement('li');
+    li.classList.add('task-list-item-container');
+
+    const taskNameDiv = document.createElement('div');
+    taskNameDiv.classList.add('task-name-div');
+    taskNameDiv.textContent = taskName;
+    li.appendChild(taskNameDiv);
+
+    const taskDescriptionDiv = document.createElement('div');
+    taskDescriptionDiv.classList.add('task-description-div');
+    taskDescriptionDiv.textContent = taskDescription;
+    li.appendChild(taskDescriptionDiv);
+
+    taskList.insertBefore(li, newTaskContainer);
+}
+
+export default loadNewTaskForm;
