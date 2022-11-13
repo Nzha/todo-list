@@ -33,10 +33,19 @@ function addTask() {
     taskDescription.setAttribute('placeholder', 'Description');
     newTaskEditor.appendChild(taskDescription);
 
-    const button = document.createElement('button');
-    button.textContent = 'Add task';
-    newTaskForm.appendChild(button);
+    const btnContainer = document.createElement('div');
+    btnContainer.classList.add('form-btn-container');
+    newTaskForm.appendChild(btnContainer);
 
+    const resetTaskBtn = document.createElement('button');
+    resetTaskBtn.classList.add('cancel-task-form-btn');
+    resetTaskBtn.textContent = 'Cancel';
+    btnContainer.appendChild(resetTaskBtn);
+
+    const addTaskBtn = document.createElement('button');
+    addTaskBtn.classList.add('add-task-form-btn');
+    addTaskBtn.textContent = 'Add task';
+    btnContainer.appendChild(addTaskBtn);
 }
 
 

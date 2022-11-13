@@ -118,7 +118,6 @@ the padding is still displayed when sidebar is hidden */
 }
 
 .content.full-width {
-    /* margin-left: -300px; */
     transition: margin-left 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
 }
 
@@ -196,18 +195,35 @@ textarea {
     resize: none;
 }
 
-.new-task-form > button {
-    align-self: flex-end;
-    color: white;
-    background-color: #f1b7b2;
+.form-btn-container {
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.5rem;
+}
+
+.cancel-task-form-btn,
+.add-task-form-btn {
+    cursor: pointer;
     font-weight: 600;
     border: none;
     border-radius: 5px;
     padding: 8px 16px;
 }
 
-.new-task-form > button:hover {
-    cursor: pointer;
+.cancel-task-form-btn {
+    background-color: #f5f5f5;
+}
+
+.cancel-task-form-btn:hover {
+    background-color: #e5e5e5;
+}
+
+.add-task-form-btn {
+    color: white;
+    background-color: #f1b7b2;
+}
+
+.add-task-form-btn:hover {
     background-color: #db4c3f;
 }
 
