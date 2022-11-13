@@ -28,8 +28,8 @@ function addTask() {
 
     const taskDescription = document.createElement('textarea');
     taskDescription.setAttribute('type', 'text');
-    taskDescription.setAttribute('id', 'message');
-    taskDescription.setAttribute('name', 'message');
+    taskDescription.setAttribute('id', 'taskDescription');
+    taskDescription.setAttribute('name', 'taskDescription');
     taskDescription.setAttribute('placeholder', 'Description');
     newTaskEditor.appendChild(taskDescription);
 
