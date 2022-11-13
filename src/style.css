@@ -136,12 +136,9 @@ h2 {
     margin: 0;
 }
 
-.task-list-item-container {
-    margin-bottom: 1rem;
-}
-
 .add-task-container {
     color: #8b8b8b;
+
 }
 
 .add-task-btn {
@@ -165,10 +162,12 @@ h2 {
     margin-right: 0.4rem;
 }
 
+/* NEW TASK FORM STARTS */
 .new-task-form {
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
+    padding: 0.75rem 0;
 }
 
 .new-task-form-editor {
@@ -231,6 +230,21 @@ textarea {
 .add-task-form-btn:hover {
     background-color: #db4c3f;
 }
+/* NEW TASK FORM ENDS */
+
+
+/* TASK LIST STARTS */
+.task-list-item-container {
+    font-size: 0.9rem;
+    padding: 0.5rem;
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.task-description {
+    font-size: 0.8rem;
+    color: #8b8b8b;
+}
+/* TASK LIST ENDS */
 
 @media only screen and (min-width: 700px) {
     .content:not(.full-width) {

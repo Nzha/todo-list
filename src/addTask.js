@@ -75,12 +75,12 @@ function createTaskEl(taskName, taskDescription) {
     li.classList.add('task-list-item-container');
 
     const taskNameDiv = document.createElement('div');
-    taskNameDiv.classList.add('task-name-div');
+    taskNameDiv.classList.add('task-name');
     taskNameDiv.textContent = taskName;
     li.appendChild(taskNameDiv);
 
     const taskDescriptionDiv = document.createElement('div');
-    taskDescriptionDiv.classList.add('task-description-div');
+    taskDescriptionDiv.classList.add('task-description');
     taskDescriptionDiv.textContent = taskDescription;
     li.appendChild(taskDescriptionDiv);
 
