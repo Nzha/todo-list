@@ -14,24 +14,27 @@ function addTask() {
     newTaskForm.classList.add('new-task-form');
     newTaskContainer.appendChild(newTaskForm);
 
+    const newTaskEditor = document.createElement('div');
+    newTaskEditor.classList.add('new-task-form-editor');
+    newTaskForm.appendChild(newTaskEditor);
+
     const taskName = document.createElement('input');
     taskName.setAttribute('type', 'text');
     taskName.setAttribute('id', 'taskName');
     taskName.setAttribute('name', 'taskName');
-    taskName.setAttribute('placeholder', 'Task Name');
-    taskName.required = true;
-    newTaskForm.appendChild(taskName);
+    taskName.setAttribute('placeholder', 'Task name');
+    taskName.setAttribute('autocomplete', 'off');
+    newTaskEditor.appendChild(taskName);
 
     const taskDescription = document.createElement('textarea');
     taskDescription.setAttribute('type', 'text');
     taskDescription.setAttribute('id', 'message');
     taskDescription.setAttribute('name', 'message');
     taskDescription.setAttribute('placeholder', 'Description');
-    taskDescription.required = true;
-    newTaskForm.appendChild(taskDescription);
+    newTaskEditor.appendChild(taskDescription);
 
     const button = document.createElement('button');
-    button.textContent = 'SEND';
+    button.textContent = 'Add task';
     newTaskForm.appendChild(button);
 
 }
