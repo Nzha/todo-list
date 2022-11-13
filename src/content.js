@@ -1,4 +1,4 @@
-import addTask from './addTask';
+import loadNewTaskFom from './addTask';
 
 function loadContent(title) {
     const contentDiv = document.querySelector('.content');
@@ -41,7 +41,7 @@ function loadContent(title) {
     addTaskBtn.textContent = 'Add task';
     addTaskContainer.appendChild(addTaskBtn);
 
-    addTaskBtn.addEventListener('click', addTask);
+    addTaskBtn.addEventListener('click', loadNewTaskFom);
 }
 
 export default loadContent;

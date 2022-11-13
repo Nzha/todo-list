@@ -1,4 +1,4 @@
-function addTask() {
+function loadNewTaskFom() {
     // Remove 'Add task' button    
     const addTaskContainer = document.querySelector('.add-task-container');
     addTaskContainer.parentNode.removeChild(addTaskContainer);
@@ -46,8 +46,26 @@ function addTask() {
     addTaskBtn.classList.add('add-task-form-btn');
     addTaskBtn.textContent = 'Add task';
     btnContainer.appendChild(addTaskBtn);
+
+    addTaskBtn.addEventListener('click', addTask)
 }
 
+function addTask(e) {
+    e.preventDefault();
+    
+    const taskList = document.querySelector('.task-list');
+    const newTaskForm = document.querySelector('.new-task-form');
 
+    const newTaskContainer = document.querySelector('.new-task-container');
 
-export default addTask;
+    let taskName = document.querySelector('#taskName').value;
+    if (!taskName) return;
+
+    const li = document.createElement('li');
+    li.textContent = taskName;
+    taskList.insertBefore(li, newTaskContainer);
+
+    newTaskForm.reset();
+}
+
+export default loadNewTaskFom;

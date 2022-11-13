@@ -540,7 +540,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-function addTask() {
+function loadNewTaskFom() {
     // Remove 'Add task' button    
     const addTaskContainer = document.querySelector('.add-task-container');
     addTaskContainer.parentNode.removeChild(addTaskContainer);
@@ -588,11 +588,29 @@ function addTask() {
     addTaskBtn.classList.add('add-task-form-btn');
     addTaskBtn.textContent = 'Add task';
     btnContainer.appendChild(addTaskBtn);
+
+    addTaskBtn.addEventListener('click', addTask)
 }
 
+function addTask(e) {
+    e.preventDefault();
+    
+    const taskList = document.querySelector('.task-list');
+    const newTaskForm = document.querySelector('.new-task-form');
 
+    const newTaskContainer = document.querySelector('.new-task-container');
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (addTask);
+    let taskName = document.querySelector('#taskName').value;
+    if (!taskName) return;
+
+    const li = document.createElement('li');
+    li.textContent = taskName;
+    taskList.insertBefore(li, newTaskContainer);
+
+    newTaskForm.reset();
+}
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (loadNewTaskFom);
 
 /***/ }),
 
