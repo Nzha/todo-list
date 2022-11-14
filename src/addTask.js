@@ -74,15 +74,24 @@ function createTaskEl(taskName, taskDescription) {
     const li = document.createElement('li');
     li.classList.add('task-list-item-container');
 
+    const checkbox = document.createElement('input');
+    checkbox.setAttribute('type', 'checkbox');
+    checkbox.classList.add('task-checkbox');
+    li.appendChild(checkbox);
+
+    const taskDiv = document.createElement('div');
+    taskDiv.classList.add('task');
+    li.appendChild(taskDiv);
+
     const taskNameDiv = document.createElement('div');
     taskNameDiv.classList.add('task-name');
     taskNameDiv.textContent = taskName;
-    li.appendChild(taskNameDiv);
+    taskDiv.appendChild(taskNameDiv);
 
     const taskDescriptionDiv = document.createElement('div');
     taskDescriptionDiv.classList.add('task-description');
     taskDescriptionDiv.textContent = taskDescription;
-    li.appendChild(taskDescriptionDiv);
+    taskDiv.appendChild(taskDescriptionDiv);
 
     taskList.insertBefore(li, newTaskContainer);
 }

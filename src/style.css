@@ -179,13 +179,13 @@ h2 {
     border-radius: 10px;
 }
 
-input,
+input[type=text],
 textarea {
     appearance: none;
     border: 1px solid transparent;
 }
   
-input:focus,
+input[type=text]:focus,
 textarea:focus {
     outline: none;
 }
@@ -235,6 +235,8 @@ textarea {
 
 /* TASK LIST STARTS */
 .task-list-item-container {
+    display: flex;
+    gap: 0.5rem;
     font-size: 0.9rem;
     padding: 0.5rem;
     border-bottom: 1px solid #e5e5e5;
