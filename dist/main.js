@@ -16,17 +16,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
 /* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../node_modules/css-loader/dist/runtime/getUrl.js */ "./node_modules/css-loader/dist/runtime/getUrl.js");
-/* harmony import */ var _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_2__);
 // Imports
 
 
-
-var ___CSS_LOADER_URL_IMPORT_0___ = new URL(/* asset import */ __webpack_require__(/*! data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%2724%27 height=%2724%27 viewBox=%270 0 24 24%27%3E %3Cpath d=%27M15.88 8.29L10 14.17l-1.88-1.88a.996.996 0 1 0-1.41 1.41l2.59 2.59c.39.39 1.02.39 1.41 0L17.3 9.7a.996.996 0 0 0 0-1.41c-.39-.39-1.03-.39-1.42 0z%27 fill=%27%23fff%27/%3E %3C/svg%3E */ "data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%2724%27 height=%2724%27 viewBox=%270 0 24 24%27%3E %3Cpath d=%27M15.88 8.29L10 14.17l-1.88-1.88a.996.996 0 1 0-1.41 1.41l2.59 2.59c.39.39 1.02.39 1.41 0L17.3 9.7a.996.996 0 0 0 0-1.41c-.39-.39-1.03-.39-1.42 0z%27 fill=%27%23fff%27/%3E %3C/svg%3E"), __webpack_require__.b);
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
-var ___CSS_LOADER_URL_REPLACEMENT_0___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_2___default()(___CSS_LOADER_URL_IMPORT_0___);
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "/* * {\n  border: 1px solid red;\n} */\n\nhtml {\n    box-sizing: border-box;\n}\n*, *:before, *:after {\n    box-sizing: inherit;\n}\n\nbody {\n    font-family: 'Roboto', sans-serif;\n    color: #1f1f2f;\n    height: 100vh;\n    margin: 0;\n    display: grid;\n    grid-template-columns: auto 3fr;\n    grid-template-rows: auto 1fr;\n    grid-template-areas: \n        \"header header\"\n        \"sidebar content\";\n}\n\na {\n    text-decoration: none;\n    color: inherit;\n}\n\nheader {\n    grid-area: header;\n    font-size: 1.5rem;\n    color: white;\n    background-color: #db4c3f;\n    display: flex;\n    align-items: center;\n    gap: 0.5rem;\n    padding: 0.5rem 1rem;\n}\n\n#hide-menu-btn {\n    font-size: 1.5rem;\n    border: none;\n    color: white;\n    background-color: inherit;\n}\n\n#hide-menu-btn:hover {\n    cursor: pointer;\n    background-color: #e26f65;\n}\n\nul {\n    list-style: none;\n    margin: 0;\n    padding: 0;\n}\n\n.sidebar {\n    grid-area: sidebar;\n    background-color: #fafafa;\n    width: 300px;\n    overflow-x: hidden;\n    transition: width 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;\n}\n\n.sidebar.hidden {\n    width: 0;\n}\n\n/* Must create an inner container in sidebar otherwise\nthe padding is still displayed when sidebar is hidden */\n.sidebar-inner-container {\n    padding: 2rem 1rem;\n}\n\n.sidebar-tasks-item,\n.sidebar-projects-item {\n    display: flex;\n    gap: 0.5rem;\n    padding: 0.5rem 1rem;\n    white-space: nowrap;\n}\n\n.sidebar-tasks-item:hover,\n.sidebar-projects-item:hover {\n    background-color: #eeeeee;\n}\n\n.fa-inbox {\n    color: #4a87e4;\n}\n\n.fa-calendar-day {\n    color: #88c397;\n}\n\n.fa-calendar-week {\n    color: #8d62d0;\n}\n\n.sidebar-projects {\n    margin-top: 2rem;\n    padding: 0 1rem;\n}\n\n.projects-title {\n    font-size: 1.15rem;\n}\n\n.content {\n    grid-area: content;\n    display: flex;\n    justify-content: center;\n    padding: 2rem 0;\n    transition: margin-left 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,\n                background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;\n}\n\n.content.full-width {\n    transition: margin-left 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;\n}\n\n.content:not(.full-width) {\n    background-color: rgba(0,0,0,.5);\n}\n\n.content-inner-container {\n    width: 70%;\n    display: flex;\n    flex-direction: column;\n    gap: 1.5rem;\n}\n\nh2 {\n    margin: 0;\n}\n\n.add-task-container {\n    color: #8b8b8b;\n\n}\n\n.add-task-btn {\n    background: none;\n\tcolor: inherit;\n\tborder: none;\n\tpadding: 0;\n\tfont: inherit;\n\tcursor: pointer;\n\toutline: inherit;\n}\n\n.add-task-btn:hover {\n    color: #dd4b39;\n}\n\n.add-task-btn::before {\n    /* Add '+' before 'Add task' */\n    font-family: fontAwesome;\n    content: \"\\f055\\00a0\";\n    margin-right: 0.4rem;\n}\n\n/* NEW TASK FORM STARTS */\n.new-task-form {\n    display: flex;\n    flex-direction: column;\n    gap: 0.5rem;\n    padding: 0.75rem 0;\n}\n\n.new-task-form-editor {\n    display: flex;\n    flex-direction: column;\n    gap: 0.5rem;\n    padding: 0.5rem 0.5rem;\n    border: 1px solid #e5e5e5;\n    border-radius: 10px;\n}\n\ninput[type=text],\ntextarea {\n    appearance: none;\n    border: 1px solid transparent;\n}\n  \ninput[type=text]:focus,\ntextarea:focus {\n    outline: none;\n}\n\ntextarea {\n    font-family: \"Helvetica\", \"Arial\", sans-serif;\n    resize: none;\n}\n\n#taskName {\n    font-size: 0.9rem;\n}\n\n.form-btn-container {\n    display: flex;\n    justify-content: flex-end;\n    gap: 0.5rem;\n}\n\n.cancel-task-form-btn,\n.add-task-form-btn {\n    cursor: pointer;\n    font-weight: 600;\n    border: none;\n    border-radius: 5px;\n    padding: 8px 12px;\n}\n\n.cancel-task-form-btn {\n    background-color: #f5f5f5;\n}\n\n.cancel-task-form-btn:hover {\n    background-color: #e5e5e5;\n}\n\n.add-task-form-btn {\n    color: white;\n    background-color: #f1b7b2;\n}\n\n.add-task-form-btn:hover {\n    background-color: #db4c3f;\n}\n/* NEW TASK FORM ENDS */\n\n\n/* TASK LIST STARTS */\n.task-list-item-container {\n    display: flex;\n    align-items: center;\n    gap: 0.5rem;\n    font-size: 0.9rem;\n    padding: 0.5rem;\n    border-bottom: 1px solid #e5e5e5;\n}\n\n.task-description {\n    font-size: 0.8rem;\n    color: #8b8b8b;\n}\n\n/* Custom checkbox */\n[type=checkbox] {\n    width: 1.2rem;\n    height: 1.2rem;\n    color: grey;\n    -webkit-appearance: none;\n    background: none;\n    border: 0;\n    outline: 0;\n    flex-grow: 0;\n    border-radius: 50%;\n    background-color: white;\n    transition: background 300ms;\n    cursor: pointer;\n}\n  \n[type=checkbox]::before {\n    content: \"\";\n    color: transparent;\n    display: block;\n    width: inherit;\n    height: inherit;\n    border-radius: inherit;\n    /* border: 0; */\n    border: 1px solid grey;\n    background-color: transparent;\n    background-size: contain;\n    box-shadow: inset 0 0 0 1px #CCD3D8;\n}\n  \n[type=checkbox]:checked {\n    background-color: currentcolor;\n}\n\n[type=checkbox]:checked::before {\n    box-shadow: none;\n    background-image: url(" + ___CSS_LOADER_URL_REPLACEMENT_0___ + ");\n}\n/* TASK LIST ENDS */\n\n@media only screen and (min-width: 700px) {\n    .content:not(.full-width) {\n        background-color: inherit;\n    }\n\n    .content-inner-container {\n        width: 50%;\n    }\n}", "",{"version":3,"sources":["webpack://./src/style.css"],"names":[],"mappings":"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","sourcesContent":["/* * {\n  border: 1px solid red;\n} */\n\nhtml {\n    box-sizing: border-box;\n}\n*, *:before, *:after {\n    box-sizing: inherit;\n}\n\nbody {\n    font-family: 'Roboto', sans-serif;\n    color: #1f1f2f;\n    height: 100vh;\n    margin: 0;\n    display: grid;\n    grid-template-columns: auto 3fr;\n    grid-template-rows: auto 1fr;\n    grid-template-areas: \n        \"header header\"\n        \"sidebar content\";\n}\n\na {\n    text-decoration: none;\n    color: inherit;\n}\n\nheader {\n    grid-area: header;\n    font-size: 1.5rem;\n    color: white;\n    background-color: #db4c3f;\n    display: flex;\n    align-items: center;\n    gap: 0.5rem;\n    padding: 0.5rem 1rem;\n}\n\n#hide-menu-btn {\n    font-size: 1.5rem;\n    border: none;\n    color: white;\n    background-color: inherit;\n}\n\n#hide-menu-btn:hover {\n    cursor: pointer;\n    background-color: #e26f65;\n}\n\nul {\n    list-style: none;\n    margin: 0;\n    padding: 0;\n}\n\n.sidebar {\n    grid-area: sidebar;\n    background-color: #fafafa;\n    width: 300px;\n    overflow-x: hidden;\n    transition: width 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;\n}\n\n.sidebar.hidden {\n    width: 0;\n}\n\n/* Must create an inner container in sidebar otherwise\nthe padding is still displayed when sidebar is hidden */\n.sidebar-inner-container {\n    padding: 2rem 1rem;\n}\n\n.sidebar-tasks-item,\n.sidebar-projects-item {\n    display: flex;\n    gap: 0.5rem;\n    padding: 0.5rem 1rem;\n    white-space: nowrap;\n}\n\n.sidebar-tasks-item:hover,\n.sidebar-projects-item:hover {\n    background-color: #eeeeee;\n}\n\n.fa-inbox {\n    color: #4a87e4;\n}\n\n.fa-calendar-day {\n    color: #88c397;\n}\n\n.fa-calendar-week {\n    color: #8d62d0;\n}\n\n.sidebar-projects {\n    margin-top: 2rem;\n    padding: 0 1rem;\n}\n\n.projects-title {\n    font-size: 1.15rem;\n}\n\n.content {\n    grid-area: content;\n    display: flex;\n    justify-content: center;\n    padding: 2rem 0;\n    transition: margin-left 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,\n                background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;\n}\n\n.content.full-width {\n    transition: margin-left 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;\n}\n\n.content:not(.full-width) {\n    background-color: rgba(0,0,0,.5);\n}\n\n.content-inner-container {\n    width: 70%;\n    display: flex;\n    flex-direction: column;\n    gap: 1.5rem;\n}\n\nh2 {\n    margin: 0;\n}\n\n.add-task-container {\n    color: #8b8b8b;\n\n}\n\n.add-task-btn {\n    background: none;\n\tcolor: inherit;\n\tborder: none;\n\tpadding: 0;\n\tfont: inherit;\n\tcursor: pointer;\n\toutline: inherit;\n}\n\n.add-task-btn:hover {\n    color: #dd4b39;\n}\n\n.add-task-btn::before {\n    /* Add '+' before 'Add task' */\n    font-family: fontAwesome;\n    content: \"\\f055\\00a0\";\n    margin-right: 0.4rem;\n}\n\n/* NEW TASK FORM STARTS */\n.new-task-form {\n    display: flex;\n    flex-direction: column;\n    gap: 0.5rem;\n    padding: 0.75rem 0;\n}\n\n.new-task-form-editor {\n    display: flex;\n    flex-direction: column;\n    gap: 0.5rem;\n    padding: 0.5rem 0.5rem;\n    border: 1px solid #e5e5e5;\n    border-radius: 10px;\n}\n\ninput[type=text],\ntextarea {\n    appearance: none;\n    border: 1px solid transparent;\n}\n  \ninput[type=text]:focus,\ntextarea:focus {\n    outline: none;\n}\n\ntextarea {\n    font-family: \"Helvetica\", \"Arial\", sans-serif;\n    resize: none;\n}\n\n#taskName {\n    font-size: 0.9rem;\n}\n\n.form-btn-container {\n    display: flex;\n    justify-content: flex-end;\n    gap: 0.5rem;\n}\n\n.cancel-task-form-btn,\n.add-task-form-btn {\n    cursor: pointer;\n    font-weight: 600;\n    border: none;\n    border-radius: 5px;\n    padding: 8px 12px;\n}\n\n.cancel-task-form-btn {\n    background-color: #f5f5f5;\n}\n\n.cancel-task-form-btn:hover {\n    background-color: #e5e5e5;\n}\n\n.add-task-form-btn {\n    color: white;\n    background-color: #f1b7b2;\n}\n\n.add-task-form-btn:hover {\n    background-color: #db4c3f;\n}\n/* NEW TASK FORM ENDS */\n\n\n/* TASK LIST STARTS */\n.task-list-item-container {\n    display: flex;\n    align-items: center;\n    gap: 0.5rem;\n    font-size: 0.9rem;\n    padding: 0.5rem;\n    border-bottom: 1px solid #e5e5e5;\n}\n\n.task-description {\n    font-size: 0.8rem;\n    color: #8b8b8b;\n}\n\n/* Custom checkbox */\n[type=checkbox] {\n    width: 1.2rem;\n    height: 1.2rem;\n    color: grey;\n    -webkit-appearance: none;\n    background: none;\n    border: 0;\n    outline: 0;\n    flex-grow: 0;\n    border-radius: 50%;\n    background-color: white;\n    transition: background 300ms;\n    cursor: pointer;\n}\n  \n[type=checkbox]::before {\n    content: \"\";\n    color: transparent;\n    display: block;\n    width: inherit;\n    height: inherit;\n    border-radius: inherit;\n    /* border: 0; */\n    border: 1px solid grey;\n    background-color: transparent;\n    background-size: contain;\n    box-shadow: inset 0 0 0 1px #CCD3D8;\n}\n  \n[type=checkbox]:checked {\n    background-color: currentcolor;\n}\n\n[type=checkbox]:checked::before {\n    box-shadow: none;\n    background-image: url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E %3Cpath d='M15.88 8.29L10 14.17l-1.88-1.88a.996.996 0 1 0-1.41 1.41l2.59 2.59c.39.39 1.02.39 1.41 0L17.3 9.7a.996.996 0 0 0 0-1.41c-.39-.39-1.03-.39-1.42 0z' fill='%23fff'/%3E %3C/svg%3E\");\n}\n/* TASK LIST ENDS */\n\n@media only screen and (min-width: 700px) {\n    .content:not(.full-width) {\n        background-color: inherit;\n    }\n\n    .content-inner-container {\n        width: 50%;\n    }\n}"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, "/* * {\n  border: 1px solid red;\n} */\n\nhtml {\n    box-sizing: border-box;\n}\n*, *:before, *:after {\n    box-sizing: inherit;\n}\n\nbody {\n    font-family: 'Roboto', sans-serif;\n    color: #1f1f2f;\n    height: 100vh;\n    margin: 0;\n    display: grid;\n    grid-template-columns: auto 3fr;\n    grid-template-rows: auto 1fr;\n    grid-template-areas: \n        \"header header\"\n        \"sidebar content\";\n}\n\na {\n    text-decoration: none;\n    color: inherit;\n}\n\nheader {\n    grid-area: header;\n    font-size: 1.5rem;\n    color: white;\n    background-color: #db4c3f;\n    display: flex;\n    align-items: center;\n    gap: 0.5rem;\n    padding: 0.5rem 1rem;\n}\n\n#hide-menu-btn {\n    font-size: 1.5rem;\n    border: none;\n    color: white;\n    background-color: inherit;\n}\n\n#hide-menu-btn:hover {\n    cursor: pointer;\n    background-color: #e26f65;\n}\n\nul {\n    list-style: none;\n    margin: 0;\n    padding: 0;\n}\n\n.sidebar {\n    grid-area: sidebar;\n    background-color: #fafafa;\n    width: 300px;\n    overflow-x: hidden;\n    transition: width 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;\n}\n\n.sidebar.hidden {\n    width: 0;\n}\n\n/* Must create an inner container in sidebar otherwise\nthe padding is still displayed when sidebar is hidden */\n.sidebar-inner-container {\n    padding: 2rem 1rem;\n}\n\n.sidebar-tasks-item,\n.sidebar-projects-item {\n    display: flex;\n    gap: 0.5rem;\n    padding: 0.5rem 1rem;\n    white-space: nowrap;\n}\n\n.sidebar-tasks-item:hover,\n.sidebar-projects-item:hover {\n    background-color: #eeeeee;\n}\n\n.fa-inbox {\n    color: #4a87e4;\n}\n\n.fa-calendar-day {\n    color: #88c397;\n}\n\n.fa-calendar-week {\n    color: #8d62d0;\n}\n\n.sidebar-projects {\n    margin-top: 2rem;\n    padding: 0 1rem;\n}\n\n.projects-title {\n    font-size: 1.15rem;\n}\n\n.content {\n    grid-area: content;\n    display: flex;\n    justify-content: center;\n    padding: 2rem 0;\n    transition: margin-left 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,\n                background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;\n}\n\n.content.full-width {\n    transition: margin-left 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;\n}\n\n.content:not(.full-width) {\n    background-color: rgba(0,0,0,.5);\n}\n\n.content-inner-container {\n    width: 70%;\n    display: flex;\n    flex-direction: column;\n    gap: 1.5rem;\n}\n\nh2 {\n    margin: 0;\n}\n\n.add-task-container {\n    color: #8b8b8b;\n\n}\n\n.add-task-btn {\n    background: none;\n\tcolor: inherit;\n\tborder: none;\n\tpadding: 0;\n\tfont: inherit;\n\tcursor: pointer;\n\toutline: inherit;\n}\n\n.add-task-btn:hover {\n    color: #dd4b39;\n}\n\n.add-task-btn::before {\n    /* Add '+' before 'Add task' */\n    font-family: fontAwesome;\n    content: \"\\f055\\00a0\";\n    margin-right: 0.4rem;\n}\n\n/* NEW TASK FORM STARTS */\n.new-task-form {\n    display: flex;\n    flex-direction: column;\n    gap: 0.5rem;\n    padding: 0.75rem 0;\n}\n\n.new-task-form-editor {\n    display: flex;\n    flex-direction: column;\n    gap: 0.5rem;\n    padding: 0.5rem 0.5rem;\n    border: 1px solid #e5e5e5;\n    border-radius: 10px;\n}\n\ninput[type=text],\ntextarea {\n    appearance: none;\n    border: 1px solid transparent;\n}\n  \ninput[type=text]:focus,\ntextarea:focus {\n    outline: none;\n}\n\ntextarea {\n    font-family: \"Helvetica\", \"Arial\", sans-serif;\n    resize: none;\n}\n\n#taskName {\n    font-size: 0.9rem;\n}\n\n.form-btn-container {\n    display: flex;\n    justify-content: flex-end;\n    gap: 0.5rem;\n}\n\n.cancel-task-form-btn,\n.add-task-form-btn {\n    cursor: pointer;\n    font-weight: 600;\n    border: none;\n    border-radius: 5px;\n    padding: 8px 12px;\n}\n\n.cancel-task-form-btn {\n    background-color: #f5f5f5;\n}\n\n.cancel-task-form-btn:hover {\n    background-color: #e5e5e5;\n}\n\n.add-task-form-btn {\n    color: white;\n    background-color: #f1b7b2;\n}\n\n.add-task-form-btn:hover {\n    background-color: #db4c3f;\n}\n/* NEW TASK FORM ENDS */\n\n\n/* TASK LIST STARTS */\n.task-list-item-container {\n    display: flex;\n    align-items: center;\n    gap: 0.5rem;\n    font-size: 0.9rem;\n    padding: 0.5rem;\n    border-bottom: 1px solid #e5e5e5;\n}\n\n/* Custom checkbox starts */\n/* [type=checkbox] {\n    width: 1.2rem;\n    height: 1.2rem;\n    color: grey;\n    -webkit-appearance: none;\n    background: none;\n    border: 0;\n    outline: 0;\n    flex-grow: 0;\n    border-radius: 50%;\n    background-color: white;\n    transition: background 300ms;\n    cursor: pointer;\n}\n\n[type=checkbox]::before {\n    content: \"\";\n    color: transparent;\n    display: block;\n    width: inherit;\n    height: inherit;\n    border-radius: inherit;\n    border: 1px solid grey;\n    background-color: transparent;\n    background-size: contain;\n    box-shadow: inset 0 0 0 1px #CCD3D8;\n}\n\n[type=checkbox]:hover::before {\n    box-shadow: none;\n    content: url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E %3Cpath d='M15.88 8.29L10 14.17l-1.88-1.88a.996.996 0 1 0-1.41 1.41l2.59 2.59c.39.39 1.02.39 1.41 0L17.3 9.7a.996.996 0 0 0 0-1.41c-.39-.39-1.03-.39-1.42 0z' fill='%23000'/%3E %3C/svg%3E\");\n}\n \n[type=checkbox]:checked {\n    background-color: currentcolor;\n}\n\n[type=checkbox]:checked::before {\n    box-shadow: none;\n    background-image: url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E %3Cpath d='M15.88 8.29L10 14.17l-1.88-1.88a.996.996 0 1 0-1.41 1.41l2.59 2.59c.39.39 1.02.39 1.41 0L17.3 9.7a.996.996 0 0 0 0-1.41c-.39-.39-1.03-.39-1.42 0z' fill='%23fff'/%3E %3C/svg%3E\");\n} */\n/* Custom checkbox ends */\n\n.task-description {\n    font-size: 0.8rem;\n    color: #8b8b8b;\n}\n/* TASK LIST ENDS */\n\n\n\n\n\n\n/* [type=checkbox] + span {\n    position: relative;\n} */\n\n/* [type=checkbox] + span:hover::after {\n    content: url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E %3Cpath d='M15.88 8.29L10 14.17l-1.88-1.88a.996.996 0 1 0-1.41 1.41l2.59 2.59c.39.39 1.02.39 1.41 0L17.3 9.7a.996.996 0 0 0 0-1.41c-.39-.39-1.03-.39-1.42 0z' fill='%23000'/%3E %3C/svg%3E\");\n    position: absolute;\n    bottom: -0.55rem;\n    right: 0.95rem;\n} */\n\n\n\n\n\n.cbx {\n  -webkit-user-select: none;\n  user-select: none;\n  -webkit-tap-highlight-color: transparent;\n  cursor: pointer;\n}\n.cbx span {\n  display: inline-block;\n  vertical-align: middle;\n  transform: translate3d(0, 0, 0);\n}\n.cbx span:first-child {\n  position: relative;\n  width: 24px;\n  height: 24px;\n  border-radius: 50%;\n  transform: scale(1);\n  vertical-align: middle;\n  border: 1px solid #B9B8C3;\n  transition: all 0.2s ease;\n}\n.cbx span:first-child svg {\n  position: absolute;\n  z-index: 1;\n  top: 8px;\n  left: 6px;\n  fill: none;\n  stroke: white;\n  stroke-width: 2;\n  stroke-linecap: round;\n  stroke-linejoin: round;\n  stroke-dasharray: 16px;\n  stroke-dashoffset: 16px;\n  transition: all 0.3s ease;\n  transition-delay: 0.1s;\n  transform: translate3d(0, 0, 0);\n}\n.cbx span:first-child:before {\n  content: \"\";\n  width: 100%;\n  height: 100%;\n  background: #506EEC;\n  display: block;\n  transform: scale(0);\n  opacity: 1;\n  border-radius: 50%;\n  transition-delay: 0.2s;\n}\n.cbx span:last-child {\n  margin-left: 8px;\n}\n.cbx span:last-child:after {\n  content: \"\";\n  position: absolute;\n  top: 8px;\n  left: 0;\n  height: 1px;\n  width: 100%;\n  background: #B9B8C3;\n  transform-origin: 0 0;\n  transform: scaleX(0);\n}\n.cbx:hover span:first-child {\n  border-color: #3c53c7;\n}\n\n.inp-cbx:checked + .cbx span:first-child {\n  border-color: #3c53c7;\n  background: #3c53c7;\n  animation: check 0.6s ease;\n}\n.inp-cbx:checked + .cbx span:first-child svg {\n  stroke-dashoffset: 0;\n}\n.inp-cbx:checked + .cbx span:first-child:before {\n  transform: scale(2.2);\n  opacity: 0;\n  transition: all 0.6s ease;\n}\n.inp-cbx:checked + .cbx span:last-child {\n  color: #B9B8C3;\n  transition: all 0.3s ease;\n}\n.inp-cbx:checked + .cbx span:last-child:after {\n  transform: scaleX(1);\n  transition: all 0.3s ease;\n}\n\n@keyframes check {\n  50% {\n    transform: scale(1.2);\n  }\n}\n\n\n\n\n\n\n\n\n\n\n\n\n@media only screen and (min-width: 700px) {\n    .content:not(.full-width) {\n        background-color: inherit;\n    }\n\n    .content-inner-container {\n        width: 50%;\n    }\n}", "",{"version":3,"sources":["webpack://./src/style.css"],"names":[],"mappings":"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","sourcesContent":["/* * {\n  border: 1px solid red;\n} */\n\nhtml {\n    box-sizing: border-box;\n}\n*, *:before, *:after {\n    box-sizing: inherit;\n}\n\nbody {\n    font-family: 'Roboto', sans-serif;\n    color: #1f1f2f;\n    height: 100vh;\n    margin: 0;\n    display: grid;\n    grid-template-columns: auto 3fr;\n    grid-template-rows: auto 1fr;\n    grid-template-areas: \n        \"header header\"\n        \"sidebar content\";\n}\n\na {\n    text-decoration: none;\n    color: inherit;\n}\n\nheader {\n    grid-area: header;\n    font-size: 1.5rem;\n    color: white;\n    background-color: #db4c3f;\n    display: flex;\n    align-items: center;\n    gap: 0.5rem;\n    padding: 0.5rem 1rem;\n}\n\n#hide-menu-btn {\n    font-size: 1.5rem;\n    border: none;\n    color: white;\n    background-color: inherit;\n}\n\n#hide-menu-btn:hover {\n    cursor: pointer;\n    background-color: #e26f65;\n}\n\nul {\n    list-style: none;\n    margin: 0;\n    padding: 0;\n}\n\n.sidebar {\n    grid-area: sidebar;\n    background-color: #fafafa;\n    width: 300px;\n    overflow-x: hidden;\n    transition: width 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;\n}\n\n.sidebar.hidden {\n    width: 0;\n}\n\n/* Must create an inner container in sidebar otherwise\nthe padding is still displayed when sidebar is hidden */\n.sidebar-inner-container {\n    padding: 2rem 1rem;\n}\n\n.sidebar-tasks-item,\n.sidebar-projects-item {\n    display: flex;\n    gap: 0.5rem;\n    padding: 0.5rem 1rem;\n    white-space: nowrap;\n}\n\n.sidebar-tasks-item:hover,\n.sidebar-projects-item:hover {\n    background-color: #eeeeee;\n}\n\n.fa-inbox {\n    color: #4a87e4;\n}\n\n.fa-calendar-day {\n    color: #88c397;\n}\n\n.fa-calendar-week {\n    color: #8d62d0;\n}\n\n.sidebar-projects {\n    margin-top: 2rem;\n    padding: 0 1rem;\n}\n\n.projects-title {\n    font-size: 1.15rem;\n}\n\n.content {\n    grid-area: content;\n    display: flex;\n    justify-content: center;\n    padding: 2rem 0;\n    transition: margin-left 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,\n                background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;\n}\n\n.content.full-width {\n    transition: margin-left 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;\n}\n\n.content:not(.full-width) {\n    background-color: rgba(0,0,0,.5);\n}\n\n.content-inner-container {\n    width: 70%;\n    display: flex;\n    flex-direction: column;\n    gap: 1.5rem;\n}\n\nh2 {\n    margin: 0;\n}\n\n.add-task-container {\n    color: #8b8b8b;\n\n}\n\n.add-task-btn {\n    background: none;\n\tcolor: inherit;\n\tborder: none;\n\tpadding: 0;\n\tfont: inherit;\n\tcursor: pointer;\n\toutline: inherit;\n}\n\n.add-task-btn:hover {\n    color: #dd4b39;\n}\n\n.add-task-btn::before {\n    /* Add '+' before 'Add task' */\n    font-family: fontAwesome;\n    content: \"\\f055\\00a0\";\n    margin-right: 0.4rem;\n}\n\n/* NEW TASK FORM STARTS */\n.new-task-form {\n    display: flex;\n    flex-direction: column;\n    gap: 0.5rem;\n    padding: 0.75rem 0;\n}\n\n.new-task-form-editor {\n    display: flex;\n    flex-direction: column;\n    gap: 0.5rem;\n    padding: 0.5rem 0.5rem;\n    border: 1px solid #e5e5e5;\n    border-radius: 10px;\n}\n\ninput[type=text],\ntextarea {\n    appearance: none;\n    border: 1px solid transparent;\n}\n  \ninput[type=text]:focus,\ntextarea:focus {\n    outline: none;\n}\n\ntextarea {\n    font-family: \"Helvetica\", \"Arial\", sans-serif;\n    resize: none;\n}\n\n#taskName {\n    font-size: 0.9rem;\n}\n\n.form-btn-container {\n    display: flex;\n    justify-content: flex-end;\n    gap: 0.5rem;\n}\n\n.cancel-task-form-btn,\n.add-task-form-btn {\n    cursor: pointer;\n    font-weight: 600;\n    border: none;\n    border-radius: 5px;\n    padding: 8px 12px;\n}\n\n.cancel-task-form-btn {\n    background-color: #f5f5f5;\n}\n\n.cancel-task-form-btn:hover {\n    background-color: #e5e5e5;\n}\n\n.add-task-form-btn {\n    color: white;\n    background-color: #f1b7b2;\n}\n\n.add-task-form-btn:hover {\n    background-color: #db4c3f;\n}\n/* NEW TASK FORM ENDS */\n\n\n/* TASK LIST STARTS */\n.task-list-item-container {\n    display: flex;\n    align-items: center;\n    gap: 0.5rem;\n    font-size: 0.9rem;\n    padding: 0.5rem;\n    border-bottom: 1px solid #e5e5e5;\n}\n\n/* Custom checkbox starts */\n/* [type=checkbox] {\n    width: 1.2rem;\n    height: 1.2rem;\n    color: grey;\n    -webkit-appearance: none;\n    background: none;\n    border: 0;\n    outline: 0;\n    flex-grow: 0;\n    border-radius: 50%;\n    background-color: white;\n    transition: background 300ms;\n    cursor: pointer;\n}\n\n[type=checkbox]::before {\n    content: \"\";\n    color: transparent;\n    display: block;\n    width: inherit;\n    height: inherit;\n    border-radius: inherit;\n    border: 1px solid grey;\n    background-color: transparent;\n    background-size: contain;\n    box-shadow: inset 0 0 0 1px #CCD3D8;\n}\n\n[type=checkbox]:hover::before {\n    box-shadow: none;\n    content: url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E %3Cpath d='M15.88 8.29L10 14.17l-1.88-1.88a.996.996 0 1 0-1.41 1.41l2.59 2.59c.39.39 1.02.39 1.41 0L17.3 9.7a.996.996 0 0 0 0-1.41c-.39-.39-1.03-.39-1.42 0z' fill='%23000'/%3E %3C/svg%3E\");\n}\n \n[type=checkbox]:checked {\n    background-color: currentcolor;\n}\n\n[type=checkbox]:checked::before {\n    box-shadow: none;\n    background-image: url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E %3Cpath d='M15.88 8.29L10 14.17l-1.88-1.88a.996.996 0 1 0-1.41 1.41l2.59 2.59c.39.39 1.02.39 1.41 0L17.3 9.7a.996.996 0 0 0 0-1.41c-.39-.39-1.03-.39-1.42 0z' fill='%23fff'/%3E %3C/svg%3E\");\n} */\n/* Custom checkbox ends */\n\n.task-description {\n    font-size: 0.8rem;\n    color: #8b8b8b;\n}\n/* TASK LIST ENDS */\n\n\n\n\n\n\n/* [type=checkbox] + span {\n    position: relative;\n} */\n\n/* [type=checkbox] + span:hover::after {\n    content: url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E %3Cpath d='M15.88 8.29L10 14.17l-1.88-1.88a.996.996 0 1 0-1.41 1.41l2.59 2.59c.39.39 1.02.39 1.41 0L17.3 9.7a.996.996 0 0 0 0-1.41c-.39-.39-1.03-.39-1.42 0z' fill='%23000'/%3E %3C/svg%3E\");\n    position: absolute;\n    bottom: -0.55rem;\n    right: 0.95rem;\n} */\n\n\n\n\n\n.cbx {\n  -webkit-user-select: none;\n  user-select: none;\n  -webkit-tap-highlight-color: transparent;\n  cursor: pointer;\n}\n.cbx span {\n  display: inline-block;\n  vertical-align: middle;\n  transform: translate3d(0, 0, 0);\n}\n.cbx span:first-child {\n  position: relative;\n  width: 24px;\n  height: 24px;\n  border-radius: 50%;\n  transform: scale(1);\n  vertical-align: middle;\n  border: 1px solid #B9B8C3;\n  transition: all 0.2s ease;\n}\n.cbx span:first-child svg {\n  position: absolute;\n  z-index: 1;\n  top: 8px;\n  left: 6px;\n  fill: none;\n  stroke: white;\n  stroke-width: 2;\n  stroke-linecap: round;\n  stroke-linejoin: round;\n  stroke-dasharray: 16px;\n  stroke-dashoffset: 16px;\n  transition: all 0.3s ease;\n  transition-delay: 0.1s;\n  transform: translate3d(0, 0, 0);\n}\n.cbx span:first-child:before {\n  content: \"\";\n  width: 100%;\n  height: 100%;\n  background: #506EEC;\n  display: block;\n  transform: scale(0);\n  opacity: 1;\n  border-radius: 50%;\n  transition-delay: 0.2s;\n}\n.cbx span:last-child {\n  margin-left: 8px;\n}\n.cbx span:last-child:after {\n  content: \"\";\n  position: absolute;\n  top: 8px;\n  left: 0;\n  height: 1px;\n  width: 100%;\n  background: #B9B8C3;\n  transform-origin: 0 0;\n  transform: scaleX(0);\n}\n.cbx:hover span:first-child {\n  border-color: #3c53c7;\n}\n\n.inp-cbx:checked + .cbx span:first-child {\n  border-color: #3c53c7;\n  background: #3c53c7;\n  animation: check 0.6s ease;\n}\n.inp-cbx:checked + .cbx span:first-child svg {\n  stroke-dashoffset: 0;\n}\n.inp-cbx:checked + .cbx span:first-child:before {\n  transform: scale(2.2);\n  opacity: 0;\n  transition: all 0.6s ease;\n}\n.inp-cbx:checked + .cbx span:last-child {\n  color: #B9B8C3;\n  transition: all 0.3s ease;\n}\n.inp-cbx:checked + .cbx span:last-child:after {\n  transform: scaleX(1);\n  transition: all 0.3s ease;\n}\n\n@keyframes check {\n  50% {\n    transform: scale(1.2);\n  }\n}\n\n\n\n\n\n\n\n\n\n\n\n\n@media only screen and (min-width: 700px) {\n    .content:not(.full-width) {\n        background-color: inherit;\n    }\n\n    .content-inner-container {\n        width: 50%;\n    }\n}"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -140,44 +135,6 @@ module.exports = function (cssWithMappingToString) {
   };
 
   return list;
-};
-
-/***/ }),
-
-/***/ "./node_modules/css-loader/dist/runtime/getUrl.js":
-/*!********************************************************!*\
-  !*** ./node_modules/css-loader/dist/runtime/getUrl.js ***!
-  \********************************************************/
-/***/ ((module) => {
-
-
-
-module.exports = function (url, options) {
-  if (!options) {
-    options = {};
-  }
-
-  if (!url) {
-    return url;
-  }
-
-  url = String(url.__esModule ? url.default : url); // If url is already wrapped in quotes, remove them
-
-  if (/^['"].*['"]$/.test(url)) {
-    url = url.slice(1, -1);
-  }
-
-  if (options.hash) {
-    url += options.hash;
-  } // Should url be wrapped?
-  // See https://drafts.csswg.org/css-values-3/#urls
-
-
-  if (/["'() \t\n]|(%20)/.test(url) || options.needQuotes) {
-    return "\"".concat(url.replace(/"/g, '\\"').replace(/\n/g, "\\n"), "\"");
-  }
-
-  return url;
 };
 
 /***/ }),
@@ -647,31 +604,79 @@ function addTask(e) {
 
     if (!taskName) return;
 
-    createTaskEl(taskName, taskDescription)
+     createTaskEl(taskName, taskDescription)
 
     newTaskForm.reset();
 }
 
 function createTaskEl(taskName, taskDescription) {
+
     const taskList = document.querySelector('.task-list');
     const newTaskContainer = document.querySelector('.new-task-container');
 
     const li = document.createElement('li');
     li.classList.add('task-list-item-container');
 
-    const checkbox = document.createElement('input');
-    checkbox.setAttribute('type', 'checkbox');
-    checkbox.classList.add('task-checkbox');
-    li.appendChild(checkbox);
+    // const checkbox = document.createElement('input');
+    // checkbox.setAttribute('type', 'checkbox');
+    // checkbox.setAttribute('id', 'checkbox');
+    // checkbox.classList.add('task-checkbox');
+    // li.appendChild(checkbox);
+
+    // const span = document.createElement('span');
+    // li.appendChild(span);
 
     const taskDiv = document.createElement('div');
     taskDiv.classList.add('task');
     li.appendChild(taskDiv);
 
-    const taskNameDiv = document.createElement('div');
-    taskNameDiv.classList.add('task-name');
-    taskNameDiv.textContent = taskName;
-    taskDiv.appendChild(taskNameDiv);
+    // const checkboxLabel = document.createElement('label');
+    // checkboxLabel.setAttribute('for', 'checkbox');
+    // checkboxLabel.classList.add('task-name');
+    // checkboxLabel.textContent = taskName;
+    // taskDiv.appendChild(checkboxLabel);
+
+    // const taskNameDiv = document.createElement('div');
+    // taskNameDiv.classList.add('task-name');
+    // taskNameDiv.textContent = taskName;
+    // taskDiv.appendChild(taskNameDiv);
+
+
+
+
+    // START
+    const checkbox = document.createElement('input');
+    checkbox.setAttribute('type', 'checkbox');
+    checkbox.setAttribute('id', 'cbx');
+    checkbox.classList.add('inp-cbx');
+    checkbox.style.display = 'none';
+    li.appendChild(checkbox);
+
+    const checkboxLabel = document.createElement('label');
+    checkboxLabel.setAttribute('for', 'cbx');
+    checkboxLabel.classList.add('cbx');
+    li.appendChild(checkboxLabel);
+
+    const span = document.createElement('span');
+    checkboxLabel.appendChild(span);
+
+    const svg = document.createElement('svg');
+    svg.setAttribute("width", "12px");
+    svg.setAttribute("height", "9px");
+    svg.setAttribute("viewBox", "0 0 12 9");
+    span.appendChild(svg);
+
+    const polyline = document.createElement('polyline');
+    polyline.setAttribute("points", "1 5 4 8 11 1");
+    svg.appendChild(polyline);
+
+    const span2 = document.createElement('span');
+    span2.textContent = taskName;
+    checkboxLabel.appendChild(span2);
+    // END
+
+
+
 
     const taskDescriptionDiv = document.createElement('div');
     taskDescriptionDiv.classList.add('task-description');
@@ -679,6 +684,11 @@ function createTaskEl(taskName, taskDescription) {
     taskDiv.appendChild(taskDescriptionDiv);
 
     taskList.insertBefore(li, newTaskContainer);
+}
+
+function test() {
+    // GET LABEL ID FROM PREVIOUS LABEL
+    // INCREMENT
 }
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (loadNewTaskForm);
@@ -766,16 +776,6 @@ function sidebarDisplay() {
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (sidebarDisplay);
 
-/***/ }),
-
-/***/ "data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%2724%27 height=%2724%27 viewBox=%270 0 24 24%27%3E %3Cpath d=%27M15.88 8.29L10 14.17l-1.88-1.88a.996.996 0 1 0-1.41 1.41l2.59 2.59c.39.39 1.02.39 1.41 0L17.3 9.7a.996.996 0 0 0 0-1.41c-.39-.39-1.03-.39-1.42 0z%27 fill=%27%23fff%27/%3E %3C/svg%3E":
-/*!*************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%2724%27 height=%2724%27 viewBox=%270 0 24 24%27%3E %3Cpath d=%27M15.88 8.29L10 14.17l-1.88-1.88a.996.996 0 1 0-1.41 1.41l2.59 2.59c.39.39 1.02.39 1.41 0L17.3 9.7a.996.996 0 0 0 0-1.41c-.39-.39-1.03-.39-1.42 0z%27 fill=%27%23fff%27/%3E %3C/svg%3E ***!
-  \*************************************************************************************************************************************************************************************************************************************************************************************************************************************/
-/***/ ((module) => {
-
-module.exports = "data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%2724%27 height=%2724%27 viewBox=%270 0 24 24%27%3E %3Cpath d=%27M15.88 8.29L10 14.17l-1.88-1.88a.996.996 0 1 0-1.41 1.41l2.59 2.59c.39.39 1.02.39 1.41 0L17.3 9.7a.996.996 0 0 0 0-1.41c-.39-.39-1.03-.39-1.42 0z%27 fill=%27%23fff%27/%3E %3C/svg%3E";
-
 /***/ })
 
 /******/ 	});
@@ -803,9 +803,6 @@ module.exports = "data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%
 /******/ 		// Return the exports of the module
 /******/ 		return module.exports;
 /******/ 	}
-/******/ 	
-/******/ 	// expose the modules object (__webpack_modules__)
-/******/ 	__webpack_require__.m = __webpack_modules__;
 /******/ 	
 /************************************************************************/
 /******/ 	/* webpack/runtime/compat get default export */
@@ -846,32 +843,6 @@ module.exports = "data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%
 /******/ 			}
 /******/ 			Object.defineProperty(exports, '__esModule', { value: true });
 /******/ 		};
-/******/ 	})();
-/******/ 	
-/******/ 	/* webpack/runtime/jsonp chunk loading */
-/******/ 	(() => {
-/******/ 		__webpack_require__.b = document.baseURI || self.location.href;
-/******/ 		
-/******/ 		// object to store loaded and loading chunks
-/******/ 		// undefined = chunk not loaded, null = chunk preloaded/prefetched
-/******/ 		// [resolve, reject, Promise] = chunk loading, 0 = chunk loaded
-/******/ 		var installedChunks = {
-/******/ 			"main": 0
-/******/ 		};
-/******/ 		
-/******/ 		// no chunk on demand loading
-/******/ 		
-/******/ 		// no prefetching
-/******/ 		
-/******/ 		// no preloaded
-/******/ 		
-/******/ 		// no HMR
-/******/ 		
-/******/ 		// no HMR manifest
-/******/ 		
-/******/ 		// no on chunks loaded
-/******/ 		
-/******/ 		// no jsonp function
 /******/ 	})();
 /******/ 	
 /******/ 	/* webpack/runtime/nonce */
