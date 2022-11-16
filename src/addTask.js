@@ -103,15 +103,17 @@ function createTaskEl(taskName, taskDescription) {
 
 
     // START
+    const checkboxId = `cbx${increment()}`;
+
     const checkbox = document.createElement('input');
     checkbox.setAttribute('type', 'checkbox');
-    checkbox.setAttribute('id', 'cbx');
+    checkbox.setAttribute('id', checkboxId);
     checkbox.classList.add('inp-cbx');
     checkbox.style.display = 'none';
     li.appendChild(checkbox);
 
     const checkboxLabel = document.createElement('label');
-    checkboxLabel.setAttribute('for', 'cbx');
+    checkboxLabel.setAttribute('for', checkboxId);
     checkboxLabel.classList.add('cbx');
     li.appendChild(checkboxLabel);
 
@@ -144,9 +146,11 @@ function createTaskEl(taskName, taskDescription) {
     taskList.insertBefore(li, newTaskContainer);
 }
 
-function test() {
-    // GET LABEL ID FROM PREVIOUS LABEL
-    // INCREMENT
-}
+let increment = (function(n) {
+    return function() {
+      n += 1;
+      return n;
+    }
+}(0)); 
 
 export default loadNewTaskForm;
