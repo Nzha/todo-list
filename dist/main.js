@@ -662,23 +662,20 @@ function createTaskEl(taskName, taskDescription) {
     const span = document.createElement('span');
     checkboxLabel.appendChild(span);
 
-    const svg = document.createElement('svg');
-    svg.setAttribute("width", "12px");
-    svg.setAttribute("height", "9px");
-    svg.setAttribute("viewBox", "0 0 12 9");
+    const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+    svg.setAttributeNS(null, "width", "12px");
+    svg.setAttributeNS(null, "height", "9px");
+    svg.setAttributeNS(null, "viewBox", "0 0 12 9");
     span.appendChild(svg);
 
-    const polyline = document.createElement('polyline');
-    polyline.setAttribute("points", "1 5 4 8 11 1");
+    const polyline = document.createElementNS("http://www.w3.org/2000/svg", "polyline");
+    polyline.setAttributeNS(null, "points", "1 5 4 8 11 1");
     svg.appendChild(polyline);
 
     const span2 = document.createElement('span');
     span2.textContent = taskName;
     checkboxLabel.appendChild(span2);
     // END
-
-
-
 
     const taskDescriptionDiv = document.createElement('div');
     taskDescriptionDiv.classList.add('task-description');
