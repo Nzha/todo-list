@@ -62,7 +62,7 @@ function addTask(e) {
 
     if (!taskName) return;
 
-     createTaskEl(taskName, taskDescription)
+    createTaskEl(taskName, taskDescription)
 
     newTaskForm.reset();
 }
@@ -72,6 +72,7 @@ function createTaskEl(taskName, taskDescription) {
     const taskList = document.querySelector('.task-list');
     const newTaskContainer = document.querySelector('.new-task-container');
 
+    // CONTAINER
     const li = document.createElement('li');
     li.classList.add('task-list-item-container');
 
@@ -79,7 +80,7 @@ function createTaskEl(taskName, taskDescription) {
     taskDiv.classList.add('task');
     li.appendChild(taskDiv);
 
-    // CHECKBOX
+    // CUSTOM CHECKBOX AND LABEL/TASK NAME
     const checkboxId = `cbx${increment()}`;
 
     const checkbox = document.createElement('input');
@@ -87,12 +88,12 @@ function createTaskEl(taskName, taskDescription) {
     checkbox.setAttribute('id', checkboxId);
     checkbox.classList.add('inp-cbx');
     checkbox.style.display = 'none';
-    li.appendChild(checkbox);
+    taskDiv.appendChild(checkbox);
 
     const checkboxLabel = document.createElement('label');
     checkboxLabel.setAttribute('for', checkboxId);
     checkboxLabel.classList.add('cbx');
-    li.appendChild(checkboxLabel);
+    taskDiv.appendChild(checkboxLabel);
 
     const span = document.createElement('span');
     checkboxLabel.appendChild(span);
@@ -111,10 +112,23 @@ function createTaskEl(taskName, taskDescription) {
     span2.textContent = taskName;
     checkboxLabel.appendChild(span2);
 
+    // TASK DESCRIPTION
     const taskDescriptionDiv = document.createElement('div');
     taskDescriptionDiv.classList.add('task-description');
     taskDescriptionDiv.textContent = taskDescription;
-    taskDiv.appendChild(taskDescriptionDiv);
+    li.appendChild(taskDescriptionDiv);
+
+    // const checkboxLabel2 = document.createElement('label');
+    // checkboxLabel2.setAttribute('for', checkboxId);
+    // checkboxLabel2.classList.add('cbx');
+    // checkboxLabel2.textContent = taskDescription;
+    // li.appendChild(checkboxLabel2);
+
+    // const span3 = document.createElement('span');
+    // span3.textContent = taskDescription;
+    // checkboxLabel.appendChild(span3);
+
+
 
     taskList.insertBefore(li, newTaskContainer);
 }
