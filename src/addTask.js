@@ -68,7 +68,6 @@ function addTask(e) {
 }
 
 function createTaskEl(taskName, taskDescription) {
-
     const taskList = document.querySelector('.task-list');
     const newTaskContainer = document.querySelector('.new-task-container');
 
@@ -117,18 +116,6 @@ function createTaskEl(taskName, taskDescription) {
     taskDescriptionDiv.classList.add('task-description');
     taskDescriptionDiv.textContent = taskDescription;
     li.appendChild(taskDescriptionDiv);
-
-    // const checkboxLabel2 = document.createElement('label');
-    // checkboxLabel2.setAttribute('for', checkboxId);
-    // checkboxLabel2.classList.add('cbx');
-    // checkboxLabel2.textContent = taskDescription;
-    // li.appendChild(checkboxLabel2);
-
-    // const span3 = document.createElement('span');
-    // span3.textContent = taskDescription;
-    // checkboxLabel.appendChild(span3);
-
-
 
     taskList.insertBefore(li, newTaskContainer);
 }
