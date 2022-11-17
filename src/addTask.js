@@ -3,7 +3,7 @@ function loadNewTaskForm() {
     const addTaskContainer = document.querySelector('.add-task-container');
     addTaskContainer.parentNode.removeChild(addTaskContainer);
 
-    // Create form
+    // FORM
     const taskListDiv = document.querySelector('.task-list');
 
     const newTaskContainer = document.createElement('li');
@@ -75,34 +75,11 @@ function createTaskEl(taskName, taskDescription) {
     const li = document.createElement('li');
     li.classList.add('task-list-item-container');
 
-    // const checkbox = document.createElement('input');
-    // checkbox.setAttribute('type', 'checkbox');
-    // checkbox.setAttribute('id', 'checkbox');
-    // checkbox.classList.add('task-checkbox');
-    // li.appendChild(checkbox);
-
-    // const span = document.createElement('span');
-    // li.appendChild(span);
-
     const taskDiv = document.createElement('div');
     taskDiv.classList.add('task');
     li.appendChild(taskDiv);
 
-    // const checkboxLabel = document.createElement('label');
-    // checkboxLabel.setAttribute('for', 'checkbox');
-    // checkboxLabel.classList.add('task-name');
-    // checkboxLabel.textContent = taskName;
-    // taskDiv.appendChild(checkboxLabel);
-
-    // const taskNameDiv = document.createElement('div');
-    // taskNameDiv.classList.add('task-name');
-    // taskNameDiv.textContent = taskName;
-    // taskDiv.appendChild(taskNameDiv);
-
-
-
-
-    // START
+    // CHECKBOX
     const checkboxId = `cbx${increment()}`;
 
     const checkbox = document.createElement('input');
@@ -133,7 +110,6 @@ function createTaskEl(taskName, taskDescription) {
     const span2 = document.createElement('span');
     span2.textContent = taskName;
     checkboxLabel.appendChild(span2);
-    // END
 
     const taskDescriptionDiv = document.createElement('div');
     taskDescriptionDiv.classList.add('task-description');

@@ -243,162 +243,104 @@ textarea {
     border-bottom: 1px solid #e5e5e5;
 }
 
-/* Custom checkbox starts */
-/* [type=checkbox] {
-    width: 1.2rem;
-    height: 1.2rem;
-    color: grey;
-    -webkit-appearance: none;
-    background: none;
-    border: 0;
-    outline: 0;
-    flex-grow: 0;
-    border-radius: 50%;
-    background-color: white;
-    transition: background 300ms;
+/* Custom checkbox and stroke from https://www.sliderrevolution.com/resources/css-checkbox/ starts */
+.cbx {
+    -webkit-user-select: none;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
     cursor: pointer;
 }
 
-[type=checkbox]::before {
-    content: "";
-    color: transparent;
-    display: block;
-    width: inherit;
-    height: inherit;
-    border-radius: inherit;
-    border: 1px solid grey;
-    background-color: transparent;
-    background-size: contain;
-    box-shadow: inset 0 0 0 1px #CCD3D8;
-}
-
-[type=checkbox]:hover::before {
-    box-shadow: none;
-    content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E %3Cpath d='M15.88 8.29L10 14.17l-1.88-1.88a.996.996 0 1 0-1.41 1.41l2.59 2.59c.39.39 1.02.39 1.41 0L17.3 9.7a.996.996 0 0 0 0-1.41c-.39-.39-1.03-.39-1.42 0z' fill='%23000'/%3E %3C/svg%3E");
-}
- 
-[type=checkbox]:checked {
-    background-color: currentcolor;
-}
-
-[type=checkbox]:checked::before {
-    box-shadow: none;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E %3Cpath d='M15.88 8.29L10 14.17l-1.88-1.88a.996.996 0 1 0-1.41 1.41l2.59 2.59c.39.39 1.02.39 1.41 0L17.3 9.7a.996.996 0 0 0 0-1.41c-.39-.39-1.03-.39-1.42 0z' fill='%23fff'/%3E %3C/svg%3E");
-} */
-/* Custom checkbox ends */
-
-.task-description {
-    font-size: 0.8rem;
-    color: #8b8b8b;
-}
-/* TASK LIST ENDS */
-
-
-
-
-
-
-/* [type=checkbox] + span {
-    position: relative;
-} */
-
-/* [type=checkbox] + span:hover::after {
-    content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E %3Cpath d='M15.88 8.29L10 14.17l-1.88-1.88a.996.996 0 1 0-1.41 1.41l2.59 2.59c.39.39 1.02.39 1.41 0L17.3 9.7a.996.996 0 0 0 0-1.41c-.39-.39-1.03-.39-1.42 0z' fill='%23000'/%3E %3C/svg%3E");
-    position: absolute;
-    bottom: -0.55rem;
-    right: 0.95rem;
-} */
-
-
-
-
-
-.cbx {
-  -webkit-user-select: none;
-  user-select: none;
-  -webkit-tap-highlight-color: transparent;
-  cursor: pointer;
-}
 .cbx span {
-  display: inline-block;
-  vertical-align: middle;
-  transform: translate3d(0, 0, 0);
+    display: inline-block;
+    vertical-align: middle;
+    transform: translate3d(0, 0, 0);
 }
+
 .cbx span:first-child {
-  position: relative;
-  width: 24px;
-  height: 24px;
-  border-radius: 50%;
-  transform: scale(1);
-  vertical-align: middle;
-  border: 1px solid #B9B8C3;
-  transition: all 0.2s ease;
+    position: relative;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    transform: scale(1);
+    vertical-align: middle;
+    border: 1px solid #B9B8C3;
+    transition: all 0.2s ease;
 }
+
 .cbx span:first-child svg {
-  position: absolute;
-  z-index: 1;
-  top: 8px;
-  left: 6px;
-  fill: none;
-  stroke: white;
-  stroke-width: 2;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-  stroke-dasharray: 16px;
-  stroke-dashoffset: 16px;
-  transition: all 0.3s ease;
-  transition-delay: 0.1s;
-  transform: translate3d(0, 0, 0);
+    position: absolute;
+    z-index: 1;
+    top: 8px;
+    left: 6px;
+    fill: none;
+    stroke: white;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-dasharray: 16px;
+    stroke-dashoffset: 16px;
+    transition: all 0.3s ease;
+    transition-delay: 0.1s;
+    transform: translate3d(0, 0, 0);
 }
+
 .cbx span:first-child:before {
-  content: "";
-  width: 100%;
-  height: 100%;
-  background: #506EEC;
-  display: block;
-  transform: scale(0);
-  opacity: 1;
-  border-radius: 50%;
-  transition-delay: 0.2s;
+    content: "";
+    width: 100%;
+    height: 100%;
+    background: lightgrey;
+    display: block;
+    transform: scale(0);
+    opacity: 1;
+    border-radius: 50%;
+    transition-delay: 0.2s;
 }
+
 .cbx span:last-child {
-  margin-left: 8px;
+    margin-left: 8px;
 }
+
 .cbx span:last-child:after {
-  content: "";
-  position: absolute;
-  top: 8px;
-  left: 0;
-  height: 1px;
-  width: 100%;
-  background: #B9B8C3;
-  transform-origin: 0 0;
-  transform: scaleX(0);
+    content: "";
+    position: absolute;
+    top: 8px;
+    left: 0;
+    height: 1px;
+    width: 100%;
+    background: #B9B8C3;
+    transform-origin: 0 0;
+    transform: scaleX(0);
 }
+
 .cbx:hover span:first-child {
-  border-color: #3c53c7;
+    border-color: grey;
 }
 
 .inp-cbx:checked + .cbx span:first-child {
-  border-color: #3c53c7;
-  background: #3c53c7;
-  animation: check 0.6s ease;
+    border-color: grey;
+    background: grey;
+    animation: check 0.6s ease;
 }
+
 .inp-cbx:checked + .cbx span:first-child svg {
-  stroke-dashoffset: 0;
+    stroke-dashoffset: 0;
 }
+
 .inp-cbx:checked + .cbx span:first-child:before {
-  transform: scale(2.2);
-  opacity: 0;
-  transition: all 0.6s ease;
+    transform: scale(2.2);
+    opacity: 0;
+    transition: all 0.6s ease;
 }
+
 .inp-cbx:checked + .cbx span:last-child {
-  color: #B9B8C3;
-  transition: all 0.3s ease;
+    color: #B9B8C3;
+    transition: all 0.3s ease;
 }
+
 .inp-cbx:checked + .cbx span:last-child:after {
-  transform: scaleX(1);
-  transition: all 0.3s ease;
+    transform: scaleX(1);
+    transition: all 0.3s ease;
 }
 
 @keyframes check {
@@ -406,17 +348,13 @@ textarea {
     transform: scale(1.2);
   }
 }
+/* Custom checkbox and stroke ends */
 
-
-
-
-
-
-
-
-
-
-
+.task-description {
+    font-size: 0.8rem;
+    color: #8b8b8b;
+}
+/* TASK LIST ENDS */
 
 @media only screen and (min-width: 700px) {
     .content:not(.full-width) {
