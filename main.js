@@ -619,6 +619,7 @@ function addTask(e) {
     console.log(myTasks);
 
     newTaskForm.reset();
+    taskNameInput.focus();
 }
 
 function createTaskEl(taskId, taskName, taskDescription) {
