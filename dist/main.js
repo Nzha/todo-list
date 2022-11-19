@@ -540,6 +540,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+let myTasks = [];
+
+const task = (id, name, description) => {
+    return {id, name, description};
+}
+
 function loadNewTaskForm() {
     // Remove 'Add task' button    
     const addTaskContainer = document.querySelector('.add-task-container');
@@ -599,17 +605,23 @@ function addTask(e) {
     const taskNameInput = document.querySelector('#taskName');
     const taskDescriptionInput = document.querySelector('#taskDescription');
 
+    let taskId = increment();
     let taskName = taskNameInput.value;
     let taskDescription = taskDescriptionInput.value;
 
     if (!taskName) return;
 
-    createTaskEl(taskName, taskDescription)
+    const newTask = task(taskId, taskName, taskDescription);
+    myTasks.push(newTask);
+
+    createTaskEl(taskId, taskName, taskDescription);
+
+    console.log(myTasks);
 
     newTaskForm.reset();
 }
 
-function createTaskEl(taskName, taskDescription) {
+function createTaskEl(taskId, taskName, taskDescription) {
     const taskList = document.querySelector('.task-list');
     const newTaskContainer = document.querySelector('.new-task-container');
 
@@ -622,17 +634,15 @@ function createTaskEl(taskName, taskDescription) {
     li.appendChild(taskDiv);
 
     // CUSTOM CHECKBOX AND LABEL/TASK NAME
-    const checkboxId = `cbx${increment()}`;
-
     const checkbox = document.createElement('input');
     checkbox.setAttribute('type', 'checkbox');
-    checkbox.setAttribute('id', checkboxId);
+    checkbox.setAttribute('id', taskId);
     checkbox.classList.add('inp-cbx');
     checkbox.style.display = 'none';
     taskDiv.appendChild(checkbox);
 
     const checkboxLabel = document.createElement('label');
-    checkboxLabel.setAttribute('for', checkboxId);
+    checkboxLabel.setAttribute('for', taskId);
     checkboxLabel.classList.add('cbx');
     taskDiv.appendChild(checkboxLabel);
 
@@ -667,7 +677,7 @@ let increment = (function(n) {
       n += 1;
       return n;
     }
-}(0)); 
+}(-1)); 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (loadNewTaskForm);
 
