@@ -4,13 +4,10 @@ const createElement = (type, className, parentEl) => {
     document.querySelector(parentEl).appendChild(element);
 
     const updateContent = (newContent) => element.textContent = newContent;
-    
+
     return {
         element,
-        updateContent,
-        getClassName() {
-            return element.className;
-        },
+        updateContent
     };
 };
 
