@@ -6,8 +6,7 @@ const createElement = (type, className, parentEl) => {
     const updateContent = (newContent) => element.textContent = newContent;
 
     return {
-        type, 
-        className, 
+        element,
         updateContent
     };
 };

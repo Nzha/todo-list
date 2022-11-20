@@ -1,3 +1,5 @@
+import createEl from './createElement';
+
 let myTasks = [];
 
 const task = (id, name, description) => {
@@ -9,51 +11,33 @@ function loadNewTaskForm() {
     const addTaskContainer = document.querySelector('.add-task-container');
     addTaskContainer.parentNode.removeChild(addTaskContainer);
 
-    // FORM
+    // Create form
     const taskListDiv = document.querySelector('.task-list');
+    const newTaskContainer = createEl('li', 'new-task-container', '.task-list');
+    const newTaskForm = createEl('form', 'new-task-form', '.new-task-container');
+    const newTaskEditor = createEl('div', 'new-task-form-editor', '.new-task-form');
 
-    const newTaskContainer = document.createElement('li');
-    newTaskContainer.classList.add('new-task-container');
-    taskListDiv.appendChild(newTaskContainer);
+    const taskName = createEl('input', 'taskName', '.new-task-form-editor');
+    taskName.element.setAttribute('type', 'text');
+    taskName.element.setAttribute('id', 'taskName');
+    taskName.element.setAttribute('name', 'taskName');
+    taskName.element.setAttribute('placeholder', 'Task name');
+    taskName.element.setAttribute('autocomplete', 'off');
 
-    const newTaskForm = document.createElement('form');
-    newTaskForm.classList.add('new-task-form');
-    newTaskContainer.appendChild(newTaskForm);
+    const taskDescription = createEl('textarea', 'taskDescription', '.new-task-form-editor');
+    taskDescription.element.setAttribute('type', 'text');
+    taskDescription.element.setAttribute('id', 'taskDescription');
+    taskDescription.element.setAttribute('name', 'taskDescription');
+    taskDescription.element.setAttribute('placeholder', 'Description');
 
-    const newTaskEditor = document.createElement('div');
-    newTaskEditor.classList.add('new-task-form-editor');
-    newTaskForm.appendChild(newTaskEditor);
+    const btnContainer = createEl('div', 'form-btn-container', '.new-task-form');
 
-    const taskName = document.createElement('input');
-    taskName.setAttribute('type', 'text');
-    taskName.setAttribute('id', 'taskName');
-    taskName.setAttribute('name', 'taskName');
-    taskName.setAttribute('placeholder', 'Task name');
-    taskName.setAttribute('autocomplete', 'off');
-    newTaskEditor.appendChild(taskName);
+    const resetTaskBtn = createEl('button', 'cancel-task-form-btn', '.form-btn-container');
+    resetTaskBtn.updateContent('Cancel');
 
-    const taskDescription = document.createElement('textarea');
-    taskDescription.setAttribute('type', 'text');
-    taskDescription.setAttribute('id', 'taskDescription');
-    taskDescription.setAttribute('name', 'taskDescription');
-    taskDescription.setAttribute('placeholder', 'Description');
-    newTaskEditor.appendChild(taskDescription);
-
-    const btnContainer = document.createElement('div');
-    btnContainer.classList.add('form-btn-container');
-    newTaskForm.appendChild(btnContainer);
-
-    const resetTaskBtn = document.createElement('button');
-    resetTaskBtn.classList.add('cancel-task-form-btn');
-    resetTaskBtn.textContent = 'Cancel';
-    btnContainer.appendChild(resetTaskBtn);
-
-    const addTaskBtn = document.createElement('button');
-    addTaskBtn.classList.add('add-task-form-btn');
-    addTaskBtn.textContent = 'Add task';
-    btnContainer.appendChild(addTaskBtn);
-
-    addTaskBtn.addEventListener('click', addTask)
+    const addTaskBtn = createEl('button', 'add-task-form-btn', '.form-btn-container');
+    addTaskBtn.updateContent('Add task');
+    addTaskBtn.element.addEventListener('click', addTask)
 }
 
 function addTask(e) {
