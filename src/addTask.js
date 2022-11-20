@@ -55,16 +55,16 @@ function addTask(e) {
 
     const newTask = task(taskId, taskName, taskDescription);
     myTasks.push(newTask);
-
-    createTaskEl(taskId, taskName, taskDescription);
-
     console.log(myTasks);
+
+    createTaskEl(newTask);
 
     newTaskForm.reset();
     taskNameInput.focus();
 }
 
-function createTaskEl(taskId, taskName, taskDescription) {
+function createTaskEl(newTask) { 
+
     const taskList = document.querySelector('.task-list');
     const newTaskContainer = document.querySelector('.new-task-container');
 
@@ -75,12 +75,12 @@ function createTaskEl(taskId, taskName, taskDescription) {
     // CUSTOM CHECKBOX AND LABEL/TASK NAME
     const checkbox = createEl('input', 'tasks', '.task:last-of-type');
     checkbox.element.setAttribute('type', 'checkbox');
-    checkbox.element.setAttribute('id', taskId);
+    checkbox.element.setAttribute('id', newTask.id);
     checkbox.element.classList.add('inp-cbx');
     checkbox.element.style.display = 'none';
 
     const checkboxLabel = createEl('label', 'cbx', '.task:last-of-type');
-    checkboxLabel.element.setAttribute('for', taskId);
+    checkboxLabel.element.setAttribute('for', newTask.id);
 
     const span = document.createElement('span');
     checkboxLabel.element.appendChild(span);
@@ -96,12 +96,12 @@ function createTaskEl(taskId, taskName, taskDescription) {
     svg.appendChild(polyline);
 
     const span2 = document.createElement('span');
-    span2.textContent = taskName;
+    span2.textContent = newTask.name;
     checkboxLabel.element.appendChild(span2);
 
     // TASK DESCRIPTION
     const taskDescriptionDiv = createEl('div', 'task-description', '.task-list-item-container:last-of-type');
-    taskDescriptionDiv.updateContent(taskDescription);
+    taskDescriptionDiv.updateContent(newTask.description);
 
     taskList.insertBefore(li.element, newTaskContainer);
 }
