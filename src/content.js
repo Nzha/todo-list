@@ -1,42 +1,22 @@
 import loadNewTaskForm from './addTask';
+import createEl from './createElement';
 
 function loadContent(title) {
-    const contentDiv = document.querySelector('.content');
+    const contentContainer = createEl('div', 'content-inner-container', '.content');
+    const contentHeader = createEl('div', 'content-header', '.content-inner-container');
+    
+    const headerTitle = createEl('h2', 'content-header-title', '.content-header');
+    headerTitle.updateContent(title);
 
-    const contentContainer = document.createElement('div');
-    contentContainer.classList.add('content-inner-container');
-    contentDiv.appendChild(contentContainer);
+    const taskContainer = createEl('div', 'task-container', '.content-inner-container');
+    const taskList = createEl('ul', 'task-list', '.task-container')
+    const addTaskContainer = createEl('li', 'add-task-container', '.task-list');
+    
+    const addTaskBtn = createEl('button', 'add-task-btn', '.add-task-container');
+    addTaskBtn.updateContent('Add task');
 
-    // Header
-    const contentHeader = document.createElement('div');
-    contentHeader.classList.add('content-header');
-    contentContainer.appendChild(contentHeader);
-
-    const headerTitle = document.createElement('h2');
-    headerTitle.classList.add('content-header-title');
-    headerTitle.textContent = title;
-    contentHeader.appendChild(headerTitle);
-
-    // Tasks
-    const taskContainer = document.createElement('div');
-    taskContainer.classList.add('task-container');
-    contentContainer.appendChild(taskContainer);
-
-    const taskList = document.createElement('ul');
-    taskList.classList.add('task-list');
-    taskContainer.appendChild(taskList);
-
-    // Tasks - Add task
-    const addTaskContainer = document.createElement('li');
-    addTaskContainer.classList.add('add-task-container');
-    taskList.appendChild(addTaskContainer);
-
-    const addTaskBtn = document.createElement('button');
-    addTaskBtn.classList.add('add-task-btn');
-    addTaskBtn.textContent = 'Add task';
-    addTaskContainer.appendChild(addTaskBtn);
-
-    addTaskBtn.addEventListener('click', loadNewTaskForm);
+    const addTaskBtnDiv = document.querySelector('.add-task-btn');
+    addTaskBtnDiv.addEventListener('click', loadNewTaskForm);
 }
 
 export default loadContent;
