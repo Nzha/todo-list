@@ -540,6 +540,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+/* harmony import */ var _createElement__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./createElement */ "./src/createElement.js");
+
+
 let myTasks = [];
 
 const task = (id, name, description) => {
@@ -551,51 +554,33 @@ function loadNewTaskForm() {
     const addTaskContainer = document.querySelector('.add-task-container');
     addTaskContainer.parentNode.removeChild(addTaskContainer);
 
-    // FORM
+    // Create form
     const taskListDiv = document.querySelector('.task-list');
+    const newTaskContainer = (0,_createElement__WEBPACK_IMPORTED_MODULE_0__["default"])('li', 'new-task-container', '.task-list');
+    const newTaskForm = (0,_createElement__WEBPACK_IMPORTED_MODULE_0__["default"])('form', 'new-task-form', '.new-task-container');
+    const newTaskEditor = (0,_createElement__WEBPACK_IMPORTED_MODULE_0__["default"])('div', 'new-task-form-editor', '.new-task-form');
 
-    const newTaskContainer = document.createElement('li');
-    newTaskContainer.classList.add('new-task-container');
-    taskListDiv.appendChild(newTaskContainer);
+    const taskName = (0,_createElement__WEBPACK_IMPORTED_MODULE_0__["default"])('input', 'taskName', '.new-task-form-editor');
+    taskName.element.setAttribute('type', 'text');
+    taskName.element.setAttribute('id', 'taskName');
+    taskName.element.setAttribute('name', 'taskName');
+    taskName.element.setAttribute('placeholder', 'Task name');
+    taskName.element.setAttribute('autocomplete', 'off');
 
-    const newTaskForm = document.createElement('form');
-    newTaskForm.classList.add('new-task-form');
-    newTaskContainer.appendChild(newTaskForm);
+    const taskDescription = (0,_createElement__WEBPACK_IMPORTED_MODULE_0__["default"])('textarea', 'taskDescription', '.new-task-form-editor');
+    taskDescription.element.setAttribute('type', 'text');
+    taskDescription.element.setAttribute('id', 'taskDescription');
+    taskDescription.element.setAttribute('name', 'taskDescription');
+    taskDescription.element.setAttribute('placeholder', 'Description');
 
-    const newTaskEditor = document.createElement('div');
-    newTaskEditor.classList.add('new-task-form-editor');
-    newTaskForm.appendChild(newTaskEditor);
+    const btnContainer = (0,_createElement__WEBPACK_IMPORTED_MODULE_0__["default"])('div', 'form-btn-container', '.new-task-form');
 
-    const taskName = document.createElement('input');
-    taskName.setAttribute('type', 'text');
-    taskName.setAttribute('id', 'taskName');
-    taskName.setAttribute('name', 'taskName');
-    taskName.setAttribute('placeholder', 'Task name');
-    taskName.setAttribute('autocomplete', 'off');
-    newTaskEditor.appendChild(taskName);
+    const resetTaskBtn = (0,_createElement__WEBPACK_IMPORTED_MODULE_0__["default"])('button', 'cancel-task-form-btn', '.form-btn-container');
+    resetTaskBtn.updateContent('Cancel');
 
-    const taskDescription = document.createElement('textarea');
-    taskDescription.setAttribute('type', 'text');
-    taskDescription.setAttribute('id', 'taskDescription');
-    taskDescription.setAttribute('name', 'taskDescription');
-    taskDescription.setAttribute('placeholder', 'Description');
-    newTaskEditor.appendChild(taskDescription);
-
-    const btnContainer = document.createElement('div');
-    btnContainer.classList.add('form-btn-container');
-    newTaskForm.appendChild(btnContainer);
-
-    const resetTaskBtn = document.createElement('button');
-    resetTaskBtn.classList.add('cancel-task-form-btn');
-    resetTaskBtn.textContent = 'Cancel';
-    btnContainer.appendChild(resetTaskBtn);
-
-    const addTaskBtn = document.createElement('button');
-    addTaskBtn.classList.add('add-task-form-btn');
-    addTaskBtn.textContent = 'Add task';
-    btnContainer.appendChild(addTaskBtn);
-
-    addTaskBtn.addEventListener('click', addTask)
+    const addTaskBtn = (0,_createElement__WEBPACK_IMPORTED_MODULE_0__["default"])('button', 'add-task-form-btn', '.form-btn-container');
+    addTaskBtn.updateContent('Add task');
+    addTaskBtn.element.addEventListener('click', addTask)
 }
 
 function addTask(e) {
@@ -702,7 +687,7 @@ __webpack_require__.r(__webpack_exports__);
 function loadContent(title) {
     const contentContainer = (0,_createElement__WEBPACK_IMPORTED_MODULE_1__["default"])('div', 'content-inner-container', '.content');
     const contentHeader = (0,_createElement__WEBPACK_IMPORTED_MODULE_1__["default"])('div', 'content-header', '.content-inner-container');
-    
+
     const headerTitle = (0,_createElement__WEBPACK_IMPORTED_MODULE_1__["default"])('h2', 'content-header-title', '.content-header');
     headerTitle.updateContent(title);
 
@@ -713,8 +698,7 @@ function loadContent(title) {
     const addTaskBtn = (0,_createElement__WEBPACK_IMPORTED_MODULE_1__["default"])('button', 'add-task-btn', '.add-task-container');
     addTaskBtn.updateContent('Add task');
 
-    const addTaskBtnDiv = document.querySelector('.add-task-btn');
-    addTaskBtnDiv.addEventListener('click', _addTask__WEBPACK_IMPORTED_MODULE_0__["default"]);
+    addTaskBtn.element.addEventListener('click', _addTask__WEBPACK_IMPORTED_MODULE_0__["default"]);
 }
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (loadContent);
@@ -739,8 +723,7 @@ const createElement = (type, className, parentEl) => {
     const updateContent = (newContent) => element.textContent = newContent;
 
     return {
-        type, 
-        className, 
+        element,
         updateContent
     };
 };
