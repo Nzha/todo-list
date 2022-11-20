@@ -695,48 +695,57 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var _addTask__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./addTask */ "./src/addTask.js");
+/* harmony import */ var _createElement__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./createElement */ "./src/createElement.js");
+
 
 
 function loadContent(title) {
-    const contentDiv = document.querySelector('.content');
+    const contentContainer = (0,_createElement__WEBPACK_IMPORTED_MODULE_1__["default"])('div', 'content-inner-container', '.content');
+    const contentHeader = (0,_createElement__WEBPACK_IMPORTED_MODULE_1__["default"])('div', 'content-header', '.content-inner-container');
+    
+    const headerTitle = (0,_createElement__WEBPACK_IMPORTED_MODULE_1__["default"])('h2', 'content-header-title', '.content-header');
+    headerTitle.updateContent(title);
 
-    const contentContainer = document.createElement('div');
-    contentContainer.classList.add('content-inner-container');
-    contentDiv.appendChild(contentContainer);
+    const taskContainer = (0,_createElement__WEBPACK_IMPORTED_MODULE_1__["default"])('div', 'task-container', '.content-inner-container');
+    const taskList = (0,_createElement__WEBPACK_IMPORTED_MODULE_1__["default"])('ul', 'task-list', '.task-container')
+    const addTaskContainer = (0,_createElement__WEBPACK_IMPORTED_MODULE_1__["default"])('li', 'add-task-container', '.task-list');
+    
+    const addTaskBtn = (0,_createElement__WEBPACK_IMPORTED_MODULE_1__["default"])('button', 'add-task-btn', '.add-task-container');
+    addTaskBtn.updateContent('Add task');
 
-    // Header
-    const contentHeader = document.createElement('div');
-    contentHeader.classList.add('content-header');
-    contentContainer.appendChild(contentHeader);
-
-    const headerTitle = document.createElement('h2');
-    headerTitle.classList.add('content-header-title');
-    headerTitle.textContent = title;
-    contentHeader.appendChild(headerTitle);
-
-    // Tasks
-    const taskContainer = document.createElement('div');
-    taskContainer.classList.add('task-container');
-    contentContainer.appendChild(taskContainer);
-
-    const taskList = document.createElement('ul');
-    taskList.classList.add('task-list');
-    taskContainer.appendChild(taskList);
-
-    // Tasks - Add task
-    const addTaskContainer = document.createElement('li');
-    addTaskContainer.classList.add('add-task-container');
-    taskList.appendChild(addTaskContainer);
-
-    const addTaskBtn = document.createElement('button');
-    addTaskBtn.classList.add('add-task-btn');
-    addTaskBtn.textContent = 'Add task';
-    addTaskContainer.appendChild(addTaskBtn);
-
-    addTaskBtn.addEventListener('click', _addTask__WEBPACK_IMPORTED_MODULE_0__["default"]);
+    const addTaskBtnDiv = document.querySelector('.add-task-btn');
+    addTaskBtnDiv.addEventListener('click', _addTask__WEBPACK_IMPORTED_MODULE_0__["default"]);
 }
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (loadContent);
+
+/***/ }),
+
+/***/ "./src/createElement.js":
+/*!******************************!*\
+  !*** ./src/createElement.js ***!
+  \******************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+const createElement = (type, className, parentEl) => {
+    const element = document.createElement(type);
+    element.classList.add(className);
+    document.querySelector(parentEl).appendChild(element);
+
+    const updateContent = (newContent) => element.textContent = newContent;
+
+    return {
+        type, 
+        className, 
+        updateContent
+    };
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (createElement);
 
 /***/ }),
 
