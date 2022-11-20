@@ -11,7 +11,7 @@ function loadNewTaskForm() {
     const addTaskContainer = document.querySelector('.add-task-container');
     addTaskContainer.parentNode.removeChild(addTaskContainer);
 
-    // Create form
+    // FORM
     const taskListDiv = document.querySelector('.task-list');
     const newTaskContainer = createEl('li', 'new-task-container', '.task-list');
     const newTaskForm = createEl('form', 'new-task-form', '.new-task-container');
@@ -69,28 +69,21 @@ function createTaskEl(taskId, taskName, taskDescription) {
     const newTaskContainer = document.querySelector('.new-task-container');
 
     // CONTAINER
-    const li = document.createElement('li');
-    li.classList.add('task-list-item-container');
-
-    const taskDiv = document.createElement('div');
-    taskDiv.classList.add('task');
-    li.appendChild(taskDiv);
+    const li = createEl('li', 'task-list-item-container', '.new-task-container');
+    const taskDiv = createEl('div', 'task', '.task-list-item-container:last-of-type');
 
     // CUSTOM CHECKBOX AND LABEL/TASK NAME
-    const checkbox = document.createElement('input');
-    checkbox.setAttribute('type', 'checkbox');
-    checkbox.setAttribute('id', taskId);
-    checkbox.classList.add('inp-cbx');
-    checkbox.style.display = 'none';
-    taskDiv.appendChild(checkbox);
+    const checkbox = createEl('input', 'tasks', '.task:last-of-type');
+    checkbox.element.setAttribute('type', 'checkbox');
+    checkbox.element.setAttribute('id', taskId);
+    checkbox.element.classList.add('inp-cbx');
+    checkbox.element.style.display = 'none';
 
-    const checkboxLabel = document.createElement('label');
-    checkboxLabel.setAttribute('for', taskId);
-    checkboxLabel.classList.add('cbx');
-    taskDiv.appendChild(checkboxLabel);
+    const checkboxLabel = createEl('label', 'cbx', '.task:last-of-type');
+    checkboxLabel.element.setAttribute('for', taskId);
 
     const span = document.createElement('span');
-    checkboxLabel.appendChild(span);
+    checkboxLabel.element.appendChild(span);
 
     const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
     svg.setAttributeNS(null, "width", "12px");
@@ -104,15 +97,13 @@ function createTaskEl(taskId, taskName, taskDescription) {
 
     const span2 = document.createElement('span');
     span2.textContent = taskName;
-    checkboxLabel.appendChild(span2);
+    checkboxLabel.element.appendChild(span2);
 
     // TASK DESCRIPTION
-    const taskDescriptionDiv = document.createElement('div');
-    taskDescriptionDiv.classList.add('task-description');
-    taskDescriptionDiv.textContent = taskDescription;
-    li.appendChild(taskDescriptionDiv);
+    const taskDescriptionDiv = createEl('div', 'task-description', '.task-list-item-container:last-of-type');
+    taskDescriptionDiv.updateContent(taskDescription);
 
-    taskList.insertBefore(li, newTaskContainer);
+    taskList.insertBefore(li.element, newTaskContainer);
 }
 
 let increment = (function(n) {
