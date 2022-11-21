@@ -242,7 +242,7 @@ textarea {
     border-bottom: 1px solid #e5e5e5;
 }
 
-/* Custom checkbox and stroke from https://www.sliderrevolution.com/resources/css-checkbox/ starts */
+/* Custom checkbox from https://www.sliderrevolution.com/resources/css-checkbox/ starts */
 .cbx {
     -webkit-user-select: none;
     user-select: none;
@@ -347,13 +347,68 @@ textarea {
     transform: scale(1.2);
   }
 }
-/* Custom checkbox and stroke ends */
+/* Custom checkbox ends */
 
 .task-description {
     font-size: 0.8rem;
     color: #8b8b8b;
     margin-left: 1.8rem;
 }
+
+
+
+
+
+
+
+
+
+
+
+.task-description {
+    -webkit-user-select: none;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+    cursor: pointer;
+}
+
+.task-description span {
+    display: inline-block;
+    vertical-align: middle;
+    transform: translate3d(0, 0, 0);
+}
+
+.task-description span:last-child {
+    margin-left: 8px;
+}
+
+.task-description span:last-child:after {
+    content: "";
+    position: absolute;
+    top: 8px;
+    left: 0;
+    height: 1px;
+    width: 100%;
+    background: #B9B8C3;
+    transform-origin: 0 0;
+    transform: scaleX(0);
+}
+
+.inp-cbx:checked ~ .task-description span:last-child {
+    color: #B9B8C3;
+    transition: all 0.3s ease;
+}
+
+.inp-cbx:checked ~ .task-description span:last-child:after {
+    transform: scaleX(1);
+    transition: all 0.3s ease;
+}
+
+
+
+
+
+
 /* TASK LIST ENDS */
 
 @media only screen and (min-width: 700px) {
