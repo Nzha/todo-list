@@ -545,8 +545,8 @@ __webpack_require__.r(__webpack_exports__);
 
 let myTasks = [];
 
-const task = (id, name, description) => {
-    return {id, name, description};
+const task = (id, name, description, status) => {
+    return {id, name, description, status};
 }
 
 function loadNewTaskForm() {
@@ -596,9 +596,9 @@ function addTask(e) {
 
     if (!taskName) return;
 
-    const newTask = task(taskId, taskName, taskDescription);
+    const newTask = task(taskId, taskName, taskDescription, 'unchecked');
     myTasks.push(newTask);
-    console.log(myTasks);
+    console.table(myTasks);
 
     createTaskEl(newTask);
 
@@ -655,6 +655,24 @@ function createTaskEl(newTask) {
     taskDescriptionDiv.appendChild(span3);
 
     taskList.insertBefore(li.element, newTaskContainer);
+
+    const checkboxes = document.querySelectorAll('.task-checkbox');
+    checkboxes.forEach(checkbox => checkbox.addEventListener('change', updateTaskStatus))
+}
+
+function updateTaskStatus(e) {
+    // Find index in array matching div's index
+    const indexArrayMatching = myTasks.findIndex(array => {
+        return array.id == e.target.id;
+    });
+
+    if (e.target.checked) {
+        myTasks[indexArrayMatching].status = 'checked';
+    } else {
+        myTasks[indexArrayMatching].status = 'unchecked';
+    }
+
+    console.table(myTasks);
 }
 
 let increment = (function(n) {
