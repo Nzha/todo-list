@@ -242,15 +242,18 @@ textarea {
     border-bottom: 1px solid #e5e5e5;
 }
 
-/* Custom checkbox from https://www.sliderrevolution.com/resources/css-checkbox/ starts */
-.cbx {
+/* Custom checkbox starts
+Source: https://www.sliderrevolution.com/resources/css-checkbox/ (task description added) */
+.cbx,
+.task-description {
     -webkit-user-select: none;
     user-select: none;
     -webkit-tap-highlight-color: transparent;
     cursor: pointer;
 }
 
-.cbx span {
+.cbx span,
+.task-description span {
     display: inline-block;
     vertical-align: middle;
     transform: translate3d(0, 0, 0);
@@ -300,7 +303,8 @@ textarea {
     margin-left: 8px;
 }
 
-.cbx span:last-child:after {
+.cbx span:last-child:after,
+.task-description span:last-child:after {
     content: "";
     position: absolute;
     top: 8px;
@@ -332,12 +336,14 @@ textarea {
     transition: all 0.6s ease;
 }
 
-.inp-cbx:checked + .cbx span:last-child {
+.inp-cbx:checked + .cbx span:last-child,
+.inp-cbx:checked ~ .task-description span:last-child {
     color: #B9B8C3;
     transition: all 0.3s ease;
 }
 
-.inp-cbx:checked + .cbx span:last-child:after {
+.inp-cbx:checked + .cbx span:last-child:after,
+.inp-cbx:checked ~ .task-description span:last-child:after {
     transform: scaleX(1);
     transition: all 0.3s ease;
 }
@@ -354,61 +360,6 @@ textarea {
     color: #8b8b8b;
     margin-left: 1.8rem;
 }
-
-
-
-
-
-
-
-
-
-
-
-.task-description {
-    -webkit-user-select: none;
-    user-select: none;
-    -webkit-tap-highlight-color: transparent;
-    cursor: pointer;
-}
-
-.task-description span {
-    display: inline-block;
-    vertical-align: middle;
-    transform: translate3d(0, 0, 0);
-}
-
-.task-description span:last-child {
-    margin-left: 8px;
-}
-
-.task-description span:last-child:after {
-    content: "";
-    position: absolute;
-    top: 8px;
-    left: 0;
-    height: 1px;
-    width: 100%;
-    background: #B9B8C3;
-    transform-origin: 0 0;
-    transform: scaleX(0);
-}
-
-.inp-cbx:checked ~ .task-description span:last-child {
-    color: #B9B8C3;
-    transition: all 0.3s ease;
-}
-
-.inp-cbx:checked ~ .task-description span:last-child:after {
-    transform: scaleX(1);
-    transition: all 0.3s ease;
-}
-
-
-
-
-
-
 /* TASK LIST ENDS */
 
 @media only screen and (min-width: 700px) {
