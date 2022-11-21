@@ -76,13 +76,13 @@ function createTaskEl(newTask) {
     const checkbox = document.createElement('input');
     checkbox.setAttribute('type', 'checkbox');
     checkbox.setAttribute('id', newTask.id);
-    checkbox.classList.add('inp-cbx');
+    checkbox.classList.add('task-checkbox');
     checkbox.style.display = 'none';
     taskDiv.element.appendChild(checkbox);
 
     const checkboxLabel = document.createElement('label');
     checkboxLabel.setAttribute('for', newTask.id);
-    checkboxLabel.classList.add('cbx');
+    checkboxLabel.classList.add('task-label');
     taskDiv.element.appendChild(checkboxLabel);
 
     const span = document.createElement('span');
