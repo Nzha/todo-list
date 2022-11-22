@@ -593,6 +593,8 @@ function loadNewTaskForm() {
 }
 
 function addTask(e) {   
+    e.preventDefault();
+
     const newTaskForm = document.querySelector('.new-task-form');
     const taskNameInput = document.querySelector('#taskName');
     const taskDescriptionInput = document.querySelector('#taskDescription');
@@ -609,7 +611,6 @@ function addTask(e) {
 
     createTaskEl(newTask);
 
-    e.preventDefault();
     newTaskForm.reset();
     taskNameInput.focus();
 }
@@ -669,9 +670,10 @@ function createTaskEl(newTask) {
 }
 
 function cancelTask(e) {
+    e.preventDefault();
+    
     const NewTaskContainer = document.querySelector('.new-task-container');
 
-    e.preventDefault();
     NewTaskContainer.remove();
     createAddTaskBtn();
 }
