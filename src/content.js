@@ -1,5 +1,5 @@
-import loadNewTaskForm from './addTask';
-import createEl from './createElement';
+import createEl from './functions';
+import createAddTaskBtn from './addTask';
 
 function loadContent(title) {
     const contentContainer = createEl('div', 'content-inner-container', '.content');
@@ -10,12 +10,8 @@ function loadContent(title) {
 
     const taskContainer = createEl('div', 'task-container', '.content-inner-container');
     const taskList = createEl('ul', 'task-list', '.task-container')
-    const addTaskContainer = createEl('li', 'add-task-container', '.task-list');
     
-    const addTaskBtn = createEl('button', 'add-task-btn', '.add-task-container');
-    addTaskBtn.updateContent('Add task');
-
-    addTaskBtn.element.addEventListener('click', loadNewTaskForm);
+    createAddTaskBtn();
 }
 
 export default loadContent;

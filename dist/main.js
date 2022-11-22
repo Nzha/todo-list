@@ -540,13 +540,21 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _createElement__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./createElement */ "./src/createElement.js");
+/* harmony import */ var _functions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./functions */ "./src/functions.js");
 
 
 let myTasks = [];
 
 const task = (id, name, description, status) => {
     return {id, name, description, status};
+}
+
+function createAddTaskBtn() {
+    const addTaskContainer = (0,_functions__WEBPACK_IMPORTED_MODULE_0__["default"])('li', 'add-task-container', '.task-list');
+
+    const addTaskBtn = (0,_functions__WEBPACK_IMPORTED_MODULE_0__["default"])('button', 'add-task-btn', '.add-task-container');
+    addTaskBtn.updateContent('Add task');
+    addTaskBtn.element.addEventListener('click', loadNewTaskForm);
 }
 
 function loadNewTaskForm() {
@@ -556,41 +564,40 @@ function loadNewTaskForm() {
 
     // FORM
     const taskListDiv = document.querySelector('.task-list');
-    const newTaskContainer = (0,_createElement__WEBPACK_IMPORTED_MODULE_0__["default"])('li', 'new-task-container', '.task-list');
-    const newTaskForm = (0,_createElement__WEBPACK_IMPORTED_MODULE_0__["default"])('form', 'new-task-form', '.new-task-container');
-    const newTaskEditor = (0,_createElement__WEBPACK_IMPORTED_MODULE_0__["default"])('div', 'new-task-form-editor', '.new-task-form');
+    const newTaskContainer = (0,_functions__WEBPACK_IMPORTED_MODULE_0__["default"])('li', 'new-task-container', '.task-list');
+    const newTaskForm = (0,_functions__WEBPACK_IMPORTED_MODULE_0__["default"])('form', 'new-task-form', '.new-task-container');
+    const newTaskEditor = (0,_functions__WEBPACK_IMPORTED_MODULE_0__["default"])('div', 'new-task-form-editor', '.new-task-form');
 
-    const taskName = (0,_createElement__WEBPACK_IMPORTED_MODULE_0__["default"])('input', 'taskName', '.new-task-form-editor');
+    const taskName = (0,_functions__WEBPACK_IMPORTED_MODULE_0__["default"])('input', 'taskName', '.new-task-form-editor');
     taskName.element.setAttribute('type', 'text');
     taskName.element.setAttribute('id', 'taskName');
     taskName.element.setAttribute('name', 'taskName');
     taskName.element.setAttribute('placeholder', 'Task name');
     taskName.element.setAttribute('autocomplete', 'off');
 
-    const taskDescription = (0,_createElement__WEBPACK_IMPORTED_MODULE_0__["default"])('textarea', 'taskDescription', '.new-task-form-editor');
+    const taskDescription = (0,_functions__WEBPACK_IMPORTED_MODULE_0__["default"])('textarea', 'taskDescription', '.new-task-form-editor');
     taskDescription.element.setAttribute('type', 'text');
     taskDescription.element.setAttribute('id', 'taskDescription');
     taskDescription.element.setAttribute('name', 'taskDescription');
     taskDescription.element.setAttribute('placeholder', 'Description');
 
-    const btnContainer = (0,_createElement__WEBPACK_IMPORTED_MODULE_0__["default"])('div', 'form-btn-container', '.new-task-form');
+    const btnContainer = (0,_functions__WEBPACK_IMPORTED_MODULE_0__["default"])('div', 'form-btn-container', '.new-task-form');
 
-    const resetTaskBtn = (0,_createElement__WEBPACK_IMPORTED_MODULE_0__["default"])('button', 'cancel-task-form-btn', '.form-btn-container');
-    resetTaskBtn.updateContent('Cancel');
+    const cancelTaskBtn = (0,_functions__WEBPACK_IMPORTED_MODULE_0__["default"])('button', 'cancel-task-form-btn', '.form-btn-container');
+    cancelTaskBtn.updateContent('Cancel');
+    cancelTaskBtn.element.addEventListener('click', cancelTask)
 
-    const addTaskBtn = (0,_createElement__WEBPACK_IMPORTED_MODULE_0__["default"])('button', 'add-task-form-btn', '.form-btn-container');
+    const addTaskBtn = (0,_functions__WEBPACK_IMPORTED_MODULE_0__["default"])('button', 'add-task-form-btn', '.form-btn-container');
     addTaskBtn.updateContent('Add task');
     addTaskBtn.element.addEventListener('click', addTask)
 }
 
-function addTask(e) {
-    e.preventDefault();
-    
+function addTask(e) {   
     const newTaskForm = document.querySelector('.new-task-form');
     const taskNameInput = document.querySelector('#taskName');
     const taskDescriptionInput = document.querySelector('#taskDescription');
 
-    let taskId = increment();
+    let taskId = (0,_functions__WEBPACK_IMPORTED_MODULE_0__.increment)();
     let taskName = taskNameInput.value;
     let taskDescription = taskDescriptionInput.value;
 
@@ -602,6 +609,7 @@ function addTask(e) {
 
     createTaskEl(newTask);
 
+    e.preventDefault();
     newTaskForm.reset();
     taskNameInput.focus();
 }
@@ -612,8 +620,8 @@ function createTaskEl(newTask) {
     const newTaskContainer = document.querySelector('.new-task-container');
 
     // CONTAINER
-    const li = (0,_createElement__WEBPACK_IMPORTED_MODULE_0__["default"])('li', 'task-list-item-container', '.new-task-container');
-    const taskDiv = (0,_createElement__WEBPACK_IMPORTED_MODULE_0__["default"])('div', 'task', '.task-list-item-container:last-of-type');
+    const li = (0,_functions__WEBPACK_IMPORTED_MODULE_0__["default"])('li', 'task-list-item-container', '.new-task-container');
+    const taskDiv = (0,_functions__WEBPACK_IMPORTED_MODULE_0__["default"])('div', 'task', '.task-list-item-container:last-of-type');
 
     // CUSTOM CHECKBOX AND LABEL/TASK NAME
     const checkbox = document.createElement('input');
@@ -660,6 +668,14 @@ function createTaskEl(newTask) {
     checkboxes.forEach(checkbox => checkbox.addEventListener('change', updateTaskStatus))
 }
 
+function cancelTask(e) {
+    const NewTaskContainer = document.querySelector('.new-task-container');
+
+    e.preventDefault();
+    NewTaskContainer.remove();
+    createAddTaskBtn();
+}
+
 function updateTaskStatus(e) {
     // Find index in array matching div's index
     const indexArrayMatching = myTasks.findIndex(array => {
@@ -675,14 +691,7 @@ function updateTaskStatus(e) {
     console.table(myTasks);
 }
 
-let increment = (function(n) {
-    return function() {
-      n += 1;
-      return n;
-    }
-}(-1)); 
-
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (loadNewTaskForm);
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (createAddTaskBtn);
 
 /***/ }),
 
@@ -696,41 +705,38 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _addTask__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./addTask */ "./src/addTask.js");
-/* harmony import */ var _createElement__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./createElement */ "./src/createElement.js");
+/* harmony import */ var _functions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./functions */ "./src/functions.js");
+/* harmony import */ var _addTask__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./addTask */ "./src/addTask.js");
 
 
 
 function loadContent(title) {
-    const contentContainer = (0,_createElement__WEBPACK_IMPORTED_MODULE_1__["default"])('div', 'content-inner-container', '.content');
-    const contentHeader = (0,_createElement__WEBPACK_IMPORTED_MODULE_1__["default"])('div', 'content-header', '.content-inner-container');
+    const contentContainer = (0,_functions__WEBPACK_IMPORTED_MODULE_0__["default"])('div', 'content-inner-container', '.content');
+    const contentHeader = (0,_functions__WEBPACK_IMPORTED_MODULE_0__["default"])('div', 'content-header', '.content-inner-container');
 
-    const headerTitle = (0,_createElement__WEBPACK_IMPORTED_MODULE_1__["default"])('h2', 'content-header-title', '.content-header');
+    const headerTitle = (0,_functions__WEBPACK_IMPORTED_MODULE_0__["default"])('h2', 'content-header-title', '.content-header');
     headerTitle.updateContent(title);
 
-    const taskContainer = (0,_createElement__WEBPACK_IMPORTED_MODULE_1__["default"])('div', 'task-container', '.content-inner-container');
-    const taskList = (0,_createElement__WEBPACK_IMPORTED_MODULE_1__["default"])('ul', 'task-list', '.task-container')
-    const addTaskContainer = (0,_createElement__WEBPACK_IMPORTED_MODULE_1__["default"])('li', 'add-task-container', '.task-list');
+    const taskContainer = (0,_functions__WEBPACK_IMPORTED_MODULE_0__["default"])('div', 'task-container', '.content-inner-container');
+    const taskList = (0,_functions__WEBPACK_IMPORTED_MODULE_0__["default"])('ul', 'task-list', '.task-container')
     
-    const addTaskBtn = (0,_createElement__WEBPACK_IMPORTED_MODULE_1__["default"])('button', 'add-task-btn', '.add-task-container');
-    addTaskBtn.updateContent('Add task');
-
-    addTaskBtn.element.addEventListener('click', _addTask__WEBPACK_IMPORTED_MODULE_0__["default"]);
+    ;(0,_addTask__WEBPACK_IMPORTED_MODULE_1__["default"])();
 }
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (loadContent);
 
 /***/ }),
 
-/***/ "./src/createElement.js":
-/*!******************************!*\
-  !*** ./src/createElement.js ***!
-  \******************************/
+/***/ "./src/functions.js":
+/*!**************************!*\
+  !*** ./src/functions.js ***!
+  \**************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */   "default": () => (/* binding */ createElement),
+/* harmony export */   "increment": () => (/* binding */ increment)
 /* harmony export */ });
 const createElement = (type, className, parentEl) => {
     const element = document.createElement(type);
@@ -745,7 +751,14 @@ const createElement = (type, className, parentEl) => {
     };
 };
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (createElement);
+let increment = (function(n) {
+    return function() {
+      n += 1;
+      return n;
+    }
+}(-1)); 
+
+
 
 /***/ }),
 
@@ -865,7 +878,6 @@ __webpack_require__.r(__webpack_exports__);
 
 (0,_sidebar__WEBPACK_IMPORTED_MODULE_1__["default"])();
 (0,_content__WEBPACK_IMPORTED_MODULE_2__["default"])('All');
-
 })();
 
 /******/ })()

@@ -1,9 +1,17 @@
-import createEl from './createElement';
+import createEl, { increment } from './functions';
 
 let myTasks = [];
 
 const task = (id, name, description, status) => {
     return {id, name, description, status};
+}
+
+function createAddTaskBtn() {
+    const addTaskContainer = createEl('li', 'add-task-container', '.task-list');
+
+    const addTaskBtn = createEl('button', 'add-task-btn', '.add-task-container');
+    addTaskBtn.updateContent('Add task');
+    addTaskBtn.element.addEventListener('click', loadNewTaskForm);
 }
 
 function loadNewTaskForm() {
@@ -32,17 +40,16 @@ function loadNewTaskForm() {
 
     const btnContainer = createEl('div', 'form-btn-container', '.new-task-form');
 
-    const resetTaskBtn = createEl('button', 'cancel-task-form-btn', '.form-btn-container');
-    resetTaskBtn.updateContent('Cancel');
+    const cancelTaskBtn = createEl('button', 'cancel-task-form-btn', '.form-btn-container');
+    cancelTaskBtn.updateContent('Cancel');
+    cancelTaskBtn.element.addEventListener('click', cancelTask)
 
     const addTaskBtn = createEl('button', 'add-task-form-btn', '.form-btn-container');
     addTaskBtn.updateContent('Add task');
     addTaskBtn.element.addEventListener('click', addTask)
 }
 
-function addTask(e) {
-    e.preventDefault();
-    
+function addTask(e) {   
     const newTaskForm = document.querySelector('.new-task-form');
     const taskNameInput = document.querySelector('#taskName');
     const taskDescriptionInput = document.querySelector('#taskDescription');
@@ -59,6 +66,7 @@ function addTask(e) {
 
     createTaskEl(newTask);
 
+    e.preventDefault();
     newTaskForm.reset();
     taskNameInput.focus();
 }
@@ -117,6 +125,14 @@ function createTaskEl(newTask) {
     checkboxes.forEach(checkbox => checkbox.addEventListener('change', updateTaskStatus))
 }
 
+function cancelTask(e) {
+    const NewTaskContainer = document.querySelector('.new-task-container');
+
+    e.preventDefault();
+    NewTaskContainer.remove();
+    createAddTaskBtn();
+}
+
 function updateTaskStatus(e) {
     // Find index in array matching div's index
     const indexArrayMatching = myTasks.findIndex(array => {
@@ -132,11 +148,4 @@ function updateTaskStatus(e) {
     console.table(myTasks);
 }
 
-let increment = (function(n) {
-    return function() {
-      n += 1;
-      return n;
-    }
-}(-1)); 
-
-export default loadNewTaskForm;
+export default createAddTaskBtn;

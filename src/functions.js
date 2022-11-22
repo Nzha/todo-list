@@ -11,4 +11,11 @@ const createElement = (type, className, parentEl) => {
     };
 };
 
-export default createElement;
+let increment = (function(n) {
+    return function() {
+      n += 1;
+      return n;
+    }
+}(-1)); 
+
+export { createElement as default, increment };
