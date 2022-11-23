@@ -27,6 +27,7 @@ a {
     color: inherit;
 }
 
+/* HEADER STARTS */
 header {
     grid-area: header;
     font-size: 1.5rem;
@@ -49,6 +50,7 @@ header {
     cursor: pointer;
     background-color: #e26f65;
 }
+/* HEADER ENDS */
 
 ul {
     list-style: none;
@@ -56,6 +58,7 @@ ul {
     padding: 0;
 }
 
+/* SIDEBAR STARTS */
 .sidebar {
     grid-area: sidebar;
     background-color: #fafafa;
@@ -107,6 +110,7 @@ the padding is still displayed when sidebar is hidden */
 .projects-title {
     font-size: 1.15rem;
 }
+/* SIDEBAR ENDS */
 
 .content {
     grid-area: content;

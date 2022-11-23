@@ -115,7 +115,7 @@ function createTaskEl(newTask) {
     // INSERT INTO CONTAINER
     taskList.insertBefore(li, newTaskContainer);
 
-    // OPTIONS
+    // TASK OPTIONS
     const taskOptionContainer = createEl('div', 'task-option-container', li)
 
     const edit = createEl('div', 'task-option-edit', taskOptionContainer)
@@ -157,7 +157,7 @@ function updateTaskStatus(e) {
 }
 
 function deleteTask(e) {
-    
+
 
     console.table(myTasks);
 }
