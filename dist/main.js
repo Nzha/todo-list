@@ -587,7 +587,7 @@ function loadNewTaskForm() {
 
     const cancelTaskBtn = (0,_functions__WEBPACK_IMPORTED_MODULE_0__["default"])('button', 'cancel-task-form-btn', btnContainer);
     cancelTaskBtn.textContent = 'Cancel';
-    cancelTaskBtn.addEventListener('click', cancelTask)
+    cancelTaskBtn.addEventListener('click', cancelNewTask)
 
     const addTaskBtn = (0,_functions__WEBPACK_IMPORTED_MODULE_0__["default"])('button', 'add-task-form-btn', btnContainer);
     addTaskBtn.textContent = 'Add task';
@@ -670,9 +670,12 @@ function createTaskEl(newTask) {
     // EVENT LISTENERS
     const checkboxes = document.querySelectorAll('.task-checkbox');
     checkboxes.forEach(checkbox => checkbox.addEventListener('change', updateTaskStatus))
+
+    const trashcans = document.querySelectorAll('.task-option-trashcan');
+    trashcans.forEach(trashcan => trashcan.addEventListener('click', deleteTask))
 }
 
-function cancelTask(e) {
+function cancelNewTask(e) {
     e.preventDefault();
 
     const NewTaskContainer = document.querySelector('.new-task-container');
@@ -692,6 +695,12 @@ function updateTaskStatus(e) {
     } else {
         myTasks[indexArrayMatching].status = 'unchecked';
     }
+
+    console.table(myTasks);
+}
+
+function deleteTask(e) {
+    
 
     console.table(myTasks);
 }
@@ -749,7 +758,7 @@ function createElement(type, className, parentEl) {
     const element = document.createElement(type);
     element.classList.add(className);
 
-    // If parent element has been created via this function
+    // If parent element has been previously created via this function
     // (e.g: const span3 = createEl2('span', 'span3', taskDescriptionDiv))
     if (parentEl.element) {
         parentEl.element.appendChild(element);
