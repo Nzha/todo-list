@@ -75,7 +75,6 @@ function addTask(e) {
 }
 
 function createTaskEl(newTask) { 
-
     const taskList = document.querySelector('.task-list');
     const newTaskContainer = document.querySelector('.new-task-container');
 
@@ -113,11 +112,17 @@ function createTaskEl(newTask) {
     const span3 = createEl('span', 'span3', taskDescriptionDiv)
     span3.textContent = newTask.description;
 
+    // INSERT INTO CONTAINER
     taskList.insertBefore(li, newTaskContainer);
 
-    // TRASHCAN
+    // OPTIONS
     const taskOptionContainer = createEl('div', 'task-option-container', li)
-    taskOptionContainer.classList.add('fa-regular', 'fa-trash-can');
+
+    const edit = createEl('div', 'task-option-edit', taskOptionContainer)
+    edit.classList.add('fa-regular', 'fa-pen-to-square');
+
+    const trashcan = createEl('div', 'task-option-trashcan', taskOptionContainer)
+    trashcan.classList.add('fa-regular', 'fa-trash-can');
 
     // EVENT LISTENERS
     const checkboxes = document.querySelectorAll('.task-checkbox');
