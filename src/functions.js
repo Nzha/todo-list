@@ -1,30 +1,4 @@
-const createElement = (type, className, parentEl) => {
-    const element = document.createElement(type);
-    element.classList.add(className);
-    document.querySelector(parentEl).appendChild(element);
-
-    const updateContent = (newContent) => element.textContent = newContent;
-
-    return {
-        element,
-        updateContent
-    };
-};
-
-// const createEl2 = (type, className, parentEl) => {
-//     const element = document.createElement(type);
-//     element.classList.add(className);
-//     parentEl.element.appendChild(element);
-
-//     const updateContent = (newContent) => element.textContent = newContent;
-
-//     return {
-//         element,
-//         updateContent
-//     };
-// };
-
-function createEl2(type, className, parentEl) {
+function createElement(type, className, parentEl) {
     const element = document.createElement(type);
     element.classList.add(className);
 
@@ -47,4 +21,4 @@ let increment = (function(n) {
     }
 }(-1)); 
 
-export { createElement as default, createEl2, increment };
+export { createElement as default, increment };

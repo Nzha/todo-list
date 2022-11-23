@@ -552,9 +552,9 @@ const task = (id, name, description, status) => {
 function createAddTaskBtn() {
     const taskListDiv = document.querySelector('.task-list');
 
-    const addTaskContainer = (0,_functions__WEBPACK_IMPORTED_MODULE_0__.createEl2)('li', 'add-task-container', taskListDiv);
+    const addTaskContainer = (0,_functions__WEBPACK_IMPORTED_MODULE_0__["default"])('li', 'add-task-container', taskListDiv);
 
-    const addTaskBtn = (0,_functions__WEBPACK_IMPORTED_MODULE_0__.createEl2)('button', 'add-task-btn', addTaskContainer);
+    const addTaskBtn = (0,_functions__WEBPACK_IMPORTED_MODULE_0__["default"])('button', 'add-task-btn', addTaskContainer);
     addTaskBtn.textContent = 'Add task';
     addTaskBtn.addEventListener('click', loadNewTaskForm);
 }
@@ -566,30 +566,30 @@ function loadNewTaskForm() {
 
     // FORM
     const taskListDiv = document.querySelector('.task-list');
-    const newTaskContainer = (0,_functions__WEBPACK_IMPORTED_MODULE_0__.createEl2)('li', 'new-task-container', taskListDiv);
-    const newTaskForm = (0,_functions__WEBPACK_IMPORTED_MODULE_0__.createEl2)('form', 'new-task-form', newTaskContainer);
-    const newTaskEditor = (0,_functions__WEBPACK_IMPORTED_MODULE_0__.createEl2)('div', 'new-task-form-editor', newTaskForm);
+    const newTaskContainer = (0,_functions__WEBPACK_IMPORTED_MODULE_0__["default"])('li', 'new-task-container', taskListDiv);
+    const newTaskForm = (0,_functions__WEBPACK_IMPORTED_MODULE_0__["default"])('form', 'new-task-form', newTaskContainer);
+    const newTaskEditor = (0,_functions__WEBPACK_IMPORTED_MODULE_0__["default"])('div', 'new-task-form-editor', newTaskForm);
 
-    const taskName = (0,_functions__WEBPACK_IMPORTED_MODULE_0__.createEl2)('input', 'taskName', newTaskEditor);
+    const taskName = (0,_functions__WEBPACK_IMPORTED_MODULE_0__["default"])('input', 'taskName', newTaskEditor);
     taskName.setAttribute('type', 'text');
     taskName.setAttribute('id', 'taskName');
     taskName.setAttribute('name', 'taskName');
     taskName.setAttribute('placeholder', 'Task name');
     taskName.setAttribute('autocomplete', 'off');
 
-    const taskDescription = (0,_functions__WEBPACK_IMPORTED_MODULE_0__.createEl2)('textarea', 'taskDescription', newTaskEditor);
+    const taskDescription = (0,_functions__WEBPACK_IMPORTED_MODULE_0__["default"])('textarea', 'taskDescription', newTaskEditor);
     taskDescription.setAttribute('type', 'text');
     taskDescription.setAttribute('id', 'taskDescription');
     taskDescription.setAttribute('name', 'taskDescription');
     taskDescription.setAttribute('placeholder', 'Description');
 
-    const btnContainer = (0,_functions__WEBPACK_IMPORTED_MODULE_0__.createEl2)('div', 'form-btn-container', newTaskForm);
+    const btnContainer = (0,_functions__WEBPACK_IMPORTED_MODULE_0__["default"])('div', 'form-btn-container', newTaskForm);
 
-    const cancelTaskBtn = (0,_functions__WEBPACK_IMPORTED_MODULE_0__.createEl2)('button', 'cancel-task-form-btn', btnContainer);
+    const cancelTaskBtn = (0,_functions__WEBPACK_IMPORTED_MODULE_0__["default"])('button', 'cancel-task-form-btn', btnContainer);
     cancelTaskBtn.textContent = 'Cancel';
     cancelTaskBtn.addEventListener('click', cancelTask)
 
-    const addTaskBtn = (0,_functions__WEBPACK_IMPORTED_MODULE_0__.createEl2)('button', 'add-task-form-btn', btnContainer);
+    const addTaskBtn = (0,_functions__WEBPACK_IMPORTED_MODULE_0__["default"])('button', 'add-task-form-btn', btnContainer);
     addTaskBtn.textContent = 'Add task';
     addTaskBtn.addEventListener('click', addTask)
 }
@@ -623,19 +623,19 @@ function createTaskEl(newTask) {
     const newTaskContainer = document.querySelector('.new-task-container');
 
     // CONTAINER
-    const li = (0,_functions__WEBPACK_IMPORTED_MODULE_0__.createEl2)('li', 'task-list-item-container', newTaskContainer);
-    const taskDiv = (0,_functions__WEBPACK_IMPORTED_MODULE_0__.createEl2)('div', 'task', li);
+    const li = (0,_functions__WEBPACK_IMPORTED_MODULE_0__["default"])('li', 'task-list-item-container', newTaskContainer);
+    const taskDiv = (0,_functions__WEBPACK_IMPORTED_MODULE_0__["default"])('div', 'task', li);
 
     // CUSTOM CHECKBOX AND LABEL/TASK NAME
-    const checkbox = (0,_functions__WEBPACK_IMPORTED_MODULE_0__.createEl2)('input', 'task-checkbox', taskDiv)
+    const checkbox = (0,_functions__WEBPACK_IMPORTED_MODULE_0__["default"])('input', 'task-checkbox', taskDiv)
     checkbox.setAttribute('type', 'checkbox');
     checkbox.setAttribute('id', newTask.id);
     checkbox.style.display = 'none';
 
-    const checkboxLabel = (0,_functions__WEBPACK_IMPORTED_MODULE_0__.createEl2)('label', 'task-label', taskDiv)
+    const checkboxLabel = (0,_functions__WEBPACK_IMPORTED_MODULE_0__["default"])('label', 'task-label', taskDiv)
     checkboxLabel.setAttribute('for', newTask.id);
 
-    const span = (0,_functions__WEBPACK_IMPORTED_MODULE_0__.createEl2)('span', 'span', checkboxLabel)
+    const span = (0,_functions__WEBPACK_IMPORTED_MODULE_0__["default"])('span', 'span', checkboxLabel)
 
     const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
     svg.setAttributeNS(null, "width", "12px");
@@ -647,19 +647,19 @@ function createTaskEl(newTask) {
     polyline.setAttributeNS(null, "points", "1 5 4 8 11 1");
     svg.appendChild(polyline);
 
-    const span2 = (0,_functions__WEBPACK_IMPORTED_MODULE_0__.createEl2)('span', 'span2', checkboxLabel)
+    const span2 = (0,_functions__WEBPACK_IMPORTED_MODULE_0__["default"])('span', 'span2', checkboxLabel)
     span2.textContent = newTask.name;
 
     // TASK DESCRIPTION
-    const taskDescriptionDiv = (0,_functions__WEBPACK_IMPORTED_MODULE_0__.createEl2)('div', 'task-description', taskDiv)
+    const taskDescriptionDiv = (0,_functions__WEBPACK_IMPORTED_MODULE_0__["default"])('div', 'task-description', taskDiv)
 
-    const span3 = (0,_functions__WEBPACK_IMPORTED_MODULE_0__.createEl2)('span', 'span3', taskDescriptionDiv)
+    const span3 = (0,_functions__WEBPACK_IMPORTED_MODULE_0__["default"])('span', 'span3', taskDescriptionDiv)
     span3.textContent = newTask.description;
 
     taskList.insertBefore(li, newTaskContainer);
 
     // TRASHCAN
-    const taskOptionContainer = (0,_functions__WEBPACK_IMPORTED_MODULE_0__.createEl2)('div', 'task-option-container', li)
+    const taskOptionContainer = (0,_functions__WEBPACK_IMPORTED_MODULE_0__["default"])('div', 'task-option-container', li)
     taskOptionContainer.classList.add('fa-regular', 'fa-trash-can');
 
     // EVENT LISTENERS
@@ -711,33 +711,18 @@ __webpack_require__.r(__webpack_exports__);
 
 
 function loadContent(title) {
-    const contentContainer = (0,_functions__WEBPACK_IMPORTED_MODULE_0__["default"])('div', 'content-inner-container', '.content');
-    const contentHeader = (0,_functions__WEBPACK_IMPORTED_MODULE_0__["default"])('div', 'content-header', '.content-inner-container');
+    const content = document.querySelector('.content');
 
-    const headerTitle = (0,_functions__WEBPACK_IMPORTED_MODULE_0__["default"])('h2', 'content-header-title', '.content-header');
-    headerTitle.updateContent(title);
+    const contentContainer = (0,_functions__WEBPACK_IMPORTED_MODULE_0__["default"])('div', 'content-inner-container', content);
+    const contentHeader = (0,_functions__WEBPACK_IMPORTED_MODULE_0__["default"])('div', 'content-header', contentContainer);
 
-    const taskContainer = (0,_functions__WEBPACK_IMPORTED_MODULE_0__["default"])('div', 'task-container', '.content-inner-container');
-    const taskList = (0,_functions__WEBPACK_IMPORTED_MODULE_0__["default"])('ul', 'task-list', '.task-container')
+    const headerTitle = (0,_functions__WEBPACK_IMPORTED_MODULE_0__["default"])('h2', 'content-header-title', contentHeader);
+    headerTitle.textContent = title;
+
+    const taskContainer = (0,_functions__WEBPACK_IMPORTED_MODULE_0__["default"])('div', 'task-container', contentContainer);
+    const taskList = (0,_functions__WEBPACK_IMPORTED_MODULE_0__["default"])('ul', 'task-list', taskContainer);
     
-    ;(0,_addTask__WEBPACK_IMPORTED_MODULE_1__["default"])();
-
-
-
-    // const content = document.querySelector('.content');
-
-    // const contentContainer = createEl('div', 'content-inner-container', content);
-    // const contentHeader = createEl('div', 'content-header', contentContainer.element);
-
-    // const headerTitle = createEl('h2', 'content-header-title', contentHeader.element);
-    // headerTitle.updateContent(title);
-
-    // const taskContainer = createEl('div', 'task-container', contentContainer.element);
-    // const taskList = createEl('ul', 'task-list', taskContainer.element);
-    
-    // createAddTaskBtn();
-
-
+    (0,_addTask__WEBPACK_IMPORTED_MODULE_1__["default"])();
 }
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (loadContent);
@@ -752,37 +737,10 @@ function loadContent(title) {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "createEl2": () => (/* binding */ createEl2),
 /* harmony export */   "default": () => (/* binding */ createElement),
 /* harmony export */   "increment": () => (/* binding */ increment)
 /* harmony export */ });
-const createElement = (type, className, parentEl) => {
-    const element = document.createElement(type);
-    element.classList.add(className);
-    document.querySelector(parentEl).appendChild(element);
-
-    const updateContent = (newContent) => element.textContent = newContent;
-
-    return {
-        element,
-        updateContent
-    };
-};
-
-// const createEl2 = (type, className, parentEl) => {
-//     const element = document.createElement(type);
-//     element.classList.add(className);
-//     parentEl.element.appendChild(element);
-
-//     const updateContent = (newContent) => element.textContent = newContent;
-
-//     return {
-//         element,
-//         updateContent
-//     };
-// };
-
-function createEl2(type, className, parentEl) {
+function createElement(type, className, parentEl) {
     const element = document.createElement(type);
     element.classList.add(className);
 
