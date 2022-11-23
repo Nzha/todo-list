@@ -238,7 +238,8 @@ textarea {
 /* TASK LIST STARTS */
 .task-list-item-container {
     display: flex;
-    flex-direction: column;
+    /* flex-direction: column; */
+    justify-content: space-between;
     font-size: 0.9rem;
     padding: 0.5rem 0;
     border-bottom: 1px solid #e5e5e5;
