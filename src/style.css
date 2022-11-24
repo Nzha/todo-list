@@ -64,6 +64,10 @@ ul {
     background-color: #fafafa;
     width: 300px;
     overflow-x: hidden;
+    position: absolute;
+    top: 2.75rem;
+    height: 100%;
+    z-index: 1;
     transition: width 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
 }
 
@@ -388,6 +392,10 @@ Source: https://www.sliderrevolution.com/resources/css-checkbox/ (task descripti
 /* TASK LIST ENDS */
 
 @media only screen and (min-width: 700px) {
+    .sidebar {
+        position: initial;
+    }
+
     .content:not(.full-width) {
         background-color: inherit;
     }
