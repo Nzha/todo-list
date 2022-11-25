@@ -684,62 +684,17 @@ function cancelNewTask(e) {
     createAddTaskBtn();
 }
 
-// function updateTaskStatus(e) {
-//     // Find index in array where array ID and div ID match
-//     const indexArrayMatching = myTasks.findIndex(array => {
-//         return array.id == e.target.id;
-//     });
-
-//     if (e.target.checked) {
-//         myTasks[indexArrayMatching].status = 'checked';
-//     } else {
-//         myTasks[indexArrayMatching].status = 'unchecked';
-//     }
-
-//     console.table(myTasks);
-// }
-
 function updateTaskStatus(e) {
-    // // Find index in array matching div's index
-    // const indexArrayMatching = myTasks.findIndex(array => {
-    //     return array.id == e.target.id;
-    // });
-
-    console.log(e.target.id);
-
-
-
-
-    // const test = document.querySelector('')
-
-    // if (e.target.checked) {
-    //     myTasks[e.target.id].status = 'checked';
-    // } else {
-    //     myTasks[e.target.id].status = 'unchecked';
-    // }
-
-
-
-
-    // for (const task of myTasks) {
-    //     console.log(task.id);
-    //     if (e.target.id === task.id && e.target.checked) {
-    //         task.status = 'checked';
-    //     } else if (e.target.id === task.id && !e.target.checked) {
-    //         task.status = 'unchecked';
-    //     }
-    // }
-
-    // const test = myTasks.find(x => x.id === e.target.id);
-    // console.log(test);
-
-
-
-    const indexArrayMatching = myTasks.find(array => {
+    // Find index in array where array ID and div ID match
+    const indexArrayMatching = myTasks.findIndex(array => {
         return array.id == e.target.id;
     });
-    console.log(indexArrayMatching);
 
+    if (e.target.checked) {
+        myTasks[indexArrayMatching].status = 'checked';
+    } else {
+        myTasks[indexArrayMatching].status = 'unchecked';
+    }
 
     console.table(myTasks);
 }
