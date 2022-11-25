@@ -700,7 +700,14 @@ function updateTaskStatus(e) {
 }
 
 function deleteTask(e) {
+    // Find index book object matching index book div and remove from array
+    const indexOfObject = myTasks.findIndex(object => {
+        return object.id == e.target.parentElement.id;
+    });
 
+    myTasks.splice(indexOfObject, 1);
+
+    e.target.parentElement.parentElement.remove();
 
     console.table(myTasks);
 }
