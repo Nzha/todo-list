@@ -686,9 +686,7 @@ function cancelNewTask(e) {
 
 function updateTaskStatus(e) {
     // Find index in array where array ID and div ID match
-    const indexArrayMatching = myTasks.findIndex(array => {
-        return array.id == e.target.id;
-    });
+    const indexArrayMatching = myTasks.findIndex(el => el.id == e.target.id);
 
     if (e.target.checked) {
         myTasks[indexArrayMatching].status = 'checked';
@@ -703,9 +701,7 @@ function deleteTask(e) {
     const eventTaskId = e.target.parentElement.parentElement.querySelector('.task-checkbox').id;
 
     // Find index in array where array ID and div ID match
-    const indexArrayMatching = myTasks.findIndex(array => {
-        return array.id == eventTaskId;
-    });
+    const indexArrayMatching = myTasks.findIndex(el => el.id == eventTaskId);
 
     myTasks.splice(indexArrayMatching, 1);
     e.target.parentElement.parentElement.remove();
