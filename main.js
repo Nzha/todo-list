@@ -530,10 +530,143 @@ module.exports = styleTagTransform;
 
 /***/ }),
 
-/***/ "./src/addTask.js":
+/***/ "./src/content.js":
 /*!************************!*\
-  !*** ./src/addTask.js ***!
+  !*** ./src/content.js ***!
   \************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _functions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./functions */ "./src/functions.js");
+/* harmony import */ var _taskManagement__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./taskManagement */ "./src/taskManagement.js");
+
+
+
+function loadContent(title) {
+    const content = document.querySelector('.content');
+
+    const contentContainer = (0,_functions__WEBPACK_IMPORTED_MODULE_0__["default"])('div', 'content-inner-container', content);
+    const contentHeader = (0,_functions__WEBPACK_IMPORTED_MODULE_0__["default"])('div', 'content-header', contentContainer);
+
+    const headerTitle = (0,_functions__WEBPACK_IMPORTED_MODULE_0__["default"])('h2', 'content-header-title', contentHeader);
+    headerTitle.textContent = title;
+
+    const taskContainer = (0,_functions__WEBPACK_IMPORTED_MODULE_0__["default"])('div', 'task-container', contentContainer);
+    const taskList = (0,_functions__WEBPACK_IMPORTED_MODULE_0__["default"])('ul', 'task-list', taskContainer);
+    
+    (0,_taskManagement__WEBPACK_IMPORTED_MODULE_1__["default"])();
+}
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (loadContent);
+
+/***/ }),
+
+/***/ "./src/functions.js":
+/*!**************************!*\
+  !*** ./src/functions.js ***!
+  \**************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ createElement),
+/* harmony export */   "increment": () => (/* binding */ increment)
+/* harmony export */ });
+function createElement(type, className, parentEl) {
+    const element = document.createElement(type);
+    element.classList.add(className);
+
+    /**
+    * If parent element has been previously created via this function
+    * (e.g: const span3 = createEl2('span', 'span3', taskDescriptionDiv))
+    */
+    if (parentEl.element) {
+        parentEl.element.appendChild(element);
+    // (e.g: const span3 = document.createElement('span');)
+    } else {
+        parentEl.appendChild(element);
+    }
+
+    return element
+}
+
+let increment = (function(n) {
+    return function() {
+      n += 1;
+      return n;
+    }
+}(-1)); 
+
+
+
+/***/ }),
+
+/***/ "./src/sidebar.js":
+/*!************************!*\
+  !*** ./src/sidebar.js ***!
+  \************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _content__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./content */ "./src/content.js");
+
+
+function sidebarToggle() {
+    const hideMenuBtn = document.querySelector('#hide-menu-btn');
+    const sideBarDiv = document.querySelector('.sidebar');
+    const content = document.querySelector('.content');
+
+    hideMenuBtn.addEventListener('click', toggleSidebar);
+
+    function toggleSidebar() {
+        sideBarDiv.classList.toggle('hidden');
+        content.classList.toggle('full-width');
+    }
+}
+
+function getPage() {
+    const allTasksLink = document.querySelector('#all-tasks-link');
+    const todayTasksLink = document.querySelector('#todays-tasks-link');
+    const upcomingTasksLink = document.querySelector('#upcoming-tasks-link');
+
+    allTasksLink.addEventListener('click', function(e) {
+        loadPage(e, 'All')
+    });
+
+    todayTasksLink.addEventListener('click', function(e) {
+        loadPage(e, 'Today')
+    });
+
+    upcomingTasksLink.addEventListener('click', function(e) {
+        loadPage(e, 'Upcoming')
+    });
+
+    function loadPage(e, title) {
+        e.preventDefault();
+    
+        const content = document.querySelector('.content');
+        content.innerHTML = '';
+    
+        (0,_content__WEBPACK_IMPORTED_MODULE_0__["default"])(title);
+    }
+}
+
+getPage();
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (sidebarToggle);
+
+/***/ }),
+
+/***/ "./src/taskManagement.js":
+/*!*******************************!*\
+  !*** ./src/taskManagement.js ***!
+  \*******************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -587,7 +720,7 @@ function loadNewTaskForm() {
 
     const cancelTaskBtn = (0,_functions__WEBPACK_IMPORTED_MODULE_0__["default"])('button', 'cancel-task-form-btn', btnContainer);
     cancelTaskBtn.textContent = 'Cancel';
-    cancelTaskBtn.addEventListener('click', cancelNewTask)
+    cancelTaskBtn.addEventListener('click', cancelNewTaskEl)
 
     const addTaskBtn = (0,_functions__WEBPACK_IMPORTED_MODULE_0__["default"])('button', 'add-task-form-btn', btnContainer);
     addTaskBtn.textContent = 'Add task';
@@ -675,7 +808,7 @@ function createTaskEl(newTask) {
     trashcans.forEach(trashcan => trashcan.addEventListener('click', deleteTask))
 }
 
-function cancelNewTask(e) {
+function cancelNewTaskEl(e) {
     e.preventDefault();
 
     const NewTaskContainer = document.querySelector('.new-task-container');
@@ -709,105 +842,6 @@ function deleteTask(e) {
 }
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (createAddTaskBtn);
-
-/***/ }),
-
-/***/ "./src/content.js":
-/*!************************!*\
-  !*** ./src/content.js ***!
-  \************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var _functions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./functions */ "./src/functions.js");
-/* harmony import */ var _addTask__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./addTask */ "./src/addTask.js");
-
-
-
-function loadContent(title) {
-    const content = document.querySelector('.content');
-
-    const contentContainer = (0,_functions__WEBPACK_IMPORTED_MODULE_0__["default"])('div', 'content-inner-container', content);
-    const contentHeader = (0,_functions__WEBPACK_IMPORTED_MODULE_0__["default"])('div', 'content-header', contentContainer);
-
-    const headerTitle = (0,_functions__WEBPACK_IMPORTED_MODULE_0__["default"])('h2', 'content-header-title', contentHeader);
-    headerTitle.textContent = title;
-
-    const taskContainer = (0,_functions__WEBPACK_IMPORTED_MODULE_0__["default"])('div', 'task-container', contentContainer);
-    const taskList = (0,_functions__WEBPACK_IMPORTED_MODULE_0__["default"])('ul', 'task-list', taskContainer);
-    
-    (0,_addTask__WEBPACK_IMPORTED_MODULE_1__["default"])();
-}
-
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (loadContent);
-
-/***/ }),
-
-/***/ "./src/functions.js":
-/*!**************************!*\
-  !*** ./src/functions.js ***!
-  \**************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ createElement),
-/* harmony export */   "increment": () => (/* binding */ increment)
-/* harmony export */ });
-function createElement(type, className, parentEl) {
-    const element = document.createElement(type);
-    element.classList.add(className);
-
-    // If parent element has been previously created via this function
-    // (e.g: const span3 = createEl2('span', 'span3', taskDescriptionDiv))
-    if (parentEl.element) {
-        parentEl.element.appendChild(element);
-    // (e.g: const span3 = document.createElement('span');)
-    } else {
-        parentEl.appendChild(element);
-    }
-
-    return element
-}
-
-let increment = (function(n) {
-    return function() {
-      n += 1;
-      return n;
-    }
-}(-1)); 
-
-
-
-/***/ }),
-
-/***/ "./src/sidebar.js":
-/*!************************!*\
-  !*** ./src/sidebar.js ***!
-  \************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-function sidebarDisplay() {
-    const hideMenuBtn = document.querySelector('#hide-menu-btn');
-    const sideBarDiv = document.querySelector('.sidebar');
-    const content = document.querySelector('.content');
-
-    hideMenuBtn.addEventListener('click', toggleSidebar);
-
-    function toggleSidebar() {
-        sideBarDiv.classList.toggle('hidden');
-        content.classList.toggle('full-width');
-    }
-}
-
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (sidebarDisplay);
 
 /***/ })
 
