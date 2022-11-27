@@ -33,12 +33,14 @@ function loadNewTaskForm() {
     taskName.setAttribute('name', 'taskName');
     taskName.setAttribute('placeholder', 'Task name');
     taskName.setAttribute('autocomplete', 'off');
+    taskName.setAttribute('maxlength', '50');
 
     const taskDescription = createEl('textarea', 'taskDescription', newTaskEditor);
     taskDescription.setAttribute('type', 'text');
     taskDescription.setAttribute('id', 'taskDescription');
     taskDescription.setAttribute('name', 'taskDescription');
     taskDescription.setAttribute('placeholder', 'Description');
+    taskDescription.setAttribute('maxlength', '300');
 
     const taskDueDate = createEl('input', 'taskDueDate', newTaskEditor);
     taskDueDate.setAttribute('type', 'date');
