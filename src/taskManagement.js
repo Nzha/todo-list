@@ -117,10 +117,12 @@ function createTaskEl(newTask) {
     span2.textContent = newTask.name;
 
     // TASK DESCRIPTION
-    const taskDescription = createEl('div', 'task-description', task);
+    if (newTask.description) {
+        const taskDescription = createEl('div', 'task-description', task);
 
-    const span3 = createEl('span', 'span3', taskDescription);
-    span3.textContent = newTask.description;
+        const span3 = createEl('span', 'span3', taskDescription);
+        span3.textContent = newTask.description;
+    }
 
     // TASK DUE DATE
     if (newTask.dueDate) {
