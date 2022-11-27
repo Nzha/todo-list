@@ -23,8 +23,8 @@ function loadNewTaskForm() {
 
     // FORM
     const taskListDiv = document.querySelector('.task-list');
-    const newTaskContainer = createEl('li', 'new-task-container', taskListDiv);
-    const newTaskForm = createEl('form', 'new-task-form', newTaskContainer);
+    const newTaskFormContainer = createEl('li', 'new-task-container', taskListDiv);
+    const newTaskForm = createEl('form', 'new-task-form', newTaskFormContainer);
     const newTaskEditor = createEl('div', 'new-task-form-editor', newTaskForm);
 
     const taskName = createEl('input', 'taskName', newTaskEditor);
@@ -84,11 +84,11 @@ function addTask(e) {
 
 function createTaskEl(newTask) { 
     const taskList = document.querySelector('.task-list');
-    const newTaskContainer = document.querySelector('.new-task-container');
+    const newTaskFormContainer = document.querySelector('.new-task-container');
 
     // CONTAINER
-    const li = createEl('li', 'task-list-item-container', newTaskContainer);
-    const taskDiv = createEl('div', 'task', li);
+    const taskContainer = createEl('li', 'task-list-item-container', newTaskFormContainer);
+    const taskDiv = createEl('div', 'task', taskContainer);
 
     // CUSTOM CHECKBOX AND LABEL/TASK NAME
     const checkbox = createEl('input', 'task-checkbox', taskDiv)
@@ -120,11 +120,11 @@ function createTaskEl(newTask) {
     const span3 = createEl('span', 'span3', taskDescriptionDiv)
     span3.textContent = newTask.description;
 
-    // INSERT INTO CONTAINER
-    taskList.insertBefore(li, newTaskContainer);
+    // INSERT TASK INTO LIST BEFORE NEW TASK FORM
+    taskList.insertBefore(taskContainer, newTaskFormContainer);
 
     // TASK OPTIONS
-    const taskOptionContainer = createEl('div', 'task-option-container', li)
+    const taskOptionContainer = createEl('div', 'task-option-container', taskContainer)
 
     const edit = createEl('div', 'task-option-edit', taskOptionContainer)
     edit.classList.add('fa-regular', 'fa-pen-to-square');
@@ -143,9 +143,9 @@ function createTaskEl(newTask) {
 function cancelNewTaskEl(e) {
     e.preventDefault();
 
-    const NewTaskContainer = document.querySelector('.new-task-container');
+    const newTaskFormContainer = document.querySelector('.new-task-container');
 
-    NewTaskContainer.remove();
+    newTaskFormContainer.remove();
     createAddTaskBtn();
 }
 
