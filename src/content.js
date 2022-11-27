@@ -1,5 +1,5 @@
-import createEl, { increment } from './functions';
-import createAddTaskBtn from './addTask';
+import createEl from './functions';
+import createAddTaskBtn from './taskManagement';
 
 function loadContent(title) {
     const content = document.querySelector('.content');

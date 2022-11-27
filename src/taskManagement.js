@@ -44,7 +44,7 @@ function loadNewTaskForm() {
 
     const cancelTaskBtn = createEl('button', 'cancel-task-form-btn', btnContainer);
     cancelTaskBtn.textContent = 'Cancel';
-    cancelTaskBtn.addEventListener('click', cancelNewTask)
+    cancelTaskBtn.addEventListener('click', cancelNewTaskEl)
 
     const addTaskBtn = createEl('button', 'add-task-form-btn', btnContainer);
     addTaskBtn.textContent = 'Add task';
@@ -132,7 +132,7 @@ function createTaskEl(newTask) {
     trashcans.forEach(trashcan => trashcan.addEventListener('click', deleteTask))
 }
 
-function cancelNewTask(e) {
+function cancelNewTaskEl(e) {
     e.preventDefault();
 
     const NewTaskContainer = document.querySelector('.new-task-container');
