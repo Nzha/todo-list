@@ -124,7 +124,12 @@ function createTaskEl(newTask) {
     const taskOptionContainer = createEl('div', 'task-option-container', taskContainer);
 
     if (newTask.dueDate) {
-        const dueDate = createEl('div', 'task-due-date', taskOptionContainer);
+        const dueDateContainer = createEl('div', 'due-date-container', taskOptionContainer);
+
+        const calendar = createEl('div', 'task-option-calendar', dueDateContainer);
+        calendar.classList.add('fa-regular', 'fa-calendar');
+
+        const dueDate = createEl('div', 'task-due-date', dueDateContainer);
         dueDate.textContent = newTask.dueDate;
     }
 
