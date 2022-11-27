@@ -764,15 +764,15 @@ function createTaskEl(newTask) {
 
     // CONTAINER
     const taskContainer = (0,_functions__WEBPACK_IMPORTED_MODULE_0__["default"])('li', 'task-list-item-container', newTaskFormContainer);
-    const taskDiv = (0,_functions__WEBPACK_IMPORTED_MODULE_0__["default"])('div', 'task', taskContainer);
+    const task = (0,_functions__WEBPACK_IMPORTED_MODULE_0__["default"])('div', 'task', taskContainer);
 
     // CUSTOM CHECKBOX AND LABEL/TASK NAME
-    const checkbox = (0,_functions__WEBPACK_IMPORTED_MODULE_0__["default"])('input', 'task-checkbox', taskDiv)
+    const checkbox = (0,_functions__WEBPACK_IMPORTED_MODULE_0__["default"])('input', 'task-checkbox', task)
     checkbox.setAttribute('type', 'checkbox');
     checkbox.setAttribute('id', newTask.id);
     checkbox.style.display = 'none';
 
-    const checkboxLabel = (0,_functions__WEBPACK_IMPORTED_MODULE_0__["default"])('label', 'task-label', taskDiv)
+    const checkboxLabel = (0,_functions__WEBPACK_IMPORTED_MODULE_0__["default"])('label', 'task-label', task)
     checkboxLabel.setAttribute('for', newTask.id);
 
     const span = (0,_functions__WEBPACK_IMPORTED_MODULE_0__["default"])('span', 'span', checkboxLabel)
@@ -791,9 +791,9 @@ function createTaskEl(newTask) {
     span2.textContent = newTask.name;
 
     // TASK DESCRIPTION
-    const taskDescriptionDiv = (0,_functions__WEBPACK_IMPORTED_MODULE_0__["default"])('div', 'task-description', taskDiv)
+    const taskDescription = (0,_functions__WEBPACK_IMPORTED_MODULE_0__["default"])('div', 'task-description', task)
 
-    const span3 = (0,_functions__WEBPACK_IMPORTED_MODULE_0__["default"])('span', 'span3', taskDescriptionDiv)
+    const span3 = (0,_functions__WEBPACK_IMPORTED_MODULE_0__["default"])('span', 'span3', taskDescription)
     span3.textContent = newTask.description;
 
     // INSERT TASK INTO LIST BEFORE NEW TASK FORM
