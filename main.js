@@ -793,10 +793,12 @@ function createTaskEl(newTask) {
     span2.textContent = newTask.name;
 
     // TASK DESCRIPTION
-    const taskDescription = (0,_functions__WEBPACK_IMPORTED_MODULE_0__["default"])('div', 'task-description', task);
+    if (newTask.description) {
+        const taskDescription = (0,_functions__WEBPACK_IMPORTED_MODULE_0__["default"])('div', 'task-description', task);
 
-    const span3 = (0,_functions__WEBPACK_IMPORTED_MODULE_0__["default"])('span', 'span3', taskDescription);
-    span3.textContent = newTask.description;
+        const span3 = (0,_functions__WEBPACK_IMPORTED_MODULE_0__["default"])('span', 'span3', taskDescription);
+        span3.textContent = newTask.description;
+    }
 
     // TASK DUE DATE
     if (newTask.dueDate) {
