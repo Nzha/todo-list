@@ -678,8 +678,8 @@ __webpack_require__.r(__webpack_exports__);
 
 let myTasks = [];
 
-const task = (id, name, description, status) => {
-    return {id, name, description, status};
+const task = (id, name, description, dueDate, status) => {
+    return {id, name, description, dueDate, status};
 }
 
 function createAddTaskBtn() {
@@ -739,14 +739,16 @@ function addTask(e) {
     const newTaskForm = document.querySelector('.new-task-form');
     const taskNameInput = document.querySelector('#taskName');
     const taskDescriptionInput = document.querySelector('#taskDescription');
+    const taskDueDateInput = document.querySelector('#taskDueDate');
 
     let taskId = (0,_functions__WEBPACK_IMPORTED_MODULE_0__.increment)();
     let taskName = taskNameInput.value;
     let taskDescription = taskDescriptionInput.value;
+    let taskDueDate = taskDueDateInput.value;
 
     if (!taskName) return;
 
-    const newTask = task(taskId, taskName, taskDescription, 'unchecked');
+    const newTask = task(taskId, taskName, taskDescription, taskDueDate, 'unchecked');
     myTasks.push(newTask);
     console.table(myTasks);
 
