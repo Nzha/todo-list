@@ -406,8 +406,10 @@ Source: https://www.sliderrevolution.com/resources/css-checkbox/ (task descripti
     grid-area: taskDueDate;
     display: flex;
     align-items: center;
-    gap: 0.5rem;
-    margin-left: 0.5rem;
+    color: #8b8b8b;
+    gap: 0.2rem;
+    margin-left: 1.8rem;
+    margin-top: 0.5rem;
 }
 
 .task-due-date {
@@ -457,7 +459,10 @@ Source: https://www.sliderrevolution.com/resources/css-checkbox/ (task descripti
     }
 
     .task-due-date-container {
+        color: inherit;
+        gap: 0.5rem;
         margin-left: 1.25rem;
+        margin-top: 0;
     }
     
 }
