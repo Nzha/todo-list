@@ -91,15 +91,15 @@ function createTaskEl(newTask) {
     const task = createEl('div', 'task', taskContainer);
 
     // CUSTOM CHECKBOX AND LABEL/TASK NAME
-    const checkbox = createEl('input', 'task-checkbox', task)
+    const checkbox = createEl('input', 'task-checkbox', task);
     checkbox.setAttribute('type', 'checkbox');
     checkbox.setAttribute('id', newTask.id);
     checkbox.style.display = 'none';
 
-    const checkboxLabel = createEl('label', 'task-label', task)
+    const checkboxLabel = createEl('label', 'task-label', task);
     checkboxLabel.setAttribute('for', newTask.id);
 
-    const span = createEl('span', 'span', checkboxLabel)
+    const span = createEl('span', 'span', checkboxLabel);
 
     const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
     svg.setAttributeNS(null, "width", "12px");
@@ -111,26 +111,31 @@ function createTaskEl(newTask) {
     polyline.setAttributeNS(null, "points", "1 5 4 8 11 1");
     svg.appendChild(polyline);
 
-    const span2 = createEl('span', 'span2', checkboxLabel)
+    const span2 = createEl('span', 'span2', checkboxLabel);
     span2.textContent = newTask.name;
 
     // TASK DESCRIPTION
-    const taskDescription = createEl('div', 'task-description', task)
+    const taskDescription = createEl('div', 'task-description', task);
 
-    const span3 = createEl('span', 'span3', taskDescription)
+    const span3 = createEl('span', 'span3', taskDescription);
     span3.textContent = newTask.description;
+
+    // TASK DUE DATE & OPTIONS
+    const taskOptionContainer = createEl('div', 'task-option-container', taskContainer);
+
+    if (newTask.dueDate) {
+        const dueDate = createEl('div', 'task-due-date', taskOptionContainer);
+        dueDate.textContent = newTask.dueDate;
+    }
+
+    const edit = createEl('div', 'task-option-edit', taskOptionContainer);
+    edit.classList.add('fa-regular', 'fa-pen-to-square');
+
+    const trashcan = createEl('div', 'task-option-trashcan', taskOptionContainer);
+    trashcan.classList.add('fa-regular', 'fa-trash-can');
 
     // INSERT TASK INTO LIST BEFORE NEW TASK FORM
     taskList.insertBefore(taskContainer, newTaskFormContainer);
-
-    // TASK OPTIONS
-    const taskOptionContainer = createEl('div', 'task-option-container', taskContainer)
-
-    const edit = createEl('div', 'task-option-edit', taskOptionContainer)
-    edit.classList.add('fa-regular', 'fa-pen-to-square');
-
-    const trashcan = createEl('div', 'task-option-trashcan', taskOptionContainer)
-    trashcan.classList.add('fa-regular', 'fa-trash-can');
 
     // EVENT LISTENERS
     const checkboxes = document.querySelectorAll('.task-checkbox');

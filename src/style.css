@@ -263,7 +263,6 @@ input[type=date]:focus {
 /* TASK LIST STARTS */
 .task-list-item-container {
     display: flex;
-    /* flex-direction: column; */
     justify-content: space-between;
     font-size: 0.9rem;
     padding: 0.5rem 0;
@@ -392,8 +391,20 @@ Source: https://www.sliderrevolution.com/resources/css-checkbox/ (task descripti
 .task-option-container {
     display: flex;
     align-items: center;
-    gap: 0.75rem;
+    gap: 1.25rem;
     font-size: 1rem;
+}
+
+.task-due-date {
+    font-size: 0.8rem;
+}
+
+.task-due-date::before {
+    /* Add a calendar before due date */
+    font-family: fontAwesome;
+    content: "\f133\00a0";
+    font-size: 1rem;
+    margin-right: 0.2rem;
 }
 
 .task-option-trashcan,
