@@ -699,8 +699,8 @@ function loadNewTaskForm() {
 
     // FORM
     const taskListDiv = document.querySelector('.task-list');
-    const newTaskContainer = (0,_functions__WEBPACK_IMPORTED_MODULE_0__["default"])('li', 'new-task-container', taskListDiv);
-    const newTaskForm = (0,_functions__WEBPACK_IMPORTED_MODULE_0__["default"])('form', 'new-task-form', newTaskContainer);
+    const newTaskFormContainer = (0,_functions__WEBPACK_IMPORTED_MODULE_0__["default"])('li', 'new-task-container', taskListDiv);
+    const newTaskForm = (0,_functions__WEBPACK_IMPORTED_MODULE_0__["default"])('form', 'new-task-form', newTaskFormContainer);
     const newTaskEditor = (0,_functions__WEBPACK_IMPORTED_MODULE_0__["default"])('div', 'new-task-form-editor', newTaskForm);
 
     const taskName = (0,_functions__WEBPACK_IMPORTED_MODULE_0__["default"])('input', 'taskName', newTaskEditor);
@@ -760,11 +760,11 @@ function addTask(e) {
 
 function createTaskEl(newTask) { 
     const taskList = document.querySelector('.task-list');
-    const newTaskContainer = document.querySelector('.new-task-container');
+    const newTaskFormContainer = document.querySelector('.new-task-container');
 
     // CONTAINER
-    const li = (0,_functions__WEBPACK_IMPORTED_MODULE_0__["default"])('li', 'task-list-item-container', newTaskContainer);
-    const taskDiv = (0,_functions__WEBPACK_IMPORTED_MODULE_0__["default"])('div', 'task', li);
+    const taskContainer = (0,_functions__WEBPACK_IMPORTED_MODULE_0__["default"])('li', 'task-list-item-container', newTaskFormContainer);
+    const taskDiv = (0,_functions__WEBPACK_IMPORTED_MODULE_0__["default"])('div', 'task', taskContainer);
 
     // CUSTOM CHECKBOX AND LABEL/TASK NAME
     const checkbox = (0,_functions__WEBPACK_IMPORTED_MODULE_0__["default"])('input', 'task-checkbox', taskDiv)
@@ -796,11 +796,11 @@ function createTaskEl(newTask) {
     const span3 = (0,_functions__WEBPACK_IMPORTED_MODULE_0__["default"])('span', 'span3', taskDescriptionDiv)
     span3.textContent = newTask.description;
 
-    // INSERT INTO CONTAINER
-    taskList.insertBefore(li, newTaskContainer);
+    // INSERT TASK INTO LIST BEFORE NEW TASK FORM
+    taskList.insertBefore(taskContainer, newTaskFormContainer);
 
     // TASK OPTIONS
-    const taskOptionContainer = (0,_functions__WEBPACK_IMPORTED_MODULE_0__["default"])('div', 'task-option-container', li)
+    const taskOptionContainer = (0,_functions__WEBPACK_IMPORTED_MODULE_0__["default"])('div', 'task-option-container', taskContainer)
 
     const edit = (0,_functions__WEBPACK_IMPORTED_MODULE_0__["default"])('div', 'task-option-edit', taskOptionContainer)
     edit.classList.add('fa-regular', 'fa-pen-to-square');
@@ -819,9 +819,9 @@ function createTaskEl(newTask) {
 function cancelNewTaskEl(e) {
     e.preventDefault();
 
-    const NewTaskContainer = document.querySelector('.new-task-container');
+    const newTaskFormContainer = document.querySelector('.new-task-container');
 
-    NewTaskContainer.remove();
+    newTaskFormContainer.remove();
     createAddTaskBtn();
 }
 
