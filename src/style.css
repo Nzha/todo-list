@@ -196,17 +196,34 @@ textarea {
 }
   
 input[type=text]:focus,
-textarea:focus {
+textarea:focus,
+input[type=date]:focus {
     outline: none;
-}
-
-textarea {
-    font-family: "Helvetica", "Arial", sans-serif;
-    resize: none;
 }
 
 #taskName {
     font-size: 0.9rem;
+}
+
+#taskDescription {
+    resize: none;
+}
+
+#taskDescription,
+#taskDueDate {
+    font-family: "Helvetica", "Arial", sans-serif;
+}
+
+#taskDueDate {
+    color: #8b8b8b;
+    align-self: flex-start;
+    border: 1px solid #e5e5e5;
+    border-radius: 5px;
+    padding: 0.5rem 0.25rem;
+}
+
+#taskDueDate:focus {
+    color: #1f1f2f;
 }
 
 .form-btn-container {

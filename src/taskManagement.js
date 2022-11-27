@@ -40,6 +40,12 @@ function loadNewTaskForm() {
     taskDescription.setAttribute('name', 'taskDescription');
     taskDescription.setAttribute('placeholder', 'Description');
 
+    const taskDueDate = createEl('input', 'taskDueDate', newTaskEditor);
+    taskDueDate.setAttribute('type', 'date');
+    taskDueDate.setAttribute('id', 'taskDueDate');
+    taskDueDate.setAttribute('name', 'taskDueDate');
+    taskDueDate.setAttribute('placeholder', 'Description');
+
     const btnContainer = createEl('div', 'form-btn-container', newTaskForm);
 
     const cancelTaskBtn = createEl('button', 'cancel-task-form-btn', btnContainer);
