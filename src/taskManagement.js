@@ -88,15 +88,15 @@ function createTaskEl(newTask) {
 
     // CONTAINER
     const taskContainer = createEl('li', 'task-list-item-container', newTaskFormContainer);
-    const taskDiv = createEl('div', 'task', taskContainer);
+    const task = createEl('div', 'task', taskContainer);
 
     // CUSTOM CHECKBOX AND LABEL/TASK NAME
-    const checkbox = createEl('input', 'task-checkbox', taskDiv)
+    const checkbox = createEl('input', 'task-checkbox', task)
     checkbox.setAttribute('type', 'checkbox');
     checkbox.setAttribute('id', newTask.id);
     checkbox.style.display = 'none';
 
-    const checkboxLabel = createEl('label', 'task-label', taskDiv)
+    const checkboxLabel = createEl('label', 'task-label', task)
     checkboxLabel.setAttribute('for', newTask.id);
 
     const span = createEl('span', 'span', checkboxLabel)
@@ -115,9 +115,9 @@ function createTaskEl(newTask) {
     span2.textContent = newTask.name;
 
     // TASK DESCRIPTION
-    const taskDescriptionDiv = createEl('div', 'task-description', taskDiv)
+    const taskDescription = createEl('div', 'task-description', task)
 
-    const span3 = createEl('span', 'span3', taskDescriptionDiv)
+    const span3 = createEl('span', 'span3', taskDescription)
     span3.textContent = newTask.description;
 
     // INSERT TASK INTO LIST BEFORE NEW TASK FORM
