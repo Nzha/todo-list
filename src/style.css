@@ -10,16 +10,16 @@ html {
 }
 
 body {
-    font-family: 'Roboto', sans-serif;
-    color: #1f1f2f;
-    height: 100vh;
-    margin: 0;
     display: grid;
     grid-template-columns: auto 3fr;
     grid-template-rows: auto 1fr;
     grid-template-areas: 
         "header header"
         "sidebar content";
+    font-family: 'Roboto', sans-serif;
+    color: #1f1f2f;
+    height: 100vh;
+    margin: 0;
 }
 
 a {
@@ -262,11 +262,18 @@ input[type=date]:focus {
 
 /* TASK LIST STARTS */
 .task-list-item-container {
-    display: flex;
+    display: grid;
     justify-content: space-between;
+    grid-template-areas: 
+        "task taskOptions"
+        "taskDueDate taskDueDate";
     font-size: 0.9rem;
     padding: 0.5rem 0;
     border-bottom: 1px solid #e5e5e5;
+}
+
+.task {
+    grid-area: task;
 }
 
 .task-label {
@@ -395,22 +402,25 @@ Source: https://www.sliderrevolution.com/resources/css-checkbox/ (task descripti
     margin-left: 1.8rem;
 }
 
+.task-due-date-container {
+    grid-area: taskDueDate;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-left: 0.5rem;
+}
+
+.task-due-date {
+    font-size: 0.8rem;
+}
+
 .task-option-container {
+    grid-area: taskOptions;
     display: flex;
     align-items: center;
     gap: 1.25rem;
     font-size: 1rem;
     margin-left: 1.25rem;
-}
-
-.due-date-container {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-}
-
-.task-due-date {
-    font-size: 0.8rem;
 }
 
 .task-option-trashcan,
@@ -439,4 +449,15 @@ Source: https://www.sliderrevolution.com/resources/css-checkbox/ (task descripti
     .content-inner-container {
         width: 50%;
     }
+
+    .task-list-item-container {
+        grid-template-columns: 1fr auto auto;
+        grid-template-areas: 
+            "task taskDueDate taskOptions";
+    }
+
+    .task-due-date-container {
+        margin-left: 1.25rem;
+    }
+    
 }

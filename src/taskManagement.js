@@ -122,11 +122,9 @@ function createTaskEl(newTask) {
     const span3 = createEl('span', 'span3', taskDescription);
     span3.textContent = newTask.description;
 
-    // TASK DUE DATE & OPTIONS
-    const taskOptionContainer = createEl('div', 'task-option-container', taskContainer);
-
+    // TASK DUE DATE
     if (newTask.dueDate) {
-        const dueDateContainer = createEl('div', 'due-date-container', taskOptionContainer);
+        const dueDateContainer = createEl('div', 'task-due-date-container', taskContainer);
 
         const calendar = createEl('div', 'task-option-calendar', dueDateContainer);
         calendar.classList.add('fa-regular', 'fa-calendar');
@@ -134,6 +132,9 @@ function createTaskEl(newTask) {
         const dueDate = createEl('div', 'task-due-date', dueDateContainer);
         dueDate.textContent = newTask.dueDate;
     }
+
+    // TASK OPTIONS
+    const taskOptionContainer = createEl('div', 'task-option-container', taskContainer);
 
     const edit = createEl('div', 'task-option-edit', taskOptionContainer);
     edit.classList.add('fa-regular', 'fa-pen-to-square');
