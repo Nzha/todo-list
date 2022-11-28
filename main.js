@@ -21,7 +21,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "/* * {\n  border: 1px solid red;\n} */\n\nhtml {\n    box-sizing: border-box;\n}\n*, *:before, *:after {\n    box-sizing: inherit;\n}\n\nbody {\n    display: grid;\n    grid-template-columns: auto 3fr;\n    grid-template-rows: auto 1fr;\n    grid-template-areas: \n        \"header header\"\n        \"sidebar content\";\n    font-family: 'Roboto', sans-serif;\n    color: #1f1f2f;\n    height: 100vh;\n    margin: 0;\n}\n\na {\n    text-decoration: none;\n    color: inherit;\n}\n\n/* HEADER STARTS */\nheader {\n    grid-area: header;\n    font-size: 1.5rem;\n    color: white;\n    background-color: #db4c3f;\n    display: flex;\n    align-items: center;\n    gap: 0.5rem;\n    padding: 0.5rem 1rem;\n}\n\n#hide-menu-btn {\n    font-size: 1.5rem;\n    border: none;\n    color: white;\n    background-color: inherit;\n}\n\n#hide-menu-btn:hover {\n    cursor: pointer;\n    background-color: #e26f65;\n}\n/* HEADER ENDS */\n\nul {\n    list-style: none;\n    margin: 0;\n    padding: 0;\n}\n\n/* SIDEBAR STARTS */\n.sidebar {\n    grid-area: sidebar;\n    background-color: #fafafa;\n    width: 300px;\n    overflow-x: hidden;\n    position: absolute;\n    top: 2.75rem;\n    height: 100%;\n    z-index: 1;\n    transition: width 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;\n}\n\n.sidebar.hidden {\n    width: 0;\n}\n\n/* Must create an inner container in sidebar otherwise\nthe padding is still displayed when sidebar is hidden */\n.sidebar-inner-container {\n    padding: 2rem 1rem;\n}\n\n.sidebar-tasks-item,\n.sidebar-projects-item {\n    display: flex;\n    gap: 0.5rem;\n    padding: 0.5rem 1rem;\n    white-space: nowrap;\n}\n\n.sidebar-tasks-item:hover,\n.sidebar-projects-item:hover {\n    background-color: #eeeeee;\n}\n\n.fa-inbox {\n    color: #4a87e4;\n}\n\n.fa-calendar-day {\n    color: #88c397;\n}\n\n.fa-calendar-week {\n    color: #8d62d0;\n}\n\n.sidebar-projects {\n    margin-top: 2rem;\n    padding: 0 1rem;\n}\n\n.projects-title {\n    font-size: 1.15rem;\n}\n/* SIDEBAR ENDS */\n\n.content {\n    grid-area: content;\n    display: flex;\n    justify-content: center;\n    padding: 2rem 0;\n    transition: margin-left 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,\n                background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;\n}\n\n.content.full-width {\n    transition: margin-left 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;\n}\n\n.content:not(.full-width) {\n    background-color: rgba(0,0,0,.5);\n}\n\n.content-inner-container {\n    width: 70%;\n    display: flex;\n    flex-direction: column;\n    gap: 1rem;\n}\n\nh2 {\n    margin: 0;\n}\n\n.add-task-container {\n    color: #8b8b8b;\n    padding-top: 0.5rem;\n\n}\n\n.add-task-btn {\n    background: none;\n\tcolor: inherit;\n\tborder: none;\n\tpadding: 0;\n\tfont: inherit;\n\tcursor: pointer;\n\toutline: inherit;\n}\n\n.add-task-btn:hover {\n    color: #dd4b39;\n}\n\n.add-task-btn::before {\n    /* Add '+' before 'Add task' */\n    font-family: fontAwesome;\n    content: \"\\f055\\00a0\";\n    font-size: 1.25rem;\n    margin-right: 0.4rem;\n}\n\n/* NEW TASK FORM STARTS */\n.new-task-form {\n    display: flex;\n    flex-direction: column;\n    gap: 0.5rem;\n    padding: 0.75rem 0;\n}\n\n.new-task-form-editor {\n    display: flex;\n    flex-direction: column;\n    gap: 0.5rem;\n    padding: 0.5rem 0.5rem;\n    border: 1px solid #e5e5e5;\n    border-radius: 10px;\n}\n\ninput[type=text],\ntextarea {\n    appearance: none;\n    border: 1px solid transparent;\n}\n  \ninput[type=text]:focus,\ntextarea:focus,\ninput[type=date]:focus {\n    outline: none;\n}\n\n#taskName {\n    font-size: 0.9rem;\n}\n\n#taskDescription {\n    resize: none;\n}\n\n#taskDescription,\n#taskDueDate {\n    font-family: \"Helvetica\", \"Arial\", sans-serif;\n}\n\n#taskDueDate {\n    color: #8b8b8b;\n    align-self: flex-start;\n    border: 1px solid #e5e5e5;\n    border-radius: 5px;\n    padding: 0.5rem 0.25rem;\n}\n\n#taskDueDate:focus {\n    color: #1f1f2f;\n}\n\n.form-btn-container {\n    display: flex;\n    justify-content: flex-end;\n    gap: 0.5rem;\n}\n\n.cancel-task-form-btn,\n.add-task-form-btn {\n    cursor: pointer;\n    font-weight: 600;\n    border: none;\n    border-radius: 5px;\n    padding: 8px 12px;\n}\n\n.cancel-task-form-btn {\n    background-color: #f5f5f5;\n}\n\n.cancel-task-form-btn:hover {\n    background-color: #e5e5e5;\n}\n\n.add-task-form-btn {\n    color: white;\n    background-color: #f1b7b2;\n}\n\n.add-task-form-btn:hover {\n    background-color: #db4c3f;\n}\n/* NEW TASK FORM ENDS */\n\n\n/* TASK LIST STARTS */\n.task-list-item-container {\n    display: grid;\n    justify-content: space-between;\n    grid-template-areas: \n        \"task taskOptions\"\n        \"taskDueDate taskDueDate\";\n    font-size: 0.9rem;\n    padding: 0.5rem 0;\n    border-bottom: 1px solid #e5e5e5;\n}\n\n.task {\n    grid-area: task;\n}\n\n.task-label {\n    display: flex;\n    align-items: center;\n}\n\n/* Custom checkbox starts\nSource: https://www.sliderrevolution.com/resources/css-checkbox/ (task description added) */\n.task-label,\n.task-description {\n    -webkit-user-select: none;\n    user-select: none;\n    -webkit-tap-highlight-color: transparent;\n    cursor: pointer;\n}\n\n.task-label span,\n.task-description span {\n    display: inline-block;\n    vertical-align: middle;\n    transform: translate3d(0, 0, 0);\n}\n\n.task-label span:first-child {\n    position: relative;\n    width: 20px;\n    height: 20px;\n    /* Add min width to avoid circle being squashed on mobile when task name too long */\n    min-width: 20px;\n    border-radius: 50%;\n    transform: scale(1);\n    vertical-align: middle;\n    border: 1px solid #B9B8C3;\n    transition: all 0.2s ease;\n}\n\n.task-label span:first-child svg {\n    position: absolute;\n    z-index: 1;\n    top: 5px;\n    left: 3px;\n    fill: none;\n    stroke: white;\n    stroke-width: 2;\n    stroke-linecap: round;\n    stroke-linejoin: round;\n    stroke-dasharray: 16px;\n    stroke-dashoffset: 16px;\n    transition: all 0.3s ease;\n    transition-delay: 0.1s;\n    transform: translate3d(0, 0, 0);\n}\n\n.task-label span:first-child:before {\n    content: \"\";\n    width: 100%;\n    height: 100%;\n    background: lightgrey;\n    display: block;\n    transform: scale(0);\n    opacity: 1;\n    border-radius: 50%;\n    transition-delay: 0.2s;\n}\n\n.task-label span:last-child {\n    margin-left: 8px;\n}\n\n.task-label span:last-child:after,\n.task-description span:last-child:after {\n    content: \"\";\n    position: absolute;\n    top: 8px;\n    left: 0;\n    height: 1px;\n    width: 100%;\n    background: #B9B8C3;\n    transform-origin: 0 0;\n    transform: scaleX(0);\n}\n\n.task-label:hover span:first-child {\n    border-color: grey;\n}\n\n.task-checkbox:checked + .task-label span:first-child {\n    border-color: grey;\n    background: grey;\n    animation: check 0.6s ease;\n}\n\n.task-checkbox:checked + .task-label span:first-child svg {\n    stroke-dashoffset: 0;\n}\n\n.task-checkbox:checked + .task-label span:first-child:before {\n    transform: scale(2.2);\n    opacity: 0;\n    transition: all 0.6s ease;\n}\n\n.task-checkbox:checked + .task-label span:last-child,\n.task-checkbox:checked ~ .task-description span:last-child {\n    color: #B9B8C3;\n    transition: all 0.3s ease;\n}\n\n.task-checkbox:checked + .task-label span:last-child:after,\n.task-checkbox:checked ~ .task-description span:last-child:after {\n    transform: scaleX(1);\n    transition: all 0.3s ease;\n}\n\n@keyframes check {\n  50% {\n    transform: scale(1.2);\n  }\n}\n/* Custom checkbox ends */\n\n.task-description {\n    font-size: 0.8rem;\n    color: #8b8b8b;\n    margin-left: 1.8rem;\n}\n\n.task-due-date-container {\n    grid-area: taskDueDate;\n    display: flex;\n    align-items: center;\n    color: #8b8b8b;\n    gap: 0.3rem;\n    margin-left: 1.8rem;\n    margin-top: 0.5rem;\n}\n\n.task-due-date {\n    font-size: 0.8rem;\n}\n\n.task-option-container {\n    grid-area: taskOptions;\n    display: flex;\n    align-items: center;\n    gap: 1.25rem;\n    font-size: 1rem;\n    margin-left: 1.25rem;\n}\n\n.task-option-trashcan,\n.task-option-edit,\n.task-option-calendar {\n    cursor: pointer;\n    transition: all .07s ease;\n}\n\n.task-option-trashcan:hover,\n.task-option-edit:hover,\n.task-option-calendar:hover {\n    transform: scale(1.2);\n}\n/* TASK LIST ENDS */\n\n@media only screen and (min-width: 700px) {\n    .sidebar {\n        position: initial;\n    }\n\n    .content:not(.full-width) {\n        background-color: inherit;\n    }\n\n    .content-inner-container {\n        width: 50%;\n    }\n\n    .task-list-item-container {\n        grid-template-columns: 1fr auto auto;\n        grid-template-areas: \n            \"task taskDueDate taskOptions\";\n    }\n\n    .task-due-date-container {\n        color: inherit;\n        gap: 0.5rem;\n        margin-left: 1.25rem;\n        margin-top: 0;\n    }\n}", "",{"version":3,"sources":["webpack://./src/style.css"],"names":[],"mappings":"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","sourcesContent":["/* * {\n  border: 1px solid red;\n} */\n\nhtml {\n    box-sizing: border-box;\n}\n*, *:before, *:after {\n    box-sizing: inherit;\n}\n\nbody {\n    display: grid;\n    grid-template-columns: auto 3fr;\n    grid-template-rows: auto 1fr;\n    grid-template-areas: \n        \"header header\"\n        \"sidebar content\";\n    font-family: 'Roboto', sans-serif;\n    color: #1f1f2f;\n    height: 100vh;\n    margin: 0;\n}\n\na {\n    text-decoration: none;\n    color: inherit;\n}\n\n/* HEADER STARTS */\nheader {\n    grid-area: header;\n    font-size: 1.5rem;\n    color: white;\n    background-color: #db4c3f;\n    display: flex;\n    align-items: center;\n    gap: 0.5rem;\n    padding: 0.5rem 1rem;\n}\n\n#hide-menu-btn {\n    font-size: 1.5rem;\n    border: none;\n    color: white;\n    background-color: inherit;\n}\n\n#hide-menu-btn:hover {\n    cursor: pointer;\n    background-color: #e26f65;\n}\n/* HEADER ENDS */\n\nul {\n    list-style: none;\n    margin: 0;\n    padding: 0;\n}\n\n/* SIDEBAR STARTS */\n.sidebar {\n    grid-area: sidebar;\n    background-color: #fafafa;\n    width: 300px;\n    overflow-x: hidden;\n    position: absolute;\n    top: 2.75rem;\n    height: 100%;\n    z-index: 1;\n    transition: width 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;\n}\n\n.sidebar.hidden {\n    width: 0;\n}\n\n/* Must create an inner container in sidebar otherwise\nthe padding is still displayed when sidebar is hidden */\n.sidebar-inner-container {\n    padding: 2rem 1rem;\n}\n\n.sidebar-tasks-item,\n.sidebar-projects-item {\n    display: flex;\n    gap: 0.5rem;\n    padding: 0.5rem 1rem;\n    white-space: nowrap;\n}\n\n.sidebar-tasks-item:hover,\n.sidebar-projects-item:hover {\n    background-color: #eeeeee;\n}\n\n.fa-inbox {\n    color: #4a87e4;\n}\n\n.fa-calendar-day {\n    color: #88c397;\n}\n\n.fa-calendar-week {\n    color: #8d62d0;\n}\n\n.sidebar-projects {\n    margin-top: 2rem;\n    padding: 0 1rem;\n}\n\n.projects-title {\n    font-size: 1.15rem;\n}\n/* SIDEBAR ENDS */\n\n.content {\n    grid-area: content;\n    display: flex;\n    justify-content: center;\n    padding: 2rem 0;\n    transition: margin-left 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,\n                background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;\n}\n\n.content.full-width {\n    transition: margin-left 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;\n}\n\n.content:not(.full-width) {\n    background-color: rgba(0,0,0,.5);\n}\n\n.content-inner-container {\n    width: 70%;\n    display: flex;\n    flex-direction: column;\n    gap: 1rem;\n}\n\nh2 {\n    margin: 0;\n}\n\n.add-task-container {\n    color: #8b8b8b;\n    padding-top: 0.5rem;\n\n}\n\n.add-task-btn {\n    background: none;\n\tcolor: inherit;\n\tborder: none;\n\tpadding: 0;\n\tfont: inherit;\n\tcursor: pointer;\n\toutline: inherit;\n}\n\n.add-task-btn:hover {\n    color: #dd4b39;\n}\n\n.add-task-btn::before {\n    /* Add '+' before 'Add task' */\n    font-family: fontAwesome;\n    content: \"\\f055\\00a0\";\n    font-size: 1.25rem;\n    margin-right: 0.4rem;\n}\n\n/* NEW TASK FORM STARTS */\n.new-task-form {\n    display: flex;\n    flex-direction: column;\n    gap: 0.5rem;\n    padding: 0.75rem 0;\n}\n\n.new-task-form-editor {\n    display: flex;\n    flex-direction: column;\n    gap: 0.5rem;\n    padding: 0.5rem 0.5rem;\n    border: 1px solid #e5e5e5;\n    border-radius: 10px;\n}\n\ninput[type=text],\ntextarea {\n    appearance: none;\n    border: 1px solid transparent;\n}\n  \ninput[type=text]:focus,\ntextarea:focus,\ninput[type=date]:focus {\n    outline: none;\n}\n\n#taskName {\n    font-size: 0.9rem;\n}\n\n#taskDescription {\n    resize: none;\n}\n\n#taskDescription,\n#taskDueDate {\n    font-family: \"Helvetica\", \"Arial\", sans-serif;\n}\n\n#taskDueDate {\n    color: #8b8b8b;\n    align-self: flex-start;\n    border: 1px solid #e5e5e5;\n    border-radius: 5px;\n    padding: 0.5rem 0.25rem;\n}\n\n#taskDueDate:focus {\n    color: #1f1f2f;\n}\n\n.form-btn-container {\n    display: flex;\n    justify-content: flex-end;\n    gap: 0.5rem;\n}\n\n.cancel-task-form-btn,\n.add-task-form-btn {\n    cursor: pointer;\n    font-weight: 600;\n    border: none;\n    border-radius: 5px;\n    padding: 8px 12px;\n}\n\n.cancel-task-form-btn {\n    background-color: #f5f5f5;\n}\n\n.cancel-task-form-btn:hover {\n    background-color: #e5e5e5;\n}\n\n.add-task-form-btn {\n    color: white;\n    background-color: #f1b7b2;\n}\n\n.add-task-form-btn:hover {\n    background-color: #db4c3f;\n}\n/* NEW TASK FORM ENDS */\n\n\n/* TASK LIST STARTS */\n.task-list-item-container {\n    display: grid;\n    justify-content: space-between;\n    grid-template-areas: \n        \"task taskOptions\"\n        \"taskDueDate taskDueDate\";\n    font-size: 0.9rem;\n    padding: 0.5rem 0;\n    border-bottom: 1px solid #e5e5e5;\n}\n\n.task {\n    grid-area: task;\n}\n\n.task-label {\n    display: flex;\n    align-items: center;\n}\n\n/* Custom checkbox starts\nSource: https://www.sliderrevolution.com/resources/css-checkbox/ (task description added) */\n.task-label,\n.task-description {\n    -webkit-user-select: none;\n    user-select: none;\n    -webkit-tap-highlight-color: transparent;\n    cursor: pointer;\n}\n\n.task-label span,\n.task-description span {\n    display: inline-block;\n    vertical-align: middle;\n    transform: translate3d(0, 0, 0);\n}\n\n.task-label span:first-child {\n    position: relative;\n    width: 20px;\n    height: 20px;\n    /* Add min width to avoid circle being squashed on mobile when task name too long */\n    min-width: 20px;\n    border-radius: 50%;\n    transform: scale(1);\n    vertical-align: middle;\n    border: 1px solid #B9B8C3;\n    transition: all 0.2s ease;\n}\n\n.task-label span:first-child svg {\n    position: absolute;\n    z-index: 1;\n    top: 5px;\n    left: 3px;\n    fill: none;\n    stroke: white;\n    stroke-width: 2;\n    stroke-linecap: round;\n    stroke-linejoin: round;\n    stroke-dasharray: 16px;\n    stroke-dashoffset: 16px;\n    transition: all 0.3s ease;\n    transition-delay: 0.1s;\n    transform: translate3d(0, 0, 0);\n}\n\n.task-label span:first-child:before {\n    content: \"\";\n    width: 100%;\n    height: 100%;\n    background: lightgrey;\n    display: block;\n    transform: scale(0);\n    opacity: 1;\n    border-radius: 50%;\n    transition-delay: 0.2s;\n}\n\n.task-label span:last-child {\n    margin-left: 8px;\n}\n\n.task-label span:last-child:after,\n.task-description span:last-child:after {\n    content: \"\";\n    position: absolute;\n    top: 8px;\n    left: 0;\n    height: 1px;\n    width: 100%;\n    background: #B9B8C3;\n    transform-origin: 0 0;\n    transform: scaleX(0);\n}\n\n.task-label:hover span:first-child {\n    border-color: grey;\n}\n\n.task-checkbox:checked + .task-label span:first-child {\n    border-color: grey;\n    background: grey;\n    animation: check 0.6s ease;\n}\n\n.task-checkbox:checked + .task-label span:first-child svg {\n    stroke-dashoffset: 0;\n}\n\n.task-checkbox:checked + .task-label span:first-child:before {\n    transform: scale(2.2);\n    opacity: 0;\n    transition: all 0.6s ease;\n}\n\n.task-checkbox:checked + .task-label span:last-child,\n.task-checkbox:checked ~ .task-description span:last-child {\n    color: #B9B8C3;\n    transition: all 0.3s ease;\n}\n\n.task-checkbox:checked + .task-label span:last-child:after,\n.task-checkbox:checked ~ .task-description span:last-child:after {\n    transform: scaleX(1);\n    transition: all 0.3s ease;\n}\n\n@keyframes check {\n  50% {\n    transform: scale(1.2);\n  }\n}\n/* Custom checkbox ends */\n\n.task-description {\n    font-size: 0.8rem;\n    color: #8b8b8b;\n    margin-left: 1.8rem;\n}\n\n.task-due-date-container {\n    grid-area: taskDueDate;\n    display: flex;\n    align-items: center;\n    color: #8b8b8b;\n    gap: 0.3rem;\n    margin-left: 1.8rem;\n    margin-top: 0.5rem;\n}\n\n.task-due-date {\n    font-size: 0.8rem;\n}\n\n.task-option-container {\n    grid-area: taskOptions;\n    display: flex;\n    align-items: center;\n    gap: 1.25rem;\n    font-size: 1rem;\n    margin-left: 1.25rem;\n}\n\n.task-option-trashcan,\n.task-option-edit,\n.task-option-calendar {\n    cursor: pointer;\n    transition: all .07s ease;\n}\n\n.task-option-trashcan:hover,\n.task-option-edit:hover,\n.task-option-calendar:hover {\n    transform: scale(1.2);\n}\n/* TASK LIST ENDS */\n\n@media only screen and (min-width: 700px) {\n    .sidebar {\n        position: initial;\n    }\n\n    .content:not(.full-width) {\n        background-color: inherit;\n    }\n\n    .content-inner-container {\n        width: 50%;\n    }\n\n    .task-list-item-container {\n        grid-template-columns: 1fr auto auto;\n        grid-template-areas: \n            \"task taskDueDate taskOptions\";\n    }\n\n    .task-due-date-container {\n        color: inherit;\n        gap: 0.5rem;\n        margin-left: 1.25rem;\n        margin-top: 0;\n    }\n}"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, "/* * {\n  border: 1px solid red;\n} */\n\nhtml {\n    box-sizing: border-box;\n}\n*, *:before, *:after {\n    box-sizing: inherit;\n}\n\nbody {\n    display: grid;\n    grid-template-columns: auto 3fr;\n    grid-template-rows: auto 1fr;\n    grid-template-areas: \n        \"header header\"\n        \"sidebar content\";\n    font-family: 'Roboto', sans-serif;\n    color: #1f1f2f;\n    height: 100vh;\n    margin: 0;\n}\n\na {\n    text-decoration: none;\n    color: inherit;\n}\n\n/* HEADER STARTS */\nheader {\n    grid-area: header;\n    font-size: 1.5rem;\n    color: white;\n    background-color: #db4c3f;\n    display: flex;\n    align-items: center;\n    gap: 0.5rem;\n    padding: 0.5rem 1rem;\n}\n\n#hide-menu-btn {\n    font-size: 1.5rem;\n    border: none;\n    color: white;\n    background-color: inherit;\n}\n\n#hide-menu-btn:hover {\n    cursor: pointer;\n    background-color: #e26f65;\n}\n/* HEADER ENDS */\n\nul {\n    list-style: none;\n    margin: 0;\n    padding: 0;\n}\n\n/* SIDEBAR STARTS */\n.sidebar {\n    grid-area: sidebar;\n    background-color: #fafafa;\n    width: 300px;\n    overflow-x: hidden;\n    position: absolute;\n    top: 2.75rem;\n    height: 100%;\n    z-index: 1;\n    transition: width 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;\n}\n\n.sidebar.hidden {\n    width: 0;\n}\n\n/* Must create an inner container in sidebar otherwise\nthe padding is still displayed when sidebar is hidden */\n.sidebar-inner-container {\n    padding: 2rem 1rem;\n}\n\n.sidebar-tasks-item,\n.sidebar-projects-item {\n    display: flex;\n    gap: 0.5rem;\n    padding: 0.5rem 1rem;\n    white-space: nowrap;\n}\n\n.sidebar-tasks-item:hover,\n.sidebar-projects-item:hover {\n    background-color: #eeeeee;\n}\n\n.fa-inbox {\n    color: #4a87e4;\n}\n\n.fa-calendar-day {\n    color: #88c397;\n}\n\n.fa-calendar-week {\n    color: #8d62d0;\n}\n\n.sidebar-projects {\n    margin-top: 2rem;\n    padding: 0 1rem;\n}\n\n.projects-title {\n    font-size: 1.15rem;\n}\n/* SIDEBAR ENDS */\n\n.content {\n    grid-area: content;\n    display: flex;\n    justify-content: center;\n    padding: 2rem 0;\n    transition: margin-left 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,\n                background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;\n}\n\n.content.full-width {\n    transition: margin-left 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;\n}\n\n.content:not(.full-width) {\n    background-color: rgba(0,0,0,.5);\n}\n\n.content-inner-container {\n    width: 70%;\n    display: flex;\n    flex-direction: column;\n    gap: 1rem;\n}\n\nh2 {\n    margin: 0;\n}\n\n.add-task-container {\n    color: #8b8b8b;\n    padding-top: 0.5rem;\n\n}\n\n.add-task-btn {\n    background: none;\n\tcolor: inherit;\n\tborder: none;\n\tpadding: 0;\n\tfont: inherit;\n\tcursor: pointer;\n\toutline: inherit;\n}\n\n.add-task-btn:hover {\n    color: #dd4b39;\n}\n\n.add-task-btn::before {\n    /* Add '+' before 'Add task' */\n    font-family: fontAwesome;\n    content: \"\\f055\\00a0\";\n    font-size: 1.25rem;\n    margin-right: 0.4rem;\n}\n\n/* NEW TASK FORM STARTS */\n.new-task-form {\n    display: flex;\n    flex-direction: column;\n    gap: 0.5rem;\n    padding: 0.75rem 0;\n}\n\n.new-task-form-editor {\n    display: flex;\n    flex-direction: column;\n    gap: 0.5rem;\n    padding: 0.5rem 0.5rem;\n    border: 1px solid #e5e5e5;\n    border-radius: 10px;\n}\n\ninput[type=text],\ntextarea {\n    appearance: none;\n    border: 1px solid transparent;\n}\n  \ninput[type=text]:focus,\ntextarea:focus,\ninput[type=date]:focus {\n    outline: none;\n}\n\n#taskName {\n    font-size: 0.9rem;\n}\n\n#taskDescription {\n    resize: none;\n}\n\n#taskDescription,\n#taskDueDate {\n    font-family: \"Helvetica\", \"Arial\", sans-serif;\n}\n\n#taskDueDate {\n    color: #8b8b8b;\n    align-self: flex-start;\n    border: 1px solid #e5e5e5;\n    border-radius: 5px;\n    padding: 0.5rem 0.25rem;\n}\n\n#taskDueDate:focus {\n    color: #1f1f2f;\n}\n\n.form-btn-container {\n    display: flex;\n    justify-content: flex-end;\n    gap: 0.5rem;\n}\n\n.cancel-task-form-btn,\n.add-task-form-btn {\n    cursor: pointer;\n    font-weight: 600;\n    border: none;\n    border-radius: 5px;\n    padding: 8px 12px;\n}\n\n.cancel-task-form-btn {\n    background-color: #f5f5f5;\n}\n\n.cancel-task-form-btn:hover {\n    background-color: #e5e5e5;\n}\n\n.add-task-form-btn {\n    color: white;\n    background-color: #f1b7b2;\n}\n\n.add-task-form-btn:hover {\n    background-color: #db4c3f;\n}\n/* NEW TASK FORM ENDS */\n\n\n/* TASK LIST STARTS */\n.task-list-item-container {\n    display: grid;\n    justify-content: space-between;\n    grid-template-areas: \n        \"task taskOptions\"\n        \"taskDueDate taskDueDate\";\n    font-size: 0.9rem;\n    padding: 0.5rem 0;\n    border-bottom: 1px solid #e5e5e5;\n}\n\n.task {\n    grid-area: task;\n}\n\n.task-label {\n    display: flex;\n    align-items: center;\n}\n\n/* Custom checkbox starts\nSource: https://www.sliderrevolution.com/resources/css-checkbox/ (task description added) */\n.task-label,\n.task-description {\n    -webkit-user-select: none;\n    user-select: none;\n    -webkit-tap-highlight-color: transparent;\n    cursor: pointer;\n}\n\n.task-label span,\n.task-description span {\n    display: inline-block;\n    vertical-align: middle;\n    transform: translate3d(0, 0, 0);\n}\n\n.task-label span:first-child {\n    position: relative;\n    width: 20px;\n    height: 20px;\n    /* Add min width to avoid circle being squashed on mobile when task name too long */\n    min-width: 20px;\n    border-radius: 50%;\n    transform: scale(1);\n    vertical-align: middle;\n    border: 1px solid #B9B8C3;\n    transition: all 0.2s ease;\n}\n\n.task-label span:first-child svg {\n    position: absolute;\n    z-index: 1;\n    top: 5px;\n    left: 3px;\n    fill: none;\n    stroke: white;\n    stroke-width: 2;\n    stroke-linecap: round;\n    stroke-linejoin: round;\n    stroke-dasharray: 16px;\n    stroke-dashoffset: 16px;\n    transition: all 0.3s ease;\n    transition-delay: 0.1s;\n    transform: translate3d(0, 0, 0);\n}\n\n.task-label span:first-child:before {\n    content: \"\";\n    width: 100%;\n    height: 100%;\n    background: lightgrey;\n    display: block;\n    transform: scale(0);\n    opacity: 1;\n    border-radius: 50%;\n    transition-delay: 0.2s;\n}\n\n.task-label span:last-child {\n    margin-left: 8px;\n}\n\n.task-label span:last-child:after,\n.task-description span:last-child:after {\n    content: \"\";\n    position: absolute;\n    top: 8px;\n    left: 0;\n    height: 1px;\n    width: 100%;\n    background: #B9B8C3;\n    transform-origin: 0 0;\n    transform: scaleX(0);\n}\n\n.task-label:hover span:first-child {\n    border-color: grey;\n}\n\n.task-checkbox:checked + .task-label span:first-child {\n    border-color: grey;\n    background: grey;\n    animation: check 0.6s ease;\n}\n\n.task-checkbox:checked + .task-label span:first-child svg {\n    stroke-dashoffset: 0;\n}\n\n.task-checkbox:checked + .task-label span:first-child:before {\n    transform: scale(2.2);\n    opacity: 0;\n    transition: all 0.6s ease;\n}\n\n.task-checkbox:checked + .task-label span:last-child,\n.task-checkbox:checked ~ .task-description span:last-child {\n    color: #B9B8C3;\n    transition: all 0.3s ease;\n}\n\n.task-checkbox:checked + .task-label span:last-child:after,\n.task-checkbox:checked ~ .task-description span:last-child:after {\n    transform: scaleX(1);\n    transition: all 0.3s ease;\n}\n\n@keyframes check {\n  50% {\n    transform: scale(1.2);\n  }\n}\n/* Custom checkbox ends */\n\n.task-description {\n    font-size: 0.8rem;\n    color: #8b8b8b;\n    margin-left: 1.8rem;\n}\n\n.task-due-date-container {\n    grid-area: taskDueDate;\n    display: flex;\n    align-items: center;\n    color: #8b8b8b;\n    gap: 0.3rem;\n    margin-left: 1.8rem;\n    margin-top: 0.5rem;\n}\n\n.task-due-date {\n    font-size: 0.8rem;\n}\n\n.task-option-container {\n    grid-area: taskOptions;\n    display: flex;\n    align-items: center;\n    gap: 1.25rem;\n    font-size: 1rem;\n    margin-left: 1.25rem;\n}\n\n.task-option-trashcan,\n.task-option-edit,\n.task-option-calendar {\n    cursor: pointer;\n    transition: all .07s ease;\n}\n\n.task-option-trashcan:hover,\n.task-option-edit:hover,\n.task-option-calendar:hover {\n    transform: scale(1.2);\n}\n/* TASK LIST ENDS */\n\n@media only screen and (min-width: 700px) {\n    .sidebar {\n        position: initial;\n    }\n\n    .content:not(.full-width) {\n        background-color: inherit;\n    }\n\n    .content-inner-container {\n        width: 50%;\n    }\n\n    .task-list-item-container {\n        grid-template-columns: 1fr auto auto;\n        grid-template-areas: \n            \"task taskDueDate taskOptions\";\n    }\n\n    .task-due-date-container {\n        color: inherit;\n        margin-left: 1.25rem;\n        margin-top: 0;\n    }\n}", "",{"version":3,"sources":["webpack://./src/style.css"],"names":[],"mappings":"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","sourcesContent":["/* * {\n  border: 1px solid red;\n} */\n\nhtml {\n    box-sizing: border-box;\n}\n*, *:before, *:after {\n    box-sizing: inherit;\n}\n\nbody {\n    display: grid;\n    grid-template-columns: auto 3fr;\n    grid-template-rows: auto 1fr;\n    grid-template-areas: \n        \"header header\"\n        \"sidebar content\";\n    font-family: 'Roboto', sans-serif;\n    color: #1f1f2f;\n    height: 100vh;\n    margin: 0;\n}\n\na {\n    text-decoration: none;\n    color: inherit;\n}\n\n/* HEADER STARTS */\nheader {\n    grid-area: header;\n    font-size: 1.5rem;\n    color: white;\n    background-color: #db4c3f;\n    display: flex;\n    align-items: center;\n    gap: 0.5rem;\n    padding: 0.5rem 1rem;\n}\n\n#hide-menu-btn {\n    font-size: 1.5rem;\n    border: none;\n    color: white;\n    background-color: inherit;\n}\n\n#hide-menu-btn:hover {\n    cursor: pointer;\n    background-color: #e26f65;\n}\n/* HEADER ENDS */\n\nul {\n    list-style: none;\n    margin: 0;\n    padding: 0;\n}\n\n/* SIDEBAR STARTS */\n.sidebar {\n    grid-area: sidebar;\n    background-color: #fafafa;\n    width: 300px;\n    overflow-x: hidden;\n    position: absolute;\n    top: 2.75rem;\n    height: 100%;\n    z-index: 1;\n    transition: width 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;\n}\n\n.sidebar.hidden {\n    width: 0;\n}\n\n/* Must create an inner container in sidebar otherwise\nthe padding is still displayed when sidebar is hidden */\n.sidebar-inner-container {\n    padding: 2rem 1rem;\n}\n\n.sidebar-tasks-item,\n.sidebar-projects-item {\n    display: flex;\n    gap: 0.5rem;\n    padding: 0.5rem 1rem;\n    white-space: nowrap;\n}\n\n.sidebar-tasks-item:hover,\n.sidebar-projects-item:hover {\n    background-color: #eeeeee;\n}\n\n.fa-inbox {\n    color: #4a87e4;\n}\n\n.fa-calendar-day {\n    color: #88c397;\n}\n\n.fa-calendar-week {\n    color: #8d62d0;\n}\n\n.sidebar-projects {\n    margin-top: 2rem;\n    padding: 0 1rem;\n}\n\n.projects-title {\n    font-size: 1.15rem;\n}\n/* SIDEBAR ENDS */\n\n.content {\n    grid-area: content;\n    display: flex;\n    justify-content: center;\n    padding: 2rem 0;\n    transition: margin-left 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,\n                background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;\n}\n\n.content.full-width {\n    transition: margin-left 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;\n}\n\n.content:not(.full-width) {\n    background-color: rgba(0,0,0,.5);\n}\n\n.content-inner-container {\n    width: 70%;\n    display: flex;\n    flex-direction: column;\n    gap: 1rem;\n}\n\nh2 {\n    margin: 0;\n}\n\n.add-task-container {\n    color: #8b8b8b;\n    padding-top: 0.5rem;\n\n}\n\n.add-task-btn {\n    background: none;\n\tcolor: inherit;\n\tborder: none;\n\tpadding: 0;\n\tfont: inherit;\n\tcursor: pointer;\n\toutline: inherit;\n}\n\n.add-task-btn:hover {\n    color: #dd4b39;\n}\n\n.add-task-btn::before {\n    /* Add '+' before 'Add task' */\n    font-family: fontAwesome;\n    content: \"\\f055\\00a0\";\n    font-size: 1.25rem;\n    margin-right: 0.4rem;\n}\n\n/* NEW TASK FORM STARTS */\n.new-task-form {\n    display: flex;\n    flex-direction: column;\n    gap: 0.5rem;\n    padding: 0.75rem 0;\n}\n\n.new-task-form-editor {\n    display: flex;\n    flex-direction: column;\n    gap: 0.5rem;\n    padding: 0.5rem 0.5rem;\n    border: 1px solid #e5e5e5;\n    border-radius: 10px;\n}\n\ninput[type=text],\ntextarea {\n    appearance: none;\n    border: 1px solid transparent;\n}\n  \ninput[type=text]:focus,\ntextarea:focus,\ninput[type=date]:focus {\n    outline: none;\n}\n\n#taskName {\n    font-size: 0.9rem;\n}\n\n#taskDescription {\n    resize: none;\n}\n\n#taskDescription,\n#taskDueDate {\n    font-family: \"Helvetica\", \"Arial\", sans-serif;\n}\n\n#taskDueDate {\n    color: #8b8b8b;\n    align-self: flex-start;\n    border: 1px solid #e5e5e5;\n    border-radius: 5px;\n    padding: 0.5rem 0.25rem;\n}\n\n#taskDueDate:focus {\n    color: #1f1f2f;\n}\n\n.form-btn-container {\n    display: flex;\n    justify-content: flex-end;\n    gap: 0.5rem;\n}\n\n.cancel-task-form-btn,\n.add-task-form-btn {\n    cursor: pointer;\n    font-weight: 600;\n    border: none;\n    border-radius: 5px;\n    padding: 8px 12px;\n}\n\n.cancel-task-form-btn {\n    background-color: #f5f5f5;\n}\n\n.cancel-task-form-btn:hover {\n    background-color: #e5e5e5;\n}\n\n.add-task-form-btn {\n    color: white;\n    background-color: #f1b7b2;\n}\n\n.add-task-form-btn:hover {\n    background-color: #db4c3f;\n}\n/* NEW TASK FORM ENDS */\n\n\n/* TASK LIST STARTS */\n.task-list-item-container {\n    display: grid;\n    justify-content: space-between;\n    grid-template-areas: \n        \"task taskOptions\"\n        \"taskDueDate taskDueDate\";\n    font-size: 0.9rem;\n    padding: 0.5rem 0;\n    border-bottom: 1px solid #e5e5e5;\n}\n\n.task {\n    grid-area: task;\n}\n\n.task-label {\n    display: flex;\n    align-items: center;\n}\n\n/* Custom checkbox starts\nSource: https://www.sliderrevolution.com/resources/css-checkbox/ (task description added) */\n.task-label,\n.task-description {\n    -webkit-user-select: none;\n    user-select: none;\n    -webkit-tap-highlight-color: transparent;\n    cursor: pointer;\n}\n\n.task-label span,\n.task-description span {\n    display: inline-block;\n    vertical-align: middle;\n    transform: translate3d(0, 0, 0);\n}\n\n.task-label span:first-child {\n    position: relative;\n    width: 20px;\n    height: 20px;\n    /* Add min width to avoid circle being squashed on mobile when task name too long */\n    min-width: 20px;\n    border-radius: 50%;\n    transform: scale(1);\n    vertical-align: middle;\n    border: 1px solid #B9B8C3;\n    transition: all 0.2s ease;\n}\n\n.task-label span:first-child svg {\n    position: absolute;\n    z-index: 1;\n    top: 5px;\n    left: 3px;\n    fill: none;\n    stroke: white;\n    stroke-width: 2;\n    stroke-linecap: round;\n    stroke-linejoin: round;\n    stroke-dasharray: 16px;\n    stroke-dashoffset: 16px;\n    transition: all 0.3s ease;\n    transition-delay: 0.1s;\n    transform: translate3d(0, 0, 0);\n}\n\n.task-label span:first-child:before {\n    content: \"\";\n    width: 100%;\n    height: 100%;\n    background: lightgrey;\n    display: block;\n    transform: scale(0);\n    opacity: 1;\n    border-radius: 50%;\n    transition-delay: 0.2s;\n}\n\n.task-label span:last-child {\n    margin-left: 8px;\n}\n\n.task-label span:last-child:after,\n.task-description span:last-child:after {\n    content: \"\";\n    position: absolute;\n    top: 8px;\n    left: 0;\n    height: 1px;\n    width: 100%;\n    background: #B9B8C3;\n    transform-origin: 0 0;\n    transform: scaleX(0);\n}\n\n.task-label:hover span:first-child {\n    border-color: grey;\n}\n\n.task-checkbox:checked + .task-label span:first-child {\n    border-color: grey;\n    background: grey;\n    animation: check 0.6s ease;\n}\n\n.task-checkbox:checked + .task-label span:first-child svg {\n    stroke-dashoffset: 0;\n}\n\n.task-checkbox:checked + .task-label span:first-child:before {\n    transform: scale(2.2);\n    opacity: 0;\n    transition: all 0.6s ease;\n}\n\n.task-checkbox:checked + .task-label span:last-child,\n.task-checkbox:checked ~ .task-description span:last-child {\n    color: #B9B8C3;\n    transition: all 0.3s ease;\n}\n\n.task-checkbox:checked + .task-label span:last-child:after,\n.task-checkbox:checked ~ .task-description span:last-child:after {\n    transform: scaleX(1);\n    transition: all 0.3s ease;\n}\n\n@keyframes check {\n  50% {\n    transform: scale(1.2);\n  }\n}\n/* Custom checkbox ends */\n\n.task-description {\n    font-size: 0.8rem;\n    color: #8b8b8b;\n    margin-left: 1.8rem;\n}\n\n.task-due-date-container {\n    grid-area: taskDueDate;\n    display: flex;\n    align-items: center;\n    color: #8b8b8b;\n    gap: 0.3rem;\n    margin-left: 1.8rem;\n    margin-top: 0.5rem;\n}\n\n.task-due-date {\n    font-size: 0.8rem;\n}\n\n.task-option-container {\n    grid-area: taskOptions;\n    display: flex;\n    align-items: center;\n    gap: 1.25rem;\n    font-size: 1rem;\n    margin-left: 1.25rem;\n}\n\n.task-option-trashcan,\n.task-option-edit,\n.task-option-calendar {\n    cursor: pointer;\n    transition: all .07s ease;\n}\n\n.task-option-trashcan:hover,\n.task-option-edit:hover,\n.task-option-calendar:hover {\n    transform: scale(1.2);\n}\n/* TASK LIST ENDS */\n\n@media only screen and (min-width: 700px) {\n    .sidebar {\n        position: initial;\n    }\n\n    .content:not(.full-width) {\n        background-color: inherit;\n    }\n\n    .content-inner-container {\n        width: 50%;\n    }\n\n    .task-list-item-container {\n        grid-template-columns: 1fr auto auto;\n        grid-template-areas: \n            \"task taskDueDate taskOptions\";\n    }\n\n    .task-due-date-container {\n        color: inherit;\n        margin-left: 1.25rem;\n        margin-top: 0;\n    }\n}"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -1743,6 +1743,61 @@ function toInteger(dirtyNumber) {
 
 /***/ }),
 
+/***/ "./node_modules/date-fns/esm/addDays/index.js":
+/*!****************************************************!*\
+  !*** ./node_modules/date-fns/esm/addDays/index.js ***!
+  \****************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ addDays)
+/* harmony export */ });
+/* harmony import */ var _lib_toInteger_index_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../_lib/toInteger/index.js */ "./node_modules/date-fns/esm/_lib/toInteger/index.js");
+/* harmony import */ var _toDate_index_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../toDate/index.js */ "./node_modules/date-fns/esm/toDate/index.js");
+/* harmony import */ var _lib_requiredArgs_index_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../_lib/requiredArgs/index.js */ "./node_modules/date-fns/esm/_lib/requiredArgs/index.js");
+
+
+
+/**
+ * @name addDays
+ * @category Day Helpers
+ * @summary Add the specified number of days to the given date.
+ *
+ * @description
+ * Add the specified number of days to the given date.
+ *
+ * @param {Date|Number} date - the date to be changed
+ * @param {Number} amount - the amount of days to be added. Positive decimals will be rounded using `Math.floor`, decimals less than zero will be rounded using `Math.ceil`.
+ * @returns {Date} - the new date with the days added
+ * @throws {TypeError} - 2 arguments required
+ *
+ * @example
+ * // Add 10 days to 1 September 2014:
+ * const result = addDays(new Date(2014, 8, 1), 10)
+ * //=> Thu Sep 11 2014 00:00:00
+ */
+
+function addDays(dirtyDate, dirtyAmount) {
+  (0,_lib_requiredArgs_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])(2, arguments);
+  var date = (0,_toDate_index_js__WEBPACK_IMPORTED_MODULE_1__["default"])(dirtyDate);
+  var amount = (0,_lib_toInteger_index_js__WEBPACK_IMPORTED_MODULE_2__["default"])(dirtyAmount);
+
+  if (isNaN(amount)) {
+    return new Date(NaN);
+  }
+
+  if (!amount) {
+    // If 0 days, no-op to avoid changing times in the hour before end of DST
+    return date;
+  }
+
+  date.setDate(date.getDate() + amount);
+  return date;
+}
+
+/***/ }),
+
 /***/ "./node_modules/date-fns/esm/addMilliseconds/index.js":
 /*!************************************************************!*\
   !*** ./node_modules/date-fns/esm/addMilliseconds/index.js ***!
@@ -1784,6 +1839,219 @@ function addMilliseconds(dirtyDate, dirtyAmount) {
   var amount = (0,_lib_toInteger_index_js__WEBPACK_IMPORTED_MODULE_2__["default"])(dirtyAmount);
   return new Date(timestamp + amount);
 }
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/constants/index.js":
+/*!******************************************************!*\
+  !*** ./node_modules/date-fns/esm/constants/index.js ***!
+  \******************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "daysInWeek": () => (/* binding */ daysInWeek),
+/* harmony export */   "daysInYear": () => (/* binding */ daysInYear),
+/* harmony export */   "maxTime": () => (/* binding */ maxTime),
+/* harmony export */   "millisecondsInHour": () => (/* binding */ millisecondsInHour),
+/* harmony export */   "millisecondsInMinute": () => (/* binding */ millisecondsInMinute),
+/* harmony export */   "millisecondsInSecond": () => (/* binding */ millisecondsInSecond),
+/* harmony export */   "minTime": () => (/* binding */ minTime),
+/* harmony export */   "minutesInHour": () => (/* binding */ minutesInHour),
+/* harmony export */   "monthsInQuarter": () => (/* binding */ monthsInQuarter),
+/* harmony export */   "monthsInYear": () => (/* binding */ monthsInYear),
+/* harmony export */   "quartersInYear": () => (/* binding */ quartersInYear),
+/* harmony export */   "secondsInDay": () => (/* binding */ secondsInDay),
+/* harmony export */   "secondsInHour": () => (/* binding */ secondsInHour),
+/* harmony export */   "secondsInMinute": () => (/* binding */ secondsInMinute),
+/* harmony export */   "secondsInMonth": () => (/* binding */ secondsInMonth),
+/* harmony export */   "secondsInQuarter": () => (/* binding */ secondsInQuarter),
+/* harmony export */   "secondsInWeek": () => (/* binding */ secondsInWeek),
+/* harmony export */   "secondsInYear": () => (/* binding */ secondsInYear)
+/* harmony export */ });
+/**
+ * Days in 1 week.
+ *
+ * @name daysInWeek
+ * @constant
+ * @type {number}
+ * @default
+ */
+var daysInWeek = 7;
+/**
+ * Days in 1 year
+ * One years equals 365.2425 days according to the formula:
+ *
+ * > Leap year occures every 4 years, except for years that are divisable by 100 and not divisable by 400.
+ * > 1 mean year = (365+1/4-1/100+1/400) days = 365.2425 days
+ *
+ * @name daysInYear
+ * @constant
+ * @type {number}
+ * @default
+ */
+
+var daysInYear = 365.2425;
+/**
+ * Maximum allowed time.
+ *
+ * @name maxTime
+ * @constant
+ * @type {number}
+ * @default
+ */
+
+var maxTime = Math.pow(10, 8) * 24 * 60 * 60 * 1000;
+/**
+ * Milliseconds in 1 minute
+ *
+ * @name millisecondsInMinute
+ * @constant
+ * @type {number}
+ * @default
+ */
+
+var millisecondsInMinute = 60000;
+/**
+ * Milliseconds in 1 hour
+ *
+ * @name millisecondsInHour
+ * @constant
+ * @type {number}
+ * @default
+ */
+
+var millisecondsInHour = 3600000;
+/**
+ * Milliseconds in 1 second
+ *
+ * @name millisecondsInSecond
+ * @constant
+ * @type {number}
+ * @default
+ */
+
+var millisecondsInSecond = 1000;
+/**
+ * Minimum allowed time.
+ *
+ * @name minTime
+ * @constant
+ * @type {number}
+ * @default
+ */
+
+var minTime = -maxTime;
+/**
+ * Minutes in 1 hour
+ *
+ * @name minutesInHour
+ * @constant
+ * @type {number}
+ * @default
+ */
+
+var minutesInHour = 60;
+/**
+ * Months in 1 quarter
+ *
+ * @name monthsInQuarter
+ * @constant
+ * @type {number}
+ * @default
+ */
+
+var monthsInQuarter = 3;
+/**
+ * Months in 1 year
+ *
+ * @name monthsInYear
+ * @constant
+ * @type {number}
+ * @default
+ */
+
+var monthsInYear = 12;
+/**
+ * Quarters in 1 year
+ *
+ * @name quartersInYear
+ * @constant
+ * @type {number}
+ * @default
+ */
+
+var quartersInYear = 4;
+/**
+ * Seconds in 1 hour
+ *
+ * @name secondsInHour
+ * @constant
+ * @type {number}
+ * @default
+ */
+
+var secondsInHour = 3600;
+/**
+ * Seconds in 1 minute
+ *
+ * @name secondsInMinute
+ * @constant
+ * @type {number}
+ * @default
+ */
+
+var secondsInMinute = 60;
+/**
+ * Seconds in 1 day
+ *
+ * @name secondsInDay
+ * @constant
+ * @type {number}
+ * @default
+ */
+
+var secondsInDay = secondsInHour * 24;
+/**
+ * Seconds in 1 week
+ *
+ * @name secondsInWeek
+ * @constant
+ * @type {number}
+ * @default
+ */
+
+var secondsInWeek = secondsInDay * 7;
+/**
+ * Seconds in 1 year
+ *
+ * @name secondsInYear
+ * @constant
+ * @type {number}
+ * @default
+ */
+
+var secondsInYear = secondsInDay * daysInYear;
+/**
+ * Seconds in 1 month
+ *
+ * @name secondsInMonth
+ * @constant
+ * @type {number}
+ * @default
+ */
+
+var secondsInMonth = secondsInYear / 12;
+/**
+ * Seconds in 1 quarter
+ *
+ * @name secondsInQuarter
+ * @constant
+ * @type {number}
+ * @default
+ */
+
+var secondsInQuarter = secondsInMonth * 3;
 
 /***/ }),
 
@@ -2279,6 +2547,146 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
 function isDate(value) {
   (0,_lib_requiredArgs_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])(1, arguments);
   return value instanceof Date || _typeof(value) === 'object' && Object.prototype.toString.call(value) === '[object Date]';
+}
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/isSameDay/index.js":
+/*!******************************************************!*\
+  !*** ./node_modules/date-fns/esm/isSameDay/index.js ***!
+  \******************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ isSameDay)
+/* harmony export */ });
+/* harmony import */ var _startOfDay_index_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../startOfDay/index.js */ "./node_modules/date-fns/esm/startOfDay/index.js");
+/* harmony import */ var _lib_requiredArgs_index_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../_lib/requiredArgs/index.js */ "./node_modules/date-fns/esm/_lib/requiredArgs/index.js");
+
+
+/**
+ * @name isSameDay
+ * @category Day Helpers
+ * @summary Are the given dates in the same day (and year and month)?
+ *
+ * @description
+ * Are the given dates in the same day (and year and month)?
+ *
+ * @param {Date|Number} dateLeft - the first date to check
+ * @param {Date|Number} dateRight - the second date to check
+ * @returns {Boolean} the dates are in the same day (and year and month)
+ * @throws {TypeError} 2 arguments required
+ *
+ * @example
+ * // Are 4 September 06:00:00 and 4 September 18:00:00 in the same day?
+ * const result = isSameDay(new Date(2014, 8, 4, 6, 0), new Date(2014, 8, 4, 18, 0))
+ * //=> true
+ *
+ * @example
+ * // Are 4 September and 4 October in the same day?
+ * const result = isSameDay(new Date(2014, 8, 4), new Date(2014, 9, 4))
+ * //=> false
+ *
+ * @example
+ * // Are 4 September, 2014 and 4 September, 2015 in the same day?
+ * const result = isSameDay(new Date(2014, 8, 4), new Date(2015, 8, 4))
+ * //=> false
+ */
+
+function isSameDay(dirtyDateLeft, dirtyDateRight) {
+  (0,_lib_requiredArgs_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])(2, arguments);
+  var dateLeftStartOfDay = (0,_startOfDay_index_js__WEBPACK_IMPORTED_MODULE_1__["default"])(dirtyDateLeft);
+  var dateRightStartOfDay = (0,_startOfDay_index_js__WEBPACK_IMPORTED_MODULE_1__["default"])(dirtyDateRight);
+  return dateLeftStartOfDay.getTime() === dateRightStartOfDay.getTime();
+}
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/isToday/index.js":
+/*!****************************************************!*\
+  !*** ./node_modules/date-fns/esm/isToday/index.js ***!
+  \****************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ isToday)
+/* harmony export */ });
+/* harmony import */ var _isSameDay_index_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../isSameDay/index.js */ "./node_modules/date-fns/esm/isSameDay/index.js");
+/* harmony import */ var _lib_requiredArgs_index_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../_lib/requiredArgs/index.js */ "./node_modules/date-fns/esm/_lib/requiredArgs/index.js");
+
+
+/**
+ * @name isToday
+ * @category Day Helpers
+ * @summary Is the given date today?
+ * @pure false
+ *
+ * @description
+ * Is the given date today?
+ *
+ * > ⚠️ Please note that this function is not present in the FP submodule as
+ * > it uses `Date.now()` internally hence impure and can't be safely curried.
+ *
+ * @param {Date|Number} date - the date to check
+ * @returns {Boolean} the date is today
+ * @throws {TypeError} 1 argument required
+ *
+ * @example
+ * // If today is 6 October 2014, is 6 October 14:00:00 today?
+ * const result = isToday(new Date(2014, 9, 6, 14, 0))
+ * //=> true
+ */
+
+function isToday(dirtyDate) {
+  (0,_lib_requiredArgs_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])(1, arguments);
+  return (0,_isSameDay_index_js__WEBPACK_IMPORTED_MODULE_1__["default"])(dirtyDate, Date.now());
+}
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/isTomorrow/index.js":
+/*!*******************************************************!*\
+  !*** ./node_modules/date-fns/esm/isTomorrow/index.js ***!
+  \*******************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ isTomorrow)
+/* harmony export */ });
+/* harmony import */ var _addDays_index_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../addDays/index.js */ "./node_modules/date-fns/esm/addDays/index.js");
+/* harmony import */ var _isSameDay_index_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../isSameDay/index.js */ "./node_modules/date-fns/esm/isSameDay/index.js");
+/* harmony import */ var _lib_requiredArgs_index_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../_lib/requiredArgs/index.js */ "./node_modules/date-fns/esm/_lib/requiredArgs/index.js");
+
+
+
+/**
+ * @name isTomorrow
+ * @category Day Helpers
+ * @summary Is the given date tomorrow?
+ * @pure false
+ *
+ * @description
+ * Is the given date tomorrow?
+ *
+ * > ⚠️ Please note that this function is not present in the FP submodule as
+ * > it uses `Date.now()` internally hence impure and can't be safely curried.
+ *
+ * @param {Date|Number} date - the date to check
+ * @returns {Boolean} the date is tomorrow
+ * @throws {TypeError} 1 argument required
+ *
+ * @example
+ * // If today is 6 October 2014, is 7 October 14:00:00 tomorrow?
+ * const result = isTomorrow(new Date(2014, 9, 7, 14, 0))
+ * //=> true
+ */
+
+function isTomorrow(dirtyDate) {
+  (0,_lib_requiredArgs_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])(1, arguments);
+  return (0,_isSameDay_index_js__WEBPACK_IMPORTED_MODULE_1__["default"])(dirtyDate, (0,_addDays_index_js__WEBPACK_IMPORTED_MODULE_2__["default"])(Date.now(), 1));
 }
 
 /***/ }),
@@ -2989,6 +3397,330 @@ var locale = {
 
 /***/ }),
 
+/***/ "./node_modules/date-fns/esm/parseISO/index.js":
+/*!*****************************************************!*\
+  !*** ./node_modules/date-fns/esm/parseISO/index.js ***!
+  \*****************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ parseISO)
+/* harmony export */ });
+/* harmony import */ var _constants_index_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../constants/index.js */ "./node_modules/date-fns/esm/constants/index.js");
+/* harmony import */ var _lib_requiredArgs_index_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../_lib/requiredArgs/index.js */ "./node_modules/date-fns/esm/_lib/requiredArgs/index.js");
+/* harmony import */ var _lib_toInteger_index_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../_lib/toInteger/index.js */ "./node_modules/date-fns/esm/_lib/toInteger/index.js");
+
+
+
+/**
+ * @name parseISO
+ * @category Common Helpers
+ * @summary Parse ISO string
+ *
+ * @description
+ * Parse the given string in ISO 8601 format and return an instance of Date.
+ *
+ * Function accepts complete ISO 8601 formats as well as partial implementations.
+ * ISO 8601: http://en.wikipedia.org/wiki/ISO_8601
+ *
+ * If the argument isn't a string, the function cannot parse the string or
+ * the values are invalid, it returns Invalid Date.
+ *
+ * @param {String} argument - the value to convert
+ * @param {Object} [options] - an object with options.
+ * @param {0|1|2} [options.additionalDigits=2] - the additional number of digits in the extended year format
+ * @returns {Date} the parsed date in the local time zone
+ * @throws {TypeError} 1 argument required
+ * @throws {RangeError} `options.additionalDigits` must be 0, 1 or 2
+ *
+ * @example
+ * // Convert string '2014-02-11T11:30:30' to date:
+ * const result = parseISO('2014-02-11T11:30:30')
+ * //=> Tue Feb 11 2014 11:30:30
+ *
+ * @example
+ * // Convert string '+02014101' to date,
+ * // if the additional number of digits in the extended year format is 1:
+ * const result = parseISO('+02014101', { additionalDigits: 1 })
+ * //=> Fri Apr 11 2014 00:00:00
+ */
+
+function parseISO(argument, options) {
+  var _options$additionalDi;
+
+  (0,_lib_requiredArgs_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])(1, arguments);
+  var additionalDigits = (0,_lib_toInteger_index_js__WEBPACK_IMPORTED_MODULE_1__["default"])((_options$additionalDi = options === null || options === void 0 ? void 0 : options.additionalDigits) !== null && _options$additionalDi !== void 0 ? _options$additionalDi : 2);
+
+  if (additionalDigits !== 2 && additionalDigits !== 1 && additionalDigits !== 0) {
+    throw new RangeError('additionalDigits must be 0, 1 or 2');
+  }
+
+  if (!(typeof argument === 'string' || Object.prototype.toString.call(argument) === '[object String]')) {
+    return new Date(NaN);
+  }
+
+  var dateStrings = splitDateString(argument);
+  var date;
+
+  if (dateStrings.date) {
+    var parseYearResult = parseYear(dateStrings.date, additionalDigits);
+    date = parseDate(parseYearResult.restDateString, parseYearResult.year);
+  }
+
+  if (!date || isNaN(date.getTime())) {
+    return new Date(NaN);
+  }
+
+  var timestamp = date.getTime();
+  var time = 0;
+  var offset;
+
+  if (dateStrings.time) {
+    time = parseTime(dateStrings.time);
+
+    if (isNaN(time)) {
+      return new Date(NaN);
+    }
+  }
+
+  if (dateStrings.timezone) {
+    offset = parseTimezone(dateStrings.timezone);
+
+    if (isNaN(offset)) {
+      return new Date(NaN);
+    }
+  } else {
+    var dirtyDate = new Date(timestamp + time); // js parsed string assuming it's in UTC timezone
+    // but we need it to be parsed in our timezone
+    // so we use utc values to build date in our timezone.
+    // Year values from 0 to 99 map to the years 1900 to 1999
+    // so set year explicitly with setFullYear.
+
+    var result = new Date(0);
+    result.setFullYear(dirtyDate.getUTCFullYear(), dirtyDate.getUTCMonth(), dirtyDate.getUTCDate());
+    result.setHours(dirtyDate.getUTCHours(), dirtyDate.getUTCMinutes(), dirtyDate.getUTCSeconds(), dirtyDate.getUTCMilliseconds());
+    return result;
+  }
+
+  return new Date(timestamp + time + offset);
+}
+var patterns = {
+  dateTimeDelimiter: /[T ]/,
+  timeZoneDelimiter: /[Z ]/i,
+  timezone: /([Z+-].*)$/
+};
+var dateRegex = /^-?(?:(\d{3})|(\d{2})(?:-?(\d{2}))?|W(\d{2})(?:-?(\d{1}))?|)$/;
+var timeRegex = /^(\d{2}(?:[.,]\d*)?)(?::?(\d{2}(?:[.,]\d*)?))?(?::?(\d{2}(?:[.,]\d*)?))?$/;
+var timezoneRegex = /^([+-])(\d{2})(?::?(\d{2}))?$/;
+
+function splitDateString(dateString) {
+  var dateStrings = {};
+  var array = dateString.split(patterns.dateTimeDelimiter);
+  var timeString; // The regex match should only return at maximum two array elements.
+  // [date], [time], or [date, time].
+
+  if (array.length > 2) {
+    return dateStrings;
+  }
+
+  if (/:/.test(array[0])) {
+    timeString = array[0];
+  } else {
+    dateStrings.date = array[0];
+    timeString = array[1];
+
+    if (patterns.timeZoneDelimiter.test(dateStrings.date)) {
+      dateStrings.date = dateString.split(patterns.timeZoneDelimiter)[0];
+      timeString = dateString.substr(dateStrings.date.length, dateString.length);
+    }
+  }
+
+  if (timeString) {
+    var token = patterns.timezone.exec(timeString);
+
+    if (token) {
+      dateStrings.time = timeString.replace(token[1], '');
+      dateStrings.timezone = token[1];
+    } else {
+      dateStrings.time = timeString;
+    }
+  }
+
+  return dateStrings;
+}
+
+function parseYear(dateString, additionalDigits) {
+  var regex = new RegExp('^(?:(\\d{4}|[+-]\\d{' + (4 + additionalDigits) + '})|(\\d{2}|[+-]\\d{' + (2 + additionalDigits) + '})$)');
+  var captures = dateString.match(regex); // Invalid ISO-formatted year
+
+  if (!captures) return {
+    year: NaN,
+    restDateString: ''
+  };
+  var year = captures[1] ? parseInt(captures[1]) : null;
+  var century = captures[2] ? parseInt(captures[2]) : null; // either year or century is null, not both
+
+  return {
+    year: century === null ? year : century * 100,
+    restDateString: dateString.slice((captures[1] || captures[2]).length)
+  };
+}
+
+function parseDate(dateString, year) {
+  // Invalid ISO-formatted year
+  if (year === null) return new Date(NaN);
+  var captures = dateString.match(dateRegex); // Invalid ISO-formatted string
+
+  if (!captures) return new Date(NaN);
+  var isWeekDate = !!captures[4];
+  var dayOfYear = parseDateUnit(captures[1]);
+  var month = parseDateUnit(captures[2]) - 1;
+  var day = parseDateUnit(captures[3]);
+  var week = parseDateUnit(captures[4]);
+  var dayOfWeek = parseDateUnit(captures[5]) - 1;
+
+  if (isWeekDate) {
+    if (!validateWeekDate(year, week, dayOfWeek)) {
+      return new Date(NaN);
+    }
+
+    return dayOfISOWeekYear(year, week, dayOfWeek);
+  } else {
+    var date = new Date(0);
+
+    if (!validateDate(year, month, day) || !validateDayOfYearDate(year, dayOfYear)) {
+      return new Date(NaN);
+    }
+
+    date.setUTCFullYear(year, month, Math.max(dayOfYear, day));
+    return date;
+  }
+}
+
+function parseDateUnit(value) {
+  return value ? parseInt(value) : 1;
+}
+
+function parseTime(timeString) {
+  var captures = timeString.match(timeRegex);
+  if (!captures) return NaN; // Invalid ISO-formatted time
+
+  var hours = parseTimeUnit(captures[1]);
+  var minutes = parseTimeUnit(captures[2]);
+  var seconds = parseTimeUnit(captures[3]);
+
+  if (!validateTime(hours, minutes, seconds)) {
+    return NaN;
+  }
+
+  return hours * _constants_index_js__WEBPACK_IMPORTED_MODULE_2__.millisecondsInHour + minutes * _constants_index_js__WEBPACK_IMPORTED_MODULE_2__.millisecondsInMinute + seconds * 1000;
+}
+
+function parseTimeUnit(value) {
+  return value && parseFloat(value.replace(',', '.')) || 0;
+}
+
+function parseTimezone(timezoneString) {
+  if (timezoneString === 'Z') return 0;
+  var captures = timezoneString.match(timezoneRegex);
+  if (!captures) return 0;
+  var sign = captures[1] === '+' ? -1 : 1;
+  var hours = parseInt(captures[2]);
+  var minutes = captures[3] && parseInt(captures[3]) || 0;
+
+  if (!validateTimezone(hours, minutes)) {
+    return NaN;
+  }
+
+  return sign * (hours * _constants_index_js__WEBPACK_IMPORTED_MODULE_2__.millisecondsInHour + minutes * _constants_index_js__WEBPACK_IMPORTED_MODULE_2__.millisecondsInMinute);
+}
+
+function dayOfISOWeekYear(isoWeekYear, week, day) {
+  var date = new Date(0);
+  date.setUTCFullYear(isoWeekYear, 0, 4);
+  var fourthOfJanuaryDay = date.getUTCDay() || 7;
+  var diff = (week - 1) * 7 + day + 1 - fourthOfJanuaryDay;
+  date.setUTCDate(date.getUTCDate() + diff);
+  return date;
+} // Validation functions
+// February is null to handle the leap year (using ||)
+
+
+var daysInMonths = [31, null, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+
+function isLeapYearIndex(year) {
+  return year % 400 === 0 || year % 4 === 0 && year % 100 !== 0;
+}
+
+function validateDate(year, month, date) {
+  return month >= 0 && month <= 11 && date >= 1 && date <= (daysInMonths[month] || (isLeapYearIndex(year) ? 29 : 28));
+}
+
+function validateDayOfYearDate(year, dayOfYear) {
+  return dayOfYear >= 1 && dayOfYear <= (isLeapYearIndex(year) ? 366 : 365);
+}
+
+function validateWeekDate(_year, week, day) {
+  return week >= 1 && week <= 53 && day >= 0 && day <= 6;
+}
+
+function validateTime(hours, minutes, seconds) {
+  if (hours === 24) {
+    return minutes === 0 && seconds === 0;
+  }
+
+  return seconds >= 0 && seconds < 60 && minutes >= 0 && minutes < 60 && hours >= 0 && hours < 25;
+}
+
+function validateTimezone(_hours, minutes) {
+  return minutes >= 0 && minutes <= 59;
+}
+
+/***/ }),
+
+/***/ "./node_modules/date-fns/esm/startOfDay/index.js":
+/*!*******************************************************!*\
+  !*** ./node_modules/date-fns/esm/startOfDay/index.js ***!
+  \*******************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ startOfDay)
+/* harmony export */ });
+/* harmony import */ var _toDate_index_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../toDate/index.js */ "./node_modules/date-fns/esm/toDate/index.js");
+/* harmony import */ var _lib_requiredArgs_index_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../_lib/requiredArgs/index.js */ "./node_modules/date-fns/esm/_lib/requiredArgs/index.js");
+
+
+/**
+ * @name startOfDay
+ * @category Day Helpers
+ * @summary Return the start of a day for the given date.
+ *
+ * @description
+ * Return the start of a day for the given date.
+ * The result will be in the local timezone.
+ *
+ * @param {Date|Number} date - the original date
+ * @returns {Date} the start of a day
+ * @throws {TypeError} 1 argument required
+ *
+ * @example
+ * // The start of a day for 2 September 2014 11:55:00:
+ * const result = startOfDay(new Date(2014, 8, 2, 11, 55, 0))
+ * //=> Tue Sep 02 2014 00:00:00
+ */
+
+function startOfDay(dirtyDate) {
+  (0,_lib_requiredArgs_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])(1, arguments);
+  var date = (0,_toDate_index_js__WEBPACK_IMPORTED_MODULE_1__["default"])(dirtyDate);
+  date.setHours(0, 0, 0, 0);
+  return date;
+}
+
+/***/ }),
+
 /***/ "./node_modules/date-fns/esm/subMilliseconds/index.js":
 /*!************************************************************!*\
   !*** ./node_modules/date-fns/esm/subMilliseconds/index.js ***!
@@ -3502,9 +4234,16 @@ function loadContent(title) {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "dateFormat": () => (/* binding */ dateFormat),
 /* harmony export */   "default": () => (/* binding */ createElement),
 /* harmony export */   "increment": () => (/* binding */ increment)
 /* harmony export */ });
+/* harmony import */ var date_fns__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! date-fns */ "./node_modules/date-fns/esm/parseISO/index.js");
+/* harmony import */ var date_fns__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! date-fns */ "./node_modules/date-fns/esm/isToday/index.js");
+/* harmony import */ var date_fns__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! date-fns */ "./node_modules/date-fns/esm/isTomorrow/index.js");
+/* harmony import */ var date_fns__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! date-fns */ "./node_modules/date-fns/esm/format/index.js");
+
+
 function createElement(type, className, parentEl) {
     const element = document.createElement(type);
     element.classList.add(className);
@@ -3529,6 +4268,19 @@ let increment = (function(n) {
       return n;
     }
 }(-1)); 
+
+function dateFormat(date) {
+    // Convert string to instance of date
+    date = (0,date_fns__WEBPACK_IMPORTED_MODULE_0__["default"])(date);
+
+    if ((0,date_fns__WEBPACK_IMPORTED_MODULE_1__["default"])(date)) {
+        return 'Today';
+    } else if ((0,date_fns__WEBPACK_IMPORTED_MODULE_2__["default"])(date)) {
+        return 'Tomorrow';
+    } else {
+        return (0,date_fns__WEBPACK_IMPORTED_MODULE_3__["default"])(new Date(date), 'MMM dd yyyy')
+    }
+}
 
 
 
@@ -3603,10 +4355,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var date_fns__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! date-fns */ "./node_modules/date-fns/esm/isValid/index.js");
-/* harmony import */ var date_fns__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! date-fns */ "./node_modules/date-fns/esm/format/index.js");
 /* harmony import */ var _functions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./functions */ "./src/functions.js");
-
 
 
 let myTasks = [];
@@ -3681,12 +4430,12 @@ function addTask(e) {
     let taskDescription = taskDescriptionInput.value;
     let taskDueDate = taskDueDateInput.value;
 
-    // Format date using date-fns library if a date has been entered
-    let taskDueDateFormat = (0,date_fns__WEBPACK_IMPORTED_MODULE_1__["default"])(taskDueDate) ? (0,date_fns__WEBPACK_IMPORTED_MODULE_2__["default"])(new Date(taskDueDate), 'MMM dd yyyy') : taskDueDate;
+    // If there's a due date, format, else do nothing
+    taskDueDate = taskDueDate ? (0,_functions__WEBPACK_IMPORTED_MODULE_0__.dateFormat)(taskDueDate) : taskDueDate;
 
     if (!taskName) return;
 
-    const newTask = task(taskId, taskName, taskDescription, taskDueDateFormat, 'unchecked');
+    const newTask = task(taskId, taskName, taskDescription, taskDueDate, 'unchecked');
     myTasks.push(newTask);
     console.table(myTasks);
 
