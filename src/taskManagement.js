@@ -7,24 +7,32 @@ const task = (id, name, description, dueDate, status) => {
 }
 
 function createAddTaskBtn() {
+    // Return if add task button already exists
+    if (document.querySelector('.add-task-btn')) return;
+
     const taskListDiv = document.querySelector('.task-list');
 
     const addTaskContainer = createEl('li', 'add-task-container', taskListDiv);
 
     const addTaskBtn = createEl('button', 'add-task-btn', addTaskContainer);
     addTaskBtn.textContent = 'Add task';
-    addTaskBtn.addEventListener('click', loadNewTaskForm);
+    addTaskBtn.addEventListener('click', loadNewTaskFormContainer);
 }
 
-function loadNewTaskForm() {
+function loadNewTaskFormContainer() {
     // Remove 'Add task' button    
     const addTaskContainer = document.querySelector('.add-task-container');
     addTaskContainer.parentNode.removeChild(addTaskContainer);
 
-    // FORM
+    // Create container
     const taskListDiv = document.querySelector('.task-list');
     const newTaskFormContainer = createEl('li', 'new-task-container', taskListDiv);
-    const newTaskForm = createEl('form', 'new-task-form', newTaskFormContainer);
+
+    loadNewTaskForm(newTaskFormContainer);
+}
+
+function loadNewTaskForm(parentEl) {
+    const newTaskForm = createEl('form', 'new-task-form', parentEl);
     const newTaskEditor = createEl('div', 'new-task-form-editor', newTaskForm);
 
     const taskName = createEl('input', 'taskName', newTaskEditor);
@@ -72,9 +80,6 @@ function addTask(e) {
     let taskDescription = taskDescriptionInput.value;
     let taskDueDate = taskDueDateInput.value;
 
-    // If there's a due date, format, else do nothing
-    taskDueDate = taskDueDate ? dateFormat(taskDueDate) : taskDueDate;
-
     if (!taskName) return;
 
     const newTask = task(taskId, taskName, taskDescription, taskDueDate, 'unchecked');
@@ -93,6 +98,7 @@ function createTaskEl(newTask) {
 
     // CONTAINER
     const taskContainer = createEl('li', 'task-list-item-container', newTaskFormContainer);
+    taskContainer.setAttribute('id', newTask.id);
     const task = createEl('div', 'task', taskContainer);
 
     // CUSTOM CHECKBOX AND LABEL/TASK NAME
@@ -135,7 +141,7 @@ function createTaskEl(newTask) {
         calendar.classList.add('fa-regular', 'fa-calendar');
 
         const dueDate = createEl('div', 'task-due-date', dueDateContainer);
-        dueDate.textContent = newTask.dueDate;
+        dueDate.textContent = dateFormat(newTask.dueDate);
     }
 
     // TASK OPTIONS
@@ -153,6 +159,9 @@ function createTaskEl(newTask) {
     // EVENT LISTENERS
     const checkboxes = document.querySelectorAll('.task-checkbox');
     checkboxes.forEach(checkbox => checkbox.addEventListener('change', updateTaskStatus))
+
+    const edits = document.querySelectorAll('.task-option-edit');
+    edits.forEach(edit => edit.addEventListener('click', editTask))
 
     const trashcans = document.querySelectorAll('.task-option-trashcan');
     trashcans.forEach(trashcan => trashcan.addEventListener('click', deleteTask))
@@ -178,6 +187,26 @@ function updateTaskStatus(e) {
     }
 
     console.table(myTasks);
+}
+
+function editTask(e) {
+    const task = e.target.parentElement.parentElement;
+
+    // Remove new task form if one is displayed
+    const newTaskFormContainer = document.querySelector('.new-task-container');
+    if (newTaskFormContainer) newTaskFormContainer.remove();
+    createAddTaskBtn();
+
+    // Clear task content
+    task.textContent = '';
+
+    const myTask = myTasks.find(el => el.id == task.id);
+
+    // Load form into task
+    loadNewTaskForm(task);
+    document.querySelector('.taskName').value = myTask.name;
+    document.querySelector('.taskDescription').value = myTask.description;
+    document.querySelector('.taskDueDate').value = myTask.dueDate;
 }
 
 function deleteTask(e) {
