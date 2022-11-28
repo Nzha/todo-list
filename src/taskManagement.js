@@ -1,5 +1,4 @@
-import { format, isValid } from 'date-fns';
-import createEl, { increment } from './functions';
+import createEl, { increment, dateFormat } from './functions';
 
 let myTasks = [];
 
@@ -73,12 +72,12 @@ function addTask(e) {
     let taskDescription = taskDescriptionInput.value;
     let taskDueDate = taskDueDateInput.value;
 
-    // Format date using date-fns library if a date has been entered
-    let taskDueDateFormat = isValid(taskDueDate) ? format(new Date(taskDueDate), 'MMM dd yyyy') : taskDueDate;
+    // If there's a due date, format, else do nothing
+    taskDueDate = taskDueDate ? dateFormat(taskDueDate) : taskDueDate;
 
     if (!taskName) return;
 
-    const newTask = task(taskId, taskName, taskDescription, taskDueDateFormat, 'unchecked');
+    const newTask = task(taskId, taskName, taskDescription, taskDueDate, 'unchecked');
     myTasks.push(newTask);
     console.table(myTasks);
 

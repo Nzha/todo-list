@@ -1,3 +1,5 @@
+import { format, parseISO, isToday, isTomorrow } from 'date-fns';
+
 function createElement(type, className, parentEl) {
     const element = document.createElement(type);
     element.classList.add(className);
@@ -23,4 +25,17 @@ let increment = (function(n) {
     }
 }(-1)); 
 
-export { createElement as default, increment };
+function dateFormat(date) {
+    // Convert string to instance of date
+    date = parseISO(date);
+
+    if (isToday(date)) {
+        return 'Today';
+    } else if (isTomorrow(date)) {
+        return 'Tomorrow';
+    } else {
+        return format(new Date(date), 'MMM dd yyyy')
+    }
+}
+
+export { createElement as default, increment, dateFormat };
