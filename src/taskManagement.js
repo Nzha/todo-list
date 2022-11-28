@@ -1,4 +1,4 @@
-import { format } from 'date-fns';
+import { format, isValid } from 'date-fns';
 import createEl, { increment } from './functions';
 
 let myTasks = [];
@@ -73,8 +73,8 @@ function addTask(e) {
     let taskDescription = taskDescriptionInput.value;
     let taskDueDate = taskDueDateInput.value;
 
-    // Format date using date-fns library
-    let taskDueDateFormat = format(new Date(taskDueDate), 'MMM dd yyyy');
+    // Format date using date-fns library if a date has been entered
+    let taskDueDateFormat = isValid(taskDueDate) ? format(new Date(taskDueDate), 'MMM dd yyyy') : taskDueDate;
 
     if (!taskName) return;
 
