@@ -4412,6 +4412,7 @@ function loadTaskForm(parentEl) {
     taskName.setAttribute('placeholder', 'Task name');
     taskName.setAttribute('autocomplete', 'off');
     taskName.setAttribute('maxlength', '50');
+    taskName.focus();
 
     const taskDescription = (0,_functions__WEBPACK_IMPORTED_MODULE_0__["default"])('textarea', 'taskDescription', taskEditor);
     taskDescription.setAttribute('type', 'text');
@@ -4463,7 +4464,6 @@ function addTask(e) {
     console.table(myTasks);
 
     createTaskEl(newTask);
-
     taskForm.reset();
     taskNameInput.focus();
 }
@@ -4598,6 +4598,7 @@ function editTask(e) {
     // Load task form with task info
     loadTaskForm(taskContainer);
     document.querySelector('.taskName').value = myTask.name;
+    document.querySelector('.taskName').focus();
     document.querySelector('.taskDescription').value = myTask.description;
     document.querySelector('.taskDueDate').value = myTask.dueDate;
 }
@@ -4618,10 +4619,9 @@ function saveTaskEdits(e) {
 
     if (!taskName) return;
 
-    console.table(myTasks);
-
     taskForm.remove();
     createTaskEl(myTask, taskContainer);
+    console.table(myTasks);
 }
 
 function deleteTask(e) {
