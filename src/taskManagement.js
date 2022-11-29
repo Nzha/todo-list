@@ -60,7 +60,7 @@ function loadTaskForm(parentEl) {
 
     const cancelTaskBtn = createEl('button', 'cancel-task-form-btn', btnContainer);
     cancelTaskBtn.textContent = 'Cancel';
-    cancelTaskBtn.addEventListener('click', cancelNewTaskEl)
+    cancelTaskBtn.addEventListener('click', cancelTaskForm)
 
     const addTaskBtn = createEl('button', 'add-task-form-btn', btnContainer);
     addTaskBtn.textContent = 'Add task';
@@ -174,7 +174,7 @@ function createTaskEl(task, parentEl) {
     trashcans.forEach(trashcan => trashcan.addEventListener('click', deleteTask))
 }
 
-function cancelNewTaskEl(e) {
+function cancelTaskForm(e) {
     e.preventDefault();
 
     const taskContainer = e.target.parentElement.parentElement.parentElement;
@@ -183,11 +183,10 @@ function cancelNewTaskEl(e) {
 
     const myTask = myTasks.find(el => el.id == taskContainer.id);;
 
-    // If cancelling adding a task
-    if (newTaskFormContainer) newTaskFormContainer.remove();
-    
-    // If cancelling editing a task
-    if (taskForm) {
+    // newTaskFormContainer only exists when adding a task, not when editing one
+    if (newTaskFormContainer) {
+        newTaskFormContainer.remove()
+    } else {
         taskForm.remove();
         createTaskEl(myTask, taskContainer);
     }
