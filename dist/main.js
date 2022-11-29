@@ -4384,7 +4384,7 @@ function loadNewTaskFormContainer() {
 
     // Create container
     const taskListDiv = document.querySelector('.task-list');
-    const newTaskFormContainer = (0,_functions__WEBPACK_IMPORTED_MODULE_0__["default"])('li', 'new-task-container', taskListDiv);
+    const newTaskFormContainer = (0,_functions__WEBPACK_IMPORTED_MODULE_0__["default"])('li', 'new-task-form-container', taskListDiv);
 
     const taskForm = document.querySelector('.task-form');
 
@@ -4403,6 +4403,7 @@ function loadNewTaskFormContainer() {
 function loadTaskForm(parentEl) {
     const taskForm = (0,_functions__WEBPACK_IMPORTED_MODULE_0__["default"])('form', 'task-form', parentEl);
     const taskEditor = (0,_functions__WEBPACK_IMPORTED_MODULE_0__["default"])('div', 'task-form-editor', taskForm);
+    const newTaskFormContainer = taskForm.closest('.new-task-form-container');
 
     const taskName = (0,_functions__WEBPACK_IMPORTED_MODULE_0__["default"])('input', 'taskName', taskEditor);
     taskName.setAttribute('type', 'text');
@@ -4432,8 +4433,14 @@ function loadTaskForm(parentEl) {
     cancelTaskBtn.addEventListener('click', cancelTaskForm)
 
     const addTaskBtn = (0,_functions__WEBPACK_IMPORTED_MODULE_0__["default"])('button', 'add-task-form-btn', btnContainer);
-    addTaskBtn.textContent = 'Add task';
-    addTaskBtn.addEventListener('click', addTask)
+
+    if (newTaskFormContainer) {
+        addTaskBtn.textContent = 'Add task';
+        addTaskBtn.addEventListener('click', addTask);
+    } else {
+        addTaskBtn.textContent = 'Save';
+        addTaskBtn.addEventListener('click', saveTaskEdits);
+    }
 }
 
 function addTask(e) {   
@@ -4463,7 +4470,7 @@ function addTask(e) {
 
 function createTaskEl(task, parentEl) { 
     const taskList = document.querySelector('.task-list');
-    const newTaskFormContainer = document.querySelector('.new-task-container');
+    const newTaskFormContainer = document.querySelector('.new-task-form-container');
     const taskForm = document.querySelector('.task-form');
 
     // If taskForm exists we are adding a new task, not editing one
@@ -4547,7 +4554,7 @@ function cancelTaskForm(e) {
     e.preventDefault();
 
     const taskContainer = e.target.parentElement.parentElement.parentElement;
-    const newTaskFormContainer = document.querySelector('.new-task-container');
+    const newTaskFormContainer = document.querySelector('.new-task-form-container');
     const taskForm = document.querySelector('.task-form');
 
     // Find task in myTasks for which id matches div id
@@ -4582,16 +4589,21 @@ function editTask(e) {
     const myTask = myTasks.find(el => el.id == taskDiv.id);
 
     // Remove task form if one is already displayed
-    const newTaskFormContainer = document.querySelector('.new-task-container');
+    const newTaskFormContainer = document.querySelector('.new-task-form-container');
     if (newTaskFormContainer) newTaskFormContainer.remove();
     createAddTaskBtn();
 
     taskDiv.textContent = '';
 
+    // Load task form with task info
     loadTaskForm(taskDiv);
     document.querySelector('.taskName').value = myTask.name;
     document.querySelector('.taskDescription').value = myTask.description;
     document.querySelector('.taskDueDate').value = myTask.dueDate;
+}
+
+function saveTaskEdits() {
+
 }
 
 function deleteTask(e) {
