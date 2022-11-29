@@ -4386,10 +4386,10 @@ function loadNewTaskFormContainer() {
     const taskListDiv = document.querySelector('.task-list');
     const newTaskFormContainer = (0,_functions__WEBPACK_IMPORTED_MODULE_0__["default"])('li', 'new-task-container', taskListDiv);
 
-    loadNewTaskForm(newTaskFormContainer);
+    loadTaskForm(newTaskFormContainer);
 }
 
-function loadNewTaskForm(parentEl) {
+function loadTaskForm(parentEl) {
     const taskForm = (0,_functions__WEBPACK_IMPORTED_MODULE_0__["default"])('form', 'task-form', parentEl);
     const taskEditor = (0,_functions__WEBPACK_IMPORTED_MODULE_0__["default"])('div', 'task-form-editor', taskForm);
 
@@ -4541,10 +4541,10 @@ function cancelNewTaskEl(e) {
 
     const myTask = myTasks.find(el => el.id == taskContainer.id);;
 
-    // If adding a task
+    // If cancelling adding a task
     if (newTaskFormContainer) newTaskFormContainer.remove();
     
-    // If editing a task
+    // If cancelling editing a task
     if (taskForm) {
         taskForm.remove();
         createTaskEl(myTask, taskContainer);
@@ -4569,20 +4569,17 @@ function updateTaskStatus(e) {
 }
 
 function editTask(e) {
-    const task = e.target.parentElement.parentElement;
+    const taskDiv = e.target.parentElement.parentElement;
+    const myTask = myTasks.find(el => el.id == taskDiv.id);
 
-    // Remove new task form if one is displayed
+    // Remove task form if one is already displayed
     const newTaskFormContainer = document.querySelector('.new-task-container');
     if (newTaskFormContainer) newTaskFormContainer.remove();
     createAddTaskBtn();
 
-    // Clear task content
-    task.textContent = '';
+    taskDiv.textContent = '';
 
-    const myTask = myTasks.find(el => el.id == task.id);
-
-    // Load form into task
-    loadNewTaskForm(task);
+    loadTaskForm(taskDiv);
     document.querySelector('.taskName').value = myTask.name;
     document.querySelector('.taskDescription').value = myTask.description;
     document.querySelector('.taskDueDate').value = myTask.dueDate;
