@@ -4473,11 +4473,11 @@ function createTaskEl(newTask) {
     // CUSTOM CHECKBOX AND LABEL/TASK NAME
     const checkbox = (0,_functions__WEBPACK_IMPORTED_MODULE_0__["default"])('input', 'task-checkbox', task);
     checkbox.setAttribute('type', 'checkbox');
-    checkbox.setAttribute('id', newTask.id);
+    checkbox.setAttribute('id', `input-${newTask.id}`);
     checkbox.style.display = 'none';
 
     const checkboxLabel = (0,_functions__WEBPACK_IMPORTED_MODULE_0__["default"])('label', 'task-label', task);
-    checkboxLabel.setAttribute('for', newTask.id);
+    checkboxLabel.setAttribute('for', `input-${newTask.id}`);
 
     const span = (0,_functions__WEBPACK_IMPORTED_MODULE_0__["default"])('span', 'span', checkboxLabel);
 
@@ -4561,15 +4561,15 @@ function cancelNewTaskEl(e) {
 }
 
 function updateTaskStatus(e) {
-    // Find index in array where array ID and div ID match
-    const indexArrayMatching = myTasks.findIndex(el => el.id == e.target.id);
+    const task = e.target.parentElement.parentElement;
 
-    console.log(indexArrayMatching);
+    // Find task in myTasks for which id matches div id
+    const myTask = myTasks.find(el => el.id == task.id);
 
     if (e.target.checked) {
-        myTasks[indexArrayMatching].status = 'checked';
+        myTask.status = 'checked';
     } else {
-        myTasks[indexArrayMatching].status = 'unchecked';
+        myTask.status = 'unchecked';
     }
 
     console.table(myTasks);
