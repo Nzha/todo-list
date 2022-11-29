@@ -195,17 +195,18 @@ function createTaskEl(task, parentEl) {
 function cancelTaskForm(e) {
     e.preventDefault();
 
-    const taskContainer = e.target.closest('.task-list-item-container');
     const newTaskFormContainer = document.querySelector('.new-task-form-container');
-    const taskForm = document.querySelector('.task-form');
-
-    // Find task in myTasks for which id matches div id
-    const myTask = myTasks.find(el => el.id == taskContainer.id);;
 
     // newTaskFormContainer only exists when adding a task, not when editing one
     if (newTaskFormContainer) {
         newTaskFormContainer.remove()
     } else {
+        const taskContainer = e.target.closest('.task-list-item-container');
+        const taskForm = document.querySelector('.task-form');
+
+        // Find task in myTasks for which id matches div id
+        const myTask = myTasks.find(el => el.id == taskContainer.id);;
+
         taskForm.remove();
         createTaskEl(myTask, taskContainer);
     }
@@ -222,7 +223,7 @@ function updateTaskStatus(e) {
     } else {
         myTask.status = 'unchecked';
     }
-
+    
     console.table(myTasks);
 }
 
