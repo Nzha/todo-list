@@ -4452,7 +4452,6 @@ function addTask(e) {
 
 function createTaskElContainer(newTask) {
     const taskList = document.querySelector('.task-list');
-    // const newTaskFormContainer = document.querySelector('.new-task-container');
 
     // CONTAINER
     const taskContainer = (0,_functions__WEBPACK_IMPORTED_MODULE_0__["default"])('li', 'task-list-item-container', taskList);
@@ -4464,11 +4463,6 @@ function createTaskElContainer(newTask) {
 function createTaskEl(task, parentEl) { 
     const taskList = document.querySelector('.task-list');
     const newTaskFormContainer = document.querySelector('.new-task-container');
-
-    // // CONTAINER
-    // const taskContainer = createEl('li', 'task-list-item-container', taskList);
-    // taskContainer.setAttribute('id', newTask.id);
-
 
     const taskDiv = (0,_functions__WEBPACK_IMPORTED_MODULE_0__["default"])('div', 'task', parentEl);
 
