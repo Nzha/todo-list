@@ -4444,40 +4444,42 @@ function addTask(e) {
     myTasks.push(newTask);
     console.table(myTasks);
 
-    createTaskEl(newTask);
+    createTaskElContainer(newTask);
 
     newTaskForm.reset();
     taskNameInput.focus();
 }
 
-// function createTaskElContainer(newTask) {
-//     const taskList = document.querySelector('.task-list');
-//     const newTaskFormContainer = document.querySelector('.new-task-container');
+function createTaskElContainer(newTask) {
+    const taskList = document.querySelector('.task-list');
+    // const newTaskFormContainer = document.querySelector('.new-task-container');
 
-//     // CONTAINER
-//     const taskContainer = createEl('li', 'task-list-item-container', newTaskFormContainer);
-//     taskContainer.setAttribute('id', newTask.id);
+    // CONTAINER
+    const taskContainer = (0,_functions__WEBPACK_IMPORTED_MODULE_0__["default"])('li', 'task-list-item-container', taskList);
+    taskContainer.setAttribute('id', newTask.id);
 
-//     createTaskEl(newTask, parentEl)
-// }
+    createTaskEl(newTask, taskContainer)
+}
 
-function createTaskEl(newTask) { 
+function createTaskEl(task, parentEl) { 
     const taskList = document.querySelector('.task-list');
     const newTaskFormContainer = document.querySelector('.new-task-container');
 
-    // CONTAINER
-    const taskContainer = (0,_functions__WEBPACK_IMPORTED_MODULE_0__["default"])('li', 'task-list-item-container', newTaskFormContainer);
-    taskContainer.setAttribute('id', newTask.id);
-    const task = (0,_functions__WEBPACK_IMPORTED_MODULE_0__["default"])('div', 'task', taskContainer);
+    // // CONTAINER
+    // const taskContainer = createEl('li', 'task-list-item-container', taskList);
+    // taskContainer.setAttribute('id', newTask.id);
+
+
+    const taskDiv = (0,_functions__WEBPACK_IMPORTED_MODULE_0__["default"])('div', 'task', parentEl);
 
     // CUSTOM CHECKBOX AND LABEL/TASK NAME
-    const checkbox = (0,_functions__WEBPACK_IMPORTED_MODULE_0__["default"])('input', 'task-checkbox', task);
+    const checkbox = (0,_functions__WEBPACK_IMPORTED_MODULE_0__["default"])('input', 'task-checkbox', taskDiv);
     checkbox.setAttribute('type', 'checkbox');
-    checkbox.setAttribute('id', `input-${newTask.id}`);
+    checkbox.setAttribute('id', `input-${task.id}`);
     checkbox.style.display = 'none';
 
-    const checkboxLabel = (0,_functions__WEBPACK_IMPORTED_MODULE_0__["default"])('label', 'task-label', task);
-    checkboxLabel.setAttribute('for', `input-${newTask.id}`);
+    const checkboxLabel = (0,_functions__WEBPACK_IMPORTED_MODULE_0__["default"])('label', 'task-label', taskDiv);
+    checkboxLabel.setAttribute('for', `input-${task.id}`);
 
     const span = (0,_functions__WEBPACK_IMPORTED_MODULE_0__["default"])('span', 'span', checkboxLabel);
 
@@ -4492,29 +4494,29 @@ function createTaskEl(newTask) {
     svg.appendChild(polyline);
 
     const span2 = (0,_functions__WEBPACK_IMPORTED_MODULE_0__["default"])('span', 'span2', checkboxLabel);
-    span2.textContent = newTask.name;
+    span2.textContent = task.name;
 
     // TASK DESCRIPTION
-    if (newTask.description) {
-        const taskDescription = (0,_functions__WEBPACK_IMPORTED_MODULE_0__["default"])('div', 'task-description', task);
+    if (task.description) {
+        const taskDescription = (0,_functions__WEBPACK_IMPORTED_MODULE_0__["default"])('div', 'task-description', taskDiv);
 
         const span3 = (0,_functions__WEBPACK_IMPORTED_MODULE_0__["default"])('span', 'span3', taskDescription);
-        span3.textContent = newTask.description;
+        span3.textContent = task.description;
     }
 
     // TASK DUE DATE
-    if (newTask.dueDate) {
-        const dueDateContainer = (0,_functions__WEBPACK_IMPORTED_MODULE_0__["default"])('div', 'task-due-date-container', taskContainer);
+    if (task.dueDate) {
+        const dueDateContainer = (0,_functions__WEBPACK_IMPORTED_MODULE_0__["default"])('div', 'task-due-date-container', parentEl);
 
         const calendar = (0,_functions__WEBPACK_IMPORTED_MODULE_0__["default"])('div', 'task-option-calendar', dueDateContainer);
         calendar.classList.add('fa-regular', 'fa-calendar');
 
         const dueDate = (0,_functions__WEBPACK_IMPORTED_MODULE_0__["default"])('div', 'task-due-date', dueDateContainer);
-        dueDate.textContent = (0,_functions__WEBPACK_IMPORTED_MODULE_0__.dateFormat)(newTask.dueDate);
+        dueDate.textContent = (0,_functions__WEBPACK_IMPORTED_MODULE_0__.dateFormat)(task.dueDate);
     }
 
     // TASK OPTIONS
-    const taskOptionContainer = (0,_functions__WEBPACK_IMPORTED_MODULE_0__["default"])('div', 'task-option-container', taskContainer);
+    const taskOptionContainer = (0,_functions__WEBPACK_IMPORTED_MODULE_0__["default"])('div', 'task-option-container', parentEl);
 
     const edit = (0,_functions__WEBPACK_IMPORTED_MODULE_0__["default"])('div', 'task-option-edit', taskOptionContainer);
     edit.classList.add('fa-regular', 'fa-pen-to-square');
@@ -4523,7 +4525,7 @@ function createTaskEl(newTask) {
     trashcan.classList.add('fa-regular', 'fa-trash-can');
 
     // INSERT TASK INTO LIST BEFORE NEW TASK FORM
-    taskList.insertBefore(taskContainer, newTaskFormContainer);
+    taskList.insertBefore(parentEl, newTaskFormContainer);
 
     // EVENT LISTENERS
     const checkboxes = document.querySelectorAll('.task-checkbox');
@@ -4539,22 +4541,20 @@ function createTaskEl(newTask) {
 function cancelNewTaskEl(e) {
     e.preventDefault();
 
+    const taskContainer = e.target.parentElement.parentElement.parentElement;
     const newTaskFormContainer = document.querySelector('.new-task-container');
-    
-    
     const newTaskForm = document.querySelector('.new-task-form');
 
-    const myTask = myTasks.find(el => el.id == task.id);;
+    const myTask = myTasks.find(el => el.id == taskContainer.id);;
+
+    console.log(myTask);
 
     if (newTaskFormContainer) newTaskFormContainer.remove();
     
     if (newTaskForm) {
         newTaskForm.remove();
-        createTaskEl(myTask);
+        createTaskEl(myTask, taskContainer);
     }
-
-
-
 
     // newTaskFormContainer.remove();
     createAddTaskBtn();
