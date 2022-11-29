@@ -173,14 +173,14 @@ h2 {
 }
 
 /* NEW TASK FORM STARTS */
-.new-task-form {
+.task-form {
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
     padding: 0.75rem 0;
 }
 
-.new-task-form-editor {
+.task-form-editor {
     display: flex;
     flex-direction: column;
     gap: 0.5rem;

@@ -32,10 +32,10 @@ function loadNewTaskFormContainer() {
 }
 
 function loadNewTaskForm(parentEl) {
-    const newTaskForm = createEl('form', 'new-task-form', parentEl);
-    const newTaskEditor = createEl('div', 'new-task-form-editor', newTaskForm);
+    const taskForm = createEl('form', 'task-form', parentEl);
+    const taskEditor = createEl('div', 'task-form-editor', taskForm);
 
-    const taskName = createEl('input', 'taskName', newTaskEditor);
+    const taskName = createEl('input', 'taskName', taskEditor);
     taskName.setAttribute('type', 'text');
     taskName.setAttribute('id', 'taskName');
     taskName.setAttribute('name', 'taskName');
@@ -43,20 +43,20 @@ function loadNewTaskForm(parentEl) {
     taskName.setAttribute('autocomplete', 'off');
     taskName.setAttribute('maxlength', '50');
 
-    const taskDescription = createEl('textarea', 'taskDescription', newTaskEditor);
+    const taskDescription = createEl('textarea', 'taskDescription', taskEditor);
     taskDescription.setAttribute('type', 'text');
     taskDescription.setAttribute('id', 'taskDescription');
     taskDescription.setAttribute('name', 'taskDescription');
     taskDescription.setAttribute('placeholder', 'Description');
     taskDescription.setAttribute('maxlength', '300');
 
-    const taskDueDate = createEl('input', 'taskDueDate', newTaskEditor);
+    const taskDueDate = createEl('input', 'taskDueDate', taskEditor);
     taskDueDate.setAttribute('type', 'date');
     taskDueDate.setAttribute('id', 'taskDueDate');
     taskDueDate.setAttribute('name', 'taskDueDate');
     taskDueDate.setAttribute('placeholder', 'Description');
 
-    const btnContainer = createEl('div', 'form-btn-container', newTaskForm);
+    const btnContainer = createEl('div', 'form-btn-container', taskForm);
 
     const cancelTaskBtn = createEl('button', 'cancel-task-form-btn', btnContainer);
     cancelTaskBtn.textContent = 'Cancel';
@@ -70,7 +70,7 @@ function loadNewTaskForm(parentEl) {
 function addTask(e) {   
     e.preventDefault();
 
-    const newTaskForm = document.querySelector('.new-task-form');
+    const taskForm = document.querySelector('.task-form');
     const taskNameInput = document.querySelector('#taskName');
     const taskDescriptionInput = document.querySelector('#taskDescription');
     const taskDueDateInput = document.querySelector('#taskDueDate');
@@ -88,17 +88,17 @@ function addTask(e) {
 
     createTaskEl(newTask);
 
-    newTaskForm.reset();
+    taskForm.reset();
     taskNameInput.focus();
 }
 
 function createTaskEl(task, parentEl) { 
     const taskList = document.querySelector('.task-list');
     const newTaskFormContainer = document.querySelector('.new-task-container');
-    const newTaskForm = document.querySelector('.new-task-form');
+    const taskForm = document.querySelector('.task-form');
 
-    // If newTaskForm exists we are adding a new task, not editing one
-    if (newTaskForm) {
+    // If taskForm exists we are adding a new task, not editing one
+    if (taskForm) {
         // CONTAINER
         const taskContainer = createEl('li', 'task-list-item-container', taskList);
         taskContainer.setAttribute('id', task.id);
@@ -161,7 +161,7 @@ function createTaskEl(task, parentEl) {
     trashcan.classList.add('fa-regular', 'fa-trash-can');
 
     // Insert task into list before new task form if we are not editing a task
-    if (newTaskForm) taskList.insertBefore(parentEl, newTaskFormContainer);
+    if (taskForm) taskList.insertBefore(parentEl, newTaskFormContainer);
 
     // EVENT LISTENERS
     const checkboxes = document.querySelectorAll('.task-checkbox');
@@ -179,7 +179,7 @@ function cancelNewTaskEl(e) {
 
     const taskContainer = e.target.parentElement.parentElement.parentElement;
     const newTaskFormContainer = document.querySelector('.new-task-container');
-    const newTaskForm = document.querySelector('.new-task-form');
+    const taskForm = document.querySelector('.task-form');
 
     const myTask = myTasks.find(el => el.id == taskContainer.id);;
 
@@ -187,8 +187,8 @@ function cancelNewTaskEl(e) {
     if (newTaskFormContainer) newTaskFormContainer.remove();
     
     // If editing a task
-    if (newTaskForm) {
-        newTaskForm.remove();
+    if (taskForm) {
+        taskForm.remove();
         createTaskEl(myTask, taskContainer);
     }
 
