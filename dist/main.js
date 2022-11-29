@@ -4386,6 +4386,17 @@ function loadNewTaskFormContainer() {
     const taskListDiv = document.querySelector('.task-list');
     const newTaskFormContainer = (0,_functions__WEBPACK_IMPORTED_MODULE_0__["default"])('li', 'new-task-container', taskListDiv);
 
+    const taskForm = document.querySelector('.task-form');
+
+    // Remove existing task form if any
+    if (taskForm) {
+        const taskContainer = taskForm.closest('.task-list-item-container');
+        const myTask = myTasks.find(el => el.id == taskContainer.id);
+
+        taskForm.remove();
+        createTaskEl(myTask, taskContainer);
+    }
+
     loadTaskForm(newTaskFormContainer);
 }
 
