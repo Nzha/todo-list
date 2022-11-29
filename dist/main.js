@@ -4553,7 +4553,7 @@ function createTaskEl(task, parentEl) {
 function cancelTaskForm(e) {
     e.preventDefault();
 
-    const taskContainer = e.target.parentElement.parentElement.parentElement;
+    const taskContainer = e.target.closest('.task-list-item-container');
     const newTaskFormContainer = document.querySelector('.new-task-form-container');
     const taskForm = document.querySelector('.task-form');
 
@@ -4572,8 +4572,8 @@ function cancelTaskForm(e) {
 }
 
 function updateTaskStatus(e) {
-    const taskDiv = e.target.parentElement.parentElement;
-    const myTask = myTasks.find(el => el.id == taskDiv.id);
+    const taskContainer = e.target.closest('.task-list-item-container');
+    const myTask = myTasks.find(el => el.id == taskContainer.id);
 
     if (e.target.checked) {
         myTask.status = 'checked';
@@ -4585,33 +4585,51 @@ function updateTaskStatus(e) {
 }
 
 function editTask(e) {
-    const taskDiv = e.target.parentElement.parentElement;
-    const myTask = myTasks.find(el => el.id == taskDiv.id);
+    const taskContainer = e.target.closest('.task-list-item-container');
+    const myTask = myTasks.find(el => el.id == taskContainer.id);
 
     // Remove task form if one is already displayed
     const newTaskFormContainer = document.querySelector('.new-task-form-container');
     if (newTaskFormContainer) newTaskFormContainer.remove();
     createAddTaskBtn();
 
-    taskDiv.textContent = '';
+    taskContainer.textContent = '';
 
     // Load task form with task info
-    loadTaskForm(taskDiv);
+    loadTaskForm(taskContainer);
     document.querySelector('.taskName').value = myTask.name;
     document.querySelector('.taskDescription').value = myTask.description;
     document.querySelector('.taskDueDate').value = myTask.dueDate;
 }
 
-function saveTaskEdits() {
+function saveTaskEdits(e) {
+    e.preventDefault();
 
+    const taskContainer = e.target.closest('.task-list-item-container');
+    const taskForm = document.querySelector('.task-form')
+    const taskNameInput = document.querySelector('#taskName');
+    const taskDescriptionInput = document.querySelector('#taskDescription');
+    const taskDueDateInput = document.querySelector('#taskDueDate');
+    const myTask = myTasks.find(el => el.id == taskContainer.id);
+
+    myTask.name = taskNameInput.value;
+    myTask.description = taskDescriptionInput.value;
+    myTask.dueDate = taskDueDateInput.value;
+
+    if (!taskName) return;
+
+    console.table(myTasks);
+
+    taskForm.remove();
+    createTaskEl(myTask, taskContainer);
 }
 
 function deleteTask(e) {
-    const taskDiv = e.target.parentElement.parentElement;
-    const myTaskIndex = myTasks.findIndex(el => el.id == taskDiv.id);
+    const taskContainer = e.target.closest('.task-list-item-container');
+    const myTaskIndex = myTasks.findIndex(el => el.id == taskContainer.id);
 
     myTasks.splice(myTaskIndex, 1);
-    taskDiv.remove();
+    taskContainer.remove();
     console.table(myTasks);
 }
 
