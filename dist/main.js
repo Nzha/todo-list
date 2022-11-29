@@ -4463,10 +4463,12 @@ function createTaskElContainer(newTask) {
 function createTaskEl(task, parentEl) { 
     const taskList = document.querySelector('.task-list');
     const newTaskFormContainer = document.querySelector('.new-task-container');
+    const newTaskForm = document.querySelector('.new-task-form');
 
+    // TASK
     const taskDiv = (0,_functions__WEBPACK_IMPORTED_MODULE_0__["default"])('div', 'task', parentEl);
 
-    // CUSTOM CHECKBOX AND LABEL/TASK NAME
+    // TASK - Custom checkbox and label/task name
     const checkbox = (0,_functions__WEBPACK_IMPORTED_MODULE_0__["default"])('input', 'task-checkbox', taskDiv);
     checkbox.setAttribute('type', 'checkbox');
     checkbox.setAttribute('id', `input-${task.id}`);
@@ -4490,7 +4492,7 @@ function createTaskEl(task, parentEl) {
     const span2 = (0,_functions__WEBPACK_IMPORTED_MODULE_0__["default"])('span', 'span2', checkboxLabel);
     span2.textContent = task.name;
 
-    // TASK DESCRIPTION
+    // TASK - description
     if (task.description) {
         const taskDescription = (0,_functions__WEBPACK_IMPORTED_MODULE_0__["default"])('div', 'task-description', taskDiv);
 
@@ -4519,7 +4521,7 @@ function createTaskEl(task, parentEl) {
     trashcan.classList.add('fa-regular', 'fa-trash-can');
 
     // INSERT TASK INTO LIST BEFORE NEW TASK FORM
-    taskList.insertBefore(parentEl, newTaskFormContainer);
+    if (newTaskForm) taskList.insertBefore(parentEl, newTaskFormContainer);
 
     // EVENT LISTENERS
     const checkboxes = document.querySelectorAll('.task-checkbox');
@@ -4540,8 +4542,6 @@ function cancelNewTaskEl(e) {
     const newTaskForm = document.querySelector('.new-task-form');
 
     const myTask = myTasks.find(el => el.id == taskContainer.id);;
-
-    console.log(myTask);
 
     if (newTaskFormContainer) newTaskFormContainer.remove();
     
