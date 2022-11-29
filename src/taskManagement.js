@@ -92,6 +92,17 @@ function addTask(e) {
     taskNameInput.focus();
 }
 
+// function createTaskElContainer(newTask) {
+//     const taskList = document.querySelector('.task-list');
+//     const newTaskFormContainer = document.querySelector('.new-task-container');
+
+//     // CONTAINER
+//     const taskContainer = createEl('li', 'task-list-item-container', newTaskFormContainer);
+//     taskContainer.setAttribute('id', newTask.id);
+
+//     createTaskEl(newTask, parentEl)
+// }
+
 function createTaskEl(newTask) { 
     const taskList = document.querySelector('.task-list');
     const newTaskFormContainer = document.querySelector('.new-task-container');
@@ -171,14 +182,31 @@ function cancelNewTaskEl(e) {
     e.preventDefault();
 
     const newTaskFormContainer = document.querySelector('.new-task-container');
+    
+    
+    const newTaskForm = document.querySelector('.new-task-form');
 
-    newTaskFormContainer.remove();
+    const myTask = myTasks.find(el => el.id == task.id);;
+
+    if (newTaskFormContainer) newTaskFormContainer.remove();
+    
+    if (newTaskForm) {
+        newTaskForm.remove();
+        createTaskEl(myTask);
+    }
+
+
+
+
+    // newTaskFormContainer.remove();
     createAddTaskBtn();
 }
 
 function updateTaskStatus(e) {
     // Find index in array where array ID and div ID match
     const indexArrayMatching = myTasks.findIndex(el => el.id == e.target.id);
+
+    console.log(indexArrayMatching);
 
     if (e.target.checked) {
         myTasks[indexArrayMatching].status = 'checked';
