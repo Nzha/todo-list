@@ -181,6 +181,7 @@ function cancelTaskForm(e) {
     const newTaskFormContainer = document.querySelector('.new-task-container');
     const taskForm = document.querySelector('.task-form');
 
+    // Find task in myTasks for which id matches div id
     const myTask = myTasks.find(el => el.id == taskContainer.id);;
 
     // newTaskFormContainer only exists when adding a task, not when editing one
@@ -195,10 +196,8 @@ function cancelTaskForm(e) {
 }
 
 function updateTaskStatus(e) {
-    const task = e.target.parentElement.parentElement;
-
-    // Find task in myTasks for which id matches div id
-    const myTask = myTasks.find(el => el.id == task.id);
+    const taskDiv = e.target.parentElement.parentElement;
+    const myTask = myTasks.find(el => el.id == taskDiv.id);
 
     if (e.target.checked) {
         myTask.status = 'checked';
@@ -227,13 +226,11 @@ function editTask(e) {
 }
 
 function deleteTask(e) {
-    const eventTaskId = e.target.parentElement.parentElement.querySelector('.task-checkbox').id;
+    const taskDiv = e.target.parentElement.parentElement;
+    const myTaskIndex = myTasks.findIndex(el => el.id == taskDiv.id);
 
-    // Find index in array where array ID and div ID match
-    const indexArrayMatching = myTasks.findIndex(el => el.id == eventTaskId);
-
-    myTasks.splice(indexArrayMatching, 1);
-    e.target.parentElement.parentElement.remove();
+    myTasks.splice(myTaskIndex, 1);
+    taskDiv.remove();
     console.table(myTasks);
 }
 
