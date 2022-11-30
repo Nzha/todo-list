@@ -105,6 +105,20 @@ function addTask(e) {
     myTasks.push(newTask);
     console.table(myTasks);
 
+
+
+
+
+    // Store tasks on user's computer
+    localStorage.setItem('tasks', JSON.stringify(myTasks));
+    const storedTasks = JSON.parse(localStorage.getItem('tasks'));
+    console.log(storedTasks);
+    // localStorage.clear();
+
+
+
+
+
     createTaskEl(newTask);
     taskForm.reset();
     taskNameInput.focus();
@@ -115,8 +129,17 @@ function createTaskEl(task, parentEl) {
     const newTaskFormContainer = document.querySelector('.new-task-form-container');
     const taskForm = document.querySelector('.task-form');
 
-    // If taskForm exists we are adding a new task, not editing one
-    if (taskForm) {
+
+
+    
+
+
+    const storedTasks = JSON.parse(localStorage.getItem('tasks'));
+
+
+
+    // Container required if a new task or a locally stored one is added, not when editing one.
+    if (taskForm || storedTasks) {
         // CONTAINER
         const taskContainer = createEl('li', 'task-list-item-container', taskList);
         taskContainer.setAttribute('id', task.id);
@@ -276,4 +299,5 @@ function deleteTask(e) {
     console.table(myTasks);
 }
 
-export default createAddTaskBtn;
+// export default createAddTaskBtn;
+export { createAddTaskBtn as default, myTasks, createTaskEl };

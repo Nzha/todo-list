@@ -4219,6 +4219,33 @@ function loadContent(title) {
     const taskContainer = (0,_functions__WEBPACK_IMPORTED_MODULE_0__["default"])('div', 'task-container', contentContainer);
     const taskList = (0,_functions__WEBPACK_IMPORTED_MODULE_0__["default"])('ul', 'task-list', taskContainer);
     
+
+
+
+
+
+    // myTasks;
+
+    const storedTasks = JSON.parse(localStorage.getItem('tasks'));
+    console.log(storedTasks);
+
+    if (storedTasks) {
+        // storedTasks.forEach(storedTask => console.log(storedTask));
+        storedTasks.forEach(storedTask => (0,_taskManagement__WEBPACK_IMPORTED_MODULE_1__.createTaskEl)(storedTask, taskContainer));
+
+        // for (const storedTask of storedTasks) {
+        //     const taskContainer = createEl('li', 'task-list-item-container', taskList);
+        //     taskContainer.setAttribute('id', storedTask.id);
+        //     createTaskEl(storedTask, taskContainer);
+        // }
+    }
+
+
+
+
+    
+
+
     (0,_taskManagement__WEBPACK_IMPORTED_MODULE_1__["default"])();
 }
 
@@ -4353,7 +4380,9 @@ getPage();
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */   "createTaskEl": () => (/* binding */ createTaskEl),
+/* harmony export */   "default": () => (/* binding */ createAddTaskBtn),
+/* harmony export */   "myTasks": () => (/* binding */ myTasks)
 /* harmony export */ });
 /* harmony import */ var _functions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./functions */ "./src/functions.js");
 
@@ -4463,6 +4492,20 @@ function addTask(e) {
     myTasks.push(newTask);
     console.table(myTasks);
 
+
+
+
+
+    // Store tasks on user's computer
+    localStorage.setItem('tasks', JSON.stringify(myTasks));
+    const storedTasks = JSON.parse(localStorage.getItem('tasks'));
+    console.log(storedTasks);
+    // localStorage.clear();
+
+
+
+
+
     createTaskEl(newTask);
     taskForm.reset();
     taskNameInput.focus();
@@ -4473,8 +4516,17 @@ function createTaskEl(task, parentEl) {
     const newTaskFormContainer = document.querySelector('.new-task-form-container');
     const taskForm = document.querySelector('.task-form');
 
-    // If taskForm exists we are adding a new task, not editing one
-    if (taskForm) {
+
+
+    
+
+
+    const storedTasks = JSON.parse(localStorage.getItem('tasks'));
+
+
+
+    // Container required if a new task or a locally stored one is added, not when editing one.
+    if (taskForm || storedTasks) {
         // CONTAINER
         const taskContainer = (0,_functions__WEBPACK_IMPORTED_MODULE_0__["default"])('li', 'task-list-item-container', taskList);
         taskContainer.setAttribute('id', task.id);
@@ -4634,7 +4686,8 @@ function deleteTask(e) {
     console.table(myTasks);
 }
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (createAddTaskBtn);
+// export default createAddTaskBtn;
+
 
 /***/ })
 
