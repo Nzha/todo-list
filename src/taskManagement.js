@@ -102,12 +102,7 @@ function addTask(e) {
     let taskId = increment();
 
     // Prevent identical IDs
-    myTasks.forEach(myTask => {
-        if (myTask.id == taskId) {
-            taskId = increment();
-        }
-    });
-
+    myTasks.forEach(myTask => {if (myTask.id == taskId) taskId = increment()});
 
     let taskName = taskNameInput.value;
     let taskDescription = taskDescriptionInput.value;
@@ -256,7 +251,6 @@ function editTask(e) {
 
     taskContainer.textContent = '';
 
-    // Load task form with task info
     loadTaskForm(taskContainer);
     document.querySelector('.taskName').value = myTask.name;
     document.querySelector('.taskName').focus();

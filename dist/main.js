@@ -4489,12 +4489,7 @@ function addTask(e) {
     let taskId = (0,_functions__WEBPACK_IMPORTED_MODULE_0__.increment)();
 
     // Prevent identical IDs
-    myTasks.forEach(myTask => {
-        if (myTask.id == taskId) {
-            taskId = (0,_functions__WEBPACK_IMPORTED_MODULE_0__.increment)();
-        }
-    });
-
+    myTasks.forEach(myTask => {if (myTask.id == taskId) taskId = (0,_functions__WEBPACK_IMPORTED_MODULE_0__.increment)()});
 
     let taskName = taskNameInput.value;
     let taskDescription = taskDescriptionInput.value;
@@ -4643,7 +4638,6 @@ function editTask(e) {
 
     taskContainer.textContent = '';
 
-    // Load task form with task info
     loadTaskForm(taskContainer);
     document.querySelector('.taskName').value = myTask.name;
     document.querySelector('.taskName').focus();
