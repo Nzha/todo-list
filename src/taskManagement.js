@@ -2,6 +2,11 @@ import createEl, { increment, dateFormat } from './functions';
 
 let myTasks = [];
 
+// Update myTasks with locally stored tasks
+const storedTasks = JSON.parse(localStorage.getItem('tasks'));
+if (storedTasks) myTasks = JSON.parse(localStorage.getItem('tasks'));
+console.table(myTasks);
+
 const task = (id, name, description, dueDate, status) => {
     return {id, name, description, dueDate, status};
 }
@@ -95,6 +100,15 @@ function addTask(e) {
     const taskDueDateInput = document.querySelector('#taskDueDate');
 
     let taskId = increment();
+
+    // Prevent identical IDs
+    myTasks.forEach(myTask => {
+        if (myTask.id == taskId) {
+            taskId = increment();
+        }
+    });
+
+
     let taskName = taskNameInput.value;
     let taskDescription = taskDescriptionInput.value;
     let taskDueDate = taskDueDateInput.value;
@@ -105,41 +119,21 @@ function addTask(e) {
     myTasks.push(newTask);
     console.table(myTasks);
 
-
-
-
-
     // Store tasks on user's computer
     localStorage.setItem('tasks', JSON.stringify(myTasks));
-    const storedTasks = JSON.parse(localStorage.getItem('tasks'));
-    console.log(storedTasks);
-    // localStorage.clear();
 
-
-
-
-
-    createTaskEl(newTask);
+    createTaskEl(newTask, true);
     taskForm.reset();
     taskNameInput.focus();
 }
 
-function createTaskEl(task, parentEl) { 
+function createTaskEl(task, container, parentEl) { 
     const taskList = document.querySelector('.task-list');
     const newTaskFormContainer = document.querySelector('.new-task-form-container');
     const taskForm = document.querySelector('.task-form');
 
-
-
-    
-
-
-    const storedTasks = JSON.parse(localStorage.getItem('tasks'));
-
-
-
     // Container required if a new task or a locally stored one is added, not when editing one.
-    if (taskForm || storedTasks) {
+    if (container) {
         // CONTAINER
         const taskContainer = createEl('li', 'task-list-item-container', taskList);
         taskContainer.setAttribute('id', task.id);
@@ -231,7 +225,7 @@ function cancelTaskForm(e) {
         const myTask = myTasks.find(el => el.id == taskContainer.id);;
 
         taskForm.remove();
-        createTaskEl(myTask, taskContainer);
+        createTaskEl(myTask, false, taskContainer);
     }
 
     createAddTaskBtn();
@@ -246,7 +240,8 @@ function updateTaskStatus(e) {
     } else {
         myTask.status = 'unchecked';
     }
-    
+
+    localStorage.setItem('tasks', JSON.stringify(myTasks))
     console.table(myTasks);
 }
 
@@ -285,8 +280,10 @@ function saveTaskEdits(e) {
 
     if (!taskName) return;
 
+    localStorage.setItem('tasks', JSON.stringify(myTasks));
+
     taskForm.remove();
-    createTaskEl(myTask, taskContainer);
+    createTaskEl(myTask, false, taskContainer);
     console.table(myTasks);
 }
 
@@ -295,9 +292,10 @@ function deleteTask(e) {
     const myTaskIndex = myTasks.findIndex(el => el.id == taskContainer.id);
 
     myTasks.splice(myTaskIndex, 1);
+    localStorage.setItem('tasks', JSON.stringify(myTasks))
+
     taskContainer.remove();
     console.table(myTasks);
 }
 
-// export default createAddTaskBtn;
-export { createAddTaskBtn as default, myTasks, createTaskEl };
+export { createAddTaskBtn as default, createTaskEl };

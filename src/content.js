@@ -1,5 +1,5 @@
 import createEl from './functions';
-import createAddTaskBtn, { myTasks, createTaskEl } from './taskManagement';
+import createAddTaskBtn, { createTaskEl } from './taskManagement';
 
 function loadContent(title) {
     const content = document.querySelector('.content');
@@ -21,11 +21,12 @@ function loadContent(title) {
     // myTasks;
 
     const storedTasks = JSON.parse(localStorage.getItem('tasks'));
-    console.log(storedTasks);
+    // console.log(storedTasks);
 
     if (storedTasks) {
         // storedTasks.forEach(storedTask => console.log(storedTask));
-        storedTasks.forEach(storedTask => createTaskEl(storedTask, taskContainer));
+        // storedTasks.forEach(storedTask => createTaskEl(storedTask, taskContainer, true));
+        storedTasks.forEach(storedTask => createTaskEl(storedTask, true));
 
         // for (const storedTask of storedTasks) {
         //     const taskContainer = createEl('li', 'task-list-item-container', taskList);
