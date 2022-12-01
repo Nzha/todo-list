@@ -4218,34 +4218,10 @@ function loadContent(title) {
 
     const taskContainer = (0,_functions__WEBPACK_IMPORTED_MODULE_0__["default"])('div', 'task-container', contentContainer);
     const taskList = (0,_functions__WEBPACK_IMPORTED_MODULE_0__["default"])('ul', 'task-list', taskContainer);
-    
 
-
-
-
-
-    // myTasks;
-
+    // Check for locally stored tasks and create corresponding elements
     const storedTasks = JSON.parse(localStorage.getItem('tasks'));
-    // console.log(storedTasks);
-
-    if (storedTasks) {
-        // storedTasks.forEach(storedTask => console.log(storedTask));
-        // storedTasks.forEach(storedTask => createTaskEl(storedTask, taskContainer, true));
-        storedTasks.forEach(storedTask => (0,_taskManagement__WEBPACK_IMPORTED_MODULE_1__.createTaskEl)(storedTask, true));
-
-        // for (const storedTask of storedTasks) {
-        //     const taskContainer = createEl('li', 'task-list-item-container', taskList);
-        //     taskContainer.setAttribute('id', storedTask.id);
-        //     createTaskEl(storedTask, taskContainer);
-        // }
-    }
-
-
-
-
-    
-
+    if (storedTasks) storedTasks.forEach(storedTask => (0,_taskManagement__WEBPACK_IMPORTED_MODULE_1__.createTaskEl)(storedTask, true));
 
     (0,_taskManagement__WEBPACK_IMPORTED_MODULE_1__["default"])();
 }

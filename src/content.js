@@ -12,34 +12,10 @@ function loadContent(title) {
 
     const taskContainer = createEl('div', 'task-container', contentContainer);
     const taskList = createEl('ul', 'task-list', taskContainer);
-    
 
-
-
-
-
-    // myTasks;
-
+    // Check for locally stored tasks and create corresponding elements
     const storedTasks = JSON.parse(localStorage.getItem('tasks'));
-    // console.log(storedTasks);
-
-    if (storedTasks) {
-        // storedTasks.forEach(storedTask => console.log(storedTask));
-        // storedTasks.forEach(storedTask => createTaskEl(storedTask, taskContainer, true));
-        storedTasks.forEach(storedTask => createTaskEl(storedTask, true));
-
-        // for (const storedTask of storedTasks) {
-        //     const taskContainer = createEl('li', 'task-list-item-container', taskList);
-        //     taskContainer.setAttribute('id', storedTask.id);
-        //     createTaskEl(storedTask, taskContainer);
-        // }
-    }
-
-
-
-
-    
-
+    if (storedTasks) storedTasks.forEach(storedTask => createTaskEl(storedTask, true));
 
     createAddTaskBtn();
 }
