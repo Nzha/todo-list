@@ -4384,33 +4384,37 @@ function createAddTaskBtn() {
 
     const addTaskBtn = (0,_functions__WEBPACK_IMPORTED_MODULE_0__["default"])('button', 'add-task-btn', addTaskContainer);
     addTaskBtn.textContent = 'Add task';
-    addTaskBtn.addEventListener('click', loadNewTaskFormContainer);
+    addTaskBtn.addEventListener('click', function() {
+        loadTaskForm(true)
+    });
 }
 
-function loadNewTaskFormContainer() {
-    // Remove 'Add task' button    
-    const addTaskContainer = document.querySelector('.add-task-container');
-    addTaskContainer.parentNode.removeChild(addTaskContainer);
+function loadTaskForm(container, parentEl) {
 
-    // Create container
-    const taskListDiv = document.querySelector('.task-list');
-    const newTaskFormContainer = (0,_functions__WEBPACK_IMPORTED_MODULE_0__["default"])('li', 'new-task-form-container', taskListDiv);
+    // Container required for new task form, not for editing task form.
+    if (container) {
+        // Remove 'Add task' button    
+        const addTaskContainer = document.querySelector('.add-task-container');
+        addTaskContainer.parentNode.removeChild(addTaskContainer);
 
-    const taskForm = document.querySelector('.task-form');
+        // Create container
+        const taskListDiv = document.querySelector('.task-list');
+        const newTaskFormContainer = (0,_functions__WEBPACK_IMPORTED_MODULE_0__["default"])('li', 'new-task-form-container', taskListDiv);
 
-    // Remove existing task form if any
-    if (taskForm) {
-        const taskContainer = taskForm.closest('.task-list-item-container');
-        const myTask = myTasks.find(el => el.id == taskContainer.id);
+        const taskForm = document.querySelector('.task-form');
 
-        taskForm.remove();
-        createTaskEl(myTask, taskContainer);
+        // Remove existing task form if any
+        if (taskForm) {
+            const taskContainer = taskForm.closest('.task-list-item-container');
+            const myTask = myTasks.find(el => el.id == taskContainer.id);
+
+            taskForm.remove();
+            createTaskEl(myTask, taskContainer);
+        }
+
+        parentEl = newTaskFormContainer;
     }
 
-    loadTaskForm(newTaskFormContainer);
-}
-
-function loadTaskForm(parentEl) {
     const taskForm = (0,_functions__WEBPACK_IMPORTED_MODULE_0__["default"])('form', 'task-form', parentEl);
     const taskEditor = (0,_functions__WEBPACK_IMPORTED_MODULE_0__["default"])('div', 'task-form-editor', taskForm);
     const newTaskFormContainer = taskForm.closest('.new-task-form-container');
@@ -4614,7 +4618,7 @@ function editTask(e) {
 
     taskContainer.textContent = '';
 
-    loadTaskForm(taskContainer);
+    loadTaskForm(false, taskContainer);
     document.querySelector('.taskName').value = myTask.name;
     document.querySelector('.taskName').focus();
     document.querySelector('.taskDescription').value = myTask.description;
