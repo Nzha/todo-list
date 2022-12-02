@@ -4408,11 +4408,11 @@ function loadContent(title) {
     const thisWeekTasks = storedTasks.filter(task => (0,date_fns__WEBPACK_IMPORTED_MODULE_4__["default"])((0,date_fns__WEBPACK_IMPORTED_MODULE_3__["default"])(task.dueDate)));
 
     if (storedTasks) {
-        if (title == 'All' && storedTasks) {
+        if (title == 'All' && storedTasks.length > 0) {
             loadTasks(storedTasks);
-        } else if (title == 'Today' && todaysTasks) {
+        } else if (title == 'Today' && todaysTasks.length > 0) {
             loadTasks(todaysTasks);
-        } else if (title == 'Week' && thisWeekTasks) {
+        } else if (title == 'Week' && thisWeekTasks.length > 0) {
             loadTasks(thisWeekTasks);
         } else {
             console.log('Empty');
@@ -4528,7 +4528,7 @@ function sidebarToggle() {
 function getPage() {
     const allTasksLink = document.querySelector('#all-tasks-link');
     const todayTasksLink = document.querySelector('#today-tasks-link');
-    const upcomingTasksLink = document.querySelector('#week-tasks-link');
+    const weekTasksLink = document.querySelector('#week-tasks-link');
 
     allTasksLink.addEventListener('click', function(e) {
         loadPage(e, 'All')
@@ -4538,7 +4538,7 @@ function getPage() {
         loadPage(e, 'Today')
     });
 
-    upcomingTasksLink.addEventListener('click', function(e) {
+    weekTasksLink.addEventListener('click', function(e) {
         loadPage(e, 'Week')
     });
 
