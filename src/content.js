@@ -13,9 +13,21 @@ function loadContent(title) {
     const taskContainer = createEl('div', 'task-container', contentContainer);
     const taskList = createEl('ul', 'task-list', taskContainer);
 
-    // Check for locally stored tasks and create corresponding elements
+    // Check for locally stored tasks
     const storedTasks = JSON.parse(localStorage.getItem('tasks'));
-    if (storedTasks) storedTasks.forEach(storedTask => createTaskEl(storedTask, true));
+
+    if (storedTasks) {
+        storedTasks.forEach(storedTask => {
+            // Create corresponding elements
+            createTaskEl(storedTask, true)
+
+            // Display checked checkboxes as checked
+            if (storedTask.status == 'checked') {
+                const checkbox = document.querySelector(`#task${storedTask.id} .task-checkbox`);
+                checkbox.checked = true;
+            }
+        })
+    }
 
     createAddTaskBtn();
 }
