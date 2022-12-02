@@ -4219,9 +4219,21 @@ function loadContent(title) {
     const taskContainer = (0,_functions__WEBPACK_IMPORTED_MODULE_0__["default"])('div', 'task-container', contentContainer);
     const taskList = (0,_functions__WEBPACK_IMPORTED_MODULE_0__["default"])('ul', 'task-list', taskContainer);
 
-    // Check for locally stored tasks and create corresponding elements
+    // Check for locally stored tasks
     const storedTasks = JSON.parse(localStorage.getItem('tasks'));
-    if (storedTasks) storedTasks.forEach(storedTask => (0,_taskManagement__WEBPACK_IMPORTED_MODULE_1__.createTaskEl)(storedTask, true));
+
+    if (storedTasks) {
+        storedTasks.forEach(storedTask => {
+            // Create corresponding elements
+            (0,_taskManagement__WEBPACK_IMPORTED_MODULE_1__.createTaskEl)(storedTask, true)
+
+            // Display checked checkboxes as checked
+            if (storedTask.status == 'checked') {
+                const checkbox = document.querySelector(`#task${storedTask.id} .task-checkbox`);
+                checkbox.checked = true;
+            }
+        })
+    }
 
     (0,_taskManagement__WEBPACK_IMPORTED_MODULE_1__["default"])();
 }
@@ -4390,7 +4402,6 @@ function createAddTaskBtn() {
 }
 
 function loadTaskForm(container, parentEl) {
-
     // Container required for new task form, not for editing task form.
     if (container) {
         // Remove 'Add task' button    
@@ -4498,7 +4509,7 @@ function createTaskEl(task, container, parentEl) {
     if (container) {
         // CONTAINER
         const taskContainer = (0,_functions__WEBPACK_IMPORTED_MODULE_0__["default"])('li', 'task-list-item-container', taskList);
-        taskContainer.setAttribute('id', task.id);
+        taskContainer.setAttribute('id', `task${task.id}`);
         parentEl = taskContainer;
     }
 
@@ -4583,8 +4594,8 @@ function cancelTaskForm(e) {
         const taskContainer = e.target.closest('.task-list-item-container');
         const taskForm = document.querySelector('.task-form');
 
-        // Find task in myTasks for which id matches div id
-        const myTask = myTasks.find(el => el.id == taskContainer.id);;
+        // Find task in myTasks for which id matches div id (without non-digits characters)
+        const myTask = myTasks.find(el => el.id == taskContainer.id.replace(/\D/g,''));
 
         taskForm.remove();
         createTaskEl(myTask, false, taskContainer);
@@ -4595,7 +4606,7 @@ function cancelTaskForm(e) {
 
 function updateTaskStatus(e) {
     const taskContainer = e.target.closest('.task-list-item-container');
-    const myTask = myTasks.find(el => el.id == taskContainer.id);
+    const myTask = myTasks.find(el => el.id == taskContainer.id.replace(/\D/g,''));
 
     if (e.target.checked) {
         myTask.status = 'checked';
@@ -4609,7 +4620,7 @@ function updateTaskStatus(e) {
 
 function editTask(e) {
     const taskContainer = e.target.closest('.task-list-item-container');
-    const myTask = myTasks.find(el => el.id == taskContainer.id);
+    const myTask = myTasks.find(el => el.id == taskContainer.id.replace(/\D/g,''));
 
     // Remove task form if one is already displayed
     const newTaskFormContainer = document.querySelector('.new-task-form-container');
@@ -4633,7 +4644,7 @@ function saveTaskEdits(e) {
     const taskNameInput = document.querySelector('#taskName');
     const taskDescriptionInput = document.querySelector('#taskDescription');
     const taskDueDateInput = document.querySelector('#taskDueDate');
-    const myTask = myTasks.find(el => el.id == taskContainer.id);
+    const myTask = myTasks.find(el => el.id == taskContainer.id.replace(/\D/g,''));
 
     myTask.name = taskNameInput.value;
     myTask.description = taskDescriptionInput.value;
@@ -4650,7 +4661,7 @@ function saveTaskEdits(e) {
 
 function deleteTask(e) {
     const taskContainer = e.target.closest('.task-list-item-container');
-    const myTaskIndex = myTasks.findIndex(el => el.id == taskContainer.id);
+    const myTaskIndex = myTasks.findIndex(el => el.id == taskContainer.id.replace(/\D/g,''));
 
     myTasks.splice(myTaskIndex, 1);
     localStorage.setItem('tasks', JSON.stringify(myTasks))
