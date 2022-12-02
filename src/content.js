@@ -20,11 +20,11 @@ function loadContent(title) {
     const thisWeekTasks = storedTasks.filter(task => isThisWeek(parseISO(task.dueDate)));
 
     if (storedTasks) {
-        if (title == 'All' && storedTasks) {
+        if (title == 'All' && storedTasks.length > 0) {
             loadTasks(storedTasks);
-        } else if (title == 'Today' && todaysTasks) {
+        } else if (title == 'Today' && todaysTasks.length > 0) {
             loadTasks(todaysTasks);
-        } else if (title == 'Week' && thisWeekTasks) {
+        } else if (title == 'Week' && thisWeekTasks.length > 0) {
             loadTasks(thisWeekTasks);
         } else {
             console.log('Empty');

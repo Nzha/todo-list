@@ -16,7 +16,7 @@ function sidebarToggle() {
 function getPage() {
     const allTasksLink = document.querySelector('#all-tasks-link');
     const todayTasksLink = document.querySelector('#today-tasks-link');
-    const upcomingTasksLink = document.querySelector('#week-tasks-link');
+    const weekTasksLink = document.querySelector('#week-tasks-link');
 
     allTasksLink.addEventListener('click', function(e) {
         loadPage(e, 'All')
@@ -26,7 +26,7 @@ function getPage() {
         loadPage(e, 'Today')
     });
 
-    upcomingTasksLink.addEventListener('click', function(e) {
+    weekTasksLink.addEventListener('click', function(e) {
         loadPage(e, 'Week')
     });
 
