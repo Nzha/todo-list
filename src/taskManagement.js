@@ -1,5 +1,6 @@
 import createEl, { increment, formatDate, setDueDate } from './functions';
 import { loadEmptyState } from './content';
+import { parseISO, isToday, isThisWeek } from 'date-fns';
 
 let myTasks = [];
 
@@ -100,6 +101,7 @@ function loadTaskForm(container, parentEl) {
 function addTask(e) {   
     e.preventDefault();
 
+    const headerTxt = document.querySelector('.content-header-title').textContent;
     const taskForm = document.querySelector('.task-form');
     const taskNameInput = document.querySelector('#taskName');
     const taskDescriptionInput = document.querySelector('#taskDescription');
@@ -113,6 +115,7 @@ function addTask(e) {
     let taskName = taskNameInput.value;
     let taskDescription = taskDescriptionInput.value;
     let taskDueDate = taskDueDateInput.value;
+    let taskDueDateFormat = parseISO(taskDueDate);
 
     if (!taskName) return;
 
@@ -123,18 +126,14 @@ function addTask(e) {
     // Store tasks on user's computer
     localStorage.setItem('tasks', JSON.stringify(myTasks));
 
+    if (
+        headerTxt === 'All'
+        || (headerTxt === 'Today' && isToday(taskDueDateFormat))
+        || (headerTxt === 'Week' && isThisWeek(taskDueDateFormat))
+    ) {
+        createTaskEl(newTask, true);
+    }
 
-
-
-    const headerTxt = document.querySelector('.content-header-title').textContent;
-
-
-
-
-
-
-
-    createTaskEl(newTask, true);
     taskForm.reset();
     taskNameInput.focus();
 }

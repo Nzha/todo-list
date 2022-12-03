@@ -38,6 +38,7 @@ function formatDate(date) {
     }
 }
 
+// Set default form's input date to today's date on 'today' page
 function setDueDate(inputDate) {
     const headerTxt = document.querySelector('.content-header-title').textContent;
     const today = format(startOfToday(), 'yyyy-MM-dd');
