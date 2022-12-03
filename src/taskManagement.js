@@ -135,6 +135,7 @@ function addTask(e) {
 
     updateSidebarTaskCount();
     taskForm.reset();
+    setDueDate(taskDueDateInput);
     taskNameInput.focus();
 }
 
