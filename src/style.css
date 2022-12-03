@@ -214,6 +214,10 @@ h2 {
     border-radius: 10px;
 }
 
+.task-form-editor:focus-within {
+    border-color: #999;
+}
+
 input[type=text],
 textarea {
     appearance: none;

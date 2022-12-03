@@ -28,8 +28,6 @@ function createAddTaskBtn() {
 }
 
 function loadTaskForm(container, parentEl) {
-    // const headerTxt = document.querySelector('.content-header-title').textContent;
-
     // Container required for new task form, not for editing task form.
     if (container) {
         // Remove 'Add task' button    
