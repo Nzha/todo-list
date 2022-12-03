@@ -4463,11 +4463,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (/* binding */ loadContent),
 /* harmony export */   "loadEmptyState": () => (/* binding */ loadEmptyState)
 /* harmony export */ });
-/* harmony import */ var _functions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./functions */ "./src/functions.js");
-/* harmony import */ var _taskManagement__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./taskManagement */ "./src/taskManagement.js");
 /* harmony import */ var date_fns__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! date-fns */ "./node_modules/date-fns/esm/isToday/index.js");
 /* harmony import */ var date_fns__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! date-fns */ "./node_modules/date-fns/esm/parseISO/index.js");
 /* harmony import */ var date_fns__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! date-fns */ "./node_modules/date-fns/esm/isThisWeek/index.js");
+/* harmony import */ var _functions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./functions */ "./src/functions.js");
+/* harmony import */ var _taskManagement__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./taskManagement */ "./src/taskManagement.js");
 
 
 
@@ -4674,11 +4674,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "createTaskEl": () => (/* binding */ createTaskEl),
 /* harmony export */   "default": () => (/* binding */ createAddTaskBtn)
 /* harmony export */ });
-/* harmony import */ var _functions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./functions */ "./src/functions.js");
-/* harmony import */ var _content__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./content */ "./src/content.js");
 /* harmony import */ var date_fns__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! date-fns */ "./node_modules/date-fns/esm/parseISO/index.js");
 /* harmony import */ var date_fns__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! date-fns */ "./node_modules/date-fns/esm/isToday/index.js");
 /* harmony import */ var date_fns__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! date-fns */ "./node_modules/date-fns/esm/isThisWeek/index.js");
+/* harmony import */ var _functions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./functions */ "./src/functions.js");
+/* harmony import */ var _content__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./content */ "./src/content.js");
 
 
 
@@ -4825,7 +4825,7 @@ function createTaskEl(task, container, parentEl) {
     const taskForm = document.querySelector('.task-form');
 
     const emptyStateContainer = document.querySelector('.empty-state-container');
-    if (emptyStateContainer) emptyStateContainer.innerHTML = '';
+    if (emptyStateContainer) emptyStateContainer.remove();
 
     // Container required if a new task or a locally stored one is added, not when editing one.
     if (container) {
@@ -4982,13 +4982,23 @@ function saveTaskEdits(e) {
 }
 
 function deleteTask(e) {
+    const headerTxt = document.querySelector('.content-header-title').textContent;
     const taskContainer = e.target.closest('.task-list-item-container');
     const myTaskIndex = myTasks.findIndex(el => el.id == taskContainer.id.replace(/\D/g,''));
-
+ 
     myTasks.splice(myTaskIndex, 1);
     localStorage.setItem('tasks', JSON.stringify(myTasks))
 
-    if (myTasks.length === 0) (0,_content__WEBPACK_IMPORTED_MODULE_1__.loadEmptyState)();
+    const todaysTasks = myTasks.filter(task => (0,date_fns__WEBPACK_IMPORTED_MODULE_3__["default"])((0,date_fns__WEBPACK_IMPORTED_MODULE_2__["default"])(task.dueDate)));
+    const thisWeekTasks = myTasks.filter(task => (0,date_fns__WEBPACK_IMPORTED_MODULE_4__["default"])((0,date_fns__WEBPACK_IMPORTED_MODULE_2__["default"])(task.dueDate)));
+
+    if (
+        headerTxt === 'All' && myTasks.length === 0
+        || (headerTxt === 'Today' && todaysTasks.length === 0)
+        || (headerTxt === 'Week' && thisWeekTasks.length === 0)
+    ) {
+        (0,_content__WEBPACK_IMPORTED_MODULE_1__.loadEmptyState)();
+    }
 
     taskContainer.remove();
     console.table(myTasks);

@@ -1,6 +1,6 @@
+import { parseISO, isToday, isThisWeek } from 'date-fns';
 import createEl, { increment, formatDate, setDueDate } from './functions';
 import { loadEmptyState } from './content';
-import { parseISO, isToday, isThisWeek } from 'date-fns';
 
 let myTasks = [];
 
@@ -144,7 +144,7 @@ function createTaskEl(task, container, parentEl) {
     const taskForm = document.querySelector('.task-form');
 
     const emptyStateContainer = document.querySelector('.empty-state-container');
-    if (emptyStateContainer) emptyStateContainer.innerHTML = '';
+    if (emptyStateContainer) emptyStateContainer.remove();
 
     // Container required if a new task or a locally stored one is added, not when editing one.
     if (container) {
@@ -301,13 +301,23 @@ function saveTaskEdits(e) {
 }
 
 function deleteTask(e) {
+    const headerTxt = document.querySelector('.content-header-title').textContent;
     const taskContainer = e.target.closest('.task-list-item-container');
     const myTaskIndex = myTasks.findIndex(el => el.id == taskContainer.id.replace(/\D/g,''));
-
+ 
     myTasks.splice(myTaskIndex, 1);
     localStorage.setItem('tasks', JSON.stringify(myTasks))
 
-    if (myTasks.length === 0) loadEmptyState();
+    const todaysTasks = myTasks.filter(task => isToday(parseISO(task.dueDate)));
+    const thisWeekTasks = myTasks.filter(task => isThisWeek(parseISO(task.dueDate)));
+
+    if (
+        headerTxt === 'All' && myTasks.length === 0
+        || (headerTxt === 'Today' && todaysTasks.length === 0)
+        || (headerTxt === 'Week' && thisWeekTasks.length === 0)
+    ) {
+        loadEmptyState();
+    }
 
     taskContainer.remove();
     console.table(myTasks);
