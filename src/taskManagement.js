@@ -1,5 +1,5 @@
 import createEl, { increment, dateFormat } from './functions';
-import { loadEmptyState } from './content';
+import { loadEmptyState, setDueDate } from './content';
 
 let myTasks = [];
 
@@ -27,6 +27,8 @@ function createAddTaskBtn() {
 }
 
 function loadTaskForm(container, parentEl) {
+    // const headerTxt = document.querySelector('.content-header-title').textContent;
+
     // Container required for new task form, not for editing task form.
     if (container) {
         // Remove 'Add task' button    
@@ -76,6 +78,7 @@ function loadTaskForm(container, parentEl) {
     taskDueDate.setAttribute('id', 'taskDueDate');
     taskDueDate.setAttribute('name', 'taskDueDate');
     taskDueDate.setAttribute('placeholder', 'Description');
+    setDueDate(taskDueDate);
 
     const btnContainer = createEl('div', 'form-btn-container', taskForm);
 
