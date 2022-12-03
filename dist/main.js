@@ -4422,7 +4422,8 @@ module.exports = styleTagTransform;
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */   "default": () => (/* binding */ loadContent),
+/* harmony export */   "loadEmptyState": () => (/* binding */ loadEmptyState)
 /* harmony export */ });
 /* harmony import */ var _functions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./functions */ "./src/functions.js");
 /* harmony import */ var _taskManagement__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./taskManagement */ "./src/taskManagement.js");
@@ -4458,7 +4459,6 @@ function loadContent(title) {
         } else if (title == 'Week' && thisWeekTasks.length > 0) {
             loadTasks(thisWeekTasks);
         } else {
-            console.log('Empty');
             loadEmptyState();
         }
     }
@@ -4490,7 +4490,7 @@ function loadEmptyState() {
     emptyStateTxt.textContent = 'Well done! All your tasks are organized in the right place.';
 }
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (loadContent);
+
 
 /***/ }),
 
@@ -4625,6 +4625,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (/* binding */ createAddTaskBtn)
 /* harmony export */ });
 /* harmony import */ var _functions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./functions */ "./src/functions.js");
+/* harmony import */ var _content__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./content */ "./src/content.js");
+
 
 
 let myTasks = [];
@@ -4756,6 +4758,9 @@ function createTaskEl(task, container, parentEl) {
     const taskList = document.querySelector('.task-list');
     const newTaskFormContainer = document.querySelector('.new-task-form-container');
     const taskForm = document.querySelector('.task-form');
+
+    const emptyStateContainer = document.querySelector('.empty-state-container');
+    if (emptyStateContainer) emptyStateContainer.innerHTML = '';
 
     // Container required if a new task or a locally stored one is added, not when editing one.
     if (container) {
@@ -4918,6 +4923,8 @@ function deleteTask(e) {
     myTasks.splice(myTaskIndex, 1);
     localStorage.setItem('tasks', JSON.stringify(myTasks))
 
+    if (myTasks.length === 0) (0,_content__WEBPACK_IMPORTED_MODULE_1__.loadEmptyState)();
+
     taskContainer.remove();
     console.table(myTasks);
 }
@@ -4932,7 +4939,7 @@ function deleteTask(e) {
   \****************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-module.exports = __webpack_require__.p + "3813969b39240f8935c8.jpg";
+module.exports = __webpack_require__.p + "7b7bbd200e29cd6049f4.jpg";
 
 /***/ })
 

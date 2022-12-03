@@ -1,4 +1,5 @@
 import createEl, { increment, dateFormat } from './functions';
+import { loadEmptyState } from './content';
 
 let myTasks = [];
 
@@ -129,6 +130,9 @@ function createTaskEl(task, container, parentEl) {
     const taskList = document.querySelector('.task-list');
     const newTaskFormContainer = document.querySelector('.new-task-form-container');
     const taskForm = document.querySelector('.task-form');
+
+    const emptyStateContainer = document.querySelector('.empty-state-container');
+    if (emptyStateContainer) emptyStateContainer.innerHTML = '';
 
     // Container required if a new task or a locally stored one is added, not when editing one.
     if (container) {
@@ -290,6 +294,8 @@ function deleteTask(e) {
 
     myTasks.splice(myTaskIndex, 1);
     localStorage.setItem('tasks', JSON.stringify(myTasks))
+
+    if (myTasks.length === 0) loadEmptyState();
 
     taskContainer.remove();
     console.table(myTasks);

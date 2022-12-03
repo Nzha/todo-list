@@ -27,7 +27,6 @@ function loadContent(title) {
         } else if (title == 'Week' && thisWeekTasks.length > 0) {
             loadTasks(thisWeekTasks);
         } else {
-            console.log('Empty');
             loadEmptyState();
         }
     }
@@ -59,4 +58,4 @@ function loadEmptyState() {
     emptyStateTxt.textContent = 'Well done! All your tasks are organized in the right place.';
 }
 
-export default loadContent;
+export { loadContent as default, loadEmptyState };
