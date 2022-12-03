@@ -4852,6 +4852,7 @@ function addTask(e) {
 
     (0,_sidebar__WEBPACK_IMPORTED_MODULE_1__.updateTaskCount)();
     taskForm.reset();
+    (0,_functions__WEBPACK_IMPORTED_MODULE_0__.setDueDate)(taskDueDateInput);
     taskNameInput.focus();
 }
 
