@@ -4622,6 +4622,10 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+const allTasksLink = document.querySelector('#all-tasks-link');
+const todayTasksLink = document.querySelector('#today-tasks-link');
+const weekTasksLink = document.querySelector('#week-tasks-link');
+
 function setSideBar() {
     sidebarToggle();
     updateTaskCount();
@@ -4644,9 +4648,6 @@ function sidebarToggle() {
 }
 
 function updateTaskCount() {
-    const allTasksLink = document.querySelector('#all-tasks-link');
-    const todayTasksLink = document.querySelector('#today-tasks-link');
-    const weekTasksLink = document.querySelector('#week-tasks-link');
     const allTasksCount = document.querySelector('.sidebar-tasks-item-count');
     const storedTasks = JSON.parse(localStorage.getItem('tasks'));
     const todaysTasks = storedTasks.filter(task => (0,date_fns__WEBPACK_IMPORTED_MODULE_2__["default"])((0,date_fns__WEBPACK_IMPORTED_MODULE_3__["default"])(task.dueDate)));
@@ -4668,10 +4669,6 @@ function updateTaskCount() {
 }
 
 function getPage() {
-    const allTasksLink = document.querySelector('#all-tasks-link');
-    const todayTasksLink = document.querySelector('#today-tasks-link');
-    const weekTasksLink = document.querySelector('#week-tasks-link');
-
     allTasksLink.addEventListener('click', function(e) {
         loadPage(e, 'All')
     });
