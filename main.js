@@ -4661,10 +4661,9 @@ function updateTaskCount() {
         todaysTasksCount.textContent = todaysTasks.length;
         thisWeekTasksCount.textContent = thisWeekTasks.length;
     } else {
-        console.log(todaysTasks.length);
-        document.querySelector('#all-tasks-link .sidebar-tasks-item-count').textContent = storedTasks.length;
-        document.querySelector('#today-tasks-link .sidebar-tasks-item-count').textContent = todaysTasks.length;
-        document.querySelector('#week-tasks-link .sidebar-tasks-item-count').textContent = thisWeekTasks.length;
+        allTasksLink.querySelector('.sidebar-tasks-item-count').textContent = storedTasks.length;
+        todayTasksLink.querySelector('.sidebar-tasks-item-count').textContent = todaysTasks.length;
+        weekTasksLink.querySelector('.sidebar-tasks-item-count').textContent = thisWeekTasks.length;
     }
 }
 
