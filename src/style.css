@@ -81,16 +81,16 @@ the padding is still displayed when sidebar is hidden */
     padding: 2rem 1rem;
 }
 
-.sidebar-tasks-item,
-.sidebar-projects-item {
+.sidebar-tasks-item-link,
+.sidebar-projects-item-link {
     display: flex;
     gap: 0.5rem;
     padding: 0.5rem 1rem;
     white-space: nowrap;
 }
 
-.sidebar-tasks-item:hover,
-.sidebar-projects-item:hover {
+.sidebar-tasks-item-link:hover,
+.sidebar-projects-item-link:hover {
     background-color: #eeeeee;
 }
 
@@ -104,6 +104,13 @@ the padding is still displayed when sidebar is hidden */
 
 .fa-calendar-week {
     color: #8d62d0;
+}
+
+.sidebar-tasks-item-count {
+    margin-left: auto;
+    color: #aaaaaa;
+    font-size: 0.9rem;
+    align-self: center;
 }
 
 .sidebar-projects {

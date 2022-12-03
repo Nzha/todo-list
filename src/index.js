@@ -1,6 +1,6 @@
 import './style.css';
-import sidebarToggle from './sidebar';
+import setSideBar from './sidebar';
 import loadContent from './content';
 
-sidebarToggle();
+setSideBar();
 loadContent('All');

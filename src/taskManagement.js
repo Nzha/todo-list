@@ -1,5 +1,6 @@
 import { parseISO, isToday, isThisWeek } from 'date-fns';
 import createEl, { increment, formatDate, setDueDate } from './functions';
+import { updateTaskCount as updateSidebarTaskCount } from './sidebar';
 import { loadEmptyState } from './content';
 
 let myTasks = [];
@@ -132,6 +133,7 @@ function addTask(e) {
         createTaskEl(newTask, true);
     }
 
+    updateSidebarTaskCount();
     taskForm.reset();
     taskNameInput.focus();
 }
@@ -305,6 +307,7 @@ function deleteTask(e) {
  
     myTasks.splice(myTaskIndex, 1);
     localStorage.setItem('tasks', JSON.stringify(myTasks))
+    updateSidebarTaskCount();
 
     const todaysTasks = myTasks.filter(task => isToday(parseISO(task.dueDate)));
     const thisWeekTasks = myTasks.filter(task => isThisWeek(parseISO(task.dueDate)));
