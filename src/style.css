@@ -297,6 +297,11 @@ input[type=date]:focus {
     border-bottom: 1px solid #e5e5e5;
 }
 
+/* Don't display task container as grid when editing a task */
+.task-list-item-container:has(.task-form) {
+    display: initial;
+}
+
 .task {
     grid-area: task;
 }
