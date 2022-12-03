@@ -6,7 +6,6 @@ let myTasks = [];
 // Update myTasks with locally stored tasks
 const storedTasks = JSON.parse(localStorage.getItem('tasks'));
 if (storedTasks) myTasks = JSON.parse(localStorage.getItem('tasks'));
-console.table(myTasks);
 
 const task = (id, name, description, dueDate, status) => {
     return {id, name, description, dueDate, status};
