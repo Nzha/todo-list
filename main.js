@@ -4590,6 +4590,7 @@ function formatDate(date) {
     }
 }
 
+// Set default form's input date to today's date on 'today' page
 function setDueDate(inputDate) {
     const headerTxt = document.querySelector('.content-header-title').textContent;
     const today = (0,date_fns__WEBPACK_IMPORTED_MODULE_3__["default"])((0,date_fns__WEBPACK_IMPORTED_MODULE_4__["default"])(), 'yyyy-MM-dd');
@@ -4675,6 +4676,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _functions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./functions */ "./src/functions.js");
 /* harmony import */ var _content__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./content */ "./src/content.js");
+/* harmony import */ var date_fns__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! date-fns */ "./node_modules/date-fns/esm/parseISO/index.js");
+/* harmony import */ var date_fns__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! date-fns */ "./node_modules/date-fns/esm/isToday/index.js");
+/* harmony import */ var date_fns__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! date-fns */ "./node_modules/date-fns/esm/isThisWeek/index.js");
+
 
 
 
@@ -4777,6 +4782,7 @@ function loadTaskForm(container, parentEl) {
 function addTask(e) {   
     e.preventDefault();
 
+    const headerTxt = document.querySelector('.content-header-title').textContent;
     const taskForm = document.querySelector('.task-form');
     const taskNameInput = document.querySelector('#taskName');
     const taskDescriptionInput = document.querySelector('#taskDescription');
@@ -4790,6 +4796,7 @@ function addTask(e) {
     let taskName = taskNameInput.value;
     let taskDescription = taskDescriptionInput.value;
     let taskDueDate = taskDueDateInput.value;
+    let taskDueDateFormat = (0,date_fns__WEBPACK_IMPORTED_MODULE_2__["default"])(taskDueDate);
 
     if (!taskName) return;
 
@@ -4800,18 +4807,14 @@ function addTask(e) {
     // Store tasks on user's computer
     localStorage.setItem('tasks', JSON.stringify(myTasks));
 
+    if (
+        headerTxt === 'All'
+        || (headerTxt === 'Today' && (0,date_fns__WEBPACK_IMPORTED_MODULE_3__["default"])(taskDueDateFormat))
+        || (headerTxt === 'Week' && (0,date_fns__WEBPACK_IMPORTED_MODULE_4__["default"])(taskDueDateFormat))
+    ) {
+        createTaskEl(newTask, true);
+    }
 
-
-
-    const headerTxt = document.querySelector('.content-header-title').textContent;
-
-
-
-
-
-
-
-    createTaskEl(newTask, true);
     taskForm.reset();
     taskNameInput.focus();
 }
