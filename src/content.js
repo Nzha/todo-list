@@ -1,6 +1,6 @@
 import createEl from './functions';
 import createAddTaskBtn, { createTaskEl } from './taskManagement';
-import { parseISO, isToday, isThisWeek, startOfToday, format } from 'date-fns';
+import { parseISO, isToday, isThisWeek } from 'date-fns';
 
 function loadContent(title) {
     const content = document.querySelector('.content');
@@ -58,11 +58,4 @@ function loadEmptyState() {
     emptyStateTxt.textContent = 'Well done! All your tasks are organized in the right place.';
 }
 
-function setDueDate(inputDate) {
-    const headerTxt = document.querySelector('.content-header-title').textContent;
-    const today = format(startOfToday(), 'yyyy-MM-dd');
-
-    if (headerTxt === 'Today') inputDate.value = today;
-}
-
-export { loadContent as default, loadEmptyState, setDueDate };
+export { loadContent as default, loadEmptyState };

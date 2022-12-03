@@ -1,5 +1,5 @@
-import createEl, { increment, dateFormat } from './functions';
-import { loadEmptyState, setDueDate } from './content';
+import createEl, { increment, formatDate, setDueDate } from './functions';
+import { loadEmptyState } from './content';
 
 let myTasks = [];
 
@@ -123,6 +123,17 @@ function addTask(e) {
     // Store tasks on user's computer
     localStorage.setItem('tasks', JSON.stringify(myTasks));
 
+
+
+
+    const headerTxt = document.querySelector('.content-header-title').textContent;
+
+
+
+
+
+
+
     createTaskEl(newTask, true);
     taskForm.reset();
     taskNameInput.focus();
@@ -187,7 +198,7 @@ function createTaskEl(task, container, parentEl) {
         calendar.classList.add('fa-regular', 'fa-calendar');
 
         const dueDate = createEl('div', 'task-due-date', dueDateContainer);
-        dueDate.textContent = dateFormat(task.dueDate);
+        dueDate.textContent = formatDate(task.dueDate);
     }
 
     // TASK OPTIONS

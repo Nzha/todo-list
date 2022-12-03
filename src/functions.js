@@ -1,4 +1,4 @@
-import { format, parseISO, isToday, isTomorrow } from 'date-fns';
+import { format, parseISO, isToday, isTomorrow, startOfToday } from 'date-fns';
 
 function createElement(type, className, parentEl) {
     const element = document.createElement(type);
@@ -25,7 +25,7 @@ let increment = (function(n) {
     }
 }(-1)); 
 
-function dateFormat(date) {
+function formatDate(date) {
     // Convert string to instance of date
     date = parseISO(date);
 
@@ -38,4 +38,11 @@ function dateFormat(date) {
     }
 }
 
-export { createElement as default, increment, dateFormat };
+function setDueDate(inputDate) {
+    const headerTxt = document.querySelector('.content-header-title').textContent;
+    const today = format(startOfToday(), 'yyyy-MM-dd');
+
+    if (headerTxt === 'Today') inputDate.value = today;
+}
+
+export { createElement as default, increment, formatDate, setDueDate };
