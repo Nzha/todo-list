@@ -2,6 +2,10 @@ import { parseISO, isToday, isThisWeek } from 'date-fns';
 import createEl from './functions';
 import loadContent from './content';
 
+const allTasksLink = document.querySelector('#all-tasks-link');
+const todayTasksLink = document.querySelector('#today-tasks-link');
+const weekTasksLink = document.querySelector('#week-tasks-link');
+
 function setSideBar() {
     sidebarToggle();
     updateTaskCount();
@@ -24,9 +28,6 @@ function sidebarToggle() {
 }
 
 function updateTaskCount() {
-    const allTasksLink = document.querySelector('#all-tasks-link');
-    const todayTasksLink = document.querySelector('#today-tasks-link');
-    const weekTasksLink = document.querySelector('#week-tasks-link');
     const allTasksCount = document.querySelector('.sidebar-tasks-item-count');
     const storedTasks = JSON.parse(localStorage.getItem('tasks'));
     const todaysTasks = storedTasks.filter(task => isToday(parseISO(task.dueDate)));
@@ -48,10 +49,6 @@ function updateTaskCount() {
 }
 
 function getPage() {
-    const allTasksLink = document.querySelector('#all-tasks-link');
-    const todayTasksLink = document.querySelector('#today-tasks-link');
-    const weekTasksLink = document.querySelector('#week-tasks-link');
-
     allTasksLink.addEventListener('click', function(e) {
         loadPage(e, 'All')
     });
