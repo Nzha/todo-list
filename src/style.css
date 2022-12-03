@@ -172,6 +172,26 @@ h2 {
     margin-right: 0.4rem;
 }
 
+.empty-state-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.empty-state-img {
+    background-image: url('./img/empty1.jpg');
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 100%;
+    min-height: 200px;
+}
+
+.empty-state-header,
+.empty-state-txt {
+    text-align: center;
+}
+
 /* NEW TASK FORM STARTS */
 .task-form {
     display: flex;
@@ -452,6 +472,11 @@ Source: https://www.sliderrevolution.com/resources/css-checkbox/ (task descripti
         width: 50%;
     }
 
+    .empty-state-img {
+        background-size: cover;
+        min-height: 400px;
+    }
+
     .task-list-item-container {
         grid-template-columns: 1fr auto auto;
         grid-template-areas: 
@@ -462,5 +487,11 @@ Source: https://www.sliderrevolution.com/resources/css-checkbox/ (task descripti
         color: inherit;
         margin-left: 1.25rem;
         margin-top: 0;
+    }
+}
+
+@media only screen and (min-width: 1400px) {
+    .empty-state-img {
+        background-size: contain;
     }
 }

@@ -28,6 +28,7 @@ function loadContent(title) {
             loadTasks(thisWeekTasks);
         } else {
             console.log('Empty');
+            loadEmptyState();
         }
     }
 
@@ -45,6 +46,17 @@ function loadTasks(tasks) {
             checkbox.checked = true;
         }
     });
+}
+
+function loadEmptyState() {
+    const contentContainer = document.querySelector('.content-inner-container');
+    const emptyStateContainer = createEl('div', 'empty-state-container', contentContainer);
+    const emptyStateImg = createEl('div', 'empty-state-img', emptyStateContainer);
+    const emptyStateHeader = createEl('h3', 'empty-state-header', emptyStateContainer);
+    const emptyStateTxt = createEl('div', 'empty-state-txt', emptyStateContainer);
+
+    emptyStateHeader.textContent = 'Your peace of mind is priceless';
+    emptyStateTxt.textContent = 'Well done! All your tasks are organized in the right place.';
 }
 
 export default loadContent;
