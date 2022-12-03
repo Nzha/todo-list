@@ -4461,16 +4461,13 @@ module.exports = styleTagTransform;
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (/* binding */ loadContent),
-/* harmony export */   "loadEmptyState": () => (/* binding */ loadEmptyState),
-/* harmony export */   "setDueDate": () => (/* binding */ setDueDate)
+/* harmony export */   "loadEmptyState": () => (/* binding */ loadEmptyState)
 /* harmony export */ });
 /* harmony import */ var _functions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./functions */ "./src/functions.js");
 /* harmony import */ var _taskManagement__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./taskManagement */ "./src/taskManagement.js");
 /* harmony import */ var date_fns__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! date-fns */ "./node_modules/date-fns/esm/isToday/index.js");
 /* harmony import */ var date_fns__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! date-fns */ "./node_modules/date-fns/esm/parseISO/index.js");
 /* harmony import */ var date_fns__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! date-fns */ "./node_modules/date-fns/esm/isThisWeek/index.js");
-/* harmony import */ var date_fns__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! date-fns */ "./node_modules/date-fns/esm/format/index.js");
-/* harmony import */ var date_fns__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! date-fns */ "./node_modules/date-fns/esm/startOfToday/index.js");
 
 
 
@@ -4531,13 +4528,6 @@ function loadEmptyState() {
     emptyStateTxt.textContent = 'Well done! All your tasks are organized in the right place.';
 }
 
-function setDueDate(inputDate) {
-    const headerTxt = document.querySelector('.content-header-title').textContent;
-    const today = (0,date_fns__WEBPACK_IMPORTED_MODULE_5__["default"])((0,date_fns__WEBPACK_IMPORTED_MODULE_6__["default"])(), 'yyyy-MM-dd');
-
-    if (headerTxt === 'Today') inputDate.value = today;
-}
-
 
 
 /***/ }),
@@ -4550,14 +4540,16 @@ function setDueDate(inputDate) {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "dateFormat": () => (/* binding */ dateFormat),
 /* harmony export */   "default": () => (/* binding */ createElement),
-/* harmony export */   "increment": () => (/* binding */ increment)
+/* harmony export */   "formatDate": () => (/* binding */ formatDate),
+/* harmony export */   "increment": () => (/* binding */ increment),
+/* harmony export */   "setDueDate": () => (/* binding */ setDueDate)
 /* harmony export */ });
 /* harmony import */ var date_fns__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! date-fns */ "./node_modules/date-fns/esm/parseISO/index.js");
 /* harmony import */ var date_fns__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! date-fns */ "./node_modules/date-fns/esm/isToday/index.js");
 /* harmony import */ var date_fns__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! date-fns */ "./node_modules/date-fns/esm/isTomorrow/index.js");
 /* harmony import */ var date_fns__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! date-fns */ "./node_modules/date-fns/esm/format/index.js");
+/* harmony import */ var date_fns__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! date-fns */ "./node_modules/date-fns/esm/startOfToday/index.js");
 
 
 function createElement(type, className, parentEl) {
@@ -4585,7 +4577,7 @@ let increment = (function(n) {
     }
 }(-1)); 
 
-function dateFormat(date) {
+function formatDate(date) {
     // Convert string to instance of date
     date = (0,date_fns__WEBPACK_IMPORTED_MODULE_0__["default"])(date);
 
@@ -4596,6 +4588,13 @@ function dateFormat(date) {
     } else {
         return (0,date_fns__WEBPACK_IMPORTED_MODULE_3__["default"])(new Date(date), 'MMM dd yyyy')
     }
+}
+
+function setDueDate(inputDate) {
+    const headerTxt = document.querySelector('.content-header-title').textContent;
+    const today = (0,date_fns__WEBPACK_IMPORTED_MODULE_3__["default"])((0,date_fns__WEBPACK_IMPORTED_MODULE_4__["default"])(), 'yyyy-MM-dd');
+
+    if (headerTxt === 'Today') inputDate.value = today;
 }
 
 
@@ -4756,7 +4755,7 @@ function loadTaskForm(container, parentEl) {
     taskDueDate.setAttribute('id', 'taskDueDate');
     taskDueDate.setAttribute('name', 'taskDueDate');
     taskDueDate.setAttribute('placeholder', 'Description');
-    (0,_content__WEBPACK_IMPORTED_MODULE_1__.setDueDate)(taskDueDate);
+    (0,_functions__WEBPACK_IMPORTED_MODULE_0__.setDueDate)(taskDueDate);
 
     const btnContainer = (0,_functions__WEBPACK_IMPORTED_MODULE_0__["default"])('div', 'form-btn-container', taskForm);
 
@@ -4800,6 +4799,17 @@ function addTask(e) {
 
     // Store tasks on user's computer
     localStorage.setItem('tasks', JSON.stringify(myTasks));
+
+
+
+
+    const headerTxt = document.querySelector('.content-header-title').textContent;
+
+
+
+
+
+
 
     createTaskEl(newTask, true);
     taskForm.reset();
@@ -4865,7 +4875,7 @@ function createTaskEl(task, container, parentEl) {
         calendar.classList.add('fa-regular', 'fa-calendar');
 
         const dueDate = (0,_functions__WEBPACK_IMPORTED_MODULE_0__["default"])('div', 'task-due-date', dueDateContainer);
-        dueDate.textContent = (0,_functions__WEBPACK_IMPORTED_MODULE_0__.dateFormat)(task.dueDate);
+        dueDate.textContent = (0,_functions__WEBPACK_IMPORTED_MODULE_0__.formatDate)(task.dueDate);
     }
 
     // TASK OPTIONS
