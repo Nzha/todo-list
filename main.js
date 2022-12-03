@@ -3876,6 +3876,44 @@ function startOfDay(dirtyDate) {
 
 /***/ }),
 
+/***/ "./node_modules/date-fns/esm/startOfToday/index.js":
+/*!*********************************************************!*\
+  !*** ./node_modules/date-fns/esm/startOfToday/index.js ***!
+  \*********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ startOfToday)
+/* harmony export */ });
+/* harmony import */ var _startOfDay_index_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../startOfDay/index.js */ "./node_modules/date-fns/esm/startOfDay/index.js");
+
+/**
+ * @name startOfToday
+ * @category Day Helpers
+ * @summary Return the start of today.
+ * @pure false
+ *
+ * @description
+ * Return the start of today.
+ *
+ * > ⚠️ Please note that this function is not present in the FP submodule as
+ * > it uses `Date.now()` internally hence impure and can't be safely curried.
+ *
+ * @returns {Date} the start of today
+ *
+ * @example
+ * // If today is 6 October 2014:
+ * const result = startOfToday()
+ * //=> Mon Oct 6 2014 00:00:00
+ */
+
+function startOfToday() {
+  return (0,_startOfDay_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])(Date.now());
+}
+
+/***/ }),
+
 /***/ "./node_modules/date-fns/esm/startOfWeek/index.js":
 /*!********************************************************!*\
   !*** ./node_modules/date-fns/esm/startOfWeek/index.js ***!
@@ -4423,13 +4461,16 @@ module.exports = styleTagTransform;
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (/* binding */ loadContent),
-/* harmony export */   "loadEmptyState": () => (/* binding */ loadEmptyState)
+/* harmony export */   "loadEmptyState": () => (/* binding */ loadEmptyState),
+/* harmony export */   "setDueDate": () => (/* binding */ setDueDate)
 /* harmony export */ });
 /* harmony import */ var _functions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./functions */ "./src/functions.js");
 /* harmony import */ var _taskManagement__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./taskManagement */ "./src/taskManagement.js");
 /* harmony import */ var date_fns__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! date-fns */ "./node_modules/date-fns/esm/isToday/index.js");
 /* harmony import */ var date_fns__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! date-fns */ "./node_modules/date-fns/esm/parseISO/index.js");
 /* harmony import */ var date_fns__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! date-fns */ "./node_modules/date-fns/esm/isThisWeek/index.js");
+/* harmony import */ var date_fns__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! date-fns */ "./node_modules/date-fns/esm/format/index.js");
+/* harmony import */ var date_fns__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! date-fns */ "./node_modules/date-fns/esm/startOfToday/index.js");
 
 
 
@@ -4488,6 +4529,13 @@ function loadEmptyState() {
 
     emptyStateHeader.textContent = 'Your peace of mind is priceless';
     emptyStateTxt.textContent = 'Well done! All your tasks are organized in the right place.';
+}
+
+function setDueDate(inputDate) {
+    const headerTxt = document.querySelector('.content-header-title').textContent;
+    const today = (0,date_fns__WEBPACK_IMPORTED_MODULE_5__["default"])((0,date_fns__WEBPACK_IMPORTED_MODULE_6__["default"])(), 'yyyy-MM-dd');
+
+    if (headerTxt === 'Today') inputDate.value = today;
 }
 
 
@@ -4657,6 +4705,8 @@ function createAddTaskBtn() {
 }
 
 function loadTaskForm(container, parentEl) {
+    // const headerTxt = document.querySelector('.content-header-title').textContent;
+
     // Container required for new task form, not for editing task form.
     if (container) {
         // Remove 'Add task' button    
@@ -4706,6 +4756,7 @@ function loadTaskForm(container, parentEl) {
     taskDueDate.setAttribute('id', 'taskDueDate');
     taskDueDate.setAttribute('name', 'taskDueDate');
     taskDueDate.setAttribute('placeholder', 'Description');
+    (0,_content__WEBPACK_IMPORTED_MODULE_1__.setDueDate)(taskDueDate);
 
     const btnContainer = (0,_functions__WEBPACK_IMPORTED_MODULE_0__["default"])('div', 'form-btn-container', taskForm);
 
