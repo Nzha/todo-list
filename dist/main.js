@@ -4474,15 +4474,13 @@ __webpack_require__.r(__webpack_exports__);
 
 function loadContent(title) {
     const content = document.querySelector('.content');
-
     const contentContainer = (0,_functions__WEBPACK_IMPORTED_MODULE_0__["default"])('div', 'content-inner-container', content);
     const contentHeader = (0,_functions__WEBPACK_IMPORTED_MODULE_0__["default"])('div', 'content-header', contentContainer);
-
     const headerTitle = (0,_functions__WEBPACK_IMPORTED_MODULE_0__["default"])('h2', 'content-header-title', contentHeader);
-    headerTitle.textContent = title;
-
     const taskContainer = (0,_functions__WEBPACK_IMPORTED_MODULE_0__["default"])('div', 'task-container', contentContainer);
     const taskList = (0,_functions__WEBPACK_IMPORTED_MODULE_0__["default"])('ul', 'task-list', taskContainer);
+
+    headerTitle.textContent = title;
 
     // Check for locally stored tasks
     const storedTasks = JSON.parse(localStorage.getItem('tasks'));
