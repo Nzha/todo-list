@@ -39,13 +39,21 @@ function getProjects(...names) {
 }
 
 function createProjectEl(project) {
+    // PROJECT NAME
     const projectList = document.querySelector('.sidebar-projects');
-    const projectDiv = createEl('li', 'sidebar-projects-item', projectList);
+    const projectContainer = createEl('li', 'sidebar-projects-container', projectList);
+    const projectDiv = createEl('div', 'sidebar-projects-item', projectContainer);
     const projectLink = createEl('a', 'sidebar-projects-item-link', projectDiv);
     const projectTxt = createEl('div', 'sidebar-projects-item-txt', projectLink);
     
-    projectDiv.setAttribute('id', `project-${project.id}`);
+    projectContainer.setAttribute('id', `project-${project.id}`);
     projectTxt.textContent = project.name;
+
+    // OPTIONS
+    const projectOptionContainer = createEl('div', 'sidebar-projects-options', projectLink);
+    const optionsBtn = createEl('div', 'sidebar-projects-options-btn', projectOptionContainer);
+    
+    optionsBtn.classList.add('fa-solid', 'fa-ellipsis-vertical');
 }
 
 function createProjectForm() {

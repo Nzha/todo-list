@@ -81,8 +81,7 @@ the padding is still displayed when sidebar is hidden */
     padding: 2rem 1rem;
 }
 
-.sidebar-tasks-item-link,
-.sidebar-projects-item-link {
+.sidebar-tasks-item-link {
     display: flex;
     gap: 0.5rem;
     padding: 0.5rem 1rem;
@@ -92,6 +91,7 @@ the padding is still displayed when sidebar is hidden */
 .sidebar-tasks-item-link:hover,
 .sidebar-projects-item-link:hover {
     background-color: #eeeeee;
+    cursor: pointer;
 }
 
 .fa-inbox {
@@ -115,13 +115,17 @@ the padding is still displayed when sidebar is hidden */
 
 .sidebar-projects {
     margin-top: 2rem;
-    padding: 0 1rem;
 }
 
 .projects-title-container {
     display: flex;
     justify-content: space-between;
     font-size: 1.15rem;
+}
+
+.projects-title-container,
+.hr-line {
+    padding: 0 1rem;
 }
 
 .projects-add-btn {
@@ -131,6 +135,17 @@ the padding is still displayed when sidebar is hidden */
 .projects-add-btn:hover {
     cursor: pointer;
     color: #db4c3f;
+}
+
+.sidebar-projects-item-link {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.5rem 1rem 0.5rem 1rem;
+    margin-left: 1rem;
+}
+
+.sidebar-projects-options {
+    font-size: 0.8rem;
 }
 /* SIDEBAR ENDS */
 
