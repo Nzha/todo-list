@@ -45,15 +45,35 @@ function createProjectEl(project) {
     const projectDiv = createEl('div', 'sidebar-projects-item', projectContainer);
     const projectLink = createEl('a', 'sidebar-projects-item-link', projectDiv);
     const projectTxt = createEl('div', 'sidebar-projects-item-txt', projectLink);
-    
     projectContainer.setAttribute('id', `project-${project.id}`);
     projectTxt.textContent = project.name;
 
     // OPTIONS
     const projectOptionContainer = createEl('div', 'sidebar-projects-options', projectLink);
     const optionsBtn = createEl('div', 'sidebar-projects-options-btn', projectOptionContainer);
-    
     optionsBtn.classList.add('fa-solid', 'fa-ellipsis-vertical');
+
+    const optionsBtns = document.querySelectorAll('.sidebar-projects-options');
+    optionsBtns.forEach(optionBtn => optionBtn.addEventListener('click', toggleOptionsMenu));
+}
+
+function toggleOptionsMenu(e) {
+    const projectOptionContainer = e.target.closest('.sidebar-projects-item-link .sidebar-projects-options');
+    const dropdownMenu = projectOptionContainer.querySelector('.dropdown-menu');
+
+    if (!dropdownMenu) createOptionMenuEl(e);
+    
+    dropdownMenu.classList.toggle('show');
+}
+
+function createOptionMenuEl(e) {
+    const projectOptionContainer = e.target.closest('.sidebar-projects-options');
+    const dropdownMenu = createEl('div', 'dropdown-menu', projectOptionContainer);
+    const dropdownEdit = createEl('div', 'dropdown-menu-edit', dropdownMenu);
+    const dropdownDelete = createEl('div', 'dropdown-menu-delete', dropdownMenu);
+    dropdownMenu.classList.toggle('show');
+    dropdownEdit.textContent = 'Edit';
+    dropdownDelete.textContent = 'Delete';
 }
 
 function createProjectForm() {
