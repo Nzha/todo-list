@@ -10,6 +10,7 @@ function setSideBar() {
     sidebarToggle();
     updateTaskCount();
     getPage();
+    updateProjects();
 }
 
 function sidebarToggle() {
@@ -69,6 +70,10 @@ function getPage() {
     
         loadContent(title);
     }
+}
+
+function updateProjects() {
+
 }
 
 export { setSideBar as default, updateTaskCount };

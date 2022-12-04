@@ -118,8 +118,19 @@ the padding is still displayed when sidebar is hidden */
     padding: 0 1rem;
 }
 
-.projects-title {
+.projects-title-container {
+    display: flex;
+    justify-content: space-between;
     font-size: 1.15rem;
+}
+
+.fa-solid.fa-circle-plus {
+    color: #8b8b8b;
+}
+
+.fa-solid.fa-circle-plus:hover {
+    cursor: pointer;
+    color: #db4c3f;
 }
 /* SIDEBAR ENDS */
 
