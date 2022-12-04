@@ -61,9 +61,16 @@ function toggleOptionsMenu(e) {
     const projectOptionContainer = e.target.closest('.sidebar-projects-item-link .sidebar-projects-options');
     const dropdownMenu = projectOptionContainer.querySelector('.dropdown-menu');
 
-    if (!dropdownMenu) createOptionMenuEl(e);
+    // Close menu already opened
+    const dropdownMenus = document.querySelectorAll('.dropdown-menu');
+    dropdownMenus.forEach(dropdownMenu => dropdownMenu.classList.remove('show'));
+
+    if (!dropdownMenu) {
+        createOptionMenuEl(e);
+    }  else {
+        dropdownMenu.classList.toggle('show');
+    }
     
-    dropdownMenu.classList.toggle('show');
 }
 
 function createOptionMenuEl(e) {
