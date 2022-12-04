@@ -5,13 +5,13 @@ import { loadEmptyState } from './content';
 
 let myTasks = [];
 
-// Update myTasks with locally stored tasks
-const storedTasks = JSON.parse(localStorage.getItem('tasks'));
-if (storedTasks) myTasks = JSON.parse(localStorage.getItem('tasks'));
-
 const task = (id, name, description, dueDate, status) => {
     return {id, name, description, dueDate, status};
 }
+
+// Update myTasks with locally stored tasks
+const storedTasks = JSON.parse(localStorage.getItem('tasks'));
+if (storedTasks) myTasks = JSON.parse(localStorage.getItem('tasks'));
 
 function createAddTaskBtn() {
     // Return if add task button already exists

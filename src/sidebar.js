@@ -1,5 +1,6 @@
 import { parseISO, isToday, isThisWeek } from 'date-fns';
 import createEl from './functions';
+import loadProjects from './projects'
 import loadContent from './content';
 
 const allTasksLink = document.querySelector('#all-tasks-link');
@@ -7,10 +8,13 @@ const todayTasksLink = document.querySelector('#today-tasks-link');
 const weekTasksLink = document.querySelector('#week-tasks-link');
 
 function setSideBar() {
+    const storedTasks = JSON.parse(localStorage.getItem('tasks'));
+
     sidebarToggle();
-    updateTaskCount();
     getPage();
-    updateProjects();
+    loadProjects();
+
+    if (storedTasks) updateTaskCount();
 }
 
 function sidebarToggle() {
@@ -70,10 +74,6 @@ function getPage() {
     
         loadContent(title);
     }
-}
-
-function updateProjects() {
-
 }
 
 export { setSideBar as default, updateTaskCount };

@@ -124,11 +124,11 @@ the padding is still displayed when sidebar is hidden */
     font-size: 1.15rem;
 }
 
-.fa-solid.fa-circle-plus {
+.projects-add-btn {
     color: #8b8b8b;
 }
 
-.fa-solid.fa-circle-plus:hover {
+.projects-add-btn:hover {
     cursor: pointer;
     color: #db4c3f;
 }

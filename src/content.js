@@ -14,10 +14,11 @@ function loadContent(title) {
 
     // Check for locally stored tasks
     const storedTasks = JSON.parse(localStorage.getItem('tasks'));
-    const todaysTasks = storedTasks.filter(task => isToday(parseISO(task.dueDate)));
-    const thisWeekTasks = storedTasks.filter(task => isThisWeek(parseISO(task.dueDate)));
 
     if (storedTasks) {
+        const todaysTasks = storedTasks.filter(task => isToday(parseISO(task.dueDate)));
+        const thisWeekTasks = storedTasks.filter(task => isThisWeek(parseISO(task.dueDate)));
+
         if (title == 'All' && storedTasks.length > 0) {
             loadTasks(storedTasks);
         } else if (title == 'Today' && todaysTasks.length > 0) {
@@ -27,6 +28,8 @@ function loadContent(title) {
         } else {
             loadEmptyState();
         }
+    } else {
+        loadEmptyState();
     }
 
     createAddTaskBtn();
