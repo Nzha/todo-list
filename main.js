@@ -4695,6 +4695,8 @@ function createOptionMenuEl(e) {
     dropdownEdit.textContent = 'Edit';
     dropdownDelete.textContent = 'Delete';
 
+    dropdownDelete.addEventListener('click', deleteProject);
+
     // Add a class making the text not selectable to prevent occasional default highlighting
     dropdownEdit.classList.add('noselect');
     dropdownDelete.classList.add('noselect');
@@ -4743,6 +4745,16 @@ function addProject(e) {
     if (!projectName) return;
 
     getProjects(projectName);
+}
+
+function deleteProject(e) {
+    const projectContainer = e.target.closest('.sidebar-projects-container');
+    const myProjectIndex = myProjects.findIndex(el => el.id == projectContainer.id.replace(/\D/g,''));
+
+    myProjects.splice(myProjectIndex, 1);
+    localStorage.setItem('projects', JSON.stringify(myProjects));
+    projectContainer.remove();
+    console.table(myProjects);
 }
 
 
@@ -5174,8 +5186,8 @@ function deleteTask(e) {
     const myTaskIndex = myTasks.findIndex(el => el.id == taskContainer.id.replace(/\D/g,''));
  
     myTasks.splice(myTaskIndex, 1);
-    localStorage.setItem('tasks', JSON.stringify(myTasks))
-    ;(0,_sidebar__WEBPACK_IMPORTED_MODULE_1__.updateTaskCount)();
+    localStorage.setItem('tasks', JSON.stringify(myTasks));
+    (0,_sidebar__WEBPACK_IMPORTED_MODULE_1__.updateTaskCount)();
 
     const todaysTasks = myTasks.filter(task => (0,date_fns__WEBPACK_IMPORTED_MODULE_4__["default"])((0,date_fns__WEBPACK_IMPORTED_MODULE_3__["default"])(task.dueDate)));
     const thisWeekTasks = myTasks.filter(task => (0,date_fns__WEBPACK_IMPORTED_MODULE_5__["default"])((0,date_fns__WEBPACK_IMPORTED_MODULE_3__["default"])(task.dueDate)));
