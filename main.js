@@ -4627,7 +4627,7 @@ const project = (id, name) => {
 
 // localStorage.clear();
 
-document.addEventListener('click', closeOptionMenu);
+document.addEventListener('click', closeMenuOnOutsideClick);
 addProjectBtn.addEventListener('click', createProjectForm);
 
 function loadProject() {
@@ -4700,11 +4700,11 @@ function createOptionMenuEl(e) {
     dropdownDelete.classList.add('noselect');
 }
 
-function closeOptionMenu(e) {
-    // if (!e.target.matches('.dropdown-menu')) {
-    //     const dropdownMenus = document.querySelectorAll('.dropdown-menu');
-    //     dropdownMenus.forEach(dropdownMenu => dropdownMenu.classList.remove('show'));
-    // }
+function closeMenuOnOutsideClick(e) {
+    if (!e.target.closest('.sidebar-projects-options')) {
+        const dropdownMenus = document.querySelectorAll('.dropdown-menu');
+        dropdownMenus.forEach(dropdownMenu => dropdownMenu.remove());
+    }
 }
 
 function createProjectForm() {
