@@ -99,7 +99,6 @@ function loadTaskForm(container, parentEl) {
 
 function addTask(e) {   
     e.preventDefault();
-
     const headerTxt = document.querySelector('.content-header-title').textContent;
     const taskForm = document.querySelector('.task-form');
     const taskNameInput = document.querySelector('#taskName');
@@ -226,7 +225,6 @@ function createTaskEl(task, container, parentEl) {
 
 function cancelTaskForm(e) {
     e.preventDefault();
-
     const newTaskFormContainer = document.querySelector('.new-task-form-container');
 
     // newTaskFormContainer only exists when adding a task, not when editing one
@@ -280,7 +278,6 @@ function editTask(e) {
 
 function saveTaskEdits(e) {
     e.preventDefault();
-
     const taskContainer = e.target.closest('.task-list-item-container');
     const taskForm = document.querySelector('.task-form')
     const taskNameInput = document.querySelector('#taskName');

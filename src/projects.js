@@ -117,17 +117,21 @@ function createProjectForm() {
 
     const cancelTaskBtn = createEl('button', 'cancel-project-form-btn', btnContainer);
     cancelTaskBtn.textContent = 'Cancel';
-    // cancelTaskBtn.addEventListener('click', cancelTaskForm)
+    cancelTaskBtn.addEventListener('click', cancelProjectForm)
 
     const addTaskBtn = createEl('button', 'add-project-form-btn', btnContainer);
-
     addTaskBtn.textContent = 'Add task';
     addTaskBtn.addEventListener('click', addProject);
 }
 
+function cancelProjectForm(e) {
+    e.preventDefault();
+    const projectForm = document.querySelector('.project-form');
+    projectForm.remove();
+}
+
 function addProject(e) {
     e.preventDefault();
-    
     const projectNameInput = document.querySelector('#projectName');
     const projectForm = document.querySelector('.project-form');
 
