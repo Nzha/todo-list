@@ -11,6 +11,7 @@ const project = (id, name) => {
 
 // localStorage.clear();
 
+document.addEventListener('click', closeOptionMenu);
 addProjectBtn.addEventListener('click', createProjectForm);
 
 function loadProject() {
@@ -59,18 +60,15 @@ function createProjectEl(project) {
 
 function toggleOptionsMenu(e) {
     const projectOptionContainer = e.target.closest('.sidebar-projects-item-link .sidebar-projects-options');
-    const dropdownMenu = projectOptionContainer.querySelector('.dropdown-menu');
+    const eventDropdownMenu = projectOptionContainer.querySelector('.dropdown-menu');
+    const dropdownMenu = document.querySelector('.dropdown-menu');
 
-    // Close menu already opened
-    const dropdownMenus = document.querySelectorAll('.dropdown-menu');
-    dropdownMenus.forEach(dropdownMenu => dropdownMenu.classList.remove('show'));
-
-    if (!dropdownMenu) {
+    if (!eventDropdownMenu) {
+        if (dropdownMenu) dropdownMenu.remove();
         createOptionMenuEl(e);
     }  else {
-        dropdownMenu.classList.toggle('show');
+        eventDropdownMenu.remove();
     }
-    
 }
 
 function createOptionMenuEl(e) {
@@ -78,9 +76,15 @@ function createOptionMenuEl(e) {
     const dropdownMenu = createEl('div', 'dropdown-menu', projectOptionContainer);
     const dropdownEdit = createEl('div', 'dropdown-menu-edit', dropdownMenu);
     const dropdownDelete = createEl('div', 'dropdown-menu-delete', dropdownMenu);
-    dropdownMenu.classList.toggle('show');
     dropdownEdit.textContent = 'Edit';
     dropdownDelete.textContent = 'Delete';
+}
+
+function closeOptionMenu(e) {
+    // if (!e.target.matches('.dropdown-menu')) {
+    //     const dropdownMenus = document.querySelectorAll('.dropdown-menu');
+    //     dropdownMenus.forEach(dropdownMenu => dropdownMenu.classList.remove('show'));
+    // }
 }
 
 function createProjectForm() {

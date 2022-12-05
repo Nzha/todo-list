@@ -151,14 +151,14 @@ the padding is still displayed when sidebar is hidden */
 }
 
 .dropdown-menu {
-    display: none;
+    display: block;
     position: absolute;
     background-color: white;
     border: 1px solid #dddddd;
     top: 1.3rem;
     right: -0.7rem;
     overflow: auto;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+     box-shadow: 0 1px 8px 0 rgb(0 0 0 / 8%);
     z-index: 1;
 }
   
@@ -169,10 +169,6 @@ the padding is still displayed when sidebar is hidden */
   
 .dropdown-menu div:hover {
     background-color: #dddddd;
-}
-  
-.dropdown-menu.show {
-    display: block;
 }
 /* SIDEBAR ENDS */
 
