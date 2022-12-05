@@ -79,6 +79,8 @@ function createOptionMenuEl(e) {
     dropdownEdit.textContent = 'Edit';
     dropdownDelete.textContent = 'Delete';
 
+    dropdownDelete.addEventListener('click', deleteProject);
+
     // Add a class making the text not selectable to prevent occasional default highlighting
     dropdownEdit.classList.add('noselect');
     dropdownDelete.classList.add('noselect');
@@ -127,6 +129,16 @@ function addProject(e) {
     if (!projectName) return;
 
     getProjects(projectName);
+}
+
+function deleteProject(e) {
+    const projectContainer = e.target.closest('.sidebar-projects-container');
+    const myProjectIndex = myProjects.findIndex(el => el.id == projectContainer.id.replace(/\D/g,''));
+
+    myProjects.splice(myProjectIndex, 1);
+    localStorage.setItem('projects', JSON.stringify(myProjects));
+    projectContainer.remove();
+    console.table(myProjects);
 }
 
 export { loadProject as default };

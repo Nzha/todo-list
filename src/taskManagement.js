@@ -307,7 +307,7 @@ function deleteTask(e) {
     const myTaskIndex = myTasks.findIndex(el => el.id == taskContainer.id.replace(/\D/g,''));
  
     myTasks.splice(myTaskIndex, 1);
-    localStorage.setItem('tasks', JSON.stringify(myTasks))
+    localStorage.setItem('tasks', JSON.stringify(myTasks));
     updateSidebarTaskCount();
 
     const todaysTasks = myTasks.filter(task => isToday(parseISO(task.dueDate)));
