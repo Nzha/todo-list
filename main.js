@@ -4656,6 +4656,9 @@ function getProjects(...names) {
 }
 
 function createProjectEl(project) {
+    const projectForm = document.querySelector('.project-form');
+    const projectFormContainer = document.querySelector('.project-form-container');
+
     // PROJECT NAME
     const projectList = document.querySelector('.sidebar-projects');
     const projectContainer = (0,_functions__WEBPACK_IMPORTED_MODULE_0__["default"])('li', 'sidebar-projects-container', projectList);
@@ -4669,6 +4672,9 @@ function createProjectEl(project) {
     const projectOptionContainer = (0,_functions__WEBPACK_IMPORTED_MODULE_0__["default"])('div', 'sidebar-projects-options', projectLink);
     const optionsBtn = (0,_functions__WEBPACK_IMPORTED_MODULE_0__["default"])('div', 'sidebar-projects-options-btn', projectOptionContainer);
     optionsBtn.classList.add('fa-solid', 'fa-ellipsis-vertical');
+
+    // Insert project into list before form
+    if (projectForm) projectList.insertBefore(projectContainer, projectFormContainer);
 
     const optionsBtns = document.querySelectorAll('.sidebar-projects-options');
     optionsBtns.forEach(optionBtn => optionBtn.addEventListener('click', toggleOptionsMenu));
@@ -4711,8 +4717,8 @@ function closeMenuOnOutsideClick(e) {
 
 function createProjectForm() {
     const projectList = document.querySelector('.sidebar-projects');
-    const projectDiv = (0,_functions__WEBPACK_IMPORTED_MODULE_0__["default"])('li', 'sidebar-projects-item', projectList);
-    const projectForm = (0,_functions__WEBPACK_IMPORTED_MODULE_0__["default"])('form', 'project-form', projectDiv);
+    const projectFormContainer = (0,_functions__WEBPACK_IMPORTED_MODULE_0__["default"])('li', 'project-form-container', projectList);
+    const projectForm = (0,_functions__WEBPACK_IMPORTED_MODULE_0__["default"])('form', 'project-form', projectFormContainer);
     const projectInput = (0,_functions__WEBPACK_IMPORTED_MODULE_0__["default"])('input', 'project-name', projectForm);
 
     projectInput.setAttribute('type', 'text');
@@ -4739,12 +4745,15 @@ function addProject(e) {
     e.preventDefault();
     
     const projectNameInput = document.querySelector('#projectName');
+    const projectForm = document.querySelector('.project-form');
 
     let projectName = projectNameInput.value;
 
     if (!projectName) return;
 
     getProjects(projectName);
+    projectForm.remove();
+    console.table(myProjects);
 }
 
 function deleteProject(e) {
