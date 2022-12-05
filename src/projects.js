@@ -78,6 +78,10 @@ function createOptionMenuEl(e) {
     const dropdownDelete = createEl('div', 'dropdown-menu-delete', dropdownMenu);
     dropdownEdit.textContent = 'Edit';
     dropdownDelete.textContent = 'Delete';
+
+    // Add a class making the text not selectable to prevent occasional default highlighting
+    dropdownEdit.classList.add('noselect');
+    dropdownDelete.classList.add('noselect');
 }
 
 function closeOptionMenu(e) {
