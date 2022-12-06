@@ -162,7 +162,6 @@ function cancelProjectForm(e) {
     if (projectFormContainer) {
         projectFormContainer.remove();
     } else {
-        console.log('Editing');
         const eventProjectContainer = e.target.closest('.sidebar-projects-container');
         const projectForm = document.querySelector('.project-form');
 
@@ -177,14 +176,14 @@ function cancelProjectForm(e) {
 function addProject(e) {
     e.preventDefault();
     const projectNameInput = document.querySelector('#projectName');
-    const projectForm = document.querySelector('.project-form');
+    const projectFormContainer = document.querySelector('.project-form-container');
 
     let projectName = projectNameInput.value;
 
     if (!projectName) return;
 
     getProjects(projectName);
-    projectForm.remove();
+    projectFormContainer.remove();
     console.table(myProjects);
 }
 
