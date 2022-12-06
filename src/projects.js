@@ -19,7 +19,7 @@ function loadProject() {
         // Update myProjects with locally stored projects
         myProjects = JSON.parse(localStorage.getItem('projects'));
 
-        myProjects.forEach(project => createProjectEl(project));
+        myProjects.forEach(project => createProjectEl(project, true));
     } else {
         getProjects('Personal', 'Shopping', 'Work', 'Movies to watch');
     }
@@ -35,21 +35,25 @@ function getProjects(...names) {
         const newProject = project(id, name);
         myProjects.push(newProject);
         localStorage.setItem('projects', JSON.stringify(myProjects));
-        createProjectEl(newProject);
+        createProjectEl(newProject, true);
     }
 }
 
-function createProjectEl(project) {
-    const projectForm = document.querySelector('.project-form');
+function createProjectEl(project, container, parentEl) {
+    const projectList = document.querySelector('.sidebar-projects');
     const projectFormContainer = document.querySelector('.project-form-container');
+    const projectForm = document.querySelector('.project-form');
+
+    if (container) {
+        const projectContainer = createEl('li', 'sidebar-projects-container', projectList);
+        projectContainer.setAttribute('id', `project-${project.id}`);
+        parentEl = projectContainer;
+    }
 
     // PROJECT NAME
-    const projectList = document.querySelector('.sidebar-projects');
-    const projectContainer = createEl('li', 'sidebar-projects-container', projectList);
-    const projectDiv = createEl('div', 'sidebar-projects-item', projectContainer);
+    const projectDiv = createEl('div', 'sidebar-projects-item', parentEl);
     const projectLink = createEl('a', 'sidebar-projects-item-link', projectDiv);
     const projectTxt = createEl('div', 'sidebar-projects-item-txt', projectLink);
-    projectContainer.setAttribute('id', `project-${project.id}`);
     projectTxt.textContent = project.name;
 
     // OPTIONS
@@ -58,7 +62,7 @@ function createProjectEl(project) {
     optionsBtn.classList.add('fa-solid', 'fa-ellipsis-vertical');
 
     // Insert project into list before form
-    if (projectForm) projectList.insertBefore(projectContainer, projectFormContainer);
+    if (projectForm) projectList.insertBefore(parentEl, projectFormContainer);
 
     const optionsBtns = document.querySelectorAll('.sidebar-projects-options');
     optionsBtns.forEach(optionBtn => optionBtn.addEventListener('click', toggleOptionsMenu));
@@ -85,6 +89,7 @@ function createOptionMenuEl(e) {
     dropdownEdit.textContent = 'Edit';
     dropdownDelete.textContent = 'Delete';
 
+    dropdownEdit.addEventListener('click', editProject);
     dropdownDelete.addEventListener('click', deleteProject);
 
     // Add a class making the text not selectable to prevent occasional default highlighting
@@ -99,11 +104,16 @@ function closeMenuOnOutsideClick(e) {
     }
 }
 
-function createProjectForm() {
-    const projectList = document.querySelector('.sidebar-projects');
-    const projectFormContainer = createEl('li', 'project-form-container', projectList);
-    const projectForm = createEl('form', 'project-form', projectFormContainer);
-    const projectInput = createEl('input', 'project-name', projectForm);
+function createProjectForm(container, parentEl) {
+    // Container required for new project form, not for editing project form.
+    if (container) {
+        const projectList = document.querySelector('.sidebar-projects'); // ul
+        const projectFormContainer = createEl('li', 'project-form-container', projectList);
+        parentEl = projectFormContainer;
+    } 
+
+    const projectForm = createEl('form', 'project-form', parentEl);
+    const projectInput = createEl('input', 'projectName', projectForm);
 
     projectInput.setAttribute('type', 'text');
     projectInput.setAttribute('id', 'projectName');
@@ -126,8 +136,24 @@ function createProjectForm() {
 
 function cancelProjectForm(e) {
     e.preventDefault();
-    const projectForm = document.querySelector('.project-form');
-    projectForm.remove();
+
+    const projectFormContainer = document.querySelector('.project-form-container');
+    console.log(projectFormContainer);
+
+    // projectFormContainer only exists when adding a project, not when editing one
+    if (projectFormContainer) {
+        projectFormContainer.remove();
+    } else {
+        console.log('Editing');
+        const eventProjectContainer = e.target.closest('.sidebar-projects-container');
+        const projectForm = document.querySelector('.project-form');
+
+        // Find task in myProjects for which id matches div id (without non-digits characters)
+        const myProject = myProjects.find(el => el.id == eventProjectContainer.id.replace(/\D/g,''));
+
+        projectForm.remove();
+        createProjectEl(myProject, false, eventProjectContainer);
+    }
 }
 
 function addProject(e) {
@@ -142,6 +168,16 @@ function addProject(e) {
     getProjects(projectName);
     projectForm.remove();
     console.table(myProjects);
+}
+
+function editProject(e) {
+    const projectContainer = e.target.closest('.sidebar-projects-container');
+    const myProject = myProjects.find(el => el.id == projectContainer.id.replace(/\D/g,''));
+
+    projectContainer.textContent = '';
+    createProjectForm(false, projectContainer);
+    document.querySelector('.projectName').value = myProject.name;
+    document.querySelector('.projectName').focus();
 }
 
 function deleteProject(e) {
