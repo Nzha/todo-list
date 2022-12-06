@@ -106,6 +106,9 @@ function closeMenuOnOutsideClick(e) {
 }
 
 function createProjectForm(container, parentEl) {
+    // Return if a new project form is already displayed
+    if (document.querySelector('.project-form-container')) return;
+
     // Container required for new project form, not for editing project form.
     if (container) {
         const projectList = document.querySelector('.sidebar-projects');
