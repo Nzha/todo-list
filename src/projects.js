@@ -153,9 +153,7 @@ function createProjectForm(container, parentEl) {
 
 function cancelProjectForm(e) {
     e.preventDefault();
-
     const projectFormContainer = document.querySelector('.project-form-container');
-    console.log(projectFormContainer);
 
     // projectFormContainer only exists when adding a project, not when editing one
     if (projectFormContainer) {

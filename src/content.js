@@ -1,6 +1,6 @@
 import { parseISO, isToday, isThisWeek } from 'date-fns';
 import createEl from './functions';
-import createAddTaskBtn, { createTaskEl } from './taskManagement';
+import createAddTaskBtn, { createTaskEl } from './tasks';
 
 function loadContent(title) {
     const content = document.querySelector('.content');
