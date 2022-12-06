@@ -4660,13 +4660,14 @@ function createProjectEl(project, container, parentEl) {
     const projectFormContainer = document.querySelector('.project-form-container');
     const projectForm = document.querySelector('.project-form');
 
+    // Container required if a new project or a locally stored one is added, not when editing one.
     if (container) {
         const projectContainer = (0,_functions__WEBPACK_IMPORTED_MODULE_0__["default"])('li', 'sidebar-projects-container', projectList);
         projectContainer.setAttribute('id', `project-${project.id}`);
         parentEl = projectContainer;
     }
 
-    // PROJECT NAME
+    // NAME
     const projectDiv = (0,_functions__WEBPACK_IMPORTED_MODULE_0__["default"])('div', 'sidebar-projects-item', parentEl);
     const projectLink = (0,_functions__WEBPACK_IMPORTED_MODULE_0__["default"])('a', 'sidebar-projects-item-link', projectDiv);
     const projectTxt = (0,_functions__WEBPACK_IMPORTED_MODULE_0__["default"])('div', 'sidebar-projects-item-txt', projectLink);
@@ -4741,13 +4742,19 @@ function createProjectForm(container, parentEl) {
 
     const btnContainer = (0,_functions__WEBPACK_IMPORTED_MODULE_0__["default"])('div', 'form-btn-container', projectForm);
 
-    const cancelTaskBtn = (0,_functions__WEBPACK_IMPORTED_MODULE_0__["default"])('button', 'cancel-project-form-btn', btnContainer);
-    cancelTaskBtn.textContent = 'Cancel';
-    cancelTaskBtn.addEventListener('click', cancelProjectForm)
+    const cancelBtn = (0,_functions__WEBPACK_IMPORTED_MODULE_0__["default"])('button', 'cancel-project-form-btn', btnContainer);
+    cancelBtn.textContent = 'Cancel';
+    cancelBtn.addEventListener('click', cancelProjectForm)
 
-    const addTaskBtn = (0,_functions__WEBPACK_IMPORTED_MODULE_0__["default"])('button', 'add-project-form-btn', btnContainer);
-    addTaskBtn.textContent = 'Add task';
-    addTaskBtn.addEventListener('click', addProject);
+    const addBtn = (0,_functions__WEBPACK_IMPORTED_MODULE_0__["default"])('button', 'add-project-form-btn', btnContainer);
+
+    if (container) {
+        addBtn.textContent = 'Add project';
+        addBtn.addEventListener('click', addProject);
+    } else {
+        addBtn.textContent = 'Save';
+        addBtn.addEventListener('click', saveProjectEdits);
+    }
 }
 
 function cancelProjectForm(e) {
@@ -4794,6 +4801,24 @@ function editProject(e) {
     createProjectForm(false, projectContainer);
     document.querySelector('.projectName').value = myProject.name;
     document.querySelector('.projectName').focus();
+}
+
+function saveProjectEdits(e) {
+    e.preventDefault();
+    const projectContainer = e.target.closest('.sidebar-projects-container');
+    const projectForm = document.querySelector('.project-form');
+    const projectNameInput = document.querySelector('#projectName');
+    const myProject = myProjects.find(el => el.id == projectContainer.id.replace(/\D/g,''));
+
+    myProject.name = projectNameInput.value;
+
+    if (!myProject.name) return;
+
+    localStorage.setItem('projects', JSON.stringify(myProjects));
+
+    projectForm.remove();
+    createProjectEl(myProject, false, projectContainer);
+    console.table(myProjects);
 }
 
 function deleteProject(e) {
