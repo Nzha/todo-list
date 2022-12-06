@@ -124,7 +124,7 @@ function createProjectForm(container, parentEl) {
     projectInput.setAttribute('maxlength', '25');
     projectInput.focus();
 
-    const btnContainer = createEl('div', 'form-btn-container', projectForm);
+    const btnContainer = createEl('div', 'form-project-btn-container', projectForm);
 
     const cancelBtn = createEl('button', 'cancel-project-form-btn', btnContainer);
     cancelBtn.textContent = 'Cancel';

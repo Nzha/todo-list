@@ -38,6 +38,7 @@ a {
     color: inherit;
 }
 
+
 /* HEADER STARTS */
 header {
     grid-area: header;
@@ -63,11 +64,13 @@ header {
 }
 /* HEADER ENDS */
 
+
 ul {
     list-style: none;
     margin: 0;
     padding: 0;
 }
+
 
 /* SIDEBAR STARTS */
 .sidebar {
@@ -181,8 +184,72 @@ the padding is still displayed when sidebar is hidden */
 .dropdown-menu div:hover {
     background-color: #dddddd;
 }
+
+
+/* SIDEBAR - PROJECT FORM STARTS */
+.project-form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 0.75rem 0.75rem 0.75rem 1.8rem;
+}
+
+#projectName {
+    font-family: "Helvetica", "Arial", sans-serif;
+    font-size: 0.9rem;
+    appearance: none;
+    padding: 0.4rem 0.5rem;
+    border: 1px solid #e5e5e5;
+    border-radius: 10px;
+}
+
+#projectName:focus {
+    outline: none;
+    border-color: #999;
+}
+
+.form-project-btn-container,
+.form-btn-container {
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.5rem;
+}
+
+.cancel-project-form-btn,
+.add-project-form-btn {
+    cursor: pointer;
+    font-size: 0.8rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 5px;
+    padding: 6px 12px;
+}
+
+.cancel-project-form-btn,
+.cancel-task-form-btn {
+    background-color: #f5f5f5;
+}
+
+.cancel-project-form-btn:hover,
+.cancel-task-form-btn:hover {
+    background-color: #e5e5e5;
+}
+
+.add-project-form-btn,
+.add-task-form-btn  {
+    color: white;
+    background-color: #f1b7b2;
+}
+
+.add-project-form-btn:hover,
+.add-task-form-btn:hover {
+    background-color: #db4c3f;
+}
+/* SIDEBAR - PROJECT FORM ENDS */
 /* SIDEBAR ENDS */
 
+
+/* CONTENT STARTS */
 .content {
     grid-area: content;
     display: flex;
@@ -264,7 +331,8 @@ h2 {
     text-align: center;
 }
 
-/* NEW TASK FORM STARTS */
+
+/* CONTENT - NEW TASK FORM STARTS */
 .task-form {
     display: flex;
     flex-direction: column;
@@ -285,15 +353,15 @@ h2 {
     border-color: #999;
 }
 
-input[type=text],
-textarea {
+.task-form-editor input[type=text],
+.task-form-editor textarea {
     appearance: none;
     border: 1px solid transparent;
 }
   
-input[type=text]:focus,
-textarea:focus,
-input[type=date]:focus {
+.task-form-editor input[type=text]:focus,
+.task-form-editor textarea:focus,
+.task-form-editor input[type=date]:focus {
     outline: none;
 }
 
@@ -322,12 +390,6 @@ input[type=date]:focus {
     color: #1f1f2f;
 }
 
-.form-btn-container {
-    display: flex;
-    justify-content: flex-end;
-    gap: 0.5rem;
-}
-
 .cancel-task-form-btn,
 .add-task-form-btn {
     cursor: pointer;
@@ -336,27 +398,10 @@ input[type=date]:focus {
     border-radius: 5px;
     padding: 8px 12px;
 }
-
-.cancel-task-form-btn {
-    background-color: #f5f5f5;
-}
-
-.cancel-task-form-btn:hover {
-    background-color: #e5e5e5;
-}
-
-.add-task-form-btn {
-    color: white;
-    background-color: #f1b7b2;
-}
-
-.add-task-form-btn:hover {
-    background-color: #db4c3f;
-}
-/* NEW TASK FORM ENDS */
+/* CONTENT -NEW TASK FORM ENDS */
 
 
-/* TASK LIST STARTS */
+/* CONTENT - TASK LIST STARTS */
 .task-list-item-container {
     display: grid;
     justify-content: space-between;
@@ -538,7 +583,9 @@ Source: https://www.sliderrevolution.com/resources/css-checkbox/ (task descripti
 .task-option-calendar:hover {
     transform: scale(1.2);
 }
-/* TASK LIST ENDS */
+/* CONTENT - TASK LIST ENDS */
+/* CONTENT ENDS */
+
 
 @media only screen and (min-width: 700px) {
     .sidebar {
