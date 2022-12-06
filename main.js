@@ -4467,7 +4467,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var date_fns__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! date-fns */ "./node_modules/date-fns/esm/parseISO/index.js");
 /* harmony import */ var date_fns__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! date-fns */ "./node_modules/date-fns/esm/isThisWeek/index.js");
 /* harmony import */ var _functions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./functions */ "./src/functions.js");
-/* harmony import */ var _taskManagement__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./taskManagement */ "./src/taskManagement.js");
+/* harmony import */ var _tasks__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./tasks */ "./src/tasks.js");
 
 
 
@@ -4502,13 +4502,13 @@ function loadContent(title) {
         loadEmptyState();
     }
 
-    (0,_taskManagement__WEBPACK_IMPORTED_MODULE_1__["default"])();
+    (0,_tasks__WEBPACK_IMPORTED_MODULE_1__["default"])();
 }
 
 function loadTasks(tasks) {
     tasks.forEach(task => {
         // Create corresponding elements
-        (0,_taskManagement__WEBPACK_IMPORTED_MODULE_1__.createTaskEl)(task, true)
+        (0,_tasks__WEBPACK_IMPORTED_MODULE_1__.createTaskEl)(task, true)
 
         // Display checked checkboxes as checked
         if (task.status == 'checked') {
@@ -4769,9 +4769,7 @@ function createProjectForm(container, parentEl) {
 
 function cancelProjectForm(e) {
     e.preventDefault();
-
     const projectFormContainer = document.querySelector('.project-form-container');
-    console.log(projectFormContainer);
 
     // projectFormContainer only exists when adding a project, not when editing one
     if (projectFormContainer) {
@@ -4948,10 +4946,10 @@ function getPage() {
 
 /***/ }),
 
-/***/ "./src/taskManagement.js":
-/*!*******************************!*\
-  !*** ./src/taskManagement.js ***!
-  \*******************************/
+/***/ "./src/tasks.js":
+/*!**********************!*\
+  !*** ./src/tasks.js ***!
+  \**********************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
