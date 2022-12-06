@@ -5242,7 +5242,7 @@ function saveTaskEdits(e) {
     myTask.description = taskDescriptionInput.value;
     myTask.dueDate = taskDueDateInput.value;
 
-    if (!taskName) return;
+    if (!myTask.name) return;
 
     localStorage.setItem('tasks', JSON.stringify(myTasks));
 
