@@ -4724,9 +4724,19 @@ function closeMenuOnOutsideClick(e) {
 function createProjectForm(container, parentEl) {
     // Container required for new project form, not for editing project form.
     if (container) {
-        const projectList = document.querySelector('.sidebar-projects'); // ul
+        const projectList = document.querySelector('.sidebar-projects');
+        const projectForm = document.querySelector('.project-form');
         const projectFormContainer = (0,_functions__WEBPACK_IMPORTED_MODULE_0__["default"])('li', 'project-form-container', projectList);
         parentEl = projectFormContainer;
+
+        // Remove existing project form if any
+        if (projectForm) {
+            const projectContainer = projectForm.closest('.sidebar-projects-container');
+            const myProject = myProjects.find(el => el.id == projectContainer.id.replace(/\D/g,''));
+
+            projectForm.remove();
+            createProjectEl(myProject, false, projectContainer);
+        }
     } 
 
     const projectForm = (0,_functions__WEBPACK_IMPORTED_MODULE_0__["default"])('form', 'project-form', parentEl);
@@ -4796,6 +4806,10 @@ function addProject(e) {
 function editProject(e) {
     const projectContainer = e.target.closest('.sidebar-projects-container');
     const myProject = myProjects.find(el => el.id == projectContainer.id.replace(/\D/g,''));
+
+    // Remove project form if one is already displayed
+    const projectFormContainer = document.querySelector('.project-form-container');
+    if (projectFormContainer) projectFormContainer.remove();
 
     projectContainer.textContent = '';
     createProjectForm(false, projectContainer);
@@ -4990,9 +5004,8 @@ function loadTaskForm(container, parentEl) {
 
         // Create container
         const taskListDiv = document.querySelector('.task-list');
-        const newTaskFormContainer = (0,_functions__WEBPACK_IMPORTED_MODULE_0__["default"])('li', 'new-task-form-container', taskListDiv);
-
         const taskForm = document.querySelector('.task-form');
+        const newTaskFormContainer = (0,_functions__WEBPACK_IMPORTED_MODULE_0__["default"])('li', 'new-task-form-container', taskListDiv);
 
         // Remove existing task form if any
         if (taskForm) {

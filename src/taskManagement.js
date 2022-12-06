@@ -37,9 +37,8 @@ function loadTaskForm(container, parentEl) {
 
         // Create container
         const taskListDiv = document.querySelector('.task-list');
-        const newTaskFormContainer = createEl('li', 'new-task-form-container', taskListDiv);
-
         const taskForm = document.querySelector('.task-form');
+        const newTaskFormContainer = createEl('li', 'new-task-form-container', taskListDiv);
 
         // Remove existing task form if any
         if (taskForm) {
