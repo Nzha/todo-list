@@ -43,10 +43,10 @@ function loadTaskForm(container, parentEl) {
         // Remove existing task form if any
         if (taskForm) {
             const taskContainer = taskForm.closest('.task-list-item-container');
-            const myTask = myTasks.find(el => el.id == taskContainer.id);
+            const myTask = myTasks.find(el => el.id == taskContainer.id.replace(/\D/g,''));
 
             taskForm.remove();
-            createTaskEl(myTask, taskContainer);
+            createTaskEl(myTask, false, taskContainer);
         }
 
         parentEl = newTaskFormContainer;
