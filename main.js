@@ -4472,7 +4472,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-function loadContent(title) {
+function loadContent(e, title) {
     const content = document.querySelector('.content');
     const contentContainer = (0,_functions__WEBPACK_IMPORTED_MODULE_0__["default"])('div', 'content-inner-container', content);
     const contentHeader = (0,_functions__WEBPACK_IMPORTED_MODULE_0__["default"])('div', 'content-header', contentContainer);
@@ -4482,8 +4482,12 @@ function loadContent(title) {
 
     headerTitle.textContent = title;
 
-    // Check for locally stored tasks
+    /**
+    * Check for locally stored tasks and projects
+    * NB: There are always stored projects since there are some by default that are stored on loading
+    */
     const storedTasks = JSON.parse(localStorage.getItem('tasks'));
+    const storedProjects = JSON.parse(localStorage.getItem('projects'));
 
     if (storedTasks) {
         const todaysTasks = storedTasks.filter(task => (0,date_fns__WEBPACK_IMPORTED_MODULE_2__["default"])((0,date_fns__WEBPACK_IMPORTED_MODULE_3__["default"])(task.dueDate)));
@@ -4500,6 +4504,12 @@ function loadContent(title) {
         }
     } else {
         loadEmptyState();
+    }
+
+    if (!title) {
+        // const projectContainer = e.target.closest('.sidebar-projects-container');
+        console.log(e.target);
+        // const myProject = myProjects.find(el => el.id == projectContainer.id.replace(/\D/g,''));
     }
 
     (0,_tasks__WEBPACK_IMPORTED_MODULE_1__["default"])();
@@ -4858,6 +4868,7 @@ function deleteProject(e) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (/* binding */ setSideBar),
+/* harmony export */   "loadContent": () => (/* reexport safe */ _content__WEBPACK_IMPORTED_MODULE_2__["default"]),
 /* harmony export */   "updateTaskCount": () => (/* binding */ updateTaskCount)
 /* harmony export */ });
 /* harmony import */ var date_fns__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! date-fns */ "./node_modules/date-fns/esm/isToday/index.js");
@@ -4879,8 +4890,8 @@ function setSideBar() {
     const storedTasks = JSON.parse(localStorage.getItem('tasks'));
 
     sidebarToggle();
-    getPage();
     (0,_projects__WEBPACK_IMPORTED_MODULE_1__["default"])();
+    getPage();
 
     if (storedTasks) updateTaskCount();
 }
@@ -4934,14 +4945,24 @@ function getPage() {
         loadPage(e, 'Week')
     });
 
-    function loadPage(e, title) {
-        e.preventDefault();
-    
-        const content = document.querySelector('.content');
-        content.innerHTML = '';
-    
-        (0,_content__WEBPACK_IMPORTED_MODULE_2__["default"])(title);
-    }
+    const projectLinks = document.querySelectorAll('.sidebar-projects-item-link');
+    projectLinks.forEach((projectLink) => {
+        projectLink.addEventListener('click', function(e) {
+            // const projectContainer = e.target.closest('.sidebar-projects-container');
+            // const myProject = myProjects.find(el => el.id == projectContainer.id.replace(/\D/g,''));
+            // loadPage(e, `${myProject.name}`);
+            loadPage(e);
+        });
+    });
+}
+
+function loadPage(e, title) {
+    e.preventDefault();
+
+    const content = document.querySelector('.content');
+    content.innerHTML = '';
+
+    (0,_content__WEBPACK_IMPORTED_MODULE_2__["default"])(e, title);
 }
 
 
