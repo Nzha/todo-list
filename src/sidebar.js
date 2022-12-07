@@ -11,8 +11,8 @@ function setSideBar() {
     const storedTasks = JSON.parse(localStorage.getItem('tasks'));
 
     sidebarToggle();
-    getPage();
     loadProjects();
+    getPage();
 
     if (storedTasks) updateTaskCount();
 }
@@ -66,14 +66,24 @@ function getPage() {
         loadPage(e, 'Week')
     });
 
-    function loadPage(e, title) {
-        e.preventDefault();
-    
-        const content = document.querySelector('.content');
-        content.innerHTML = '';
-    
-        loadContent(title);
-    }
+    const projectLinks = document.querySelectorAll('.sidebar-projects-item-link');
+    projectLinks.forEach((projectLink) => {
+        projectLink.addEventListener('click', function(e) {
+            // const projectContainer = e.target.closest('.sidebar-projects-container');
+            // const myProject = myProjects.find(el => el.id == projectContainer.id.replace(/\D/g,''));
+            // loadPage(e, `${myProject.name}`);
+            loadPage(e);
+        });
+    });
 }
 
-export { setSideBar as default, updateTaskCount };
+function loadPage(e, title) {
+    e.preventDefault();
+
+    const content = document.querySelector('.content');
+    content.innerHTML = '';
+
+    loadContent(e, title);
+}
+
+export { setSideBar as default, updateTaskCount, loadContent };

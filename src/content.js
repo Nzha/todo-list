@@ -2,7 +2,7 @@ import { parseISO, isToday, isThisWeek } from 'date-fns';
 import createEl from './functions';
 import createAddTaskBtn, { createTaskEl } from './tasks';
 
-function loadContent(title) {
+function loadContent(e, title) {
     const content = document.querySelector('.content');
     const contentContainer = createEl('div', 'content-inner-container', content);
     const contentHeader = createEl('div', 'content-header', contentContainer);
@@ -12,8 +12,12 @@ function loadContent(title) {
 
     headerTitle.textContent = title;
 
-    // Check for locally stored tasks
+    /**
+    * Check for locally stored tasks and projects
+    * NB: There are always stored projects since there are some by default that are stored on loading
+    */
     const storedTasks = JSON.parse(localStorage.getItem('tasks'));
+    const storedProjects = JSON.parse(localStorage.getItem('projects'));
 
     if (storedTasks) {
         const todaysTasks = storedTasks.filter(task => isToday(parseISO(task.dueDate)));
@@ -30,6 +34,12 @@ function loadContent(title) {
         }
     } else {
         loadEmptyState();
+    }
+
+    if (!title) {
+        // const projectContainer = e.target.closest('.sidebar-projects-container');
+        console.log(e.target);
+        // const myProject = myProjects.find(el => el.id == projectContainer.id.replace(/\D/g,''));
     }
 
     createAddTaskBtn();
