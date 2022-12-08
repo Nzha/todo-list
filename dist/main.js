@@ -4506,10 +4506,14 @@ function loadContent(e, title) {
         loadEmptyState();
     }
 
+    // If there is no title, display project name as page title
     if (!title) {
-        // const projectContainer = e.target.closest('.sidebar-projects-container');
-        console.log(e.target);
-        // const myProject = myProjects.find(el => el.id == projectContainer.id.replace(/\D/g,''));
+        const projectContainer = e.target.closest('.sidebar-projects-container');
+
+        if (projectContainer) {
+            const myProject = storedProjects.find(el => el.id == projectContainer.id.replace(/\D/g,''));
+            headerTitle.textContent = myProject.name;
+        }
     }
 
     (0,_tasks__WEBPACK_IMPORTED_MODULE_1__["default"])();
@@ -4624,6 +4628,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (/* binding */ loadProject)
 /* harmony export */ });
 /* harmony import */ var _functions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./functions */ "./src/functions.js");
+/* harmony import */ var _sidebar__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./sidebar */ "./src/sidebar.js");
+
 
 
 const storedProjects = JSON.parse(localStorage.getItem('projects'));
@@ -4809,6 +4815,7 @@ function addProject(e) {
     if (!projectName) return;
 
     getProjects(projectName);
+    (0,_sidebar__WEBPACK_IMPORTED_MODULE_1__.getProjectPage)();
     projectFormContainer.remove();
     console.table(myProjects);
 }
@@ -4868,7 +4875,7 @@ function deleteProject(e) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (/* binding */ setSideBar),
-/* harmony export */   "loadContent": () => (/* reexport safe */ _content__WEBPACK_IMPORTED_MODULE_2__["default"]),
+/* harmony export */   "getProjectPage": () => (/* binding */ getProjectPage),
 /* harmony export */   "updateTaskCount": () => (/* binding */ updateTaskCount)
 /* harmony export */ });
 /* harmony import */ var date_fns__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! date-fns */ "./node_modules/date-fns/esm/isToday/index.js");
@@ -4891,7 +4898,7 @@ function setSideBar() {
 
     sidebarToggle();
     (0,_projects__WEBPACK_IMPORTED_MODULE_1__["default"])();
-    getPage();
+    getPages();
 
     if (storedTasks) updateTaskCount();
 }
@@ -4932,7 +4939,12 @@ function updateTaskCount() {
     }
 }
 
-function getPage() {
+function getPages() {
+    getTaskPage();
+    getProjectPage();
+}
+
+function getTaskPage() {
     allTasksLink.addEventListener('click', function(e) {
         loadPage(e, 'All')
     });
@@ -4944,16 +4956,11 @@ function getPage() {
     weekTasksLink.addEventListener('click', function(e) {
         loadPage(e, 'Week')
     });
+}
 
+function getProjectPage() {
     const projectLinks = document.querySelectorAll('.sidebar-projects-item-link');
-    projectLinks.forEach((projectLink) => {
-        projectLink.addEventListener('click', function(e) {
-            // const projectContainer = e.target.closest('.sidebar-projects-container');
-            // const myProject = myProjects.find(el => el.id == projectContainer.id.replace(/\D/g,''));
-            // loadPage(e, `${myProject.name}`);
-            loadPage(e);
-        });
-    });
+    projectLinks.forEach(projectLink => projectLink.addEventListener('click', loadPage));
 }
 
 function loadPage(e, title) {
@@ -5472,7 +5479,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 (0,_sidebar__WEBPACK_IMPORTED_MODULE_1__["default"])();
-(0,_content__WEBPACK_IMPORTED_MODULE_2__["default"])('All');
+(0,_content__WEBPACK_IMPORTED_MODULE_2__["default"])(undefined, 'All');
 })();
 
 /******/ })()

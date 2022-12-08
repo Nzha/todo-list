@@ -12,7 +12,7 @@ function setSideBar() {
 
     sidebarToggle();
     loadProjects();
-    getPage();
+    getPages();
 
     if (storedTasks) updateTaskCount();
 }
@@ -53,7 +53,12 @@ function updateTaskCount() {
     }
 }
 
-function getPage() {
+function getPages() {
+    getTaskPage();
+    getProjectPage();
+}
+
+function getTaskPage() {
     allTasksLink.addEventListener('click', function(e) {
         loadPage(e, 'All')
     });
@@ -65,16 +70,11 @@ function getPage() {
     weekTasksLink.addEventListener('click', function(e) {
         loadPage(e, 'Week')
     });
+}
 
+function getProjectPage() {
     const projectLinks = document.querySelectorAll('.sidebar-projects-item-link');
-    projectLinks.forEach((projectLink) => {
-        projectLink.addEventListener('click', function(e) {
-            // const projectContainer = e.target.closest('.sidebar-projects-container');
-            // const myProject = myProjects.find(el => el.id == projectContainer.id.replace(/\D/g,''));
-            // loadPage(e, `${myProject.name}`);
-            loadPage(e);
-        });
-    });
+    projectLinks.forEach(projectLink => projectLink.addEventListener('click', loadPage));
 }
 
 function loadPage(e, title) {
@@ -86,4 +86,4 @@ function loadPage(e, title) {
     loadContent(e, title);
 }
 
-export { setSideBar as default, updateTaskCount, loadContent };
+export { setSideBar as default, updateTaskCount, getProjectPage };

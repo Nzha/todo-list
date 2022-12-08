@@ -36,10 +36,14 @@ function loadContent(e, title) {
         loadEmptyState();
     }
 
+    // If there is no title, display project name as page title
     if (!title) {
-        // const projectContainer = e.target.closest('.sidebar-projects-container');
-        console.log(e.target);
-        // const myProject = myProjects.find(el => el.id == projectContainer.id.replace(/\D/g,''));
+        const projectContainer = e.target.closest('.sidebar-projects-container');
+
+        if (projectContainer) {
+            const myProject = storedProjects.find(el => el.id == projectContainer.id.replace(/\D/g,''));
+            headerTitle.textContent = myProject.name;
+        }
     }
 
     createAddTaskBtn();

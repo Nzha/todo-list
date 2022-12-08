@@ -1,4 +1,5 @@
 import createEl, { increment } from './functions';
+import { getProjectPage } from './sidebar';
 
 const storedProjects = JSON.parse(localStorage.getItem('projects'));
 const addProjectBtn = document.querySelector('.projects-add-btn');
@@ -183,6 +184,7 @@ function addProject(e) {
     if (!projectName) return;
 
     getProjects(projectName);
+    getProjectPage();
     projectFormContainer.remove();
     console.table(myProjects);
 }
