@@ -4512,7 +4512,10 @@ function loadContent(e, title) {
 
         if (projectContainer) {
             const myProject = storedProjects.find(el => el.id == projectContainer.id.replace(/\D/g,''));
+            const projectTasks = storedTasks.filter(task => task.project == myProject.name);
+            
             headerTitle.textContent = myProject.name;
+            loadTasks(projectTasks);
         }
     }
 
@@ -5000,8 +5003,8 @@ __webpack_require__.r(__webpack_exports__);
 
 let myTasks = [];
 
-const task = (id, name, description, dueDate, status) => {
-    return {id, name, description, dueDate, status};
+const task = (id, name, description, dueDate, status, project) => {
+    return {id, name, description, dueDate, status, project};
 }
 
 // Update myTasks with locally stored tasks
@@ -5108,16 +5111,20 @@ function addTask(e) {
     let taskDescription = taskDescriptionInput.value;
     let taskDueDate = taskDueDateInput.value;
     let taskDueDateFormat = (0,date_fns__WEBPACK_IMPORTED_MODULE_3__["default"])(taskDueDate);
+    let taskProject = null;
 
     if (!taskName) return;
 
-    const newTask = task(taskId, taskName, taskDescription, taskDueDate, 'unchecked');
+    if (headerTxt !== 'All' && headerTxt !== 'Today' && headerTxt !== 'Week') taskProject = headerTxt;
+
+    const newTask = task(taskId, taskName, taskDescription, taskDueDate, 'unchecked', taskProject);
     myTasks.push(newTask);
     console.table(myTasks);
 
     // Store tasks on user's computer
     localStorage.setItem('tasks', JSON.stringify(myTasks));
 
+    // Only display new task on matching page
     if (
         headerTxt === 'All'
         || (headerTxt === 'Today' && (0,date_fns__WEBPACK_IMPORTED_MODULE_4__["default"])(taskDueDateFormat))
@@ -5125,6 +5132,7 @@ function addTask(e) {
     ) {
         createTaskEl(newTask, true);
     }
+
 
     (0,_sidebar__WEBPACK_IMPORTED_MODULE_1__.updateTaskCount)();
     taskForm.reset();
