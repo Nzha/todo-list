@@ -4506,16 +4506,18 @@ function loadContent(e, title) {
         loadEmptyState();
     }
 
-    // If there is no title, display project name as page title
+    // If there is no title, display project name as page title and load project tasks
     if (!title) {
         const projectContainer = e.target.closest('.sidebar-projects-container');
 
         if (projectContainer) {
             const myProject = storedProjects.find(el => el.id == projectContainer.id.replace(/\D/g,''));
             const projectTasks = storedTasks.filter(task => task.project == myProject.name);
-            
             headerTitle.textContent = myProject.name;
-            loadTasks(projectTasks);
+
+            if (projectTasks.length > 0) {
+                loadTasks(projectTasks);
+            }
         }
     }
 
@@ -5129,6 +5131,7 @@ function addTask(e) {
         headerTxt === 'All'
         || (headerTxt === 'Today' && (0,date_fns__WEBPACK_IMPORTED_MODULE_4__["default"])(taskDueDateFormat))
         || (headerTxt === 'Week' && (0,date_fns__WEBPACK_IMPORTED_MODULE_5__["default"])(taskDueDateFormat))
+        || (headerTxt === taskProject)
     ) {
         createTaskEl(newTask, true);
     }
