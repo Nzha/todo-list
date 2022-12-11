@@ -314,11 +314,14 @@ function deleteTask(e) {
 
     const todaysTasks = myTasks.filter(task => isToday(parseISO(task.dueDate)));
     const thisWeekTasks = myTasks.filter(task => isThisWeek(parseISO(task.dueDate)));
+    const projectTasks = myTasks.filter(task => task.project == headerTxt);
 
     if (
         headerTxt === 'All' && myTasks.length === 0
         || (headerTxt === 'Today' && todaysTasks.length === 0)
         || (headerTxt === 'Week' && thisWeekTasks.length === 0)
+        || ((headerTxt !== 'All' && headerTxt !== 'Today' && headerTxt !== 'Week')
+            && projectTasks.length === 0)
     ) {
         loadEmptyState();
     }
