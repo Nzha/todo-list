@@ -90,9 +90,19 @@ function loadTaskForm(container, parentEl) {
     if (newTaskFormContainer) {
         addTaskBtn.textContent = 'Add task';
         addTaskBtn.addEventListener('click', addTask);
+
+        // Let user press enter to add project
+        taskName.addEventListener('keydown', function(e) {
+            if (e.keyCode === 13) addTask(e)
+        });
+
     } else {
         addTaskBtn.textContent = 'Save';
         addTaskBtn.addEventListener('click', saveTaskEdits);
+
+        taskName.addEventListener('keydown', function(e) {
+            if (e.keyCode === 13) saveTaskEdits(e)
+        });
     }
 }
 

@@ -236,7 +236,6 @@ function deleteProject(e) {
     const myProjectIndex = myProjects.findIndex(el => el.id == projectContainer.id.replace(/\D/g,''));
 
     deleteProjectTasks(e);
-
     myProjects.splice(myProjectIndex, 1);
     localStorage.setItem('projects', JSON.stringify(myProjects));
     projectContainer.remove();
