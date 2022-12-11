@@ -42,7 +42,10 @@ function loadContent(e, title) {
 
         if (projectContainer) {
             const myProject = storedProjects.find(el => el.id == projectContainer.id.replace(/\D/g,''));
+            const projectTasks = storedTasks.filter(task => task.project == myProject.name);
+            
             headerTitle.textContent = myProject.name;
+            loadTasks(projectTasks);
         }
     }
 

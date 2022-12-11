@@ -5,8 +5,8 @@ import { loadEmptyState } from './content';
 
 let myTasks = [];
 
-const task = (id, name, description, dueDate, status) => {
-    return {id, name, description, dueDate, status};
+const task = (id, name, description, dueDate, status, project) => {
+    return {id, name, description, dueDate, status, project};
 }
 
 // Update myTasks with locally stored tasks
@@ -113,16 +113,20 @@ function addTask(e) {
     let taskDescription = taskDescriptionInput.value;
     let taskDueDate = taskDueDateInput.value;
     let taskDueDateFormat = parseISO(taskDueDate);
+    let taskProject = null;
 
     if (!taskName) return;
 
-    const newTask = task(taskId, taskName, taskDescription, taskDueDate, 'unchecked');
+    if (headerTxt !== 'All' && headerTxt !== 'Today' && headerTxt !== 'Week') taskProject = headerTxt;
+
+    const newTask = task(taskId, taskName, taskDescription, taskDueDate, 'unchecked', taskProject);
     myTasks.push(newTask);
     console.table(myTasks);
 
     // Store tasks on user's computer
     localStorage.setItem('tasks', JSON.stringify(myTasks));
 
+    // Only display new task on matching page
     if (
         headerTxt === 'All'
         || (headerTxt === 'Today' && isToday(taskDueDateFormat))
@@ -130,6 +134,7 @@ function addTask(e) {
     ) {
         createTaskEl(newTask, true);
     }
+
 
     updateSidebarTaskCount();
     taskForm.reset();
