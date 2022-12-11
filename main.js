@@ -4861,10 +4861,22 @@ function deleteProject(e) {
     const projectContainer = e.target.closest('.sidebar-projects-container');
     const myProjectIndex = myProjects.findIndex(el => el.id == projectContainer.id.replace(/\D/g,''));
 
+    deleteProjectTasks(e);
+
     myProjects.splice(myProjectIndex, 1);
     localStorage.setItem('projects', JSON.stringify(myProjects));
     projectContainer.remove();
     console.table(myProjects);
+}
+
+function deleteProjectTasks(e) {
+    const projectContainer = e.target.closest('.sidebar-projects-container');
+    const myProject = myProjects.find(el => el.id == projectContainer.id.replace(/\D/g,''));
+    const storedTasks = JSON.parse(localStorage.getItem('tasks'));
+    const notProjectTasks = storedTasks.filter(task => task.project !== myProject.name);
+    
+    localStorage.setItem('tasks', JSON.stringify(notProjectTasks));
+    (0,_sidebar__WEBPACK_IMPORTED_MODULE_1__.updateTaskCount)();
 }
 
 
