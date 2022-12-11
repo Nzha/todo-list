@@ -4785,9 +4785,19 @@ function createProjectForm(container, parentEl) {
     if (container) {
         addBtn.textContent = 'Add project';
         addBtn.addEventListener('click', addProject);
+
+        // Let user press enter to add project
+        projectInput.addEventListener('keydown', function(e) {
+            if (e.keyCode === 13) addProject(e)
+        });
+
     } else {
         addBtn.textContent = 'Save';
         addBtn.addEventListener('click', saveProjectEdits);
+
+        projectInput.addEventListener('keydown', function(e) {
+            if (e.keyCode === 13) saveProjectEdits(e)
+        });
     }
 }
 
@@ -4874,7 +4884,7 @@ function deleteProjectTasks(e) {
     const myProject = myProjects.find(el => el.id == projectContainer.id.replace(/\D/g,''));
     const storedTasks = JSON.parse(localStorage.getItem('tasks'));
     const notProjectTasks = storedTasks.filter(task => task.project !== myProject.name);
-    
+
     localStorage.setItem('tasks', JSON.stringify(notProjectTasks));
     (0,_sidebar__WEBPACK_IMPORTED_MODULE_1__.updateTaskCount)();
 }
