@@ -5326,11 +5326,14 @@ function deleteTask(e) {
 
     const todaysTasks = myTasks.filter(task => (0,date_fns__WEBPACK_IMPORTED_MODULE_4__["default"])((0,date_fns__WEBPACK_IMPORTED_MODULE_3__["default"])(task.dueDate)));
     const thisWeekTasks = myTasks.filter(task => (0,date_fns__WEBPACK_IMPORTED_MODULE_5__["default"])((0,date_fns__WEBPACK_IMPORTED_MODULE_3__["default"])(task.dueDate)));
+    const projectTasks = myTasks.filter(task => task.project == headerTxt);
 
     if (
         headerTxt === 'All' && myTasks.length === 0
         || (headerTxt === 'Today' && todaysTasks.length === 0)
         || (headerTxt === 'Week' && thisWeekTasks.length === 0)
+        || ((headerTxt !== 'All' && headerTxt !== 'Today' && headerTxt !== 'Week')
+            && projectTasks.length === 0)
     ) {
         (0,_content__WEBPACK_IMPORTED_MODULE_2__.loadEmptyState)();
     }
