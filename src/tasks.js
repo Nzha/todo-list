@@ -1,7 +1,7 @@
 import { parseISO, isToday, isThisWeek } from 'date-fns';
 import createEl, { increment, formatDate, setDueDate } from './functions';
 import { updateTaskCount as updateSidebarTaskCount } from './sidebar';
-import { loadEmptyState } from './content';
+import { loadEmptyState, loadTaskDateColor } from './content';
 
 let myTasks = [];
 
@@ -207,12 +207,15 @@ function createTaskEl(task, container, parentEl) {
     // TASK DUE DATE
     if (task.dueDate) {
         const dueDateContainer = createEl('div', 'task-due-date-container', parentEl);
+        dueDateContainer.id = `task-due-date-${task.id}`;
 
         const calendar = createEl('div', 'task-option-calendar', dueDateContainer);
         calendar.classList.add('fa-regular', 'fa-calendar');
 
         const dueDate = createEl('div', 'task-due-date', dueDateContainer);
         dueDate.textContent = formatDate(task.dueDate);
+
+        loadTaskDateColor(task);
     }
 
     // TASK OPTIONS

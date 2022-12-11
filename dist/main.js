@@ -2594,6 +2594,49 @@ function isDate(value) {
 
 /***/ }),
 
+/***/ "./node_modules/date-fns/esm/isPast/index.js":
+/*!***************************************************!*\
+  !*** ./node_modules/date-fns/esm/isPast/index.js ***!
+  \***************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ isPast)
+/* harmony export */ });
+/* harmony import */ var _toDate_index_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../toDate/index.js */ "./node_modules/date-fns/esm/toDate/index.js");
+/* harmony import */ var _lib_requiredArgs_index_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../_lib/requiredArgs/index.js */ "./node_modules/date-fns/esm/_lib/requiredArgs/index.js");
+
+
+/**
+ * @name isPast
+ * @category Common Helpers
+ * @summary Is the given date in the past?
+ * @pure false
+ *
+ * @description
+ * Is the given date in the past?
+ *
+ * > ⚠️ Please note that this function is not present in the FP submodule as
+ * > it uses `Date.now()` internally hence impure and can't be safely curried.
+ *
+ * @param {Date|Number} date - the date to check
+ * @returns {Boolean} the date is in the past
+ * @throws {TypeError} 1 argument required
+ *
+ * @example
+ * // If today is 6 October 2014, is 2 July 2014 in the past?
+ * const result = isPast(new Date(2014, 6, 2))
+ * //=> true
+ */
+
+function isPast(dirtyDate) {
+  (0,_lib_requiredArgs_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])(1, arguments);
+  return (0,_toDate_index_js__WEBPACK_IMPORTED_MODULE_1__["default"])(dirtyDate).getTime() < Date.now();
+}
+
+/***/ }),
+
 /***/ "./node_modules/date-fns/esm/isSameDay/index.js":
 /*!******************************************************!*\
   !*** ./node_modules/date-fns/esm/isSameDay/index.js ***!
@@ -4461,11 +4504,13 @@ module.exports = styleTagTransform;
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (/* binding */ loadContent),
-/* harmony export */   "loadEmptyState": () => (/* binding */ loadEmptyState)
+/* harmony export */   "loadEmptyState": () => (/* binding */ loadEmptyState),
+/* harmony export */   "loadTaskDateColor": () => (/* binding */ loadTaskDateColor)
 /* harmony export */ });
 /* harmony import */ var date_fns__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! date-fns */ "./node_modules/date-fns/esm/isToday/index.js");
 /* harmony import */ var date_fns__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! date-fns */ "./node_modules/date-fns/esm/parseISO/index.js");
 /* harmony import */ var date_fns__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! date-fns */ "./node_modules/date-fns/esm/isThisWeek/index.js");
+/* harmony import */ var date_fns__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! date-fns */ "./node_modules/date-fns/esm/isPast/index.js");
 /* harmony import */ var _functions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./functions */ "./src/functions.js");
 /* harmony import */ var _tasks__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./tasks */ "./src/tasks.js");
 
@@ -4534,7 +4579,20 @@ function loadTasks(tasks) {
             const checkbox = document.querySelector(`#task${task.id} .task-checkbox`);
             checkbox.checked = true;
         }
+
+        loadTaskDateColor(task);
     });
+}
+
+function loadTaskDateColor(task) {
+    if (task.dueDate) {
+        const dueDateContainer = document.querySelector(`#task-due-date-${task.id}`);
+        if ((0,date_fns__WEBPACK_IMPORTED_MODULE_2__["default"])((0,date_fns__WEBPACK_IMPORTED_MODULE_3__["default"])(task.dueDate))) {
+            dueDateContainer.style.color = '#058527';
+        } else if ((0,date_fns__WEBPACK_IMPORTED_MODULE_5__["default"])((0,date_fns__WEBPACK_IMPORTED_MODULE_3__["default"])(task.dueDate))) {
+            dueDateContainer.style.color = '#d34f46';
+        }
+    }
 }
 
 function loadEmptyState() {
@@ -5228,12 +5286,15 @@ function createTaskEl(task, container, parentEl) {
     // TASK DUE DATE
     if (task.dueDate) {
         const dueDateContainer = (0,_functions__WEBPACK_IMPORTED_MODULE_0__["default"])('div', 'task-due-date-container', parentEl);
+        dueDateContainer.id = `task-due-date-${task.id}`;
 
         const calendar = (0,_functions__WEBPACK_IMPORTED_MODULE_0__["default"])('div', 'task-option-calendar', dueDateContainer);
         calendar.classList.add('fa-regular', 'fa-calendar');
 
         const dueDate = (0,_functions__WEBPACK_IMPORTED_MODULE_0__["default"])('div', 'task-due-date', dueDateContainer);
         dueDate.textContent = (0,_functions__WEBPACK_IMPORTED_MODULE_0__.formatDate)(task.dueDate);
+
+        (0,_content__WEBPACK_IMPORTED_MODULE_2__.loadTaskDateColor)(task);
     }
 
     // TASK OPTIONS

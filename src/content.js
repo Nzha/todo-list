@@ -1,4 +1,4 @@
-import { parseISO, isToday, isThisWeek } from 'date-fns';
+import { parseISO, isToday, isThisWeek, isPast } from 'date-fns';
 import createEl from './functions';
 import createAddTaskBtn, { createTaskEl } from './tasks';
 
@@ -64,7 +64,20 @@ function loadTasks(tasks) {
             const checkbox = document.querySelector(`#task${task.id} .task-checkbox`);
             checkbox.checked = true;
         }
+
+        loadTaskDateColor(task);
     });
+}
+
+function loadTaskDateColor(task) {
+    if (task.dueDate) {
+        const dueDateContainer = document.querySelector(`#task-due-date-${task.id}`);
+        if (isToday(parseISO(task.dueDate))) {
+            dueDateContainer.style.color = '#058527';
+        } else if (isPast(parseISO(task.dueDate))) {
+            dueDateContainer.style.color = '#d34f46';
+        }
+    }
 }
 
 function loadEmptyState() {
@@ -78,4 +91,4 @@ function loadEmptyState() {
     emptyStateTxt.textContent = 'Well done! All your tasks are organized in the right place.';
 }
 
-export { loadContent as default, loadEmptyState };
+export { loadContent as default, loadEmptyState, loadTaskDateColor };
