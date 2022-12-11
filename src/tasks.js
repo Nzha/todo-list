@@ -131,6 +131,7 @@ function addTask(e) {
         headerTxt === 'All'
         || (headerTxt === 'Today' && isToday(taskDueDateFormat))
         || (headerTxt === 'Week' && isThisWeek(taskDueDateFormat))
+        || (headerTxt === taskProject)
     ) {
         createTaskEl(newTask, true);
     }
