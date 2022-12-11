@@ -4551,17 +4551,20 @@ function loadContent(e, title) {
         loadEmptyState();
     }
 
-    // If there is no title, display project name as page title and load project tasks
+    // If there is no title, display project name as page title and load project tasks if any
     if (!title) {
         const projectContainer = e.target.closest('.sidebar-projects-container');
 
         if (projectContainer) {
             const myProject = storedProjects.find(el => el.id == projectContainer.id.replace(/\D/g,''));
-            const projectTasks = storedTasks.filter(task => task.project == myProject.name);
             headerTitle.textContent = myProject.name;
 
-            if (projectTasks.length > 0) {
-                loadTasks(projectTasks);
+            if (storedTasks) {
+                const projectTasks = storedTasks.filter(task => task.project == myProject.name);
+
+                if (projectTasks.length > 0) {
+                    loadTasks(projectTasks);
+                }
             }
         }
     }
