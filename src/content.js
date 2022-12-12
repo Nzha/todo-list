@@ -12,6 +12,8 @@ function loadContent(e, title) {
 
     headerTitle.textContent = title;
 
+    console.log('Content loaded');
+
     /**
     * Check for locally stored tasks and projects
     * NB: There are always stored projects since there are some by default that are stored on loading
@@ -39,6 +41,8 @@ function loadContent(e, title) {
     // If there is no title, display project name as page title and load project tasks if any
     if (!title) {
         const projectContainer = e.target.closest('.sidebar-projects-container');
+
+        console.log(projectContainer);
 
         if (projectContainer) {
             const myProject = storedProjects.find(el => el.id == projectContainer.id.replace(/\D/g,''));

@@ -1,5 +1,6 @@
 import createEl, { increment } from './functions';
 import { getProjectPage, updateTaskCount as updateSidebarTaskCount } from './sidebar';
+import loadContent from './content';
 
 const storedProjects = JSON.parse(localStorage.getItem('projects'));
 const addProjectBtn = document.querySelector('.projects-add-btn');
@@ -70,9 +71,9 @@ function createProjectEl(project, container, parentEl) {
     optionsBtns.forEach(optionBtn => optionBtn.addEventListener('click', toggleOptionsMenu));
 }
 
-function toggleOptionsMenu(e) {
-    const projectOptionContainer = e.target.closest('.sidebar-projects-item-link .sidebar-projects-options');
-    const eventDropdownMenu = projectOptionContainer.querySelector('.dropdown-menu');
+function toggleOptionsMenu(e) {  
+    const projectsItem = e.target.closest('.sidebar-projects-item')
+    const eventDropdownMenu = projectsItem.querySelector('.dropdown-menu');
     const dropdownMenu = document.querySelector('.dropdown-menu');
 
     if (!eventDropdownMenu) {
@@ -84,8 +85,8 @@ function toggleOptionsMenu(e) {
 }
 
 function createOptionMenuEl(e) {
-    const projectOptionContainer = e.target.closest('.sidebar-projects-options');
-    const dropdownMenu = createEl('div', 'dropdown-menu', projectOptionContainer);
+    const projectsItem = e.target.closest('.sidebar-projects-item');
+    const dropdownMenu = createEl('div', 'dropdown-menu', projectsItem);
     const dropdownEdit = createEl('div', 'dropdown-menu-edit', dropdownMenu);
     const dropdownDelete = createEl('div', 'dropdown-menu-delete', dropdownMenu);
     dropdownEdit.textContent = 'Edit';
@@ -206,6 +207,15 @@ function editProject(e) {
     // Remove project form if one is already displayed
     const projectFormContainer = document.querySelector('.project-form-container');
     if (projectFormContainer) projectFormContainer.remove();
+
+
+
+    // const headerTitle = document.querySelector('.content-header-title');
+    // console.log(myProject.name);
+    // headerTitle.textContent = myProject.name;
+
+
+
 
     projectContainer.textContent = '';
     createProjectForm(false, projectContainer);
