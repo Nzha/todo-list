@@ -129,6 +129,7 @@ the padding is still displayed when sidebar is hidden */
 
 .sidebar-projects {
     margin-top: 2rem;
+    white-space: nowrap;
 }
 
 .projects-title-container {
