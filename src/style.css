@@ -168,6 +168,7 @@ the padding is still displayed when sidebar is hidden */
 }
 
 .dropdown-menu {
+    cursor: pointer;
     font-size: 0.8rem;
     display: block;
     position: absolute;
