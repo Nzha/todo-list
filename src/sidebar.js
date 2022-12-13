@@ -10,9 +10,9 @@ const weekTasksLink = document.querySelector('#week-tasks-link');
 function setSideBar() {
     const storedTasks = JSON.parse(localStorage.getItem('tasks'));
 
-    sidebarToggle();
     loadProjects();
     getPages();
+    sidebarToggle();
 
     if (storedTasks) updateTaskCount();
 }
@@ -22,8 +22,25 @@ function sidebarToggle() {
     const sideBarDiv = document.querySelector('.sidebar');
     const content = document.querySelector('.content');
     const overlay = document.querySelector('.overlay');
+    const tasksCategories = document.querySelectorAll('.sidebar-tasks-item');
+    const projectLinks = document.querySelectorAll('.sidebar-projects-item-link');
+    const mediaQuery = window.matchMedia('(max-width: 700px)');
 
     hideMenuBtn.addEventListener('click', toggleSidebar);
+
+    // Hide sidebar after click on page on small screens
+    function hideSideBarAfterClickSmallScreens(mediaQuery) {
+        if (mediaQuery.matches) {
+            tasksCategories.forEach(tasksCategory => tasksCategory.addEventListener('click', toggleSidebar));
+            projectLinks.forEach(projectLink => projectLink.addEventListener('click', toggleSidebar));
+        } else {
+            tasksCategories.forEach(tasksCategory => tasksCategory.removeEventListener('click', toggleSidebar));
+            projectLinks.forEach(projectLink => projectLink.removeEventListener('click', toggleSidebar));
+        }
+    }
+
+    hideSideBarAfterClickSmallScreens(mediaQuery);
+    mediaQuery.addEventListener('change', hideSideBarAfterClickSmallScreens);
 
     function toggleSidebar() {
         sideBarDiv.classList.toggle('hidden');

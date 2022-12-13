@@ -103,7 +103,7 @@ the padding is still displayed when sidebar is hidden */
 }
 
 .sidebar-tasks-item-link:hover,
-.sidebar-projects-item-link:hover {
+.sidebar-projects-container:hover {
     background-color: #eeeeee;
     cursor: pointer;
 }
@@ -152,20 +152,25 @@ the padding is still displayed when sidebar is hidden */
     color: #db4c3f;
 }
 
-.sidebar-projects-item-link {
+.sidebar-projects-container {
+    margin-left: 1rem;
+}
+
+.sidebar-projects-item {
+    position: relative;
     display: flex;
     justify-content: space-between;
+    align-items: center;
+}
+
+.sidebar-projects-item-link {
+    flex: 1;
     padding: 0.5rem 0 0.5rem 1rem;
-    margin-left: 1rem;
 }
 
 .sidebar-projects-options {
     font-size: 0.8rem;
     padding: 0 1rem;
-}
-
-.sidebar-projects-item {
-    position: relative;
 }
 
 .dropdown-menu {
@@ -175,7 +180,7 @@ the padding is still displayed when sidebar is hidden */
     position: absolute;
     background-color: white;
     border: 1px solid #dddddd;
-    left: 13rem;
+    left: 12.2rem;
     top: 1.7rem;
     overflow: auto;
     box-shadow: 0 1px 8px 0 rgb(0 0 0 / 8%);

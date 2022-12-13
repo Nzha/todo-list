@@ -59,7 +59,7 @@ function createProjectEl(project, container, parentEl) {
     projectTxt.textContent = project.name;
 
     // OPTIONS
-    const projectOptionContainer = createEl('div', 'sidebar-projects-options', projectLink);
+    const projectOptionContainer = createEl('div', 'sidebar-projects-options', projectDiv);
     const optionsBtn = createEl('div', 'sidebar-projects-options-btn', projectOptionContainer);
     optionsBtn.classList.add('fa-solid', 'fa-ellipsis-vertical');
 
