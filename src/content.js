@@ -12,7 +12,7 @@ function loadContent(e, title) {
 
     headerTitle.textContent = title;
 
-    console.log('Content loaded');
+    // console.log('Content loaded');
 
     /**
     * Check for locally stored tasks and projects
@@ -42,7 +42,7 @@ function loadContent(e, title) {
     if (!title) {
         const projectContainer = e.target.closest('.sidebar-projects-container');
 
-        console.log(projectContainer);
+        // console.log(projectContainer);
 
         if (projectContainer) {
             const myProject = storedProjects.find(el => el.id == projectContainer.id.replace(/\D/g,''));

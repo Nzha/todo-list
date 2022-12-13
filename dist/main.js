@@ -4527,7 +4527,7 @@ function loadContent(e, title) {
 
     headerTitle.textContent = title;
 
-    console.log('Content loaded');
+    // console.log('Content loaded');
 
     /**
     * Check for locally stored tasks and projects
@@ -4557,7 +4557,7 @@ function loadContent(e, title) {
     if (!title) {
         const projectContainer = e.target.closest('.sidebar-projects-container');
 
-        console.log(projectContainer);
+        // console.log(projectContainer);
 
         if (projectContainer) {
             const myProject = storedProjects.find(el => el.id == projectContainer.id.replace(/\D/g,''));
@@ -4930,13 +4930,29 @@ function saveProjectEdits(e) {
     const projectContainer = e.target.closest('.sidebar-projects-container');
     const projectForm = document.querySelector('.project-form');
     const projectNameInput = document.querySelector('#projectName');
+    const storedTasks = JSON.parse(localStorage.getItem('tasks'));
     const myProject = myProjects.find(el => el.id == projectContainer.id.replace(/\D/g,''));
 
+    if (!projectNameInput.value) return;
+
+    // Update tasks' project
+    storedTasks.forEach(task => {
+        if (task.project === myProject.name) {
+            task.project = projectNameInput.value;
+        }
+    });
+
+    localStorage.setItem('tasks', JSON.stringify(storedTasks));
+    console.table(storedTasks);
+
+
+    // Update project itself
     myProject.name = projectNameInput.value;
-
-    if (!myProject.name) return;
-
     localStorage.setItem('projects', JSON.stringify(myProjects));
+
+    // Update page title
+    const headerTitle = document.querySelector('.content-header-title');
+    headerTitle.textContent = myProject.name;
 
     projectForm.remove();
     createProjectEl(myProject, false, projectContainer);
