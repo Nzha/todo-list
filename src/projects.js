@@ -1,6 +1,5 @@
 import createEl, { increment } from './functions';
 import { getProjectPage, updateTaskCount as updateSidebarTaskCount } from './sidebar';
-import loadContent from './content';
 
 const storedProjects = JSON.parse(localStorage.getItem('projects'));
 const addProjectBtn = document.querySelector('.projects-add-btn');
@@ -208,15 +207,6 @@ function editProject(e) {
     const projectFormContainer = document.querySelector('.project-form-container');
     if (projectFormContainer) projectFormContainer.remove();
 
-
-
-    // const headerTitle = document.querySelector('.content-header-title');
-    // console.log(myProject.name);
-    // headerTitle.textContent = myProject.name;
-
-
-
-
     projectContainer.textContent = '';
     createProjectForm(false, projectContainer);
     document.querySelector('.projectName').value = myProject.name;
@@ -243,7 +233,6 @@ function saveProjectEdits(e) {
     localStorage.setItem('tasks', JSON.stringify(storedTasks));
     console.table(storedTasks);
 
-
     // Update project itself
     myProject.name = projectNameInput.value;
     localStorage.setItem('projects', JSON.stringify(myProjects));
@@ -254,6 +243,7 @@ function saveProjectEdits(e) {
 
     projectForm.remove();
     createProjectEl(myProject, false, projectContainer);
+    getProjectPage();
     console.table(myProjects);
 }
 

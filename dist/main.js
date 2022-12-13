@@ -4699,8 +4699,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _functions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./functions */ "./src/functions.js");
 /* harmony import */ var _sidebar__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./sidebar */ "./src/sidebar.js");
-/* harmony import */ var _content__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./content */ "./src/content.js");
-
 
 
 
@@ -4910,15 +4908,6 @@ function editProject(e) {
     const projectFormContainer = document.querySelector('.project-form-container');
     if (projectFormContainer) projectFormContainer.remove();
 
-
-
-    // const headerTitle = document.querySelector('.content-header-title');
-    // console.log(myProject.name);
-    // headerTitle.textContent = myProject.name;
-
-
-
-
     projectContainer.textContent = '';
     createProjectForm(false, projectContainer);
     document.querySelector('.projectName').value = myProject.name;
@@ -4945,7 +4934,6 @@ function saveProjectEdits(e) {
     localStorage.setItem('tasks', JSON.stringify(storedTasks));
     console.table(storedTasks);
 
-
     // Update project itself
     myProject.name = projectNameInput.value;
     localStorage.setItem('projects', JSON.stringify(myProjects));
@@ -4956,6 +4944,7 @@ function saveProjectEdits(e) {
 
     projectForm.remove();
     createProjectEl(myProject, false, projectContainer);
+    (0,_sidebar__WEBPACK_IMPORTED_MODULE_1__.getProjectPage)();
     console.table(myProjects);
 }
 
