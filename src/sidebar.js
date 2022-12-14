@@ -12,40 +12,41 @@ function setSideBar() {
 
     loadProjects();
     getPages();
-    sidebarToggle();
+    sidebarControl();
 
     if (storedTasks) updateTaskCount();
 }
 
-function sidebarToggle() {
+function sidebarControl() {
     const hideMenuBtn = document.querySelector('#hide-menu-btn');
+    const mediaQuery = window.matchMedia('(max-width: 700px)');
+
+    hideMenuBtn.addEventListener('click', sidebarToggle);
+    mediaQuery.addEventListener('change', hideSideBarAfterClickSmallScreens);
+
+    hideSideBarAfterClickSmallScreens(mediaQuery);
+}
+
+function sidebarToggle() {
     const sideBarDiv = document.querySelector('.sidebar');
     const content = document.querySelector('.content');
     const overlay = document.querySelector('.overlay');
+
+    sideBarDiv.classList.toggle('hidden');
+    content.classList.toggle('full-width');
+    overlay.classList.toggle('off');
+}
+
+function hideSideBarAfterClickSmallScreens(mediaQuery) {
     const tasksCategories = document.querySelectorAll('.sidebar-tasks-item');
     const projectLinks = document.querySelectorAll('.sidebar-projects-item-link');
-    const mediaQuery = window.matchMedia('(max-width: 700px)');
 
-    hideMenuBtn.addEventListener('click', toggleSidebar);
-
-    // Hide sidebar after click on page on small screens
-    function hideSideBarAfterClickSmallScreens(mediaQuery) {
-        if (mediaQuery.matches) {
-            tasksCategories.forEach(tasksCategory => tasksCategory.addEventListener('click', toggleSidebar));
-            projectLinks.forEach(projectLink => projectLink.addEventListener('click', toggleSidebar));
-        } else {
-            tasksCategories.forEach(tasksCategory => tasksCategory.removeEventListener('click', toggleSidebar));
-            projectLinks.forEach(projectLink => projectLink.removeEventListener('click', toggleSidebar));
-        }
-    }
-
-    hideSideBarAfterClickSmallScreens(mediaQuery);
-    mediaQuery.addEventListener('change', hideSideBarAfterClickSmallScreens);
-
-    function toggleSidebar() {
-        sideBarDiv.classList.toggle('hidden');
-        content.classList.toggle('full-width');
-        overlay.classList.toggle('off');
+    if (mediaQuery.matches) {
+        tasksCategories.forEach(tasksCategory => tasksCategory.addEventListener('click', sidebarToggle));
+        projectLinks.forEach(projectLink => projectLink.addEventListener('click', sidebarToggle));
+    } else {
+        tasksCategories.forEach(tasksCategory => tasksCategory.removeEventListener('click', sidebarToggle));
+        projectLinks.forEach(projectLink => projectLink.removeEventListener('click', sidebarToggle));
     }
 }
 
