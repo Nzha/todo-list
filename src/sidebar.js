@@ -78,30 +78,21 @@ function getPages() {
 
 function getTaskPage() {
     allTasksLink.addEventListener('click', function(e) {
-        loadPage(e, 'All')
+        loadContent(e, 'All')
     });
 
     todayTasksLink.addEventListener('click', function(e) {
-        loadPage(e, 'Today')
+        loadContent(e, 'Today')
     });
 
     weekTasksLink.addEventListener('click', function(e) {
-        loadPage(e, 'Week')
+        loadContent(e, 'Week')
     });
 }
 
 function getProjectPage() {
     const projectLinks = document.querySelectorAll('.sidebar-projects-item-link');
-    projectLinks.forEach(projectLink => projectLink.addEventListener('click', loadPage));
-}
-
-function loadPage(e, title) {
-    e.preventDefault();
-
-    const content = document.querySelector('.content');
-    content.innerHTML = '';
-
-    loadContent(e, title);
+    projectLinks.forEach(projectLink => projectLink.addEventListener('click', loadContent));
 }
 
 export { setSideBar as default, hideSideBarAfterClickSmallScreens, updateTaskCount, getProjectPage };

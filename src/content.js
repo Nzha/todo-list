@@ -3,7 +3,13 @@ import createEl from './functions';
 import createAddTaskBtn, { createTaskEl } from './tasks';
 
 function loadContent(e, title) {
+    if (e) e.preventDefault();
+
     const content = document.querySelector('.content');
+
+    // Remove any previous content if any
+    if (content) content.innerHTML = '';
+
     const contentContainer = createEl('div', 'content-inner-container', content);
     const contentHeader = createEl('div', 'content-header', contentContainer);
     const headerTitle = createEl('h2', 'content-header-title', contentHeader);
@@ -11,8 +17,6 @@ function loadContent(e, title) {
     const taskList = createEl('ul', 'task-list', taskContainer);
 
     headerTitle.textContent = title;
-
-    console.log('Content loaded');
 
     /**
     * Check for locally stored tasks and projects
@@ -41,9 +45,7 @@ function loadContent(e, title) {
     // If there is no title, display project name as page title and load project tasks if any
     if (!title) {
         const projectContainer = e.target.closest('.sidebar-projects-container');
-
-        // console.log(projectContainer);
-
+        
         if (projectContainer) {
             const myProject = storedProjects.find(el => el.id == projectContainer.id.replace(/\D/g,''));
             headerTitle.textContent = myProject.name;
