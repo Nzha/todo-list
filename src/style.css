@@ -170,7 +170,7 @@ the padding is still displayed when sidebar is hidden */
 
 .sidebar-projects-options {
     font-size: 0.8rem;
-    padding: 0 1rem;
+    padding: 0.5rem 1rem;
 }
 
 .dropdown-menu {

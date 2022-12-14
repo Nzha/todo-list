@@ -12,7 +12,7 @@ function loadContent(e, title) {
 
     headerTitle.textContent = title;
 
-    // console.log('Content loaded');
+    console.log('Content loaded');
 
     /**
     * Check for locally stored tasks and projects
