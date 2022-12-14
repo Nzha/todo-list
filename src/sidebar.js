@@ -104,4 +104,4 @@ function loadPage(e, title) {
     loadContent(e, title);
 }
 
-export { setSideBar as default, updateTaskCount, getProjectPage };
+export { setSideBar as default, hideSideBarAfterClickSmallScreens, updateTaskCount, getProjectPage };

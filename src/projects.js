@@ -1,5 +1,5 @@
 import createEl, { increment } from './functions';
-import { getProjectPage, updateTaskCount as updateSidebarTaskCount } from './sidebar';
+import { getProjectPage, updateTaskCount as updateSidebarTaskCount, hideSideBarAfterClickSmallScreens } from './sidebar';
 
 const storedProjects = JSON.parse(localStorage.getItem('projects'));
 const addProjectBtn = document.querySelector('.projects-add-btn');
@@ -44,6 +44,7 @@ function createProjectEl(project, container, parentEl) {
     const projectList = document.querySelector('.sidebar-projects');
     const projectFormContainer = document.querySelector('.project-form-container');
     const projectForm = document.querySelector('.project-form');
+    const mediaQuery = window.matchMedia('(max-width: 700px)');
 
     // Container required if a new project or a locally stored one is added, not when editing one.
     if (container) {
@@ -68,6 +69,8 @@ function createProjectEl(project, container, parentEl) {
 
     const optionsBtns = document.querySelectorAll('.sidebar-projects-options');
     optionsBtns.forEach(optionBtn => optionBtn.addEventListener('click', toggleOptionsMenu));
+
+    hideSideBarAfterClickSmallScreens(mediaQuery);
 }
 
 function toggleOptionsMenu(e) {  
