@@ -4518,7 +4518,13 @@ __webpack_require__.r(__webpack_exports__);
 
 
 function loadContent(e, title) {
+    if (e) e.preventDefault();
+
     const content = document.querySelector('.content');
+
+    // Remove any previous content if any
+    if (content) content.innerHTML = '';
+
     const contentContainer = (0,_functions__WEBPACK_IMPORTED_MODULE_0__["default"])('div', 'content-inner-container', content);
     const contentHeader = (0,_functions__WEBPACK_IMPORTED_MODULE_0__["default"])('div', 'content-header', contentContainer);
     const headerTitle = (0,_functions__WEBPACK_IMPORTED_MODULE_0__["default"])('h2', 'content-header-title', contentHeader);
@@ -4526,8 +4532,6 @@ function loadContent(e, title) {
     const taskList = (0,_functions__WEBPACK_IMPORTED_MODULE_0__["default"])('ul', 'task-list', taskContainer);
 
     headerTitle.textContent = title;
-
-    console.log('Content loaded');
 
     /**
     * Check for locally stored tasks and projects
@@ -4556,9 +4560,7 @@ function loadContent(e, title) {
     // If there is no title, display project name as page title and load project tasks if any
     if (!title) {
         const projectContainer = e.target.closest('.sidebar-projects-container');
-
-        // console.log(projectContainer);
-
+        
         if (projectContainer) {
             const myProject = storedProjects.find(el => el.id == projectContainer.id.replace(/\D/g,''));
             headerTitle.textContent = myProject.name;
@@ -5075,30 +5077,21 @@ function getPages() {
 
 function getTaskPage() {
     allTasksLink.addEventListener('click', function(e) {
-        loadPage(e, 'All')
+        (0,_content__WEBPACK_IMPORTED_MODULE_2__["default"])(e, 'All')
     });
 
     todayTasksLink.addEventListener('click', function(e) {
-        loadPage(e, 'Today')
+        (0,_content__WEBPACK_IMPORTED_MODULE_2__["default"])(e, 'Today')
     });
 
     weekTasksLink.addEventListener('click', function(e) {
-        loadPage(e, 'Week')
+        (0,_content__WEBPACK_IMPORTED_MODULE_2__["default"])(e, 'Week')
     });
 }
 
 function getProjectPage() {
     const projectLinks = document.querySelectorAll('.sidebar-projects-item-link');
-    projectLinks.forEach(projectLink => projectLink.addEventListener('click', loadPage));
-}
-
-function loadPage(e, title) {
-    e.preventDefault();
-
-    const content = document.querySelector('.content');
-    content.innerHTML = '';
-
-    (0,_content__WEBPACK_IMPORTED_MODULE_2__["default"])(e, title);
+    projectLinks.forEach(projectLink => projectLink.addEventListener('click', _content__WEBPACK_IMPORTED_MODULE_2__["default"]));
 }
 
 
