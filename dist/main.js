@@ -4560,7 +4560,7 @@ function loadContent(e, title) {
     // If there is no title, display project name as page title and load project tasks if any
     if (!title) {
         const projectContainer = e.target.closest('.sidebar-projects-container');
-        
+
         if (projectContainer) {
             const myProject = storedProjects.find(el => el.id == projectContainer.id.replace(/\D/g,''));
             headerTitle.textContent = myProject.name;
@@ -4580,7 +4580,6 @@ function loadContent(e, title) {
 
 function loadTasks(tasks) {
     tasks.forEach(task => {
-        // Create corresponding elements
         (0,_tasks__WEBPACK_IMPORTED_MODULE_1__.createTaskEl)(task, true)
 
         // Display checked checkboxes as checked
@@ -5316,7 +5315,6 @@ function createTaskEl(task, container, parentEl) {
     // TASK - description
     if (task.description) {
         const taskDescription = (0,_functions__WEBPACK_IMPORTED_MODULE_0__["default"])('div', 'task-description', taskDiv);
-
         const span3 = (0,_functions__WEBPACK_IMPORTED_MODULE_0__["default"])('span', 'span3', taskDescription);
         span3.textContent = task.description;
     }
@@ -5337,10 +5335,8 @@ function createTaskEl(task, container, parentEl) {
 
     // TASK OPTIONS
     const taskOptionContainer = (0,_functions__WEBPACK_IMPORTED_MODULE_0__["default"])('div', 'task-option-container', parentEl);
-
     const edit = (0,_functions__WEBPACK_IMPORTED_MODULE_0__["default"])('div', 'task-option-edit', taskOptionContainer);
     edit.classList.add('fa-regular', 'fa-pen-to-square');
-
     const trashcan = (0,_functions__WEBPACK_IMPORTED_MODULE_0__["default"])('div', 'task-option-trashcan', taskOptionContainer);
     trashcan.classList.add('fa-regular', 'fa-trash-can');
 

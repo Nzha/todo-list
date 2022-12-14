@@ -199,7 +199,6 @@ function createTaskEl(task, container, parentEl) {
     // TASK - description
     if (task.description) {
         const taskDescription = createEl('div', 'task-description', taskDiv);
-
         const span3 = createEl('span', 'span3', taskDescription);
         span3.textContent = task.description;
     }
@@ -220,10 +219,8 @@ function createTaskEl(task, container, parentEl) {
 
     // TASK OPTIONS
     const taskOptionContainer = createEl('div', 'task-option-container', parentEl);
-
     const edit = createEl('div', 'task-option-edit', taskOptionContainer);
     edit.classList.add('fa-regular', 'fa-pen-to-square');
-
     const trashcan = createEl('div', 'task-option-trashcan', taskOptionContainer);
     trashcan.classList.add('fa-regular', 'fa-trash-can');
 

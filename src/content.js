@@ -45,7 +45,7 @@ function loadContent(e, title) {
     // If there is no title, display project name as page title and load project tasks if any
     if (!title) {
         const projectContainer = e.target.closest('.sidebar-projects-container');
-        
+
         if (projectContainer) {
             const myProject = storedProjects.find(el => el.id == projectContainer.id.replace(/\D/g,''));
             headerTitle.textContent = myProject.name;
@@ -65,7 +65,6 @@ function loadContent(e, title) {
 
 function loadTasks(tasks) {
     tasks.forEach(task => {
-        // Create corresponding elements
         createTaskEl(task, true)
 
         // Display checked checkboxes as checked
