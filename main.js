@@ -4745,6 +4745,7 @@ function createProjectEl(project, container, parentEl) {
     const projectList = document.querySelector('.sidebar-projects');
     const projectFormContainer = document.querySelector('.project-form-container');
     const projectForm = document.querySelector('.project-form');
+    const mediaQuery = window.matchMedia('(max-width: 700px)');
 
     // Container required if a new project or a locally stored one is added, not when editing one.
     if (container) {
@@ -4769,6 +4770,8 @@ function createProjectEl(project, container, parentEl) {
 
     const optionsBtns = document.querySelectorAll('.sidebar-projects-options');
     optionsBtns.forEach(optionBtn => optionBtn.addEventListener('click', toggleOptionsMenu));
+
+    (0,_sidebar__WEBPACK_IMPORTED_MODULE_1__.hideSideBarAfterClickSmallScreens)(mediaQuery);
 }
 
 function toggleOptionsMenu(e) {  
@@ -4983,6 +4986,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (/* binding */ setSideBar),
 /* harmony export */   "getProjectPage": () => (/* binding */ getProjectPage),
+/* harmony export */   "hideSideBarAfterClickSmallScreens": () => (/* binding */ hideSideBarAfterClickSmallScreens),
 /* harmony export */   "updateTaskCount": () => (/* binding */ updateTaskCount)
 /* harmony export */ });
 /* harmony import */ var date_fns__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! date-fns */ "./node_modules/date-fns/esm/isToday/index.js");
